@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 1: números complejos}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+ \textbf{Tema:} & Introducción a la variable compleja. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Kreyszig PS 13.1 - 1 pg 613
+ Mostrar que $i^2 = -1$, $i^3 = -i$, $i^4 = 1$, $i^5 = i$, y $1/i = -i$, $1/i^2 = -1$, $1/i^3 = -i$.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.1 - 2 pg 613
+ Multiplicar por $i$ equivale geométricamente a rotar en sentido antihorario por $\pi/2$ ($90\degree$). Verificar graficando $z$ y $zi$, y el ángulo de rotación, para $z = 1 + i$, $z = -1 + 2 i$, $z = 4 - 3 i$.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.1 - 4 pg 614
+ Verificar las siguientes propiedades de los números complejos conjugados:
+ \begin{align*}
+  \overline{(z_1 + z_2)} = \overline{z_1} + \overline{z_2} &\qquad \overline{(z_1 - z_2)} = \overline{z_1} - \overline{z_2} \\
+  \overline{(z_1 z_2)} = \overline{z_1} \; \overline{z_2} &\qquad \overline{ \left( \frac{z_1}{z_2} \right) } = \frac{\overline{z_1}}{\overline{z_2}} \\
+ \end{align*}
+ para $z_1 = -11 + 10 i$ y $z_2 = -1 + 4 i$.
+\end{question}
+
+\begin{question} % HGross Lec.1 - 1 pg. 12
+    Expresar $\dfrac{3 + 5 i}{7 + 9 i}$ en la forma $a + bi$, donde $a$ y $b$ son reales.
+\end{question}
+
+\begin{question} % HGross Lec.1 - 2 pg. 12
+    En términos del diagrama de Argand, describir la región de puntos definida por:
+    \[ \begin{cases}
+        |z - (1 + i)| < 2 \\
+        |z - 2 i| > \dfrac{3}{2}
+       \end{cases}
+\]
+\end{question}
+
+\begin{question} % HGross Lec.1 - 3 pg. 12
+    \begin{enumerate}[a)]
+     \item En términos del diagrama de Argand, describir el conjunto:
+     \[ S = \{ z:z = \cos t + i \sen t, 0 \leq t \leq \pi \} \].
+     \item Describir $f(S)$ si $f$ se define como $f(z) = z^2$.
+    \end{enumerate}
+\end{question}
+
+\begin{question} % Kreyszig PS 13.2 - 13 pg 618
+ Determinar el valor principal del argumento de $(1 + i)^{20}$.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.2 - 21 pg 618
+ Encontrar y graficar en el plano complejo todas las raíces de $\sqrt[3]{i + i}$.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.3 - 11 pg 624
+    Determinar $\Re(f)$ e $\Im(f)$ para
+    \[ f(z ) = \frac{1}{1 - z} \]
+    en $z = 1 - i$.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.3 - 17 pg 624
+    Del mismo modo que para las funciones de variable real, una función compleja de variable compleja es \textit{continua} en $z = z_0$ si $f(z_0)$ está definida y
+    \[ \lim_{z \rightarrow z_0} f(z) = f(z_0) \]
+    
+    Determinar si $f(z)$ es continua en $z = 0$, si $f(0) = 0$ y para $z \neq 0$ la función se define como
+    \[ f(z) = \begin{cases}
+                \frac{\Re(z)}{1 - |z|}, &\quad z \neq 0 \\
+                0, &\quad z = 0
+              \end{cases} \]
+ \end{question}
+
+\begin{question} % HGross Lec.1 - 4 pg. 12
+    Si $f(z) = z^3$, escribir $f$ en la forma $u(x, y) + i v(x,y)$ y mostrar que $u$ y $v$ satisfacen las condiciones de Cauchy-Riemann.
+\end{question}
+
+\begin{question} % Kreyszig PS 13.4 - 31 pg 629
+    Determinar si las funciones
+    \begin{enumerate}[a)]
+     \item \[ f(z ) = e^{-2x} (\cos 2y - i \sen 2y) \]
+     \item \[ f(z) = \Re(z^2) - i \Im(z^2) \]
+    \end{enumerate}
+    son analíticas.
+\end{question}
+
+\begin{question} % HGross Lec.1 - 5 pg. 12
+    Si $u(x, y) = 3 x - 2 y + 5$, ¿cómo debe estar definida $v(x, y)$ si $u(x, y) + i v(x, y)$ debe ser analítica?
+\end{question}
+
+
+\end{document}

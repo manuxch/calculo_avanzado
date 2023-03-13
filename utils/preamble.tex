@@ -1,0 +1,160 @@
+\metroset{titleformat=smallcaps,block=fill,numbering=counter,progressbar=frametitle,sectionpage=none}
+\setbeamersize{text margin left=5mm,text margin right=5mm} 
+% \input{embed_video}
+\usepackage{fontspec,minted}
+\usepackage[scale=1]{ccicons}
+\usepackage{metalogo}
+\usepackage{xcolor,colortbl}
+\usepackage{multicol,multirow,booktabs}
+\usepackage{appendixnumberbeamer}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{fontawesome}
+\usepackage{csquotes}
+\usepackage[backend=biber, natbib, sorting=nyt, doi=true, url=false, url=false, isbn=false, maxbibnames=10]{biblatex}
+\addbibresource{../../utils/refs.bib}
+
+\usepackage[spanish]{babel}
+\usepackage{mathtools}
+\usefonttheme{professionalfonts}
+\usepackage{textcomp}
+
+\setsansfont[BoldFont={Iwona Bold}, Numbers={Lining, Proportional}]{Iwona Light}
+% \setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+
+\setbeamercolor{alerted text}{fg=red,bg=black!2}
+\setbeamercolor{progress bar}{fg=red,bg=red!2}
+\setbeamertemplate{itemize item}{\faCaretRight}
+\setbeamertemplate{itemize subitem}{ \faAngleRight}
+\setbeamertemplate{blocks}[shadow=false]
+\setbeamercolor{block title}{bg=black!30,fg=red}
+\setbeamercolor{block body}{bg=black!20,fg=black}
+ 
+\usepackage{gensymb,amssymb}
+\usepackage{upquote}
+\usepackage{algpseudocode}
+\algrenewcommand\algorithmicrequire{\textbf{Requiere}}
+\algrenewcommand\algorithmicensure{\textbf{Devuelve}}
+%\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{blocks}[shadow=false]
+
+\newcommand{\cx}{\column{0.5\textwidth}}
+\newcommand{\cw}[1]{\column{#1\textwidth}}
+
+\author{Manuel Carlevaro}
+\date{{\tiny Departamento de Ingeniería Mecánica \\[-1em]
+             Grupo de Materiales Granulares - UTN FRLP \\
+        \faEnvelope{} manuel.carlevaro@gmail.com \- $\cdot$ \- \faTwitter{} @mcarlevaro}}
+\institute{
+  \vspace{6em}
+  \centering
+  {\tiny
+  Cálculo Avanzado \enspace • \enspace 2022 \\
+    \faLinux \- $\cdot$ \- \fontspec{TeX Gyre Pagella}\XeLaTeX \- $\cdot$ \- \ccbysa }
+}
+
+%% Operadores
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\T}[1]{\underline{\bm{#1}}}
+\DeclareMathOperator{\Tr}{Tr}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\urlstyle{same}
+
+%% Códigos
+\usepackage{minted}
+\newminted[cpp]{cpp}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt}
+\newmintedfile[cppcode]{cpp}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt}
+\newcommand{\mic}[1]{\mintinline{C++}{#1}}
+
+\newminted[py]{python}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt}
+\newminted[pyc]{pycon}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt} % Consola de Python
+\newminted[ipy3]{ipython3}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt} % Consola de iPython3
+\newmintedfile[pycode]{python}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt}
+
+\newmintedfile[makef]{basemake}{linenos,fontsize=\footnotesize,frame=lines,numbersep=4pt}
+\definecolor{bg}{RGB}{22,43,58}
+\newminted[shell]{console}{linenos=false,fontsize=\footnotesize,breaklines=true, frame=single} % Linea de comandos
+\renewcommand\listingscaption{Código}
+
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
+% uso:
+% Ejemplo de uso explícito:
+% \begin{py}
+% >>> list("abcd")
+% ['a', 'b', 'c', 'd']
+% \end{py}
+% 
+% Ahora ejemplo de código en file:
+% \pycode{Chapters/intro/code/hola.py}
+% 
+% También se puede poner un sector del file:
+% \pycode[firstline=6, lastline=7]{Chapters/intro/code/hola.py}
+% 
+% También se puede poner código \textit{inline}: \mip{print('¡Hola mundo!')} y en una sola línea:
+% \slp|if __name__ == '__main__')|
+% 
+% Por último, se puede poner el código en un entorno \textit{float}, esto es, como las tablas y las figuras, con un caption y un label para luego hacer referencias, como por ejemplo al Código \ref{code:hola}.
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,shadows,arrows,positioning,matrix,chains,backgrounds,fit}
+
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    obj/.style={
+           rectangle,
+           rounded corners,
+           draw, very thick,
+           text width=10em, fill=green!20,
+           minimum height=2em,
+           text centered, drop shadow},
+    proc/.style={
+	    rectangle, rounded corners,
+	    draw,fill=red!50,very thick,
+	    text width=8em,minimum height=2em,
+	    text centered, drop shadow},
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
+
+\setbeamertemplate{bibliography item}{%
+  \ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+    or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+    or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
+    {\setbeamertemplate{bibliography item}{\faBook}}
+    {\ifentrytype{online}
+            {\setbeamertemplate{bibliography item}{\faGlobe}}
+   {\setbeamertemplate{bibliography item}{\faFileText}}}%
+  \usebeamertemplate{bibliography item}}
+
+\defbibenvironment{bibliography}
+  {\list{}
+     {\settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}
+\newcommand{\bcite}[1]{\citeauthor{#1}, \citetitle{#1} (\citeyear{#1})}
