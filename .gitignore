@@ -12,3 +12,5 @@
 **/*.gz
 **/*.toc
 **/.directory
+**/*ipynb_checkpoints*
+**/*jupyter*

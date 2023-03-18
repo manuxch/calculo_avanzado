@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 2: números complejos}
+
+
+\begin{document}
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+%%%% Formato de problemas:
+% Cada problema tiene el formato:
+% \begin{question} % Referencia del problema
+%   \begin{enumerate}[a)] % En caso que haya ítems del problema
+%   \end{enumerate}
+% \end{question}
+%%%%
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 2 \\
+ \textbf{Tema:} & Introducción a la variable compleja. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % H. Gross - 1.8.1(L) pg 3.
+    \begin{enumerate}[a)]
+        \item Calcular:
+        \[ \int_0^{2i} z dz \]
+    \item Calcular:
+        \[ \int_0^{2 i} \bar{z} dz \]
+\end{enumerate}
+primero a lo largo del segmento de línea $C_1$ que une $0$ con $2i$, y luego a lo largo de la curva $C_2$, donde $C_2$ es la mitad derecha del círculo centrado en $i$ con radio $1$.
+\end{question}
+
+\begin{question} % H. Gross - 1.8.2 pg 3.
+Explicar por qué la integral:
+\[ \int_1^i 2 e^{2z} \, dz \]
+no es ambigua, y encontrar el valor de esta integral.
+\end{question}
+
+\begin{question}  % H. Gross - 1.8.3 pg 3.
+    Calcular:
+    \[ \int_1^i \bar{z}^2 \, dz \]
+    a lo largo de las siguientes curvas $C$:
+    \begin{enumerate}[a)]
+        \item $C$ es el segmento de línea que une $1$ con $i$.
+        \item $C = \{z : z = e^{i \theta}, \; 0 \leq \theta \leq \dfrac{\pi}{2}\} $, es decir, $C$ es el primer cuadrante del círculo $|Z| = 1$.
+    \end{enumerate}
+\end{question}
+
+\end{document}
