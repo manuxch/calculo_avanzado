@@ -1,0 +1,179 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../../utils/preamble}
+
+\title{Introducción a la variable compleja}
+\subtitle{Integración en el campo complejo. Series de Taylor y de Laurent. Teorema del residuo. Resolución de integrales reales.}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{frame}{Integración de funciones complejas}
+ \begin{columns}[t]
+ 
+  \cw{0.3}
+ 
+ \textbf{Revisión:}
+  \[ \int_{x_0}^{x_1} f(x) \, dx = \lim_{\substack{\max \\ \Delta x \rightarrow 0}} \sum_{k=1}^n f(c_k^*) \Delta x_k \]
+
+
+  \[ = F(x_1) - F(x_0), \; F' = f \]
+ 
+
+  \begin{center}
+      \includegraphics[width=0.85\textwidth]{figs/fig-01.pdf}
+  \end{center}
+  
+  \cw{0.3}
+  \[ \int_{z_0}^{z_1} f(z) \, dz \overset{{\color{red}{?}}}{=} \lim_{\substack{\max \\ \Delta z \rightarrow 0}} \sum_{k=1}^n f(c_k^*) \overset{{\color{red}{?}}}{\Delta z_k} \]
+
+  \[ C: \begin{cases}
+      x = x(t) \\
+      y = y(y) \\
+  \end{cases} = 
+  \begin{cases}
+      \vec{R} = x(t) \hat{i} + y(t) \hat{j} \\
+      z = x(t) + i y(t) \\
+  \end{cases} \]
+
+   $\qquad t_0 \leq t \leq t_1$ 
+
+   \begin{multline*} \int_{C: z_0}^{z_1} f(z) \, dz = \lim_{\substack{\max \\ \Delta z \rightarrow 0}} \sum_{k=1}^n f(c_k(t_k)) \frac{\Delta z_k}{\Delta t_k} \Delta t_k \\
+       \therefore \int_{C: z_0}^{z_1} f(z) \, dz = \int_{t_0}^{t_1} f(z(t)) z'(t) \, dt
+   \end{multline*}
+
+  \cw{0.3}
+  \begin{center}
+      \includegraphics[width=0.85\textwidth]{figs/fig-02.pdf}
+  \end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+ \begin{columns}[t]
+   \cw{0.45}
+   En términos de $u$ y $v$: $f(z) = u + i v$, $\Delta z = \Delta x + i \Delta y$:
+   \begin{multline*}
+    \int_{\substack{C \\z_0}}^{z_1} f(z) \, dz = \int_{\substack{C \\ (x_0, y_0)}}^{(x_1, y_1)} (u + i v)(dx + i dy) = \\
+       \int_{\substack{C \\ (x_0, y_0)}}^{(x_1, y_1)} (u \, dx - v \, dy) + i \int_{\substack{C \\ (x_0, y_0)}}^{(x_1, y_1)} (v \, dx + u \, dy) \\
+       C: \begin{cases}
+           x = x(t) \\
+           y = y(t)
+       \end{cases}
+   \end{multline*}
+
+   Si $u + i v$ es \alert{analítica}: $u_x = v_y, \; u_y = -v_x$.
+
+   \[ \therefore \begin{rcases*}
+       u \, dx - v \, dy \\
+       v \, dx + u \, dy
+\end{rcases*} \text{ es diferencial exacta.} \]
+
+   \cw{0.45}
+
+$\therefore$ Si $f = u + i v$ en analítica:
+\[ \int_{z_0}^{z_1} f(z) \, dz \]
+es \textbf{independiente} de $C$, y
+\[ \boxed{ \oint_C f(z) \, dz = 0, \quad \forall C} \]
+
+$f$ analítica $\rightarrow$ 
+\[ \int_{z_0}^{z_1} f(z) \, dz = F(z_1) - F(z_0), \quad F' = f \]
+
+\begin{alertblock}{Nota:}
+    \[ \oint_C f(z) \, dz \]
+    \textbf{no necesariamente es 0} si $f$ no es analítica.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Ejemplo}
+    \begin{columns}[t]
+        \cw{0.3}
+        Calcular: \[ \oint_C \frac{dz}{z} \]
+        donde
+  \begin{center}
+      \includegraphics[width=0.75\textwidth]{figs/fig-03.pdf}
+  \end{center}
+  El integrando es analítico en $\mathbb{C}$ excepto en $z = 0$.
+
+  \cw{0.3}
+  Método \#1:
+  \begin{multline*}
+    \oint_C \frac{dz}{z} = \oint_C \frac{dx + i dy}{x + i y} \\
+    = \oint_C \frac{(x-iy)(dx + i dy)}{x^2 + y^2} = \\
+    \oint_C\frac{x \, dx + y \, dy}{x^2 + y^2} + i \oint_C \frac{-y \, dx + x \, dy}{x^2 + y^2}
+  \end{multline*}
+    En $C$: $x = R \cos \theta, \, y = R \sen \theta$, $dx = -R \sen \theta \, d\theta$, \\ $dy = R \cos \theta \, d\theta$, $x^2 + y^2 = R^2, \, 0 \leq \theta \leq 2 \pi$.
+    \begin{multline*}
+        \therefore \oint_C \frac{dz}{z} = 0 \\
+        + i \int_0^{2 \pi} \frac{R^2(\sen^2 \theta + \cos^2 \theta) \, d\theta}{R^2} \\
+        = \boxed{2 \pi i}
+    \end{multline*}
+  
+    \cw{0.3}
+    Método \#2:
+    $C: z = R e^{i \theta}, \; 0 \leq \theta \leq 2 \pi$.
+    \begin{multline*}
+        \frac{dz}{d\theta} = i R e^{i \theta} \\
+        \oint_C \frac{dz}{z} = \int_0^{2 \pi} \frac{1}{z(\theta)} \frac{dz}{d\theta} d\theta \\
+    = \int_0^{2 \pi} \frac{i R e^{i \theta}}{R e^{i \theta}} d\theta \\
+    = \boxed{2 \pi i}
+    \end{multline*}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+ \begin{columns}[t]
+    \cx
+    Geometría elástica (topología):
+  \begin{center}
+      \includegraphics[scale=0.45]{figs/fig-04.pdf}
+  \end{center}
+
+  Si $f$ es analítica en $C_1$ y $C_2$, y en la región entre ellas, entonces:
+  \[ \oint_{C_1} f(z) \, dz = \oint_{C_2} f(z) \, dz \]
+  \begin{center}
+      \includegraphics[scale=0.45]{figs/fig-04b.pdf}
+  \end{center}
+
+ \cx
+ \[\oint_{\cancel{C}} f(z) \, dz = \oint_{C_2} f(z) \, dz - \oint_{C_1} f(z) \, dz = 0 \]
+
+ \textbf{Ejemplo:} calcular
+ \[ \oint_C \frac{dz}{dz} \]
+ donde
+  \begin{center}
+      \includegraphics[scale=0.40]{figs/fig-05.pdf}
+  \end{center}
+
+  \[ \oint_C \frac{dz}{z} = \oint_{C_1} \frac{dz}{z} = 2 \pi i \]
+
+\end{columns}
+
+
+\end{frame}
+
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+ \item \fullcite{kreyszig2011}. Capítulo 13.
+ \item \fullcite{spiegel2011}. Capítulo 1.
+\end{itemize}
+
+% \nocite{kreyszig2011}
+% \nocite{spiegel2011}
+% \nocite{vesely2012}
+% \nocite{thornton2015}
+% \printbibliography
+\end{frame}
+
+
+\end{document}
+
