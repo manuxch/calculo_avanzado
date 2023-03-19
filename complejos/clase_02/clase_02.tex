@@ -6,11 +6,107 @@
 \input{../../utils/preamble}
 
 \title{Introducción a la variable compleja}
-\subtitle{Integración en el campo complejo. Series de Taylor y de Laurent. Teorema del residuo. Resolución de integrales reales.}
+\subtitle{Secuencias y series. Integración en el campo complejo.}
 
 
 \begin{document}
 \maketitle
+
+\begin{frame}[t]
+    \frametitle{Secuencias y series}
+ \begin{columns}[t]
+     \cw{0.3}
+     \[ e^z = ?, \qquad \sen z = ? \]
+   \begin{align*} 
+      e^x &= \sum_{n = 0}^{\infty} \frac{x^n}{n!}  \\
+      e^z &= \sum_{n = 0}^{\infty} \frac{z^n}{n!} = \textcolor{red}{?} \\
+  \end{align*}
+  \begin{definition}
+      \vspace{-0.5em}
+      \[ \lim_{n \rightarrow \infty} a_n = L \text{ significa que} \]
+      dado $\epsilon > 0, (\epsilon \in \mathbb{R})$, existe $N$, tal que \vspace{-0.5em}
+      \[ n > N \rightarrow |a_n - L| < \epsilon \]
+    
+  \end{definition}
+
+     \cw{0.3}
+    Gráficamente:
+    \begin{center}
+    \includegraphics[scale=0.35]{figs/fig-06.pdf}
+    \end{center}
+    En forma similar podemos definir:
+    \[ \sum_{n = 1}^{\infty} c_n = \lim_{n \rightarrow \infty} (c_1 + \cdots + c_n) \]
+
+        Por su estructura, \textbf{son válidos} todos los teoremas usuales.
+
+     \cw{0.3}
+     En particular, si $S = \{ z: \sum a_n z^n \text{ converge } \} $, entonces pueden darse los siguientes casos:
+     \begin{enumerate}[i)]
+         \item $ S = \{ 0\} $.
+         \item $S = \mathbb{C} $ (todos los números complejos).
+         \item Existe un $R > 0$ tal que $S = \{z: |z| < R \} $, y la convergencia es absoluta e uniforme para $|z| \leq r < R$.
+         \end{enumerate}
+         \begin{center}
+             \includegraphics[scale=0.35]{figs/fig-07.pdf}
+         \end{center}
+ \end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+    \cw{0.3}
+    Entonces podemos \textbf{definir}:
+    \begin{align*}
+      e^z &= \sum_{n = 0}^{\infty} \frac{z^n}{n!} \\
+      \sen z &= \sum_{n = 0}^{\infty} \frac{(-1)^n z^{2 n + 1}}{(2n +1)!} \\
+     \sen x &= \sum_{n = 0}^{\infty} \frac{(-1)^n x^{2 n + 1}}{(2n +1)!} \\
+    \end{align*}
+    Se puede entonces probar que:
+    \begin{align*}
+        e^{iz} &= \cos z + i \sen z \\
+               &\text{o} \\
+        e^{ix} &= \cos x + i \sen x \\
+        \therefore (r, \theta) &= r \cos \theta + i r \sen \theta \\
+                               &= r e^{i \theta}
+    \end{align*}
+
+    \cw{0.3}
+    Tres observaciones:
+    \begin{enumerate}
+    \item $z = r e^{i \theta} = r e^{i(\theta + 2 \pi k)} $
+        \begin{align*}
+        \therefore \log z &= \log r + \log e^{i(\theta + 2 \pi k)} \\
+                          &= \ln r + i (\theta + 2 \pi k)
+        \end{align*}
+        $\therefore \log z$ es multivaluada, el \textbf{valor principal} es $-\pi < \theta \leq \pi$.
+    \item 
+        \begin{multline*}
+            \cosh i x = \frac{e^{ix} + e^{-ix}}{2} = \\
+        \frac{(\cos x + i \sen x)}{2} + \\
+    \frac{\cos(-x) + i \sen(-x)}{2} = \cos x
+        \end{multline*}   
+\end{enumerate}
+
+    \cw{0.3}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item $e^z = e^{x + i y} = e^x e^{iy} =$
+            \begin{multline*}
+            e^x (\cos y + i \sen y) = \\
+            e^x \cos y + i e^x \sen y \\
+            u(x, y) + i v(x, y)
+            \end{multline*}
+    \end{enumerate}
+    $u$ y $v$ representan un \textbf{mapeo conforme} real.
+    \begin{center}
+        \begin{overprint}
+         \onslide<1>\includegraphics[width=0.95\textwidth]{figs/fig-08.pdf}
+         \onslide<2>\includegraphics[width=0.95\textwidth]{figs/fig-08b.pdf}
+    \end{overprint}
+    \end{center}
+
+\end{columns}
+\end{frame}
 
 
 \begin{frame}{Integración de funciones complejas}
