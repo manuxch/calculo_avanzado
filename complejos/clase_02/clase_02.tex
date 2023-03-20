@@ -24,8 +24,8 @@
   \begin{definition}
       \vspace{-0.5em}
       \[ \lim_{n \rightarrow \infty} a_n = L \text{ significa que} \]
-      dado $\epsilon > 0, (\epsilon \in \mathbb{R})$, existe $N$, tal que \vspace{-0.5em}
-      \[ n > N \rightarrow |a_n - L| < \epsilon \]
+      dado $\varepsilon > 0, (\varepsilon \in \mathbb{R})$, existe $N$, tal que \vspace{-0.5em}
+      \[ n > N \rightarrow |a_n - L| < \varepsilon \]
     
   \end{definition}
 
@@ -97,15 +97,44 @@
             u(x, y) + i v(x, y)
             \end{multline*}
     \end{enumerate}
-    $u$ y $v$ representan un \textbf{mapeo conforme} real.
+    $u$ y $v$ representan un \textbf{mapeo conforme} real:
     \begin{center}
         \begin{overprint}
          \onslide<1>\includegraphics[width=0.95\textwidth]{figs/fig-08.pdf}
          \onslide<2>\includegraphics[width=0.95\textwidth]{figs/fig-08b.pdf}
     \end{overprint}
     \end{center}
-
 \end{columns}
+\end{frame}
+
+\begin{frame}{Aplicación a series ``reales''}
+    \begin{columns}[c]
+    \cw{0.3}
+    \begin{align*}
+    \frac{1}{1 - u} &= 1 + u + u^2 + \cdots \\
+                    &= \sum_{n = 0}^{\infty} u^2
+    \end{align*}
+    converge para $|u| < 1$.
+    \begin{align*}
+    \therefore \frac{1}{1 + x^2} &= 1 - x^2 + x^4 - x^6 + \cdots \\
+                                 &= \sum_{n}^{\infty} (-1)^n x^{2n}
+    \end{align*}
+    converge para $|x| < 1$.
+    \cw{0.3}
+    ¿Qué pasa en $x = \pm 1$?
+    \begin{align*}
+        \sum_{n = 0}^{\infty} (-1)^n z^{2n} &= \frac{1}{1 + z^2}, \; ({\color{red}|z| < 1}) \\
+    \frac{1}{1 + z^2} &= \frac{1}{(z + i)(z -i)}
+    \end{align*}
+$\therefore z = \pm i \leftarrow $ \alert{¡problema!}
+    \cw{0.3}
+    Gráficamente:
+    \begin{center}
+    \includegraphics[scale=0.40]{figs/fig-09.pdf}
+    \end{center}
+    Los puntos problemáticos están \textbf{sobre} $|z| = 1$, pero no en $z = 1$ o en $z = -1$.
+    Los puntos problemáticos están \textbf{sobre} $|z| = 1$, pero no en $z = 1$ o en $z = -1$.
+    \end{columns}
 \end{frame}
 
 

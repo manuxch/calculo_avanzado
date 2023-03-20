@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4841611"
-     inkscape:cx="274.90278"
-     inkscape:cy="233.80212"
+     inkscape:cx="265.46983"
+     inkscape:cy="234.47589"
      inkscape:window-width="1920"
      inkscape:window-height="1013"
      inkscape:window-x="0"
@@ -42,7 +42,7 @@
        refY="0"
        orient="auto-start-reverse"
        inkscape:stockid="Arrow5"
-       markerWidth="5.8874264"
+       markerWidth="5.8874259"
        markerHeight="6.6094756"
        viewBox="0 0 5.8874262 6.6094758"
        inkscape:isstock="true"
@@ -328,7 +328,7 @@
       </g>
     </g>
     <path
-       style="fill:none;stroke:#6a6a6a;stroke-width:0.865;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow5)"
+       style="fill:none;stroke:#6a6a6a;stroke-width:0.865;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow5);marker-start:url(#Arrow5)"
        d="m 86.263501,123.3038 c 37.803279,0.0679 65.234259,6.85405 44.564269,29.11357"
        id="path456"
        sodipodi:nodetypes="cc" />
