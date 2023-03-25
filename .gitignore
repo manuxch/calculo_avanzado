@@ -14,3 +14,4 @@
 **/.directory
 **/*ipynb_checkpoints*
 **/*jupyter*
+**/*.synctex(busy)
