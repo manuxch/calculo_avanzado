@@ -6,6 +6,12 @@ Repositorio de las clases de Cálculo Avanzado - UTN FRLP.
 <img src="https://img.shields.io/github/watchers/manuxch/calculo_avanzado?style=plastic" />
 
 <img src="https://img.shields.io/github/last-commit/manuxch/calculo_avanzado?style=plastic" />
+
+<img src="https://img.shields.io/github/directory-file-count/manuxch/calculo_avanzado?style=plastic" />
+
+
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/manuxch/calculo_avanzado?style=plastic)
+
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/manuxch/calculo_avanzado?style=plastic)
 
 ## Temas
