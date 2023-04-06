@@ -1,10 +1,22 @@
 # Cálculo Avanzado
 Repositorio de las clases de Cálculo Avanzado - UTN FRLP.
 
-<img src="https://img.shields.io/badge/LaTeX-%23008080.svg?logo=latex&logoColor=white" alt="LaTeX"/>  <img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" alt="Python"/>  <img src="https://img.shields.io/badge/Markdown-000001?logo=markdown&logoColor=white" alt="Markdown"/>  <img src="https://img.shields.io/badge/Inkscape-000000?logo=Inkscape&logoColor=white" alt="Inkscape"/>  <img src="https://img.shields.io/badge/Vim-%2311AB00.svg?logo=vim&logoColor=white" alt="Vim"/>  <img src="https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white" alt="git"/>  <img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white" alt="GitHub"/>  <img src="https://img.shields.io/badge/Colab-F9AB00?logo=googlecolab&color=525252" alt="Colab"/>
-
 <a href="https://es.wikibooks.org/wiki/Manual_de_LaTeX">
-          <img src="https://img.shields.io/badge/LaTeX-%23008080.svg?logo=latex&logoColor=white" alt="LaTeX" />  </a>
+  <img src="https://img.shields.io/badge/LaTeX-%23008080.svg?logo=latex&logoColor=white" alt="LaTeX" /></a> 
+<a href="https://www.python.org/">
+  <img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" alt="Python" /></a>
+ <a href="https://es.wikipedia.org/wiki/Markdown">
+  <img src="https://img.shields.io/badge/Markdown-000001?logo=markdown&logoColor=white" alt="Markdown" /></a> 
+ <a href="https://inkscape.org/es/">
+  <img src="https://img.shields.io/badge/Inkscape-000000?logo=Inkscape&logoColor=white" alt="Inkscape" /></a> 
+ <a href="https://neovim.io/">
+  <img src="https://img.shields.io/badge/Vim-%2311AB00.svg?logo=vim&logoColor=white" alt="Vim" /></a> 
+ <a href="https://git-scm.com/">
+  <img src="https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white" alt="Git" /></a> 
+ <a href="https://github.com/">
+  <img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white" alt="GitHub" /></a> 
+ <a href="https://colab.research.google.com/">
+  <img src="https://img.shields.io/badge/Colab-F9AB00?logo=googlecolab&color=525252" alt="Colab" /></a>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/manuxch/calculo_avanzado?style=plastic)  ![GitHub watchers](https://img.shields.io/github/watchers/manuxch/calculo_avanzado?style=plastic)  ![GitHub last-commit](https://img.shields.io/github/last-commit/manuxch/calculo_avanzado?style=plastic)
 
