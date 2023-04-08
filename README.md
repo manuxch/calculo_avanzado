@@ -1,10 +1,10 @@
 # Cálculo Avanzado
-Repositorio de las clases de Cálculo Avanzado - UTN FRLP.
+Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 <a href="https://es.wikibooks.org/wiki/Manual_de_LaTeX">
   <img src="https://img.shields.io/badge/LaTeX-%23008080.svg?logo=latex&logoColor=white" alt="LaTeX" /></a> 
 <a href="https://www.python.org/">
-  <img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" alt="Python" /></a>
+  <img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" alt="Python" /></a> 
  <a href="https://es.wikipedia.org/wiki/Markdown">
   <img src="https://img.shields.io/badge/Markdown-000001?logo=markdown&logoColor=white" alt="Markdown" /></a> 
  <a href="https://inkscape.org/es/">
