@@ -28,4 +28,6 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 [Clase](complejos/clase_01/clase_01.pdf), [problemas](complejos/clase_01/problemas_01.pdf), [*notebook*](complejos/clase_01/code/practica_01.ipynb).
 - Clase 02: Integración de funciones de variable compleja. Sucesiones y series. [Clase](complejos/clase_02/clase_02.pdf), [problemas](complejos/clase_02/problemas_02.pdf), [*notebook*](complejos/clase_02/code/practica_02.ipynb).
 
+### Series y transformada de Fourier
 
+- Clase 03: Funciones ortogonales. Serie de Fourier. [Clase](fourier/clase_03/clase_03.pdf), [problemas](fourier/clase_03/problemas_03.pdf), [*notebook*](fourier/clase_03/code/practica_03.ipynb).
