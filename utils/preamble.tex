@@ -18,8 +18,9 @@
 \uselanguage{spanish}
 \languagepath{spanish}
 \deftranslation[to=spanish]{Definition}{Definición}
+\deftranslation[to=spanish]{Theorem}{Teorema}
 
-\usepackage{mathtools}
+\usepackage{mathtools, mathrsfs}
 \usefonttheme{professionalfonts}
 \usepackage{textcomp}
 
@@ -34,6 +35,21 @@
 \setbeamertemplate{blocks}[shadow=false]
 \setbeamercolor{block title}{bg=black!30,fg=red}
 \setbeamercolor{block body}{bg=black!20,fg=black}
+\setbeamertemplate{theorem begin}
+{%
+\begin{\inserttheoremblockenv}
+{%
+\inserttheoremheadfont
+%{Teorema:}
+\inserttheoremname
+\ifx\inserttheoremaddition\@empty\else\ : \inserttheoremaddition\fi%
+\inserttheorempunctuation
+}%
+}
+\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+\makeatother
+
+
  
 \usepackage{gensymb,amssymb}
 \usepackage{upquote}
@@ -60,6 +76,7 @@
 
 %% Operadores
 \DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\senc}{senc}
 \DeclareMathOperator{\sign}{sign}
 \newcommand{\T}[1]{\underline{\bm{#1}}}
 \DeclareMathOperator{\Tr}{Tr}
