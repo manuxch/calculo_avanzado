@@ -138,10 +138,10 @@ Si $f(x)$ es par, de \eqref{eq:02}:
 Llamamos $A(\omega) = \sqrt{ 2/\pi } \hat{f}_c(\omega)$:
 \begin{subequations} \label{eq:tcf}
     \begin{equation}
-    \hat{f}_c(\omega) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} f(x) \cos (\omega x \, dx) \tag{\ref{eq:tcf}.a}
+    \hat{f}_c(\omega) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} f(x) \cos \omega x \, dx \tag{\ref{eq:tcf}.a}
 \end{equation}
     \begin{equation} 
-    f(x) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} \hat{f}_c(\omega) \cos (\omega x \, d\omega) \tag{\ref{eq:tcf}.b} 
+    f(x) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} \hat{f}_c(\omega) \cos \omega x \, d\omega \tag{\ref{eq:tcf}.b} 
     \end{equation}
 \end{subequations}
 \cx
@@ -154,10 +154,10 @@ Si $f(x)$ es impar, de \eqref{eq:02}:
 Llamamos $B(\omega) = \sqrt{ 2/\pi } \hat{f}_s(\omega)$:
 \begin{subequations} \label{eq:tsf}
     \begin{equation}
-    \hat{f}_s(\omega) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} f(x) \sen (\omega x \, dx) \tag{\ref{eq:tsf}.a}
+    \hat{f}_s(\omega) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} f(x) \sen \omega x \, dx \tag{\ref{eq:tsf}.a}
 \end{equation}
     \begin{equation} 
-    f(x) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} \hat{f}_c(\omega) \sen (\omega x \, d\omega) \tag{\ref{eq:tsf}.b} 
+    f(x) = \sqrt{\frac{2}{\pi}} \int_0^{\infty} \hat{f}_c(\omega) \sen \omega x \, d\omega \tag{\ref{eq:tsf}.b} 
     \end{equation}
 \end{subequations}
 \end{columns}
@@ -169,7 +169,7 @@ Llamamos $B(\omega) = \sqrt{ 2/\pi } \hat{f}_s(\omega)$:
 De las ecuaciones \eqref{eq:01} y \eqref{eq:02}:
 \begin{multline*}
     f(x) = \frac{1}{\pi} \int_0^{\infty} \int_{-\infty}^{\infty} f(\xi) \left[ \cos \omega \xi \cos \omega x \right. \\
-    \left. + \sen \omega \xi \sen \omega x \right] \, d\xi \, dx \\
+    \left. + \sen \omega \xi \sen \omega x \right] \, d\xi \, d\omega \\
     = \frac{1}{\pi} \int_0^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
 \end{multline*}
 $[\cdot]$ es una función par:
@@ -184,7 +184,7 @@ Si usamos $\sen$ en vez de $\cos$, $[\cdot]$ es impar y
 
 \cx
 Tomamos el integrando de \eqref{eq:03} y le sumamos $i$ por el integrando de \eqref{eq:04}, usando la fórmula de Euler 
-\[ e^{ix} = \cos x + i \sen \]
+\[ e^{ix} = \cos x + i \sen x \]
 obtenemos la \textbf{integral de Fourier compleja}:
 
 \begin{equation*}
