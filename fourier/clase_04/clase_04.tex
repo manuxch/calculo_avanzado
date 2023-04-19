@@ -64,6 +64,7 @@ donde
     + \frac{1}{L}\sum_{n = 1}^{\infty} \left[ \cos \omega_n x \int_{-L}^L f_L(\xi) \cos \omega_n \xi \, d\xi \right. \\
     + \left. \sen \omega_n x \int_{-L}^L f_L(\xi) \sen \omega_n \xi \, d\xi \right]
 \end{multline*}
+\pause
 
 \cx
 Ahora hacemos:
@@ -73,7 +74,9 @@ Ahora hacemos:
     + \frac{1}{\pi}\sum_{n = 1}^{\infty} \left[ (\cos \omega_n x) \Delta \omega \int_{-L}^L f_L(\xi) \cos \omega_n \xi \, d\xi \right. \\
     + \left. (\sen \omega_n x) \Delta \omega \int_{-L}^L f_L(\xi) \sen \omega_n \xi \, d\xi \right]
 \end{multline*}
-Ahora: $L \rightarrow \infty$, y asumimos que
+\pause
+
+Tomamos $L \rightarrow \infty$, y asumimos que
 \[f(x) = \lim_{L \rightarrow \infty} f_L(x) \]
 es \alert{absolutamente} integrable en el eje $x$:
 \[ \lim_{a \rightarrow -\infty} \int_a^0 |f(x)| \, dx +  \lim_{b \rightarrow \infty} \int_0^b |f(x)| \, dx \mapsto \text{ existe} \]
@@ -178,12 +181,12 @@ $[\cdot]$ es una función par:
 \end{equation}
 Si usamos $\sen$ en vez de $\cos$, $[\cdot]$ es impar y
 \begin{equation}\label{eq:04}
-    f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \sen(\omega x - \omega \xi) d\xi \right] d\omega = 0
+    \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \sen(\omega x - \omega \xi) d\xi \right] d\omega = 0
 \end{equation}
 \pause
 
 \cx
-Tomamos el integrando de \eqref{eq:03} y le sumamos $i$ por el integrando de \eqref{eq:04}, usando la fórmula de Euler 
+Tomamos el integrando de \eqref{eq:03} y le sumamos $i$ multiplicado por el integrando de \eqref{eq:04}, usando la fórmula de Euler 
 \[ e^{ix} = \cos x + i \sen x \]
 obtenemos la \textbf{integral de Fourier compleja}:
 
@@ -230,7 +233,7 @@ Encontrar $\hat{f}$ de $f(x) = 1$ si $|x| < 1$ y $f(x) = 0$ en otro caso.
     \hat{f}(\omega) = \frac{1}{\sqrt{2 \pi}} \int_{-1}^{1} e^{-i \omega x} \, dx \\
     = \frac{1}{\sqrt{2 \pi}} \left. \frac{e^{-i \omega x}}{-i \omega} \right|_{-1}^{1} = \frac{1}{-i \omega \sqrt{2 \pi} } \left( e^{-i \omega} - e^{i \omega} \right)
 \end{multline*}
-Usando la fórmua de Euler:
+Usando la fórmula de Euler:
 \[ e^{i \omega}- e^{-i \omega} = 2 i \sen \omega \]
 resulta
 \[ \hat{f}(\omega) = \sqrt{\frac{\pi}{2}} \frac{\sen \omega}{\omega} = \sqrt{\frac{\pi}{2}} \senc{\omega} \]
@@ -241,7 +244,7 @@ Encontrar $\hat{f}$ de $f(x) = e^{-a x}$ si $x > 0$ y $f(x) = 0$ si $x < 0$.
 
 \begin{multline*}
     \hat{f}(\omega) = \frac{1}{\sqrt{2 \pi}} \int_{0}^{\infty} e^{-a x} e^{-i \omega x} \, dx \\
-    = \frac{1}{\sqrt{2 \pi}} \left. \frac{e^{-(a + i \omega x)}}{-(a + i \omega)} \right|_{0}^{\infty}  \\ 
+    = \frac{1}{\sqrt{2 \pi}} \left. \frac{e^{-(a + i \omega) x}}{-(a + i \omega)} \right|_{0}^{\infty}  \\ 
         = \frac{1}{\sqrt{2 \pi} (a + i \omega) } 
 \end{multline*}
 \end{columns}
@@ -274,7 +277,7 @@ $x = A + B$, $x' = v = A' + B' = i \omega_0 (A - B)$:
 Sistema más complejo: $x = f(t) \mapsto$ periódica: \\
 \textbf{Espectro discreto:} $|c_1|^2 \mapsto |c_n|^2$ (conjunto contable de frecuencias aisladas).
 
-Sistema más complejo: $x = f(t) \mapsto$ no periódcia:
+Sistema más complejo: $x = f(t) \mapsto$ no periódica:
 \[ \int_{-\infty}^{\infty} \left| \hat{f}(\omega) \right|^2 \, d\omega \]
 es la \textbf{energía total} del sistema.
 \end{columns}
