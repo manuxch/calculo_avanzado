@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 4: integral y transformada de Fourier}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 3 \\
+ \textbf{Tema:} & Funciones ortogonales. Series de Fourier. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Kreyszig problem set 11.7 - 1 pg. 517
+Halle la representación integral de Fourier de la función $f(x)$ dada por:
+\[ f(x) = 
+    \begin{cases}
+    0 & \text{ si } x < 0 \\
+    \dfrac{\pi}{2} & \text{ si } x = 0 \\
+    \pi e^{-x} & \text{ si } x > 0 \\
+\end{cases} \]
+\end{question}
+
+
+\begin{question} % Kreyszig problem set 11.8 - 1 pg. 522
+Obtenga la transformada coseno de Fourier $\hat{f}_c(\omega)$ de la función
+\[ f(x) = 
+\begin{cases}
+    1 & \text{ si } 0 < x < 1 \\
+    -1 & \text{ si } 1 < x < 2 \\
+    0 & \text{ si } x > 2 
+\end{cases} \]
+\end{question}
+
+
+\begin{question} % Kreyszig problem set 11.8 - 11 pg. 522
+Obtenga la transformada seno de Fourier $\hat{f}_s(\omega)$ de la función
+\[ f(x) = 
+\begin{cases}
+    x^2 & \text{ si } 0 < x < 1 \\
+    0 & \text{ si } x > 1 \\
+\end{cases} \]
+\end{question}
+
+\begin{question}
+Demostrar que la transformada de Fourier es una operación lineal.
+\end{question}
+
+\begin{question}
+Demostrar que si $f(x)$ es continua en $(-\infty, \infty)$ y $f(x) \rightarrow 0$ cuando $|x| \rightarrow \infty$, y si $f'(x)$ es abolutamente integrable en el eje $x$, entonces:
+\[ \mathscr{F}[f'(x)] = i \omega \mathscr{F}[f(x)] \]
+\end{question}
+
+\begin{question} % Kreyszig Example 3 pg 527
+Encuentre la transformada de Fourier de 
+\[ f(x) = x e^{-x^2} \]
+\end{question}
+
+\begin{question} % Kreyszig problem set 11.9 - 3 pg. 533
+Halle la transformada de Fourier de 
+\[ f(x) = 
+    \begin{cases}
+        1 & \text { si } a < x < b \\
+        0 & \text { de otro modo }
+    \end{cases}
+\]
+\end{question}
+
+\end{document}

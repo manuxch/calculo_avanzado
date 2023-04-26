@@ -1,0 +1,70 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../../utils/preamble}
+
+\title{Transformada de Laplace}
+\subtitle{Transformada de Laplace. Transformada inversa. Transformación de problemas con condiciones iniciales.}
+
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Transformada de Laplace}
+\begin{columns}[c]
+\cw{0.4}
+\textbf{Motivación:}
+\begin{center}
+    \includegraphics[ height=0.75\textheight ]{figs/fig-01.pdf}
+\end{center} \pause
+
+\cw{0.6}
+\begin{definition} [Transformada de Laplace]
+Sea $f(t)$ definida para todo $t \geq 0$. Su transformada de Laplace se define:
+\[ F(s) = \mathscr{L}(f) = \int_0^{\infty} e^{-s t} f(t) \, dt \]
+\end{definition} \pause
+
+\begin{theorem}[Existencia]
+    Si $f(t)$ está definida y es continua a tramos en cada intervalo finito de $\mathbb{R^+}$, y satisface la condición
+    \[ |f(t)| \leq M e^{k t} \]
+    para algunas constantes, $M$ y $k$, entonces existe $\mathscr{L}(f), \; \forall s > k$.
+\end{theorem}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Ejemplos}
+\begin{columns}[t]
+\cx
+$f(t) = 1, \, t \geq 0$
+\begin{align*}
+    \mathscr{L}(f) = \mathscr{L}(1) &= \int_0^{\infty} e^{-st} \, dt \\
+&= \lim_{T \rightarrow \infty} \int_0^{\infty} 1 \cdot e^{-s t} \, dt \\
+&= \lim_{T \rightarrow \infty} \left[ -\frac{1}{s} e^{-s t} \right]_0^T \\
+&= \lim_{T \rightarrow \infty} \left[ -\frac{1}{s} e^{-s T} + \frac{1}{s} e^0 \right] \\
+&= \frac{1}{s}
+\end{align*}
+\[ \boxed{ \mathscr{L}(1) = \frac{1}{s} } \]
+\pause
+
+ 
+ 
+\cx
+\end{columns}
+
+\end{frame}
+
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+ \item \fullcite{kreyszig2011}. Capítulo 11 (11.7 -- 11.9).
+ \item \fullcite{oneil2012es}. Capítulo 3.
+ \item \fullcite{stroud2020}. Capítulos 9.
+\end{itemize}
+\end{frame}
+
+
+\end{document}
+
