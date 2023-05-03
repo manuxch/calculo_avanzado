@@ -272,10 +272,50 @@ Paso 3
 \begin{center}
     \includegraphics[scale=0.55]{figs/fig-02.pdf}
 \end{center}
-
-
 \end{columns}
+\end{frame}
 
+\begin{frame}{Teoremas de corrimiento}
+\begin{columns}[t]
+\cx 
+\begin{theorem}[Corrimiento $s$]
+Si $f(t)$ tiene transformada $F(s)$ ($s > k$ para algún $k$), entonces:
+\[ \mathscr{L}[e^{at} f(t)] = F(s -a) \]
+o, antitransformando miembro a miembro:
+\[ e^{at} f(t) = \mathscr{L}^{-1} [F(s -a)] \]
+donde $s - a > k$.
+\end{theorem}
+
+\cx
+\begin{theorem}[Corrimiento $t$]
+    Si $f(t)$ tiene transformada $F(s)$, entonces la \textbf{función desplazada}
+    \[ \tilde{f}(t) = f(t - a) H(t - a) = 
+        \begin{cases}
+        0 & \text{ si } t < a \\
+        f(t - a) & \text{ si } t > a 
+        \end{cases}
+    \]
+tiene transformada $e^{-a s} F(s)$, es decir:
+\[ \mathscr{L}[f(t - a) H(t - a)] = e^{-a s} F(s) \]
+o, tomando antitransformadas:
+\[ f(t -a) H(t-a) = \mathscr{L}^{-1}[e^{- a s} F(s)] \]
+\end{theorem}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Convolución}
+    \begin{columns}[t]
+    \cx
+    La convolución de dos funciones $f$ y $g$ es un caso particular de \textbf{transformación integral}, y se define como:
+    \[ c(t) = (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) g(t - \tau) \, d\tau \]
+    o equivalentemente
+    \[ c(t) = (f * g)(t) = \int_{-\infty}^{\infty} f(t - \tau) g(\tau) \, d\tau \]
+
+    \cx
+    \begin{theorem}[Convolución]
+    Si dos funciones $f$ y $g$ satisfacen la restricción de crecimiento exponencial, de modo que sus transformadas $F$ y $G$ existen, el producto $C = FG$ es la transformada de $(f * g)$.
+    \end{theorem}
+    \end{columns}
 \end{frame}
 
 \section*{Bibliografía}
@@ -286,7 +326,6 @@ Paso 3
  \item \fullcite{stroud2020}. Programas 2, 3 y 4.
 \end{itemize}
 \end{frame}
-
 
 \end{document}
 
