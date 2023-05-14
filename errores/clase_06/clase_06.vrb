@@ -1,0 +1,45 @@
+\frametitle{Números enteros y de punto flotante}
+\begin{columns}[t]
+\cx
+Una cuenta simple: $a + a + a - 3a = 0$
+\begin{py}
+>>> 0.1 + 0.1 + 0.1 - 0.3
+5.551115123125783e-17
+\end{py}
+En computadoras hay \textbf{dos tipos} de números:
+\begin{itemize}
+    \item \textbf{Punto fijo:} cantidad fija de números decimales\\
+        Ejemplo: $35.6247, 0.4573, -1.0000$ \\
+        Enteros: 0 números decimales $\mapsto$ \textbf{exacta}
+    \item \textbf{Punto flotante:} cantidad fija de cifras significativas\\
+        Ejemplo: $0.1900 \cdot 10^4, 0.8691 \cdot 10^{-6}, -0.2000 \cdot 10^{-13}$ (4 cifras significativas) $\mapsto$ representación \textbf{aproximada}
+\end{itemize}
+\begin{py}
+>>> 7 + 0.000000000000001
+7.000000000000001
+>>> 7 + 0.0000000000000001
+7.0
+>>> 0.1 + 0.2
+0.30000000000000004
+\end{py}
+
+\cx
+\textbf{Punto flotante decimal}
+
+$1/2 = 0.5$, $1/3 = 0.333333\cdots$
+
+Estándar IEEE 754: tres \textbf{enteros}
+
+\[ r = (-1)^s \, m \, b^e \]
+
+$s$: signo, $m$: mantisa, $b$: base (10, 2, 16), $e$: exponente.
+
+Ejemplo:
+\begin{align*}
+    s &= 0 \\
+    m &= 31415926 \\
+    b &= 10 \\
+    e &= -7 \\
+    r &= (-1)^0 31415926 \cdot 10^{-7} = 3.1415926
+\end{align*}
+\end{columns}

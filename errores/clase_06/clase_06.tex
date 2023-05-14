@@ -1,0 +1,118 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../../utils/preamble}
+
+\title{Errores en el cálculo numérico}
+\subtitle{}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Cálculo numérico}
+\begin{columns}[t]
+\cx
+\textbf{¿Para qué?}
+
+\begin{itemize}
+    \item Análisis numérico
+    \item Manipulación simbólica
+    \item Colección y análisis de datos
+    \item Visualización 
+    \item Simulación
+\end{itemize}
+\pause
+
+\cx
+\textbf{¿Cómo?}
+
+\begin{itemize}
+    \item Modelado: sistema de ecuaciones, ecuaciones diferenciales, integral
+    \item Método numérico: elección, parametrización, \alert{estimación de errores}
+    \item Programación: \alert{Python}, C/C++, Fortran, Julia
+    \item Ejecución del código
+    \item Interpretación de resultados: visualización, análisis estadístico, rediseño y ejecución
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Números enteros y de punto flotante}
+\begin{columns}[t]
+\cx
+Una cuenta simple: $a + a + a - 3a = 0$
+\begin{py}
+>>> 0.1 + 0.1 + 0.1 - 0.3
+5.551115123125783e-17
+\end{py}
+En computadoras hay \textbf{dos tipos} de números:
+\begin{itemize}
+    \item \textbf{Punto fijo:} cantidad fija de números decimales\\
+        Ejemplo: $35.6247, 0.4573, -1.0000$ \\
+        Enteros: 0 números decimales $\mapsto$ \textbf{exacta}
+    \item \textbf{Punto flotante:} cantidad fija de cifras significativas\\
+        Ejemplo: $0.1900 \cdot 10^4, 0.8691 \cdot 10^{-6}, -0.2000 \cdot 10^{-13}$ (4 cifras significativas) $\mapsto$ representación \textbf{aproximada}
+\end{itemize}
+\begin{py}
+>>> 7 + 0.000000000000001
+7.000000000000001
+>>> 7 + 0.0000000000000001
+7.0
+>>> 0.1 + 0.2
+0.30000000000000004
+\end{py}
+
+\cx
+\textbf{Punto flotante decimal}
+
+$1/2 = 0.5$, $1/3 = 0.333333\cdots$
+
+Estándar IEEE 754: tres \textbf{enteros}
+
+\[ r = (-1)^s \, m \, b^e \]
+
+$s$: signo, $m$: mantisa, $b$: base (10, 2, 16), $e$: exponente.
+
+Ejemplo:
+\begin{align*}
+    s &= 0 \\
+    m &= 31415926 \\
+    b &= 10 \\
+    e &= -7 \\
+    r &= (-1)^0 31415926 \cdot 10^{-7} = 3.1415926
+\end{align*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cx
+\textbf{Características del formato:}
+\begin{itemize}
+    \item Permite representar números de órdenes de magnitud enormemente dispares (limitado por la longitud del exponente)
+    \item Proporciona la misma precisión relativa para todos los órdenes (limitado por la longitud de la mantisa)
+    \item Permite cálculos entre magnitudes (número grande $\times$ número pequeño) conservando la precisión de ambos en el resultado.
+\end{itemize}
+
+\begin{center}
+    $6.022 \cdot 10^{23} \longleftrightarrow$ \mip{6.022E23}
+\end{center}
+
+\cx
+
+
+\end{columns}
+\end{frame}
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+ \item \fullcite{kreyszig2011}. Capítulo 6.
+ \item \fullcite{oneil2012es}. Capítulo 1.
+ \item \fullcite{stroud2020}. Programas 2, 3 y 4.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
