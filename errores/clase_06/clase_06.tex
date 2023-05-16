@@ -38,6 +38,23 @@
 \end{columns}
 \end{frame}
 
+\begin{frame}{Errores}
+    \begin{enumerate}
+    \item \textbf{Error inherente}. Provienen desde el principio en los datos originales y están fuera del alcance del control de cálculo. Ejemplo: incertezas en las mediciones. \medskip
+    \item \textbf{Error de truncamiento}. Se producen como resultado de reemplazar un proceso infinito por uno finito. Ejemplo: usar solo los primeros términos de una serie de Taylor. \medskip
+    \item \textbf{Error de redondeo}. Se originan en la representación con precisión finita de los números en una computadora. \medskip
+    \item \textbf{Error por equivocación}. Causado por realizar una operación aritmética incorrectamente.
+    \end{enumerate} 
+
+    \par\noindent\rule{\textwidth}{0.5pt} \pause
+
+\begin{center}
+    1 -- 3 son errores \textbf{inevitables} $\mapsto$ \alert{control del error}.
+
+    4 es \textbf{evitable}.
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]{Números enteros y de punto flotante}
 \begin{columns}[t]
 \cx
@@ -64,17 +81,13 @@ En computadoras hay \textbf{dos tipos} de números:
 \end{py}
 
 \cx
-\textbf{Punto flotante decimal}
-
-$1/2 = 0.5$, $1/3 = 0.333333\cdots$
-
-Estándar IEEE 754: tres \textbf{enteros}
+\textbf{Estándar IEEE 754}: tres \textbf{enteros}
 
 \[ r = (-1)^s \, m \, b^e \]
 
 $s$: signo, $m$: mantisa, $b$: base (10, 2, 16), $e$: exponente.
 
-Ejemplo:
+Ejemplo decimal:
 \begin{align*}
     s &= 0 \\
     m &= 31415926 \\
@@ -82,6 +95,10 @@ Ejemplo:
     e &= -7 \\
     r &= (-1)^0 31415926 \cdot 10^{-7} = 3.1415926
 \end{align*}
+
+Ejemplo binario: 
+\[ r = \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \]
+número de máquina de $k$-dígitos.
 \end{columns}
 \end{frame}
 
@@ -96,11 +113,14 @@ Ejemplo:
 \end{itemize}
 
 \begin{center}
-    $6.022 \cdot 10^{23} \longleftrightarrow$ \mip{6.022E23}
+    $6.022 \cdot 10^{23} \longleftrightarrow$ \texttt{6.022E23}
 \end{center}
 
 \cx
-
+\begin{itemize}
+    \item Existe solo un número finito de números de máquina, y son menos ``densos'' a medida que el número es más grande. Hay tantos números entre 2 y 4 como entre 1024 y 2048.
+    \item El menor número de máquina positivo $\varepsilon_m$ para el cual $1 + \varepsilon_m > 1$ se denomina \textbf{precisión de la máquina}. No se pueden representar números en los intervalos $[1, 1 + \varepsilon_m], [2, 2 + 2 \varepsilon_m], \cdots $
+\end{itemize}
 
 \end{columns}
 \end{frame}
