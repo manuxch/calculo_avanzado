@@ -129,7 +129,7 @@ Valor decimal: & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 \begin{tabular}{rcccc}
 \toprule
 Representación: & 0.00 $\cdot 2^e$ & 0.01 $\cdot 2^e$ & 0.10 $\cdot 2^e$ & 0.11 $\cdot 2^e$ \\
-Valor decimal: & 0 & $\frac{1}{4}$ $\cdot 2^e$  & $\frac{1}{2}$ $\cdot 2^e$ & $\frac{3}{4}$ $\cdot 2^e$ \\
+Valor decimal: & 0 & $\frac{1}{4} \cdot 2^e$  & $\frac{1}{2} \cdot 2^e$ & $\frac{3}{4} \cdot 2^e$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -264,9 +264,9 @@ Del mismo modo:
 \end{frame}
 
 \begin{frame}{Propagación de errores}
-    \[ f(x_1, x_2, \cdots, x_n), \quad x_i = x_i^0 + \delta x_i \]
+    \[ f(x_1, x_2, \cdots, x_n), \quad x_i = \tilde{x}_i + \delta x_i \]
 Expansión en serie de Taylor de primer orden:
-\[ f \approx f_0 + \sum_{i = 1}^n \frac{\partial f}{\partial x_i} \delta x_i \text{ o } \delta f =|f - f_0| \leq \left| \frac{\partial f}{\partial x_1} \right| \delta x_1 + \cdots + \left| \frac{\partial f}{\partial x_n} \right| \delta x_n \]
+\[ f \approx \tilde{f} + \sum_{i = 1}^n \frac{\partial f}{\partial x_i} \delta x_i\quad  \text{ o } \quad \delta f =|f - \tilde{f}| \leq \left| \frac{\partial f}{\partial x_1} \right| \delta x_1 + \cdots + \left| \frac{\partial f}{\partial x_n} \right| \delta x_n \]
 
 \textbf{Casos especiales}: $x = \tilde{x} + \epsilon_x, \, y = \tilde{y} + \epsilon_y, \, |\epsilon_x| \leq \beta_x, \, |\epsilon_y| \leq \beta_y$ 
 \begin{columns}[t]
