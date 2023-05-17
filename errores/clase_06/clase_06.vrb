@@ -40,6 +40,9 @@ Ejemplo decimal:
 \end{align*}
 
 Ejemplo binario:
-\[ r = \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \]
+\begin{align*}
+r &= \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \\
+r &= \pm(d_1 2^{-1} + d_2 2^{-2} + \cdots + d_n 2^{-n}) \cdot 2^n
+\end{align*}
 número de máquina de $k$-dígitos.
 \end{columns}

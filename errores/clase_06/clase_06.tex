@@ -97,9 +97,43 @@ Ejemplo decimal:
 \end{align*}
 
 Ejemplo binario: 
-\[ r = \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \]
+\begin{align*}
+r &= \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \\
+r &= \pm(d_1 2^{-1} + d_2 2^{-2} + \cdots + d_n 2^{-n}) \cdot 2^n
+\end{align*}
 número de máquina de $k$-dígitos.
 \end{columns}
+\end{frame}
+
+\begin{frame}
+\textbf{Ejemplo 1:} $0.1011 \cdot 2^3$:
+\[ r = 4 + 1 + \frac{1}{2} = 5.5 \]
+\bigskip \pause
+
+\textbf{Ejemplo 2:} Números enteros con exponente fijo $e = n$ $b = 2$, $n = 3$ ($r \geq 0$)
+
+\begin{center}
+\begin{tabular}{rcccccccc}
+\toprule
+Representación: & 000 & 001 & 010 & 011 & 100 & 101 & 110 & 111 \\
+Valor decimal: & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{Overflow} (desbordamiento): $3 + 5$ = \texttt{011} +  \texttt{101} = \alert{\texttt{1000}}
+\bigskip \pause
+
+\textbf{Ejemplo 3:} $e$ entero variable (punto flotante) $b = 2$, $n = 2$, $-2 \leq e \leq 2$
+\begin{center}
+\begin{tabular}{rcccc}
+\toprule
+Representación: & 0.00 $\cdot 2^e$ & 0.01 $\cdot 2^e$ & 0.10 $\cdot 2^e$ & 0.11 $\cdot 2^e$ \\
+Valor decimal: & 0 & $\frac{1}{4}$ $\cdot 2^e$  & $\frac{1}{2}$ $\cdot 2^e$ & $\frac{3}{4}$ $\cdot 2^e$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\[ r \in \left\{0, \frac{1}{16}, \frac{1}{8}, \frac{3}{16}, \frac{1}{4}, \frac{3}{8}, \frac{1}{2}, \frac{3}{4}, 1, \frac{3}{2}, 2, 3 \right\}, \quad 2 + \frac{1}{8} = 0.10001 \notin \{ \cdot \} \]
 \end{frame}
 
 \begin{frame}
@@ -110,6 +144,7 @@ número de máquina de $k$-dígitos.
     \item Permite representar números de órdenes de magnitud enormemente dispares (limitado por la longitud del exponente)
     \item Proporciona la misma precisión relativa para todos los órdenes (limitado por la longitud de la mantisa)
     \item Permite cálculos entre magnitudes (número grande $\times$ número pequeño) conservando la precisión de ambos en el resultado.
+    \item Representación en notación científica
 \end{itemize}
 
 \begin{center}
@@ -120,6 +155,139 @@ número de máquina de $k$-dígitos.
 \begin{itemize}
     \item Existe solo un número finito de números de máquina, y son menos ``densos'' a medida que el número es más grande. Hay tantos números entre 2 y 4 como entre 1024 y 2048.
     \item El menor número de máquina positivo $\varepsilon_m$ para el cual $1 + \varepsilon_m > 1$ se denomina \textbf{precisión de la máquina}. No se pueden representar números en los intervalos $[1, 1 + \varepsilon_m], [2, 2 + 2 \varepsilon_m], \cdots $
+    \item Exponentes de la norma IEEE 754:
+        \begin{itemize}
+        \item Precisión simple: $2^{-126}$ a $2^{128}$ \\ ($1.175 \cdot 10^{-38}$ a $3.403 \cdot 10^{38}$)
+        \item Precisión doble: $2^{-1022}$ a $2^{1024}$ \\ ($2.225 \cdot 10^{-308}$ a $1.798 \cdot 10^{308}$)
+
+        \end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Representación binaria computacional}
+\begin{columns}[t]
+\cw{0.5}
+\begin{itemize}
+    \item Normalización: $d_1 > 0 \mapsto$ representación única
+    \item $d_1 = 1$ \textbf{no} se almacena (dígito principal implícito)
+    \item Precisión simple: 4 bytes = 32 bits:
+        \begin{itemize}
+        \item $s$ 1 bit 
+        \item $e$ 8 bits 
+        \item $m$ 23 bits
+        \end{itemize}
+    \item Sesgo de exponente: $e = E - 127$ \\ ($e = E - 1023$ en doble precisión, 11 bits)
+\end{itemize}
+
+\textbf{Ejemplo:}
+
+\[ \underbrace{1}_{-} \underbrace{10000001}_{e} \underbrace{10100100000000000000000}_{m} \]
+
+\cw{0.5}
+\begin{itemize}
+    \item Signo: primer bit 1: negativo
+    \item Exponente: \texttt{10000001}$_2$ = 129. $129 -127 = 2$
+    \item Mantisa:
+        \[ 1.101001_2 = 1 + \frac{1}{2} + \frac{1}{2^3} + \frac{1}{2^6} = \frac{105}{64} = 1.640625 \] 
+    \item Resultado:
+        \[ r = (-1) 1.640625 \cdot 2^2 = -6.5625 \]
+
+    \item Precisión doble: 8 bytes = 64 bits:
+        \begin{itemize}
+        \item $s$ 1 bit
+        \item $e$ 11 bits
+        \item $m$ 52 bits
+        \end{itemize}
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Errores de truncamiento y redondeo}
+Precisión infinita: $\pm .d_1 d_2, \cdots b^e$ \\ 
+Precisión $n$-dígitos $\pm 0.d_1 d_2, \cdots d_n b^e$ \\
+Parte entera $[\cdot]$: $[123.456] = 123$ \\
+$x = 0.m \cdot b^e$
+
+\begin{columns}[t]
+\cx
+\begin{block}{Truncamiento}
+    \[ \mathcal{T}(x) = [b^n \cdot 0.m] \cdot b^{e-n} \]
+
+    Ejemplo ($n = 3$, base 10):
+    \begin{align*}
+    \mathcal{T}(1/3) &= 10^{-3} [10^3 \cdot 0.333\ldots] = 0.333 \\
+    \mathcal{T}(2/3) &= 10^{-3} [10^3 \cdot 0.666\ldots] = 0.666 
+    \end{align*}
+\end{block}
+
+\cx
+\begin{block}{Redondeo}
+    \[ \mathcal{R}(x) = [b^n \cdot 0.m + 0.5] \cdot b^{e-n} \]
+
+    Ejemplo ($n = 3$, base 10):
+    \begin{align*}
+    \mathcal{R}(1/3) &= 10^{-3} [10^3 \cdot 0.333\ldots + 0.5] = 0.333 \\
+    \mathcal{R}(2/3) &= 10^{-3} [10^3 \cdot 0.666\ldots + 0.5] = 0.667 
+    \end{align*}
+    Si $x < 0$ $\mathcal{R}(x) = -\mathcal{R}(-x)$
+
+\end{block}
+\end{columns}
+\[ \left| x - \mathcal{R}(x) \right| \leq \frac{1}{2}b^{e - n} \text{ (unidad de redondeo precisión de la máquina)} \]
+\end{frame}
+
+\begin{frame}{Error, error absoluto, error relativo}
+\begin{columns}[t]
+    \cw{0.45}
+$a$: Valor exacto, $\tilde{a}$: valor aproximado
+\[ \epsilon = a - \tilde{a} \]
+es el \textbf{error} de $\tilde{a}$. Entonces:
+\[ a = \tilde{a} + \epsilon \]
+\textbf{Error absoluto:}
+\[ |a - \tilde{a}| \]
+
+\textbf{Error relativo}
+\[ \epsilon_r = \frac{\epsilon}{a} = \frac{a - \tilde{a}}{a} \]
+
+\cx
+$a$ es \alert{desconocido}. Si $|\epsilon| \ll |\tilde{a}|$
+\[ \epsilon_r \approx \frac{\epsilon}{\tilde{a}} \]
+
+\alert{Tampoco conocemos} $\epsilon$. En la práctica obtenemos una cota de error de $\tilde{a}$:
+\[ |\epsilon| \leq \beta, \quad |a - \tilde{a}| \leq \beta \]
+
+Del mismo modo:
+\[ |\epsilon_r| \leq \beta_r, \quad \left| \frac{a - \tilde{a}}{a} \right| \leq \beta_r \]
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Propagación de errores}
+    \[ f(x_1, x_2, \cdots, x_n), \quad x_i = x_i^0 + \delta x_i \]
+Expansión en serie de Taylor de primer orden:
+\[ f \approx f_0 + \sum_{i = 1}^n \frac{\partial f}{\partial x_i} \delta x_i \text{ o } \delta f =|f - f_0| \leq \left| \frac{\partial f}{\partial x_1} \right| \delta x_1 + \cdots + \left| \frac{\partial f}{\partial x_n} \right| \delta x_n \]
+
+\textbf{Casos especiales}: $x = \tilde{x} + \epsilon_x, \, y = \tilde{y} + \epsilon_y, \, |\epsilon_x| \leq \beta_x, \, |\epsilon_y| \leq \beta_y$ 
+\begin{columns}[t]
+    \cw{0.35}
+\begin{itemize}
+    \item Sumas y restas:
+        \begin{align*}
+        |\epsilon| &= |x - y - (\tilde{x} - \tilde{y}) | \\
+                   &= |x - \tilde{x} - (y - \tilde{y}) | \\
+                   &= |\epsilon_x - \epsilon_y| \leq |\epsilon_x| + |\epsilon_y| \leq \beta_x + \beta_y
+        \end{align*}
+\end{itemize}
+
+\cw{0.65}
+\begin{itemize}
+    \item Productos y divisiones:
+        \begin{align*}
+        |\epsilon_r| &= \left| \frac{x y - \tilde{x} \tilde{y}}{xy} \right| = \left| \frac{x y - (x - \epsilon_x)(y - \epsilon_y)}{xy} \right| = \left| \frac{\epsilon_x y + \epsilon_y x - \epsilon_x \epsilon_y}{xy} \right|\\
+                     &= \left| \frac{\epsilon_x y + \epsilon_y x}{xy} \right| \leq \left| \frac{\epsilon_x}{x} \right| + \left| \frac{\epsilon_y}{y} \right| = |\epsilon_{rx}| + |\epsilon_{ry} | \leq \beta_{rx} + \beta_{ry} 
+        \end{align*}
+
 \end{itemize}
 
 \end{columns}
@@ -128,9 +296,10 @@ número de máquina de $k$-dígitos.
 \section*{Bibliografía}
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}
 \begin{itemize}
- \item \fullcite{kreyszig2011}. Capítulo 6.
- \item \fullcite{oneil2012es}. Capítulo 1.
- \item \fullcite{stroud2020}. Programas 2, 3 y 4.
+ \item \fullcite{kreyszig2011}. Capítulo 19.
+ \item \fullcite{moreno2014} Capítulo 1.
+ \item \fullcite{chapra2021}. Capítulo 3.
+ \item \fullcite{mathews2004}. Capítulo 1.
 \end{itemize}
 \end{frame}
 
