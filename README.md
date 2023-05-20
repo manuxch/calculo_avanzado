@@ -35,7 +35,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Transformada de Laplace
 
-- Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](laplace/clase_05/clase_05.pdf), [problemas](laplace/clase_05/problemas_05.pdf).
+- Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](laplace/clase_05/clase_05.pdf), [problemas](laplace/clase_05/problemas_05.pdf), [*notebook*](laplace/clase_05/code/practica_05.ipynb).
 
 ### Errores
 
