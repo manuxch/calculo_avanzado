@@ -39,4 +39,5 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Errores
 
-- Clase 6: Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf).
+- Clase 6: Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf), [*notebook*](errores/clase_06/code/practica_06.ipynb).
+
