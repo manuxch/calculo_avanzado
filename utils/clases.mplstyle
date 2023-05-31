@@ -6,3 +6,4 @@ lines.markersize : 10
 xtick.labelsize : 16
 ytick.labelsize : 16
 figure.figsize : 6.4, 4.8
+legend.fontsize : 16

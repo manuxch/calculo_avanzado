@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python3}
+
+\PYG{k+kn}{from} \PYG{n+nn}{scipy} \PYG{k+kn}{import} \PYG{n}{optimize}
+
+\PYG{k}{def} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{3} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{10} \PYG{o}{*} \PYG{n}{x}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{+} \PYG{l+m+mi}{5}
+
+\PYG{n}{raiz} \PYG{o}{=} \PYG{n}{optimize}\PYG{o}{.}\PYG{n}{bisect}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,} \PYG{l+m+mf}{0.0}\PYG{p}{,} \PYG{l+m+mf}{1.0}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}La raiz de f(x) = 0 es }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{raiz}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

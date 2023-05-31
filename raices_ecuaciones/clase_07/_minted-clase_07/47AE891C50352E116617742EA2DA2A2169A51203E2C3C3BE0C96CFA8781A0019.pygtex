@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZdl{} }./scipy\PYGZhy{}biseccion.py
+\PYG{g+go}{La raiz de f(x) = 0 es 0.7346035077880515}
+\end{Verbatim}

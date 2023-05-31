@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZdl{} }./newton\PYGZhy{}raphson.py
+\PYG{g+go}{La raiz de f(x) = 0 es 0.7346035077893033.}
+\PYG{g+go}{Iteraciones: 4}
+\PYG{g+go}{La raiz 2 de f(x) = 0 es 0.7346035077893033.}
+\PYG{g+go}{Diferencia: 0.0}
+\end{Verbatim}
