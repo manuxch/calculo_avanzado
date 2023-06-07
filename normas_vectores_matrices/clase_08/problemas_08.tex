@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 7: Cálculo de raíces: soluciones de ecuaciones de una variable.}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 7 \\
+ \textbf{Tema:} & Cálculo de raíces: soluciones de ecuaciones de una variable. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Epperson Ej 1 pg 94
+Realice tres iteraciones a mano del método de bisección aplicado a $f(x) = x^3 - 2$ en el intervalo $a = 0$ y $b=2$.
+\end{question}
+
+\begin{question} % Epperson Ej 2 pg 94
+Para cada una de las funciones siguientes, encuentre la raíz con una precisión de 0.1 usando una calculadora (debería tomar a lo sumo cinco iteraciones):
+\begin{enumerate}[a)]
+    \item $f(x) = x - e^{-x²}$, $[a, b] = [0, 1]$.
+    \item $f(x) = \ln x + x$,  $[a, b] = [1/10, 1]$.
+    \item $f(x) = x^3 - 3$,  $[a, b] = [0, 3]$.
+\end{enumerate}
+\end{question}
+
+\begin{question} % Epperson Ej 4 pg 95
+Escriba un programa para resolver la ecuación $x = \cos x$. Elija el intervalo explorando el problema con una calculadora.
+\end{question}
+
+\begin{question} % Epperson Ej 5 pg 95
+    Escriba un programa para resolver la ecuación $x = e^{-x}$. Elija el intervalo explorando el problema con una calculadora.
+\end{question}
+
+\begin{question} %Burden - Faires, Análisis Numérico. Ilustración pg 59
+La ecuación $x^3 + 4 x^2 - 10 = 0$ tiene una raíz única en $[1, 2]$. Existen muchas formas de cambiar la ecuación para la forma de punto fijo $x = g(x)$ mediante una simple manipulación algebraica. Iterar en las siguientes representaciones de $g$ y verifique que el (eventual) punto fijo obtenido es una raíz de la ecuación inicial.
+\begin{enumerate}[a)]
+    \item $x = g_1(x) = x - x^3 - 4 x^2 + 10$
+    \item $x = g_2(x) = \left( \frac{10}{x} - 4 x \right)^{1/2}$
+    \item $x = g_3(x) = \frac{1}{2} (10 - x^3)^{1/2}$
+    \item $x = g_4(x) = \left( \frac{10}{4 + x} \right)^{1/2}$
+    \item $x = g_5(x) = x - \frac{x^3 + 4 x^2 - 10}{3 x^2 + 8 x}$
+\end{enumerate}
+\end{question}
+
+\begin{question} % Burden - Faires, Análisis Numérico, p.8 pag 65
+    Use el teorema de existencia y unicidad de punto fijo para mostrar que $g(x) = 2^{-x}$ tiene un único punto fijo en $[1/3, 1]$. Use una iteración de punto fijo para hallar el punto fijo con una precisión de $10^{-4}$. 
+\end{question}
+
+\begin{question} % Burden - Faires, Análisis Numérico, p.14 pag 66
+    Use una iteración de punto fijo para determinar la solución de $x = \tan x$ con una precisión de $10^{-4}$, para $x \in [4, 5]$.
+\end{question}
+
+\begin{question} % Burden - Faires, Análisis Numérico, p.5 pag 75
+    Use el método de Newton-Raphson para encontrar las soluciones con precisión $10^{-4}$ de las siguientes funciones:
+\begin{enumerate}[a)]
+    \item $x^3 - 2 x^2 - 5 = 0, \quad [1, 4]$
+    \item $x - \cos x = 0, \quad [0, \pi/2]$
+\end{enumerate}
+\end{question}
+
+\begin{question} % Burden - Faires, Análisis Numérico, p.17 pag 76
+El polinomio de cuarto grado
+\[ f(x) = 230 x^4 + 18 x^3 + 9 x^2 - 221 x - 9 \]
+tiene dos ceros reales, uno en $[-1, 0]$ y otro en $[0, 1]$. Intente aproximar esos ceros con una precisión de $10^{-6}$ usando:
+\begin{enumerate}[a)]
+    \item bisección
+    \item Newton-Raphson
+\end[enumerate}
+Use los intervalos como aproximaciones iniciales en a) y los puntos medios de esos intervalos en b). Compare la cantidad necesaria de iteraciones para cada caso.
+\end{question}
+
+\begin{question} % Burden - Faires, Análisis Numérico, p.25 pag 77
+    La suma de dos números es $20$. Si a cada número se le suma su raíz cuadrada, el producto de los dos sumas es $155.55$. Determine los dos números con una precisión de $10^{-4}$.
+\end{question}
+\end{document}
