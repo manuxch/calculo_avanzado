@@ -21,55 +21,19 @@
 \begin{frame}
 \begin{columns}[t]
 \cx
-\textbf{Problema:}
+\textbf{Motivación:}
 
-\begin{equation*}
-    \begin{split}
-        f(x) &= 0 \\
-        f(x) &= g(x) \implies h(x) = f(x) - g(x) = 0
-    \end{split} 
-\end{equation*}
+Error en escalar:
+\[ |x^* - x| \sim \delta x \]
 
-\begin{theorem}[Valores intermedios]
-Sea $f: [a, b] \rightarrow \mathbb{R}$ una función \textbf{continua} en $[a, b]$ tal que $f(a) < f(b)$. Entonces: $\forall u \in (f(a), f(b))$ existe $c \in [a, b]$ tal que $f(c) = u$.
-\end{theorem}
+¿Cómo es el error en $\mathbb{R}^n$ o en $\mathbb{R}^{mn}$?
+
+\[ \bm{x} \mapsto \delta \bm{x} \]
+o
+\[ \bm{A} \mapsto \delta \bm{A} \]
 \pause
-
-\textbf{Estrategia general:} %% Salgado
-\begin{itemize}
-    \item Mostrar que existe al menos una solución ($x^*$)
-    \item Aislar una raíz: $D \subset \mathbb{R}$, $x^* \in D$ y $f(x) \neq 0 \; \forall x \in D \setminus \{ x^* \}$
-    \item Iterar
-\end{itemize}
-\pause
-
 \cx
-\textbf{Métodos:}  %% Wikipedia https://en.wikipedia.org/wiki/Root-finding_algorithms
-\begin{itemize}
-    \item \textit{Bracketing} (cerrados)
-        \begin{itemize}
-            \item \alert{Bisección}
-        \item Posición falsa (\textit{regula falsi})
-        \item ITP
-        \end{itemize}
-    \item Interpolación
-        \begin{itemize}
-        \item Secante
-        \item Muller
-        \end{itemize}
-    \item Iterativos (abiertos)
-        \begin{itemize}
-            \item \alert{Punto fijo}
-            \item \alert{Newton-Raphson}
-            \item Secante
-        \item Broyden
-        \end{itemize}
-    \item Combinación de cerrados y abiertos 
-        \begin{itemize}
-            \item {\color{blue} Brent}
-        \item Ridders
-        \end{itemize}
-\end{itemize}
+
 \end{columns}
 \end{frame}
 \section*{Bibliografía}
