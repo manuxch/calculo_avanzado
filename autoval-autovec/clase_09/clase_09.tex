@@ -1,0 +1,85 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../../utils/preamble}
+
+\title{Autovalores y autovectores}
+\subtitle{}
+
+%%%%
+% Bibliografía
+%%%%
+
+\begin{document}
+
+\begin{frame}
+\begin{columns}[t]
+\cx
+\begin{definition}[Autovalor y autovector]
+    Sea $\bm{A} \in K^{n \times n}$ y $\bm{v} \in K^n$. $\bm{v}$ es un \textbf{autovector} de $\bm{A}$ si 
+    \[ \bm{A} \bm{v} = \lambda \bm{v} \]
+    donde $\lambda$ es un escalar en $K$, denominado \textbf{autovalor} asociado con $\bm{v}$.
+\end{definition}  \pause
+En forma equivalente:
+\begin{equation}
+(\bm{A} - \lambda \bm{I}) \bm{v} = \bm{0}
+\label{eq:avv01}
+\end{equation}
+Este sistema tiene solución $\bm{v} \neq \bm{0}$ si y solo si:
+\[ \det(\bm{A} - \lambda \bm{I}) = 0 \]
+denominado \textbf{polinomio característico}, $p_A(\lambda)$, y por el teorema fundamental del álgebra: $\mapsto n$ raíces.
+\pause  
+
+\cx
+\textbf{Ejemplo:}
+\[ \bm{A} = \begin{bmatrix}
+    3 & -1 & 0 \\
+    -1 & 2 & -1 \\
+    0 & -1 & 3
+\end{bmatrix} \]
+\begin{align*}
+   p_A(\lambda) =  \det(\bm{A} - \lambda \bm{I}) &= 
+    \begin{vmatrix}
+        3 - \lambda & -1 & 0 \\
+        -1 & 2 - \lambda & -1 \\
+        0 & -1 & 3 - \lambda
+    \end{vmatrix} \\
+   &= -\lambda^3 +8 \lambda^2 - 19 \lambda + 12 = 0
+\end{align*}
+Solución: $\lambda_1 = 1, \lambda_2 = 3, \lambda_3 = 4$. Reemplazando cada autovalor en \eqref{eq:avv01}:
+\[ \bm{v}_1 = a \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix}, 
+ \bm{v}_2 = b \begin{bmatrix} 1 \\ 0 \\ -1 \end{bmatrix}, 
+ \bm{v}_3 = c \begin{bmatrix} 1 \\ -1 \\ 1 \end{bmatrix} \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cx
+\textbf{Métodos:}
+\begin{itemize}
+    \item Analítico: $n < 5$.
+    \item Parciales: computan solo autovalores \textbf{extremos} (módulo máximo o mínimo). Método de las potencias.
+    \item Globales: aproximan a todo el \textbf{espectro} de $\bm{A}$, $\sigma(\bm{A})$. Método $QR$.
+\end{itemize}
+
+\cx
+
+\end{columns}
+\end{frame}
+
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+    \item \fullcite{burden2017}. Capítulo 7.
+    \item \fullcite{moreno2014}. Capítulo 2.
+    \item \fullcite{bradie2006}. Sección 3.3.
+    \item \fullcite{quarteroni2000}. Capítulo 1.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
