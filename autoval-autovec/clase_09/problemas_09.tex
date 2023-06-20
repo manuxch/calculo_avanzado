@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 8: Norma de vectores y matrices}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 8 \\
+ \textbf{Tema:} & Norma de vectores y matrices. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Burden y Faires - Exercise set 7.1 p1 pg 441
+    Halle las normas $l_1$, $l_2$ y $l_{\infty}$ de los siguientes vectores:
+    \begin{enumerate}[a)]
+    \item $\bm{x} = [3, -4, 0, 3/2]$
+    \item $\bm{x} = [2, 1, -3, 4]$
+    \item $\bm{x} = [\sen k, \cos k, 2^k]$ para un entero positivo fijo $k$.
+    \end{enumerate}
+\end{question}
+
+\begin{question} % Burden y Faires - Exercise set 7.1 p4 pg 441
+    Halle las normas por componentes $\lVert \cdot \rVert_F$, $\lVert \cdot \rVert_{\text{máx}}$ y  $p = 1$ de las siguientes matrices:
+    \begin{enumerate}[a)]
+        \item $\bm{A} = \begin{bmatrix} 10 & 15 \\ 0 & 1 \end{bmatrix}$
+        \item $\bm{A} = \begin{bmatrix}
+            10 & 0 \\ 15 & 1 \end{bmatrix}$
+        \item $\bm{A} = \begin{bmatrix}
+            2 & -1 & 0 \\ -1 & 2 & -1 \\
+            0 & -1 & 2\end{bmatrix}$
+        \item $\bm{A} = \begin{bmatrix}
+            4 & -1 & 7 \\ -1 & 4 & 0 \\
+            -7 & 0 & 4\end{bmatrix}$
+    \end{enumerate}
+\end{question}
+
+\begin{question} % Quarteroni, pg 41
+    Mostrar que la norma por componente $\lVert \cdot \rVert_{\text{máx}}$ no satisface la propiedad sub-multiplicativa mediante un contraejemplo.
+\end{question}
+
+\begin{question} % Burden y Faires - Exercise set 7.1 p4 pg 441
+    Para las matrices del ejercicio 2, calcule las normas inducidas $\lVert \cdot \rVert_{1}$ y  $\lVert \cdot \rVert_{\infty}$.
+\end{question}
+
+\end{document}
