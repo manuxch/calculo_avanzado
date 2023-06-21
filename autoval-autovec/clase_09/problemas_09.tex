@@ -4,7 +4,7 @@
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
-\date{Clase 8: Norma de vectores y matrices}
+\date{Clase 9: Autovalores y autovectores}
 
 
 \begin{document}
@@ -27,45 +27,65 @@
 
 \begin{center}
 \begin{tabular}{r l}
-    \textbf{Práctica:} & 8 \\
- \textbf{Tema:} & Norma de vectores y matrices. \\
+    \textbf{Práctica:} & 9 \\
+ \textbf{Tema:} & Autovalores y autovectores I. \\
  \textbf{Profesor Titular:} & Manuel Carlevaro \\
  \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
  \textbf{Ayudante de Primera:} & Lucas Basiuk 
 \end{tabular}\end{center}
 
 \vspace{1em}
+\begin{question}
+Compruebe que 
+\[ \bm{v} = \begin{bmatrix} 7 \\ 5 \end{bmatrix} \]
+es un autovector de 
+\[ \bm{A} = 
+    \begin{bmatrix}
+        53 & -70 \\
+        35 & -46
+    \end{bmatrix} \]
+    ¿Cuál es el autovalor asociado?
+\end{question}
 
-\begin{question} % Burden y Faires - Exercise set 7.1 p1 pg 441
-    Halle las normas $l_1$, $l_2$ y $l_{\infty}$ de los siguientes vectores:
+\begin{question} % Problemas resueltos Murcia p.2 pg 36
+
+Para la matriz cuadrada $\bm{A}$:
+    \[ \bm{A} = \begin{bmatrix} 179 & -99 \\
+                255 & -139 \end{bmatrix} \]
+el vector $\bm{v} = [3, 5]^{\intercal}$ es un autovector. Compruebe esta afirmación y determine el autovalor asociado.
+\end{question}
+
+\begin{question} % Problemas resueltos Murcia p.3 pg 36
+    Si $\bm{u}$ y $\bm{v}$ son dos autovectores de la matriz cuadrada $\bm{A}$, ambos asociados al autovalor $\lambda$:
     \begin{enumerate}[a)]
-    \item $\bm{x} = [3, -4, 0, 3/2]$
-    \item $\bm{x} = [2, 1, -3, 4]$
-    \item $\bm{x} = [\sen k, \cos k, 2^k]$ para un entero positivo fijo $k$.
+        \item ¿Es $\bm{u} + \bm{v}$ un autovector de $\bm{A}$?. En caso afirmativo, ¿cuál es su autovector?
+        \item ¿Es $\bm{v}$ un autovector de la matriz $3 \bm{A}$?. En caso afirmativo, ¿cuál es el autovalor asociado?
     \end{enumerate}
 \end{question}
 
-\begin{question} % Burden y Faires - Exercise set 7.1 p4 pg 441
-    Halle las normas por componentes $\lVert \cdot \rVert_F$, $\lVert \cdot \rVert_{\text{máx}}$ y  $p = 1$ de las siguientes matrices:
-    \begin{enumerate}[a)]
-        \item $\bm{A} = \begin{bmatrix} 10 & 15 \\ 0 & 1 \end{bmatrix}$
-        \item $\bm{A} = \begin{bmatrix}
-            10 & 0 \\ 15 & 1 \end{bmatrix}$
-        \item $\bm{A} = \begin{bmatrix}
-            2 & -1 & 0 \\ -1 & 2 & -1 \\
-            0 & -1 & 2\end{bmatrix}$
-        \item $\bm{A} = \begin{bmatrix}
-            4 & -1 & 7 \\ -1 & 4 & 0 \\
-            -7 & 0 & 4\end{bmatrix}$
-    \end{enumerate}
+\begin{question} % Quarteroni 5.13 ej. 2 pg. 258
+    Utilizando los círculos de Gerschgorin, localice el espectro de la matriz
+    \[ \bm{A} = 
+        \begin{bmatrix}
+            1 & 2 & -1 \\
+            2 & 7 & 0 \\
+            -1 & 0 & 5
+        \end{bmatrix} \]
 \end{question}
 
-\begin{question} % Quarteroni, pg 41
-    Mostrar que la norma por componente $\lVert \cdot \rVert_{\text{máx}}$ no satisface la propiedad sub-multiplicativa mediante un contraejemplo.
+\begin{question} % Problemas resueltos Murcia p.22 pg 42
+    Halle los autovalores y autovectores de la matriz
+    \[ \bm{A} = \begin{bmatrix} -13 & 20 \\ -12 & 18 \end{bmatrix} \]
 \end{question}
 
-\begin{question} % Burden y Faires - Exercise set 7.1 p4 pg 441
-    Para las matrices del ejercicio 2, calcule las normas inducidas $\lVert \cdot \rVert_{1}$ y  $\lVert \cdot \rVert_{\infty}$.
+
+\begin{question} % Problemas resueltos Murcia p.25 pg 43
+    Halle los autovalores y autovectores de la matriz
+    \[ \bm{A} = \begin{bmatrix} 2 & 0 & 0 \\ 1 & 0 & 1 \\ 0 & 0 & 2 \end{bmatrix} \]
 \end{question}
 
+\begin{question} 
+Utilice el método de las potencias para determinar el autovalor dominante y su autovector asociado de la matriz
+\[ \bm{A} = \begin{bmatrix} 4 & 2 & 3 \\ 3 & 0 & 4 \\ 1 & 2 & 5 \end{bmatrix} \]
+\end{question}
 \end{document}
