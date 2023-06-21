@@ -46,3 +46,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Normas de vectores y matrices
 - Clase 08: Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](normas_vectores_matrices/clase_08/clase_08.pdf), [problemas](normas_vectores_matrices/clase_08/problemas_08.pdf).
+
+### Autovalores y autovectores
+- Clase 09: Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. [Clase](autoval-autovec/clase_09/clase_09.pdf), [problemas](autoval-autovec/clase_09/problemas_09.pdf).
+
