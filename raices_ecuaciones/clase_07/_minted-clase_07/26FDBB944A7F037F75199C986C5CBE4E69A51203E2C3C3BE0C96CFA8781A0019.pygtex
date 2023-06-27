@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZdl{} }./root\PYGZus{}scalar.py
-\PYG{g+go}{Método: bisect , raiz = 0.7346035077910437}
-\PYG{g+go}{Método: newton , raiz = 0.7346035077893033}
-\PYG{g+go}{Método: brentq , raiz = 0.7346035077893016}
-\PYG{g+go}{Método: toms748, raiz = 0.7346035077893033}
-\end{Verbatim}

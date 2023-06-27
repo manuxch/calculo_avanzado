@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 9: Autovalores y autovectores}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 9 \\
+ \textbf{Tema:} & Autovalores y autovectores I. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+\begin{question} % Burden Faires Ejemplo 3 pg. 434
+    Muestre que se puede formar una base para $\mathbb{R}^3$ usando los autovalores de la matriz
+    \[ \bm{A} = \begin{bmatrix} 2 & 0 & 0 \\
+        1 & 1 & 2 \\
+    1 & -1 & 4 \end{bmatrix} \]
+\end{question}
+
+\begin{question} % Burden Faires Ejemplo 4 pg. 434
+Muestre que ningún conjunto de autovectores de la matriz $3 \times 3$
+\[ \bm{B} = \begin{bmatrix} 2 & 1 & 0 \\
+           0 & 2 & 0 \\
+       0 & 0 & 3 \end{bmatrix} \]
+       puede formar una base en $\mathbb{R}^3$.
+\end{question}
+
+\begin{question} % Burden Faires Ejemplo 5, pg 435
+    \begin{enumerate}[a)]
+        \item Muestre que los vectores $\bm{v}_1 = [0, 4, 2]^{\intercal}$ $\bm{v}_2 = [-5, -1, 2]^{\intercal}$ y $\bm{v}_3 = [1, -1, 2]^{\intercal}$ forman un conjunto ortogonal.
+        \item Use el conjunto anterior para formar una base ortonormal.
+    \end{enumerate}
+\end{question}
+
+
+\begin{question} % Burden Faires Ejemplo 6, pg 435
+Use el proceso de Gram-Schmidt para determinar un conjunto de vectores ortogonales a partir de los vectores linealmente independientes:
+\[ \bm{x}_1 = [1, 0, 0]^{\intercal}, \; \bm{x}_2 = [1, 1, 0]^{\intercal}, \; \bm{x}_3 = [1, 1, 1]^{\intercal} \]
+\end{question}
+
+\begin{question} % Burden Faires Ejemplo 1, pg 437
+Muestre que la matriz
+\[ \bm{Q} = [\bm{u}_1, \bm{u}_2, \bm{u}_3] = 
+    \begin{bmatrix} 0 & -\frac{\sqrt{30}}{6} & \frac{\sqrt{6}}{6} \\[0.3em]
+        \frac{2 \sqrt{5}}{5} & -\frac{\sqrt{30}}{30} & -\frac{\sqrt{6}}{6} \\[0.3em]
+    \frac{\sqrt{5}}{5} & \frac{\sqrt{30}}{15} & \frac{\sqrt{6}}{3} \end{bmatrix} \]
+    formada a partir del conjunto ortonormal de vectores encontrado en el problema 3, es una matriz ortogonal.
+\end{question}
+
+\end{document}
