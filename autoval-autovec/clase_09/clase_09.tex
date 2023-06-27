@@ -111,7 +111,7 @@ Si $\bm{A}$ es simétrica, $\lVert \bm{A} \rVert_2 = \rho(\bm{A})$.
 
 \begin{theorem}[Círculo de Gerschgorin]
     $\bm{A} \in K^{n \times n}$, $r_i = \sum_{j \neq i}^n |a_{ij}|$ para cada $i = 1, 2, \cdots, n$. Sea
-    \[ C_i = \{ z \in \mathbb{C} : |z - a_{ii} \leq r_i \} \]
+    \[ C_i = \{ z \in \mathbb{C} : |z - a_{ii}| \leq r_i \} \]
     \vspace{-2em}
     \begin{enumerate}
         \item Si $\lambda$ es un autovalor, está en uno de los $C_i$.
@@ -166,9 +166,10 @@ Hacemos $\bm{y}_{(1)} = \bm{A} \bm{x}^{(0)}$ y definimos $\mu^{(1)} = y_{p_0}^{(
 \end{frame}
 
 \begin{frame}
+\vspace{1em}
 \begin{columns}[t]
 \cx
-Sea $p_1$ el menor entero tal que $|y_{p_1}^{(1)} = \lVert \bm{y}^{(1)} \rVert_{\infty}$:
+Sea $p_1$ el menor entero tal que $|y_{p_1}^{(1)}| = \lVert \bm{y}^{(1)} \rVert_{\infty}$:
 \[ \bm{x}^{(1)} = \frac{\bm{y}^{(1)}}{y_{p_1}^{(1)}} = \frac{1}{y_{p_1}^{(1)}} \bm{A} \bm{x}^{(0)} \]
 Entonces: $x_{p_1}^{(1)} = 1 = \lVert \bm{x}^{(1)} \rVert_{\infty}$. Ahora
 \[ \bm{y}^{(2)} = \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
@@ -177,7 +178,7 @@ y
     \mu^{(2)} &= y_{p_1}^{(2)} = \frac{y_{p_1}^{(2)}}{x_{p_1}^{(1)}} = \frac{ \left[ \beta_1 \lambda_1^2 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j^2 v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]}{ \left[ \beta_1 \lambda_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]} \\
               &= \lambda_1 \left[ \frac{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1)^2 v_{p_1}^{(j)}}{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1) v_{p_1}^{(j)}} \right]
 \end{align*}
-Sea $p_2$ el menor entero tal que $|y_{p_2}^{(2)} = \lVert \bm{y}^{(2)} \rVert_{\infty}$:
+Sea $p_2$ el menor entero tal que $|y_{p_2}^{(2)}| = \lVert \bm{y}^{(2)} \rVert_{\infty}$:
 \[ \bm{x}^{(2)} = \frac{\bm{y}^{(2)}}{y_{p_2}^{(2)}} = \frac{1}{y_{p_2}^{(2)}} \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_2}^{(2)} y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
 
 \cx
@@ -189,7 +190,7 @@ y
 \[ \bm{x}^{(m)} = \frac{\bm{y}^{(m)}}{y_{p_{m}^{(m)}}} = \frac{\bm{A}^m \bm{x}^{(0)}}{ \prod_{k=1}^m y_{p_k}^{(k)}} \]
 donde para cada paso, $p_m$ es el menor entero para el cual $|y_{p_m}^{(m)}| = \lVert \bm{y}^{(m)} \rVert_{\infty}$.
 
-Dado que $\lambda_j/\lambda_1| < 1, j=2, \cdots, n$, $\lim_{m \rightarrow \infty} \mu^{(m)} = \lambda_1$, eligiendo $\bm{x}^{(0)}$ tal que $\beta_1 \neq 0$. Además, la secuencia $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$ converge al autovalor asociado con $\lambda_1$ con norma $l_{\infty}$ igual a 1.
+Dado que $|\lambda_j/\lambda_1| < 1, j=2, \cdots, n$, $\lim_{m \rightarrow \infty} \mu^{(m)} = \lambda_1$, eligiendo $\bm{x}^{(0)}$ tal que $\beta_1 \neq 0$. Además, la secuencia $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$ converge al autovalor asociado con $\lambda_1$ con norma $l_{\infty}$ igual a 1.
 \end{columns}
 \end{frame}
 
