@@ -17,3 +17,4 @@
 **/*jupyter*
 **/*.synctex(busy)
 **/_minted*
+**/*__pycache__*
