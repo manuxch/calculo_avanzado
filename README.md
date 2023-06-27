@@ -49,4 +49,4 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Autovalores y autovectores
 - Clase 09: Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. [Clase](autoval-autovec/clase_09/clase_09.pdf), [problemas](autoval-autovec/clase_09/problemas_09.pdf).
-
+- Clase 10: Método de las potencias (código). Método QR. Código de ejemplo. [Clase](autoval-autovec/clase_10/clase_10.pdf), [problemas](autoval-autovec/clase_10/problemas_10.pdf).
