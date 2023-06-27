@@ -16,4 +16,4 @@
 **/*ipynb_checkpoints*
 **/*jupyter*
 **/*.synctex(busy)
-**/*_minted*
+**/_minted*
