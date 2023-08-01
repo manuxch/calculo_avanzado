@@ -1,0 +1,556 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../../utils/preamble}
+
+\title{Resolución de sistemas de ecuaciones lineales}
+\subtitle{}
+
+%%%%
+% Bibliografía
+%%%%
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\begin{columns}[t]
+    \cw{0.45}
+\textbf{Resolver:}
+\begin{align*}
+    a_{11}x_1+a_{12}x_2+\cdots +a_{1n}x_n &= b_1 \\
+    a_{21}x_2+a_{22}x_2+\cdots +a_{2n}x_n &= b_2 \\
+                                   & \vdots \\
+    a_{n1}x_1+a_{n2}x_2+\cdots +a_{nn}x_n &= b_n \\
+ \end{align*} \pause
+\vspace{-2em}
+
+ O, en forma matricial:
+ \begin{equation*}
+  \mathbb{A} \mathbf{x} = \mathbf{b}
+ \end{equation*}  \pause
+\vspace{-1em}
+
+  Matriz de coeficientes aumentada:
+\begin{equation*}
+ \left[ 
+ \begin{array}{cccc|c}
+ a_{11} & a_{12} & \ldots & a_{1n} & b_1 \\
+ a_{21} & a_{22} & \ldots & a_{2n} & b_2\\
+ \vdots & \vdots & \ddots & \vdots & \vdots\\
+ a_{N1} & a_{N2} & \ldots & a_{nn} & b_n \\
+ \end{array} \right] 
+\end{equation*} \pause
+
+\cw{0.45}
+
+Si $\mathbb{A} \in \mathbb{R}^{n \mul n}$ y $\bm{b} \in \mathbb{R}$, la existencia y unicidad de la solución está asegurada si una de las siguientes condiciones se cumple:
+\begin{itemize}
+    \item $\mathbb{A}$ es invertible (no singular)
+    \item $\rg(A) = n$
+    \item El sistema homogéneo $\mathbb{A} \bm{x} = \bm{0}$ admite solo la solución nula.
+\end{itemize}
+
+\hrulefill \pause \vspace{1em}
+
+
+\textbf{Solución:} regla de Cramer
+\[ x_j = \frac{\Delta_j}{\det{\mathbb{A}}} \]
+Esfuerzo computacional: $\bigO((n+ 1)!)$. \\
+$n = 50$, Intel i7: 200 Gflops $\approx 5 \times 10^{45}$ años.
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[t]
+\cx
+\textbf{Métodos:}
+\begin{itemize}
+    \item Directos: alcanzan la solución en un número finito de pasos. $\bigO(2/3N^3$).
+        \begin{itemize}
+            \item Eliminación gaussiana
+            \item Factorización $LU$
+            \item LDM$^T$
+            \item Factorización de Cholesky
+            \item Factorización $QR$
+        \end{itemize}
+    \item Iterativos: más eficientes en casos particulares. $\bigO(N^2$).
+        \begin{itemize}
+            \item Jacobi
+            \item Gauss-Seidel
+            \item Subespacios de Krylov
+            \item GMRES
+        \end{itemize}
+\end{itemize}
+
+\hrulefill \pause \vspace{1em}
+
+\textbf{Estabilidad de la solución:} 
+\begin{equation}(\mathbb{A} + \delta \mathbb{A}) (\bm{x} + \textcolor{red}{\delta \bm{x}}) = \bm{b} + \delta \bm{b} \end{equation}
+
+Unicidad de la solución: $\mathbb{A}$ es \alert{no singular}: $|\mathbb{A}| \neq 0$.
+
+Número de condición: $\cond(\mathbb{A}) = \norm{\mathbb{A}} \norm{\mathbb{A}^{-1}}$.
+
+\cx
+
+%¿Que ocurre si $\mathbb{A}$ es \textit{casi} singular ($|\mathbb{A}|$ pequeño)? El determinante es pequeño si $|\mathbb{A}| \ll \norm{\mathbb{A}}$. \pause
+
+
+Se puede demostrar\footnotemark[1], que si 
+
+\[ \cond(\mathbb{A}) \frac{\norm{\delta \mathbb{A}}}{\norm{\mathbb{A}}} < 1 \]
+se cumple:
+
+\[ \frac{\norm{\delta \bm{x}}}{\norm{\bm{x}}} \leq \frac{\cond(\mathbb{A})}{1 - \cond(\mathbb{A}) \frac{\norm{\delta \mathbb{A}}}{\norm{\mathbb{A}}}} \left( \frac{\norm{\delta \bm{b}}}{\norm{\bm{b}}} + \frac{\norm{\delta \mathbb{A}}}{\norm{\mathbb{A}}} \right) \]
+
+En general es muy costoso evaluar $\norm{\mathbb{A}}$. Usualmente se compara $|\mathbb{A}|$ con $a_{ij}$. 
+
+
+\textbf{Ejemplo:}
+\[
+\begin{system}
+2 x + y = 3 \\ 2 x + 1.001 y = 0
+\end{system}, \quad |\mathbb{A}| = 0.002 \]
+Solución: $x = 1501.5, y = -3000$. 
+
+\footnotetext[1]{Ver \bcite{moreno2014}, sección 2.3., y \bcite{quarteroni2000}, sección 3.1.}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}[t]
+\cx
+\[ \begin{system}
+2 x + y = 3 \\ 2x + 1.002 y = 0
+\end{system}, \quad |\mathbb{A}| = 0.004 \] 
+Solución: $x = 751.5, y = -1500$.
+
+\fbox{0.1\% de cambio en $a_{ij} \mapsto$ 100\% de cambio en $\bm{x}$.}\\
+\begin{alertblock}{Mal condicionamiento}
+    Si la solución de un sistema lineal cambia mucho cuando el problema cambia muy poco, la matriz está \alert{mal condicionada}.
+\end{alertblock} \pause
+
+\textbf{Otro ejemplo:}
+\[ \mathbb{A} = \begin{bmatrix} 1 & 100 \\ 0 & 1 \end{bmatrix}, \quad |\mathbb{A}| = 1 \]
+\[ \mathbb{A}^{-1} = \begin{bmatrix} 1 & -100 \\ 0 & 1 \end{bmatrix}, \quad |\mathbb{A}^{-1}| = 1 \]
+\pause
+\cx
+\textbf{Soluciones:}
+\[ \bm{b} = \begin{bmatrix} 100 \\ 1 \end{bmatrix} \rightarrow \bm{x} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \; \bm{b} = \begin{bmatrix} 100 \\ 0 \end{bmatrix} \rightarrow \bm{x} = \begin{bmatrix} 100 \\ 0 \end{bmatrix}  \]
+\fbox{1\% de cambio en $\bm{b} \mapsto$ 100\% de cambio en $\bm{x}$.} \pause
+
+\pycode{code/cond.py}
+\begin{shell}
+$ ./cond.py 
+||a|| = 100.00999900019995, ||ai|| = 100.00999900019995
+cond(a) = 10001.999900019995
+cond(a) = 10001.999900019995
+\end{shell}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[c]
+\cw{0.3}
+\textbf{Métodos directos:}
+\begin{itemize}
+    \item $a_{ik} \rightleftarrows a_{jk}, |\mathbb{A}| \rightarrow -|\mathbb{A}|$
+    \item $k \mul a_{ij}, |\mathbb{A}| \rightarrow k \mul |\mathbb{A}|$
+    \item $a_{ik} - k \, a_{ik}, |\mathbb{A}|$ no cambia
+\end{itemize} \pause
+\cw{0.6}
+ \begin{center}
+\begin{tabular}{c c c}
+\toprule
+\textbf{Método} & \textbf{Forma inicial} & \textbf{Forma final} \\
+\midrule
+Eliminación gaussiana & $\mathbb{A} \mathbf{x} = \mathbf{b}$ & $\mathbb{U} \mathbf{x} = \mathbf{c}$ \\
+Descomposición LU & $\mathbb{A} \mathbf{x} = \mathbf{b}$ & $ \mathbb{LU} \mathbf{x} = \mathbf{b}$ \\
+Eliminación de Gauss-Jordan & $\mathbb{A} \mathbf{x} = \mathbf{b}$ & $\mathbb{I} \mathbf{x} = \mathbf{c}$ \\
+\bottomrule
+\end{tabular} 
+\end{center}
+\end{columns} \pause
+
+\vspace{2em}
+
+\begin{columns}[t]
+\cw{0.4}
+ Matriz triangular superior 3x3
+\[
+    \mathbb{U} = \begin{bmatrix} 
+ U_{11} & U_{12} &  U_{13} \\
+ 0      & U_{22} &  U_{23} \\
+ 0      & 0      &  U_{33}
+ \end{bmatrix} 
+\]
+
+\cw{0.4}
+Matriz triangular inferior 3x3
+\[
+    \mathbb{L} = \begin{bmatrix} 
+ L_{11} & 0      & 0 \\
+ L_{21} & L_{22} & 0 \\
+ L_{31} & L_{32} & L_{33}
+ \end{bmatrix} \] 
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cx
+\textbf{Eliminación gaussiana}
+
+Dos fases: eliminación y solución.
+
+\textbf{Fase de eliminación:}
+
+Utiliza solo una operación elemental:
+\[ \text{Ec}(i) \leftarrow \text{Ec}(i) - \lambda \mul \text{Ec}(j) \]
+donde Ec($j$) se denomina \textit{ecuación pivote}. \pause
+\vspace{1em}
+
+\textbf{Ejemplo:}
+\[ \begin{system}
+ 4x_1-2x_2+x_3 = 11 \\
+ -2x_1+4x_2-2x_3 = -16 \\
+  x_1-2x_2+4x_3 = 17 \\
+\end{system} \]
+\[ \left[ \begin{matrix} 4 & -2 & 1 \\ -2 & 4 & -2 \\ 1 & -2 & 4 \end{matrix}
+ \; \middle| \;
+\begin{matrix} 11 \\ -16 \\ 17 \end{matrix} \right] \]
+\pause
+
+\cx
+Ec(1): pivote; \\
+Ec(2) $\leftarrow$ Ec(2) $-(-0.5) \times$ Ec(1);\\
+Ec(3) $\leftarrow$ Ec(3) $-0.25 \times$ Ec(1)
+
+\[ \left[ \begin{matrix} 4 & -2 & 1 \\ 0 & 3 & -1.5 \\ 0 & -1.5 & 3.75 \end{matrix}
+ \; \middle| \;
+\begin{matrix} 11 \\ -10.5 \\ 14.25 \end{matrix} \right] \] \pause
+
+Ec(2): pivote; \\
+Ec(3) $\leftarrow$ Ec(3) $-(-0.5) \times$ Ec(2)
+\[ \left[ \begin{matrix} 4 & -2 & 1 \\ 0 & 3 & -1.5 \\ 0 & 0 & 3 \end{matrix}
+ \; \middle| \;
+\begin{matrix} 11 \\ -10.5 \\ 9 \end{matrix} \right] \] \pause
+
+\alert{Bonus:} no se altera $|\mathbb{A}|$:
+\[ |\mathbb{A}| = |\mathbb{U}| = U_{11} \times U_{22} \times \cdots U_{NN} \]
+
+\textbf{Fase de solución:} sustitución hacia atrás.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\textbf{Algoritmo:}
+\begin{equation*} {\small
+\left[ 
+ \begin{array}{ccccccccc|c}
+ a_{11} & a_{12} & a_{13} & \cdots & a_{1k} & \cdots & a_{1j} & \cdots & a_{1n} & b_1 \\
+ 0      & a_{22} & a_{23} & \cdots & a_{2k} & \cdots & a_{2j} & \cdots & a_{2n} & b_2 \\
+ \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+ 0      & 0      & 0      & \cdots & a_{kk} & \cdots & a_{kj} & \cdots & a_{kn} & b_k \\
+ \hline
+\vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+ 0      & 0      & 0      & \cdots & a_{ik} & \cdots & a_{ij} & \cdots & a_{in} & b_i \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
+ 0      & 0      & 0      & \cdots & a_{nk} & \cdots & a_{nj} & \cdots & a_{nn} & b_N \\
+ \end{array} \right] }
+\end{equation*}
+\begin{columns}[t]
+\column{5cm}
+\textbf{Eliminación:} {\small
+\begin{algorithmic}[1]
+ \For{$i \gets k+1,k+2, \ldots n$}
+    \State $\lambda \gets a_{ik}/a_{kk}$
+    \For{$j \gets k,n$}
+      \State $a_{ij} \gets a_{ij} - \lambda a_{kj}$
+    \EndFor
+    \State $b_i \gets b_i - \lambda b_k$
+ \EndFor	
+\end{algorithmic} }
+\column{6cm}
+\textbf{Solución:} {\small
+\begin{eqnarray*}
+ x_N &=& b_n / a_{nn} \\
+ x_k &=& \left( b_k- \sum_{j=k+1}^n a_{kj}x_j \right)  \dfrac{1}{a_{kk}} \\
+ & &k = n-1, n-2, \ldots, 1
+\end{eqnarray*} }
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\textbf{Factorización o descomposición LU:}
+ \begin{equation*}
+  \mathbb{A} = \mathbb{L U} 
+ \end{equation*}
+ 
+ \begin{center}
+\begin{tabular}{c c}
+\toprule
+\textbf{Nombre} & \textbf{Restricción} \\
+\midrule
+Descomposición de Doolittle & $L_{ii} = 1, \; i = 1, 2, \cdots,n$ \\
+Descomposición de Crout & $U_{ii} = 1, \; i = 1, 2, \cdots,n$ \\
+Descomposición de Choleski & \multirow{2}{*}{$\mathbb{L} = \mathbb{U}^T$} \\
+{\small ($\mathbb{A}$ debe ser simétrica y definida positiva)} & \\
+\bottomrule
+\end{tabular} 
+\end{center}
+\vspace{2em}
+
+\begin{columns}[t]
+\cw{0.4}
+Luego de la factorización:
+\begin{equation*}
+ \mathbb{LU} \, \bm{x} = \bm{b}
+\end{equation*}
+La solución consiste en:
+\begin{equation*}
+ \mathbb{L} \, \bm{y} = \bm{b}
+\end{equation*}
+
+\cw{0.4}
+resuelta por sustitución hacia adelante, seguida de:
+\begin{equation*}
+ \mathbb{U} \, \bm{x} = \bm{y}
+\end{equation*}
+que da el resultado $\bm{x}$ obtenido por sustitución hacia atrás.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\textbf{Método de Doolittle:}
+ \begin{equation*}
+\mathbb{L} = \left[ 
+ \begin{array}{ccc}
+ 1 & 0 & 0 \\
+ L_{21} & 1 & 0 \\
+ L_{31} & L_{32} &1 \\
+ \end{array} \right] \hspace{1cm} 
+\mathbb{U} = \left[ 
+ \begin{array}{ccc}
+ U_{11} & U_{12} & U_{13} \\
+ 0 & U_{22} & U_{23} \\
+ 0 & 0 & U_{33} \\
+ \end{array} \right]
+ \end{equation*}
+Encontramos $\mathbb{A}$:
+\begin{equation*}
+ \mathbb{A}= \left[ \begin{array}{lll}
+ U_{11} & U_{12} & U_{13} \\
+ U_{11} L_{21} & U_{12} L_{21}+U_{22} & U_{13} L_{21} + U_{23} \\
+ U_{11} L_{31} & U_{12} L_{31}+U_{22}L_{32} & U_{13} L_{31}+U_{23} L_{32} + U_{33} \\
+ \end{array} \right]
+\end{equation*}
+Aplicamos ahora eliminación gaussiana con las siguientes operaciones elementales:
+\begin{center}
+ fila 2 $\leftarrow$ fila 2 $- L_{21} \times$ fila 1 (elimina $a_{21}$) \\
+ fila 3 $\leftarrow$ fila 3 $- L_{31} \times$ fila 1 (elimina $a_{31}$)
+\end{center}
+\begin{equation*}
+ \mathbb{A}^{\prime}= \left[ \begin{array}{ccc}
+ U_{11} & U_{12} & U_{13} \\
+ 0 & U_{22} & U_{23} \\
+ 0 & U_{22}L_{32} & U_{23} L_{32} + U_{33} \\
+ \end{array} \right]
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+ \textbf{Método de Doolittle (cont.):} tomamos ahora la segunda fila como pivote:
+\begin{columns}
+\cx
+\begin{equation*}
+ \mathbb{A}^{\prime}= \left[ \begin{array}{ccc}
+ U_{11} & U_{12} & U_{13} \\
+ 0 & U_{22} & U_{23} \\
+ 0 & U_{22}L_{32} & U_{23} L_{32} + U_{33} \\
+ \end{array} \right]
+\end{equation*}
+
+\cx
+ \begin{center}
+  fila 3 $\leftarrow$ fila 3 $- L_{32} \times$ fila 2 (elimina $a_{32}$)
+ \end{center}
+ \begin{equation*}
+\mathbb{A}^{\prime \prime} = \mathbb{U} = \left[ 
+ \begin{array}{ccc}
+ U_{11} & U_{12} & U_{13} \\
+ 0 & U_{22} & U_{23} \\
+ 0 & 0 & U_{33} \\
+ \end{array} \right]
+  \end{equation*}
+\end{columns}
+ \bigskip \pause
+ \begin{columns}[t]
+\cw{0.4}
+\textbf{Características del método de Doolittle:} \medskip
+ 
+ \begin{itemize} {\small
+  \item La matriz $\mathbb{U}$ es idéntica a la matriz triangular superior que resulta de la eliminación gaussiana
+  \medskip
+  
+  \item Los elementos no diagonales de $\mathbb{L}$ son los factores que multiplican a la ecuación pivote durante la eliminación gaussiana: $L_{ij}$ es el multiplicador que elimina $a_{ij}$ }
+ \end{itemize} \pause
+\cw{0.4}
+\textbf{Almacenamiento:} \bigskip
+ \begin{equation*}
+\mathbb{L}/\mathbb{U} = \left[ 
+ \begin{array}{ccc}
+ U_{11} & U_{12} & U_{13} \\
+ L_{21} & U_{22} & U_{23} \\
+ L_{31} & L_{32} & U_{33} \\
+ \end{array} \right]
+  \end{equation*}
+ \end{columns}
+\end{frame}
+
+\section{Pivoteo}
+%
+%   Pivoteo
+%   http://math.fullerton.edu/mathews/n2003/PivotingMod.html
+%   (no funciona 2019.10.04)
+%
+%   VER presentación sobre pivoteo en /docs
+%
+%   Numerical Methods in Engineering with Python 
+%   J. Kiusalaas
+%   pg 75 del PDF
+%
+\begin{frame}[containsverbatim, fragile]{Pivoteo}
+Sistema:
+\begin{align*}
+ 2 x_1 - \phantom{2} x_2 \phantom{ + x_3}\;\; &= 1 \\
+ -x_1 + 2 x_2 - x_3 &= 0 \\
+\phantom{x_1} -x_2 + x_3 &= 0 \\
+\end{align*}
+Solución: \( x_1 = x_2 = x_3 = 1 \) \bigskip
+\begin{columns}[c]
+ \column{5cm}
+  \begin{equation*}
+    \left[ 
+    \begin{array}{ccc|c}
+    2 & -1 & 0 & 1 \\
+    -1 & 2 & -1 & 0 \\
+    0 & -1 & 1 & 0\\
+    \end{array} \right] 
+  \end{equation*}
+  \begin{center} OK \end{center} \pause
+ \column{5cm}
+  \begin{equation*}
+    \left[ 
+    \begin{array}{ccc|c}
+    0 & -1 & 1 & 0\\
+    -1 & 2 & -1 & 0 \\
+    2 & -1 & 0 & 1 \\
+    \end{array} \right] 
+  \end{equation*}
+  \begin{center} \alert{NOK} \end{center} 
+\end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim, fragile]{Pivoteo}
+\begin{equation*} [\mathbb{A} | \mathbf{b}] = 
+  \left[
+  \begin{array}{ccc|c}
+    \varepsilon & -1 & 1 & 0 \\
+    -1 & 2 & -1 & 0 \\
+    2 & -1 & 0 & 1\\
+  \end{array} \right]
+ \rightarrow [\mathbb{A'} | \mathbf{b'}] = 
+    \left[ 
+    \begin{array}{ccc|c}
+    \varepsilon & -1 & 1 & 0 \\
+    0 & 2-1/\varepsilon & -1+1/\varepsilon & 0 \\
+    0 & -1+2/\varepsilon & -2/\varepsilon  & 1\\
+    \end{array} \right] 
+\end{equation*} \pause
+
+Almacenamiento en la memoria ($\varepsilon \ll 1$):
+\begin{equation*}
+ [\mathbb{A'} | \mathbf{b'}] = 
+    \left[ 
+    \begin{array}{ccc|c}
+    \varepsilon & -1 & 1 & 0 \\
+    0 & -1/\varepsilon & 1/\varepsilon & 0 \\
+    0 & 2/\varepsilon & -2/\varepsilon  & 1\\
+    \end{array} \right] 
+\end{equation*} \pause
+$\mathbb{A}$ es \textit{diagonalmente dominante} si:
+\[ |a_{ii}| > \sum_{\substack{j=1 \\j \neq i}}^N |a_{ij}|; \> (i = 1, 2, \ldots, N)  \]
+\vspace{-0.1cm}
+\begin{columns}
+ \column{5cm}
+ \begin{equation*}
+  \left[ \begin{array}{ccc}
+          -2 & 4 & -1 \\
+          1 & -1 & 3 \\
+          4 & -2 & 1
+         \end{array} \right]
+ \end{equation*}
+ \begin{center}
+  {\small NO diagonalmente dominante}
+ \end{center}
+ \column{5cm}
+ \begin{equation*}
+  \left[ \begin{array}{ccc}
+          4 & -2 & 1 \\
+          -2 & 4 & -1 \\
+          1 & -1 & 3 
+         \end{array} \right]
+ \end{equation*}
+ \begin{center}
+  {\small Diagonalmente dominante}
+ \end{center}
+ \end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim,fragile]{Pivoteo: estrategias}
+En todos los casos: si $a_{ii} \ne 0 \mapsto$ no intercambiar filas. \medskip
+
+ \begin{itemize}
+  \item \textbf{Pivoteo trivial}: 
+  \begin{itemize}
+   \item $a_{ii} = 0 \mapsto$ buscar el primer $a_{ki} \ne 0 (k > i)$ e intercambiar filas $i \leftrightarrows k$.
+  \end{itemize} \medskip \pause
+
+  \item \textbf{Pivoteo parcial}: 
+  \begin{itemize}
+   \item $a_{ii} = 0 \mapsto$ buscar la fila $k$ tal que $|a_{ki}| = \max \limits_{j > i} |a_{ji}| \wedge a_{ji} \ne 0$ e intercambiar filas $i  \leftrightarrows k$.
+  \end{itemize}  \medskip \pause
+
+  \item \textbf{Pivoteo parcial escalado}:
+  \begin{itemize}
+   \item Calcular $s_i = \max \limits_{1 \leq j \leq N} |a_{ij}|, \; i=1,\ldots,N$
+   \item $a_{ii} = 0 \mapsto$ buscar la fila $k$ tal que $\dfrac{|a_{ki}|}{s_k} = \max \limits_{j > i} \dfrac{|a_{ji}|}{s_j} \wedge a_{ji} \ne 0$ e intercambiar filas $i \leftrightarrows k$ y $s_i \leftrightarrows s_k$.
+  \end{itemize} \medskip \pause
+
+  \item \textbf{Pivoteo completo o maximal}:
+  \begin{itemize}
+   \item $a_{ii} = 0 \mapsto$ buscar la fila $j>i$ y columna $k>i$ tal que $|a_{jk}| = \max \limits_{\substack{l > i \\ m > i}} |a_{lm}| \wedge a_{jk} \ne 0$ e intercambiar filas $i \leftrightarrows j$ y columnas $i \leftrightarrows k$.
+  \end{itemize}
+ \end{itemize} \pause
+\begin{center}
+\framebox[1.1\width]{\alert{Nota:} en matemática ``$x=0,\, x\neq 0$'', en \textit{mundo real} ``$|x|<\varepsilon, \, |x| > \varepsilon$''.}                                                                        \end{center}
+\end{frame}
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+    \item \fullcite{burden2017}. Capítulo 6.
+    \item \fullcite{strang2006}. Capítulo 7.
+    \item \fullcite{salgado2023}. Capítulo 8.
+    \item \fullcite{quarteroni2000}. Capítulo 3.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

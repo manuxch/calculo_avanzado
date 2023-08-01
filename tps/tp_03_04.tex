@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+
+\input{../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Trabajos prácticos 01 y 02}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+   \textbf{Trabajos prácticos} & 3 y 4 \\
+ \textbf{Temas:} & Cálculo de raíces. Autovalores y autovectores\\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\section{Trabajo práctico 03: Raíces de ecuaciones.}
+
+\subsection{Método de bisección}
+% Bradie Instructor manual Ch2s1 - p16a, pg 11.
+Utilice el método de bisección para aproximar todos los ceros reales de la función
+\[ f(x) = e^x + x^2 - x -4 \]
+Utilice una tolerancia absoluta de $10^{-5}$ como criterio de finalización. Muestre en forma de tabla los valores intermedios calculados. Estime la cantidad de pasos necesarios para obtener una precisión de $10^{-8}$.
+
+
+\section{Trabajo práctico 04: Autovalores y autovectores.}
+% Recurso adicional Unit-13-TLaplace.pdf, 13.3, ejemplo 3, pg. 6.
+Considere un oscilador de masa $m$ y constante elástica $k$ que se encuentra en un medio viscoso que le provee un amortiguamiento caracterizado por la constante $b$. Si $x(t)$ representa el desplazamiento del oscilador en el instante $t$ desde su posición de equilibrio, el movimiento del oscilador está gobernado por la ecuación diferencial:
+\begin{equation}
+    m x''(t) + b x'(t) + k x(t) = 0
+\end{equation}
+cuando no actúa ninguna fuerza externa sobre el oscilador. Aquí $x'(t)$ denota la derivada primera de $x(t)$ respecto del tiempo. Resuelva esta ecuación con los valores particulares $m = 5$, $b = 1$ y $k = 50$, con las condiciones iniciales:
+
+\begin{equation}
+\begin{aligned}
+    x(0) &= 1 \\
+    x'(0) &= -3
+\end{aligned}
+\end{equation}
+
+Represente gráficamente la solución obtenida.
+
+\end{document}
