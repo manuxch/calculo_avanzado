@@ -89,7 +89,7 @@ $n = 50$, Intel i7: 200 Gflops $\approx 5 \times 10^{45}$ años.
 \hrulefill \pause \vspace{1em}
 
 \textbf{Estabilidad de la solución:} 
-\begin{equation}(\mathbb{A} + \delta \mathbb{A}) (\bm{x} + \textcolor{red}{\delta \bm{x}}) = \bm{b} + \delta \bm{b} \end{equation}
+\begin{equation*}(\mathbb{A} + \delta \mathbb{A}) (\bm{x} + \textcolor{red}{\delta \bm{x}}) = \bm{b} + \delta \bm{b} \end{equation*}
 
 Unicidad de la solución: $\mathbb{A}$ es \alert{no singular}: $|\mathbb{A}| \neq 0$.
 
@@ -278,7 +278,7 @@ Ec(3) $\leftarrow$ Ec(3) $-(-0.5) \times$ Ec(2)
 \column{6cm}
 \textbf{Solución:} {\small
 \begin{eqnarray*}
- x_N &=& b_n / a_{nn} \\
+ x_n &=& b_n / a_{nn} \\
  x_k &=& \left( b_k- \sum_{j=k+1}^n a_{kj}x_j \right)  \dfrac{1}{a_{kk}} \\
  & &k = n-1, n-2, \ldots, 1
 \end{eqnarray*} }
@@ -349,7 +349,7 @@ Encontramos $\mathbb{A}$:
  U_{11} L_{21} & U_{12} L_{21}+U_{22} & U_{13} L_{21} + U_{23} \\
  U_{11} L_{31} & U_{12} L_{31}+U_{22}L_{32} & U_{13} L_{31}+U_{23} L_{32} + U_{33} \\
  \end{array} \right]
-\end{equation*}
+\end{equation*} \pause
 Aplicamos ahora eliminación gaussiana con las siguientes operaciones elementales:
 \begin{center}
  fila 2 $\leftarrow$ fila 2 $- L_{21} \times$ fila 1 (elimina $a_{21}$) \\
@@ -541,6 +541,33 @@ En todos los casos: si $a_{ii} \ne 0 \mapsto$ no intercambiar filas. \medskip
 \begin{center}
 \framebox[1.1\width]{\alert{Nota:} en matemática ``$x=0,\, x\neq 0$'', en \textit{mundo real} ``$|x|<\varepsilon, \, |x| > \varepsilon$''.}                                                                        \end{center}
 \end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}[c]
+\cx
+\textbf{ Ejemplo con Python: }
+\pycode{code/ejemplo.py}
+
+\cx
+\begin{shell}
+$ ./ejemplo.py 
+x =  [ 2. -2.  9.]
+a @ x ? [ True  True  True]
+a @ x ? True
+a @ x = [ 2.  4. -1.]
+[[1. 0. 0.]
+ [0. 0. 1.]
+ [0. 1. 0.]]
+[[ 1.          0.          0.        ]
+ [ 0.          1.          0.        ]
+ [ 0.33333333 -0.33333333  1.        ]]
+[[3.         2.         0.        ]
+ [0.         5.         1.        ]
+ [0.         0.         0.33333333]]
+\end{shell}
+\end{columns}
+\end{frame}
+
 
 \section*{Bibliografía}
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}
