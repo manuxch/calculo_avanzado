@@ -1,213 +1,75 @@
-\documentclass[9pt, aspectratio=169]{beamer}
+\documentclass[11pt]{article}
 
-\usetheme{metropolis}
-\setbeamertemplate{itemize items}{\faAngleRight}
+\input{../../utils/preamble_problemas}
 
-\input{../../utils/preamble}
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 9: Autovalores y autovectores}
 
-\title{Autovalores y autovectores}
-\subtitle{Método de la potencia: código. Factorización QR. Código.}
-
-%%%%
-% Bibliografía
-%%%%
 
 \begin{document}
-\maketitle
+% \maketitle
 
-\begin{frame}[fragile]
-\begin{columns}[t]
-    \cw{0.45}
-\textbf{Método de las potencias: código}
-\pycode[firstline=1, lastline=21]{code/potencias.py}
-
-\cw{0.45}
-\pycode[firstline=23, lastline=37]{code/potencias.py}
-
-\begin{shell}
-$ ./potencias.py 
-Autovalor dominante: 3.000000000000001
-Autovector correspondiente:
-[ 2.62486865e-19 -7.07106781e-01 -7.07106781e-01]
-\end{shell}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Método QR}
-\begin{columns}[t]
-\cx
-\begin{theorem}
-    Si $\bm{A}$ es una matriz y $\lambda_1, \lambda_2, \cdots, \lambda_k$ son autovalores distintos de $\bm{A}$ con autovectores asociados $\{ \bm{v}_1, \bm{v}_2, \cdots,\bm{v}_k \}$, entonces $\{ \bm{v}_1, \bm{v}_2, \cdots,\bm{v}_k\}$ es un conjunto \textbf{linealmente independiente}.
-\end{theorem} \pause
-
-\begin{definition}[Conjunto ortogonal/ortonormal]
-    Un conjunto de vectores $\{\bm{v}_1, \bm{v}_2, \cdots,\bm{v}_k\}$ recibe el nombre de \textbf{ortogonal} si $\langle \bm{v}_i, \bm{v}_j \rangle = 0$ para todo $i \neq j$. Si, además, $\langle \bm{v}_i, \bm{v}_i \rangle = 1$ para toda $i = 1, 2, \cdots, n$, el conjunto recibe el nombre de \textbf{ortonormal}.
-\end{definition}
-
-Dado que $\langle \bm{x}, \bm{x} \rangle = \lVert \bm{x} \rVert_2^2, \forall \bm{x} \in \mathbb{R}^n$, el conjunto $\{\bm{v}_1, \bm{v}_2, \cdots,\bm{v}_k\}$ es ortonormal si y solo si:\[ \lVert \bm{v}_i \rVert_2 = 1 \text{ para todo } i = 1, 2, \cdots, n \]
-\pause
-
-\cx
-\begin{theorem}[Proceso de Gram-Schmidt]
-    Sea $\{ \bm{x}_1, \bm{x}_2, \cdots, \bm{x}_k \}$ un conjunto de $k$ vectores linealmente independientes en $\mathbb{R}^n$. Entonces, $\{ \bm{v}_1, \bm{v}_2, \cdots, \bm{v}_k \}$ definido mediante:
-    \begin{align*}
-    \bm{v}_1 &= \bm{x}_1 \\
-    \bm{v}_2 &= \bm{x}_2 - \frac{\langle \bm{v}_1, \bm{x}_2 \rangle}{\langle \bm{v}_1, \bm{v}_1 \rangle} \bm{v}_1 \\
-    \bm{v}_3 &= \bm{x}_3 - \frac{\langle \bm{v}_1, \bm{x}_3 \rangle}{\langle \bm{v}_1, \bm{v}_1 \rangle} \bm{v}_1 - \frac{\langle \bm{v}_2, \bm{x}_3 \rangle}{\langle \bm{v}_2, \bm{v}_2 \rangle} \bm{v}_2\\
-             &\vdots \\
-    \bm{v}_k &= \bm{x}_k - \sum_{i=1}^{k-1} \frac{\langle \bm{v}_i, \bm{x}_k \rangle}{\langle \bm{v}_i,  \bm{v}_i \rangle} \bm{v}_i
-    \end{align*}
-    es un conjunto de $k$ vectores ortogonales en $\mathbb{R}^n$.
-\end{theorem}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\begin{columns}[t]
-\cx
-\begin{definition}[Matriz ortogonal]
-    Se dice que una matriz $\bm{Q}$ es \textbf{ortogonal} si sus columnas $\{ \bm{q}_1,  \bm{q}_2, \cdots, \bm{q}_n \}$ forman un conjunto ortonormal en $\mathbb{R}^n$.
-\end{definition} \pause
-\textbf{Propiedades:}
-\begin{itemize}
-    \item $\bm{Q}$ es invertible con $\bm{Q}^{-1} = \bm{Q}^{\intercal}$
-    \item $\forall \bm{x}, \bm{y} \in \mathbb{R}^n, \langle \bm{Q}\bm{x}, \bm{Q} \bm{y} \rangle = \langle \bm{x}, \bm{y} \rangle$
-    \item $\forall \bm{x} \in \mathbb{R}^n, \lVert \bm{Q} \bm{x} \rVert_2 = \lVert \bm{x} \rVert_2$
-    \item Cualquier matriz invertible $\bm{Q}$ con $\bm{Q}^{-1} = \bm{Q}^{\intercal}$ es ortogonal.
-\end{itemize} \pause
-
-\begin{definition}[Matriz similar]
-    Dos matrices $\bm{A}$ y $\bm{B}$ son \textbf{similares} si existe una matriz no singular $\bm{S}$ con $\bm{A} = \bm{S}^{-1} \bm{B} \bm{S}$.
-\end{definition} \pause
-
-\cx
-\begin{theorem}
-    Si $\bm{A}$ y $\bm{B}$ son matrices similares con $\bm{A} = \bm{S}^{-1} \bm{B} \bm{S}$, y $\lambda$ es un autovalor de $\bm{A}$ con el autovector $\bm{v}$ asociado, entonces $\lambda$ es un autovalor de $\bm{B}$ con autovector asociado $\bm{S} \bm{v}$.
-\end{theorem} \pause
-
-\begin{theorem}
-Una matriz $ \bm{A} \in \mathbb{R}^{n \times n} $ es similar a una matriz diagonal $\bm{D}$ si y sólo si $\bm{A}$ tiene $n$ autovectores linealmente independientes. En este caso $\bm{D} = \bm{S}^{-1} \bm{A} \bm{S}$, donde las columnas de $\bm{S}$ son los autovectores y el $i$-ésimo elemento diagonal de $\bm{D}$ es el autovalor que corresponde a la $i$-ésima columna de $\bm{S}$.
-\end{theorem} 
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\begin{columns}[t]
-\cx
-\begin{theorem}[Teorema de Schur]
-    Sea $\bm{A}$ una matriz arbitraria. Existe una matriz no singular $\bm{U}$ con la propiedad de que 
-    \[ \bm{T} = \bm{U}^{-1} \bm{A} \bm{U} \]
-    donde $\bm{T}$ es una matriz triangular superior, cuyas entradas diagonales consisten en autovalores de $\bm{A}$.
-\end{theorem}
-
-Se cumple $\lVert \bm{U} \bm{x} \rVert_2 = \lVert \bm{x} \rVert_2, \forall \bm{x} \mapsto$ \textbf{matrices unitarias}. \pause
-\vspace{1em}
-
-\textbf{Factorización QR}: $\bm{A} = \bm{Q} \bm{R}$, donde:
-\begin{itemize}
-    \item $\bm{Q}$ es una matriz ortogonal
-    \item $\bm{R}$ es una matriz triangular superior
-\end{itemize} \pause
-
-\textbf{Cálculo de la factorización:}
-\begin{itemize}
-    \item Ortogonalización de Gram-Schmidt
-    \item Reflexiones de Householder
-\end{itemize} 
-
-\cx
-\textbf{Ortogonalización de Gram-Schmidt:} $\bm{A} = [\bm{a}_1 | \bm{a}_2 | \cdots | \bm{a}_n]$
-{\small
-\begin{align*}
-\bm{u}_1 &= \bm{a}_1, \quad \bm{e}_1 = \frac{\bm{u}_1}{\lVert\bm{u}_1 \rVert} \\
-\bm{u}_2 &= \bm{a}_2 - \langle \bm{e}_1, \bm{a}_2 \rangle, \quad \bm{e}_2 = \frac{\bm{u}_2}{\lVert\bm{u}_2 \rVert} \\
-\bm{u}_3 &= \bm{a}_3 - \langle \bm{e}_1, \bm{a}_3 \rangle - \langle \bm{e}_2, \bm{a}_3 \rangle, \quad \bm{e}_3 = \frac{\bm{u}_3}{\lVert\bm{u}_3 \rVert} \\
-         &\vdots \\
-\bm{u}_k &= \bm{a}_k - \sum_{j=1}^{k-1} \langle \bm{e}_j, \bm{a_k} \rangle, \quad \bm{e}_k = \frac{\bm{u}_k}{\lVert \bm{u}_k \rVert}
-\end{align*} \pause
-Ahora podemos expresar los $\bm{a}_i$ en la nueva base:
-\begin{align*}
-    \bm{a}_1 &= \langle \bm{e}_1, \bm{a}_1 \rangle \bm{e}_1 \\
-    \bm{a}_1 &= \langle \bm{e}_1, \bm{a}_2 \rangle \bm{e}_1 + \langle \bm{e}_2, \bm{a}_2 \rangle \bm{e}_2  \\
-    \bm{a}_3 &= \langle \bm{e}_1, \bm{a}_3 \rangle \bm{e}_1 + \langle \bm{e}_2, \bm{a}_3 \rangle \bm{e}_2 + \langle \bm{e}_3, \bm{a}_3 \rangle \bm{e}_3 \\
-             &\cdots \\
-    \bm{a}_k &= \sum_{j=1}^k \langle \bm{e}_j, \bm{a}_k \rangle \bm{e}_j
-\end{align*}
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
 }
-\end{columns}
-\end{frame}
+\end{center} 
 
-\begin{frame}[fragile]
-\begin{columns}[t]
-\cw{0.45}
-    Resulta $\bm{A} = \bm{Q} \bm{R}$, con $\bm{Q} = [\bm{e}_1 | \bm{e}_2 | \cdots | \bm{e}_n]$, y 
-    \[ \bm{R} = 
-        \begin{bmatrix} \langle \bm{e}_1 \bm{a}_1 \rangle & \langle \bm{e}_1 \bm{a}_2 \rangle & \langle \bm{e}_1 \bm{a}_3 \rangle & \cdots & \langle \bm{e}_1 \bm{a}_n \rangle \\
-       0  & \langle \bm{e}_2 \bm{a}_2 \rangle & \langle \bm{e}_2 \bm{a}_3 \rangle & \cdots & \langle \bm{e}_2 \bm{a}_n \rangle \\
-       0  & 0 & \langle \bm{e}_3 \bm{a}_3 \rangle & \cdots & \langle \bm{e}_3 \bm{a}_n \rangle \\
-       \vdots & \vdots & \vdots & \ddots & \ldots \\
-   0 & 0 & 0 & \cdots & \langle \bm{e}_n, \bm{a}_n \rangle \end{bmatrix} \] \pause
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 10 \\
+ \textbf{Tema:} & Autovalores y autovectores II. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
 
 \vspace{1em}
-\textbf{Código Python:}
+\begin{question} % Burden Faires Ejemplo 3 pg. 434
+    Muestre que se puede formar una base para $\mathbb{R}^3$ usando los autovalores de la matriz
+    \[ \bm{A} = \begin{bmatrix} 2 & 0 & 0 \\
+        1 & 1 & 2 \\
+    1 & -1 & 4 \end{bmatrix} \]
+\end{question}
 
-\pycode[firstline=1, lastline=8]{code/gs_qr.py}
-\cw{0.45}
-\pycode[firstline=10]{code/gs_qr.py}
+\begin{question} % Burden Faires Ejemplo 4 pg. 434
+Muestre que ningún conjunto de autovectores de la matriz $3 \times 3$
+\[ \bm{B} = \begin{bmatrix} 2 & 1 & 0 \\
+           0 & 2 & 0 \\
+       0 & 0 & 3 \end{bmatrix} \]
+       puede formar una base en $\mathbb{R}^3$.
+\end{question}
 
-%\begin{shell}
-%$ ./gs-qr.py 
-%Matriz Q:
-%[[ 0.26726124  0.87287156  0.40824829]
- %[ 0.53452248  0.21821789 -0.81649658]
- %[ 0.80178373 -0.43643578  0.40824829]]
-%Matriz R:
-%[[3.74165739 8.55235974 2.93987366]
- %[0.         1.96396101 1.96396101]
- %[0.         0.         1.22474487]]
-%\end{shell}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\begin{columns}[t]
-\cw{0.45}
-\textbf{Método QR para el cálculo de autovalores:} % Salgado, Sec. 8.6 pg 214
-
-Algoritmo recursivo que computa $\{ \bm{A}_k \}_{k = 0}^{\infty}$ con los siguientes pasos:
-\begin{enumerate}
-    \item $\bm{A}_0 = \bm{A}$
-    \item Para $k = 0, 1, 2, \ldots,$ dado $\bm{A}_k$:
-        \begin{enumerate}
-        \item Calcular $\bm{Q}_{k+1} \bm{R}_{k+1} = \bm{A}_k $
-        \item Definir $\bm{A}_{k+1} = \bm{Q}_{k+1} \bm{R}_{k+1}$
-        \end{enumerate}
-\end{enumerate} \pause
-
-\begin{theorem}[Convergencia]
-    Si los autovalores de una matriz $\bm{A}$ verifican que
-    \[ |\lambda_1| > |\lambda_2| > \cdots > |\lambda_n| > 0 \]
-    entonces la suceción de matrices equivalentes contruidas con el algoritmo QR converge a una matriz triangular superior.
-\end{theorem}
-
-\cw{0.45}
-\textbf{Código Python:}
-\pycode{code/autoval-qr.py}
-
-\end{columns}
-\end{frame}
+\begin{question} % Burden Faires Ejemplo 5, pg 435
+    \begin{enumerate}[a)]
+        \item Muestre que los vectores $\bm{v}_1 = [0, 4, 2]^{\intercal}$ $\bm{v}_2 = [-5, -1, 2]^{\intercal}$ y $\bm{v}_3 = [1, -1, 2]^{\intercal}$ forman un conjunto ortogonal.
+        \item Use el conjunto anterior para formar una base ortonormal.
+    \end{enumerate}
+\end{question}
 
 
-\section*{Bibliografía}
-\begin{frame}[allowframebreaks]{Lecturas recomendadas}
-\begin{itemize}
-    \item \fullcite{burden2017}. Capítulo 9.
-    \item \fullcite{moreno2014}. Capítulo 3.
-    \item \fullcite{bradie2006}. Capítulo 4.
-    \item \fullcite{salgado2023}. Capítulo 8.
-    \item \fullcite{quarteroni2000}. Capítulo 5.
-\end{itemize}
-\end{frame}
+\begin{question} % Burden Faires Ejemplo 6, pg 435
+Use el proceso de Gram-Schmidt para determinar un conjunto de vectores ortogonales a partir de los vectores linealmente independientes:
+\[ \bm{x}_1 = [1, 0, 0]^{\intercal}, \; \bm{x}_2 = [1, 1, 0]^{\intercal}, \; \bm{x}_3 = [1, 1, 1]^{\intercal} \]
+\end{question}
+
+\begin{question} % Burden Faires Ejemplo 1, pg 437
+Muestre que la matriz
+\[ \bm{Q} = [\bm{u}_1, \bm{u}_2, \bm{u}_3] = 
+    \begin{bmatrix} 0 & -\frac{\sqrt{30}}{6} & \frac{\sqrt{6}}{6} \\[0.3em]
+        \frac{2 \sqrt{5}}{5} & -\frac{\sqrt{30}}{30} & -\frac{\sqrt{6}}{6} \\[0.3em]
+    \frac{\sqrt{5}}{5} & \frac{\sqrt{30}}{15} & \frac{\sqrt{6}}{3} \end{bmatrix} \]
+    formada a partir del conjunto ortonormal de vectores encontrado en el problema 3, es una matriz ortogonal.
+\end{question}
 
 \end{document}
-
