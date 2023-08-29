@@ -53,3 +53,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Sistema de ecuaciones lineales
 - Clase 11: Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. [Clase](sistemas_lineales/clase_11/clase_11.pdf), [problemas](sistemas_lineales/clase_11/problemas_11.pdf).
+- Clase 12: Métodos iterativos (**completar**).
+
+### Ajustes por mínimos cuadrados
+- Clase 13: Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. [Clase](aproximacion/clase_13/clase_13.pdf), [problemas](aproximacion/clase_13/problemas_13.pdf).
