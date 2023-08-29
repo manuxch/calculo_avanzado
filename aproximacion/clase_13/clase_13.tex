@@ -80,8 +80,8 @@ Para el conjunto $\{(x_i, y_i)\}_{i=1}^m$, \textbf{minimizar} respecto de \\ $a_
 \pause
 \[ \frac{\partial E}{\partial a_0} = 0 \txt{y} \frac{\partial E}{\partial a_1} = 0 \]
 Esto es:
-\[ 0 = \frac{\partial}{\partial a_0} \sum_{i = 1}^m [y_i - (a_1 x_i - a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_o)(-1) \]
-\[ 0 = \frac{\partial}{\partial a_1} \sum_{i = 1}^m [y_i - (a_1 x_i - a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_o)(-x_i) \]
+\[ 0 = \frac{\partial}{\partial a_0} \sum_{i = 1}^m [y_i - (a_1 x_i + a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_0)(-1) \]
+\[ 0 = \frac{\partial}{\partial a_1} \sum_{i = 1}^m [y_i - (a_1 x_i + a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_0)(-x_i) \]
 \pause
 
 \cw{0.35}
@@ -192,7 +192,7 @@ $n = 2, m = 5$
 \begin{align*}
     5 a_0 + 2.5 a_1 + 1.875 a_2 &= 8.7680 \\
     2.5 a_0 + 1.875 a_1 + 1.5625 a_2 &= 5.4514 \\
-    1.875 a_0 + 1.5625 a_1 + 1.3828 a_2 &= 4-4015
+    1.875 a_0 + 1.5625 a_1 + 1.3828 a_2 &= 4.4015
 \end{align*} \pause
 
 \textbf{Solución:}
@@ -288,6 +288,98 @@ $\ln b = 1.122 \rightarrow b = e^{1.122} = 3.071$
 \[ y = 3.071 e^{0.5056 x} \]
 \end{columns}
 \end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cx
+\textbf{Python: ejemplo 1}
+\pycode[firstline=5, lastline=15]{code/ejemplo-01.py}
+
+\begin{shell}
+$ ./ejemplo-01.py 
+ 
+2.437 x + 3.903
+a_0 = 3.90314, a_1 = 2.43661
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-01.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cx
+\textbf{Python: ejemplo 2}
+\pycode[firstline=5, lastline=15]{code/ejemplo-02.py}
+
+\begin{shell}
+$ ./ejemplo-02.py 
+
+0.5057 x + 1.122
+ln(b) = 1.12249, a = 0.50572
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-02.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cx
+\textbf{Python: ejemplo 3}
+\pycode[firstline=5, lastline=16]{code/ejemplo-03.py}
+
+\begin{shell}
+$ ./ejemplo-03.py 
+      2
+2.55 x - 3.099 x - 1.205
+a_0 = -1.20479, a_1 = -3.09868, a_2 = 2.54970
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-03.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cx
+\textbf{Python: ejemplo 4}
+\pycode[firstline=5, lastline=18]{code/ejemplo-04.py}
+
+\begin{shell}
+> ./ejemplo-04.py 
+[2.50685815 1.21831291 0.51137751]
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-04.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+    \item \fullcite{burden2017}. Capítulo 8.
+    \item \fullcite{kreyszig2011}. Capítulo 25.9.
+\end{itemize}
+\end{frame}
+
 
 \end{document}
 
