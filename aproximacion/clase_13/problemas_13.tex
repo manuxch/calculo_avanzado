@@ -4,7 +4,7 @@
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
-\date{Clase 11: Sistemas de ecuaciones lineales}
+\date{Clase 13: Aproximación discreta por mínimos cuadrados}
 
 
 \begin{document}
@@ -27,8 +27,8 @@
 
 \begin{center}
 \begin{tabular}{r l}
-    \textbf{Práctica:} & 11 \\
- \textbf{Tema:} & Sistemas de ecuaciones lineales I. \\
+    \textbf{Práctica:} & 13 \\
+ \textbf{Tema:} & Aproximación discreta por mínimos cuadrados. \\
  \textbf{Profesor Titular:} & Manuel Carlevaro \\
  \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
  \textbf{Ayudante de Primera:} & Lucas Basiuk 
@@ -36,59 +36,58 @@
 
 \vspace{1em}
 
-\begin{question} % Bradie Problemas 1-5 pg 171
-Escriba la matriz aumentada para los siguientes sistemas lineales de ecuaciones, y obtenga la solución usando eliminación gaussiana con sustitución hacia atrás:
+\begin{question} % Bradie  Excersise 5 pg 441
+El costo total de producción en función del número de horas de máquina se proporciona para una muestra de nueve procesos de producción. Estime los costos fijos y variables asociados con este proceso.
+
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Horas de máquina} & 22 & 23 & 19 & 12 & 12 & 9 & 7 & 11 & 14 \\
+        \textbf{Costo total} (en miles \$) & 23 & 25 & 20 & 20 & 20 & 15 & 14 & 14 & 16 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{question}
+
+\begin{question} % Bradie Excersise 6 pg 441
+La resistividad del platino como función de la temperatura se da en la tabla siguiente. Estime los parámetros de un ajuste lineal de los datos y prediga la resistividad cuando la temperatura es $365$ K.
+
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Temperatura} (K) & 100 & 200 & 300 & 400 & 500 \\
+        \textbf{Resistividad} (\textohm{} cm, $\mul 10^6$) & 4.1 & 8.0 & 12.6 & 16.3 & 19.4 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{question}
+
+\begin{question} % Bradie Excersise 7 pg 441
+La tabla siguiente muestra el tiempo (en segundos) requerido para descargar un tanque de agua a través de un orificio en su fondo, como función de la altura de llenado (en cm) del tanque.
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Altura} (cm) & 0.5 & 1.0 & 1.5 & 2.0 & 2.5 & 3.0 & 3.5 & 4.0 \\
+        \textbf{Tiempo} (s) & 65.99 & 120.28 & 166.69 & 207.85 & 245.41 & 279.95 & 313.04 & 344.24 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
 \begin{enumerate}[a)]
-    \item \[ \begin{cases} 2 x_1 - x_2 + x_3 = -1 \\
-                       4 x_1 + 2 x_2 + x_3 = 4 \\ 
-                       6 x_1 - 4 x_2 + 2 x_3 = -2 
-        \end{cases} \]
-    \item \[ \begin{cases} x_1 + 2 x_2 - x_3 = 1 \\
-                      2 x_1 - x_2 + x_3 = 3 \\ 
-                      -x_1 + 2 x_2 + 3 x_3 = 7 
-        \end{cases} \]
-    \item \[ \begin{cases} x_2 + x_3 + x_4 = 0 \\
-                      3 x_1 + 3 x_3 - 4 x_4 = 7 \\ 
-                      x_1 + x_2 + x_3 + 2 x_4 = 6 \\
-                      2 x_1 - 3 x_2 + x_3 + 3 x_4 = 6
-        \end{cases} \]
+    \item Construir un gráfico de estos datos. ¿Cuál es la forma funcional más apropiada para ajustar los datos?
+    \item Ajuste los datos para la función indicada en la parte a).
 \end{enumerate}
 \end{question}
 
-
-\begin{question} % Bradie Problemas 10 pg 172
-\begin{enumerate}[a)]
-\item Resuelva el sistema:
-    \[ \begin{cases}
-        3.02 x_1 - 1.05 x_2 + 2.53 x_3 = -1.61 \\
-        4.33 x_1 + 0.56 x_2 - 1.78 x_3 = 7.23 \\
-        -0.83 x_1 - 0.54 x_2 + 1.47 x_3 = -3.38
-    \end{cases} \]
-    utilizando eliminación gaussiana con sustitución hacia atrás.
-\item Cambie el coeficiente de $x_1$ en la primera ecuación a $3.01$ y resuelva el sistema resultante. ¿En qué porcentaje cambian las componentes del nuevo vector solución?
-\item Vuelva el coeficiente de $x_1$ a su valor original en la primera ecuación, pero cambie el término independiente de la segunda ecuación a $1.99$ y resuelva el nuevo sistema. ¿Cuál es el cambio porcentual en las tres componentes de la solución comparados con sus valores de la parte a)?
-\end{enumerate}
-\end{question}
-
-\begin{question} % Bradie pg 206
-    Verifique que las matrices triangulares $\mathbb{L}$ y $\mathbb{U}$ siguientes:
-    \[ \mathbb{L} = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 5 & 12 & 1 \end{bmatrix}, \quad \mathbb{U} = \begin{bmatrix} 1 & 4 & 3 \\ 0 & -1 & 3 \\ 0 & 0 & -53 \end{bmatrix} \]
-    factorizan la matriz
-    \[ \mathbb{A} = \begin{bmatrix} 1 & 4 & 3 \\ 2 & 7 & 9 \\ 5 & 8 & -2 \end{bmatrix} \]
-\end{question}
-
-\begin{question} % Bradie Ejercicio 11 pg 217
-    Resuelva el sistema $\mathbb{A} \bm{x} = \bm{b}$ para cada uno de los siguientes términos independientes:
-    \[ \mathbb{A} = \begin{bmatrix} 1 & 2 & 3 & 4 \\ -1 & 1 & 2 & 3 \\ 1 & -1 & 1 & 2 \\ -1 & 1 & -1 & 5 \end{bmatrix}, \, \bm{b}_1 = \begin{bmatrix} 10 \\ 5 \\ 3 \\ 4 \end{bmatrix}, \, \bm{b}_2 = \begin{bmatrix} -4 \\ -5 \\ -3 \\ -4 \end{bmatrix}, \, \bm{b}_3 = \begin{bmatrix} -2 \\ -3 \\ 1 \\ -8 \end{bmatrix} \]
-\end{question}
-
-\begin{question} % Burden Ejemplo 3 pg 295
-Resuelva el sistema lineal con aritmética de redondeo de tres dígitos y utilice una estrategia de pivoteo parcial escalado.
-\[ \begin{cases}
-2.11 x_1 - 4.21 x_2 + 0.921 x_3 + 2.01 \\
-4.01 x_1 + 10.2 x_2 - 1.12 x_3 = -3.09 \\
-1.09 x_1 + 0.987 x_2 + 0.832 x_3 = 4.21
-\end{cases} \]
+\begin{question} % Bradie Excersise 9 pg 441
+La presión barométrica, como función de la altura sobre el nivel del mar, $h$, se modela con la relación $P = \alpha e^{-\beta h}$. Use los datos de la tabla siguiente para estimar los parámtros del model y predecir la presión barométrica a una altura de 
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Presión barométrica} (mmHg) & 29.9 & 29.4 & 29.0 & 28.4 & 27.7 \\
+        \textbf{Altura} (m) & 0.0 & 12.7 & 25.4 & 38.1 & 50.8 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
 \end{question}
 
 \end{document}
