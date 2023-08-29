@@ -44,22 +44,27 @@ Utilice el método de bisección para aproximar todos los ceros reales de la fun
 \[ f(x) = e^x + x^2 - x -4 \]
 Utilice una tolerancia absoluta de $10^{-5}$ como criterio de finalización. Muestre en forma de tabla los valores intermedios calculados. Estime la cantidad de pasos necesarios para obtener una precisión de $10^{-8}$.
 
+\subsection{Método de Newton-Raphson}
+Aproxime los ceros de la función del problema anterior utilizando el método de Newton-Raphson. Compare la velocidad de convergencia de ambos métodos al iniciarlos con la estimación inicial en algunos de los extremos de los intervalos utilizados con el método de bisección.
 
 \section{Trabajo práctico 04: Autovalores y autovectores.}
-% Recurso adicional Unit-13-TLaplace.pdf, 13.3, ejemplo 3, pg. 6.
-Considere un oscilador de masa $m$ y constante elástica $k$ que se encuentra en un medio viscoso que le provee un amortiguamiento caracterizado por la constante $b$. Si $x(t)$ representa el desplazamiento del oscilador en el instante $t$ desde su posición de equilibrio, el movimiento del oscilador está gobernado por la ecuación diferencial:
-\begin{equation}
-    m x''(t) + b x'(t) + k x(t) = 0
-\end{equation}
-cuando no actúa ninguna fuerza externa sobre el oscilador. Aquí $x'(t)$ denota la derivada primera de $x(t)$ respecto del tiempo. Resuelva esta ecuación con los valores particulares $m = 5$, $b = 1$ y $k = 50$, con las condiciones iniciales:
 
-\begin{equation}
-\begin{aligned}
-    x(0) &= 1 \\
-    x'(0) &= -3
-\end{aligned}
-\end{equation}
+\subsection{Autovalores y autovectores} % Shaum's Outline of Linear Algebra, p 9.16 pg 315
+Considere la matriz 
+\[
+    \bm{A} = \begin{bmatrix}
+        3 & -1 & 1 \\
+        7 & -5 & 1 \\
+    6 & -6 & 2 \end{bmatrix} \]
+    \begin{enumerate}[a)]
+        \item Encuentre los autovalores de $\bm{A}$.
+        \item Determine los autovectores asociados.
+    \end{enumerate}
 
-Represente gráficamente la solución obtenida.
+\subsection{Método de las potencias}
+Utilice el método de las potencias para hallar el autovalor y el autovector dominantes del problema 2.1.
+
+\subsection{Método QR}
+Utilice el método QR para obtener los autovalores de la matriz $\bm{A}$ del problema 2.1.
 
 \end{document}
