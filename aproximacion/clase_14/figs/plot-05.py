@@ -9,20 +9,17 @@ import sympy.printing as prt
 
 def min_Legendre(f, L):
     c = []
-    for i, l in enumerate(L):
-        # print(f"L[{i}] = {l}")
+    for l in L:
         fl = sym.integrate(l * f, (x, -1, 1))
         alfa = sym.integrate(l * l, (x, -1, 1))
-        # print(f"f * l[{i}] = {fl}, alfa = {alfa}")
         c.append(fl / alfa)
     return c
 
 f = sym.exp(-x) - (x-1/2)**2
-x = sym.Symbol('x')
 f_num = sym.lambdify([x], f, modules='numpy')
 x_points = np.linspace(-1, 1, 100)
-y_exact = f_num(x_points)
-plt.plot(x_points, y_exact, label=r'$f(x)=e^{-x} - (x-1/2)^2$', alpha=0.5)
+plt.plot(x_points, f_num(x_points),
+    label=r'$f(x)=e^{-x} - (x-1/2)^2$', alpha=0.5)
 
 for n in range(1, 5):
     print(f"n = {n}")
