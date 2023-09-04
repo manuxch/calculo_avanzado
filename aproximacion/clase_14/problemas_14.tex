@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\input{../../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Clase 13: Aproximación discreta por mínimos cuadrados}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & 13 \\
+ \textbf{Tema:} & Aproximación discreta por mínimos cuadrados. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Bradie  Excersise 5 pg 441
+El costo total de producción en función del número de horas de máquina se proporciona para una muestra de nueve procesos de producción. Estime los costos fijos y variables asociados con este proceso.
+
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Horas de máquina} & 22 & 23 & 19 & 12 & 12 & 9 & 7 & 11 & 14 \\
+        \textbf{Costo total} (en miles \$) & 23 & 25 & 20 & 20 & 20 & 15 & 14 & 14 & 16 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{question}
+
+\begin{question} % Bradie Excersise 6 pg 441
+La resistividad del platino como función de la temperatura se da en la tabla siguiente. Estime los parámetros de un ajuste lineal de los datos y prediga la resistividad cuando la temperatura es $365$ K.
+
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Temperatura} (K) & 100 & 200 & 300 & 400 & 500 \\
+        \textbf{Resistividad} (\textohm{} cm, $\mul 10^6$) & 4.1 & 8.0 & 12.6 & 16.3 & 19.4 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{question}
+
+\begin{question} % Bradie Excersise 7 pg 441
+La tabla siguiente muestra el tiempo (en segundos) requerido para descargar un tanque de agua a través de un orificio en su fondo, como función de la altura de llenado (en cm) del tanque.
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Altura} (cm) & 0.5 & 1.0 & 1.5 & 2.0 & 2.5 & 3.0 & 3.5 & 4.0 \\
+        \textbf{Tiempo} (s) & 65.99 & 120.28 & 166.69 & 207.85 & 245.41 & 279.95 & 313.04 & 344.24 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\begin{enumerate}[a)]
+    \item Construir un gráfico de estos datos. ¿Cuál es la forma funcional más apropiada para ajustar los datos?
+    \item Ajuste los datos para la función indicada en la parte a).
+\end{enumerate}
+\end{question}
+
+\begin{question} % Bradie Excersise 9 pg 441
+La presión barométrica, como función de la altura sobre el nivel del mar, $h$, se modela con la relación $P = \alpha e^{-\beta h}$. Use los datos de la tabla siguiente para estimar los parámtros del model y predecir la presión barométrica a una altura de 
+\begin{center}
+    \begin{tabular}{lccccccccc}
+        \toprule
+        \textbf{Presión barométrica} (mmHg) & 29.9 & 29.4 & 29.0 & 28.4 & 27.7 \\
+        \textbf{Altura} (m) & 0.0 & 12.7 & 25.4 & 38.1 & 50.8 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\end{question}
+
+\end{document}
