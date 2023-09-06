@@ -18,7 +18,7 @@ def min_Chebyshev(f, T):
 f = x**5 - 4 * x**4 + x**3 - x - 3
 f_num = sym.lambdify([x], f, modules='numpy')
 
-fig, (ax1, ax2) = plt.subplots(2,1, figsize=(4, 6))
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(4, 6), sharex=True)
 x_points = np.linspace(-1, 1, 100)
 ax1.plot(x_points, f_num(x_points),
     label=r'$f(x)=x^5 - 4 x^4 + x^3 - x - 3$', alpha=0.5)
@@ -42,6 +42,9 @@ for n in range(1, 6):
 
 ax1.legend(fontsize=8)
 ax2.legend(fontsize=8)
-plt.xlabel('$x$')
+plt.xlabel('$x$', fontsize=16)
+plt.xticks(fontsize=12)
+ax1.tick_params(axis='both', which='major', labelsize=10)
+ax2.tick_params(axis='both', which='major', labelsize=10)
 plt.tight_layout()
 plt.savefig("fig-07.pdf")

@@ -6,7 +6,7 @@
 \input{../../utils/preamble}
 
 \title{Aproximación por mínimos cuadrados}
-\subtitle{Ajuste continuo polinómico}
+\subtitle{Ajuste continuo polinómico, Funciones ortogonales. Polinomios de Legendre. Polinomios de Chebishev.}
 
 %%%%
 % Bibliografía
@@ -153,7 +153,7 @@ Ejemplo:
 \cw{0.55}
 \begin{definition}[Funciones ortogonales]
     Se dice que $\{\phi_0, \phi_1, \cdots, \phi_n\}$ es un \textbf{conjunto ortogonal de funciones} en el intervalo $[a, b] $ respecto de la función de peso $w(x)$ si
-    \[ \langle \phi_k, \phi_j \rangle = \int_a^b w(x) \phi_k(x) \phi_j(x) \, dx = 
+    \[ \langle \phi_k, \phi_j \rangle_w = \int_a^b w(x) \phi_k(x) \phi_j(x) \, dx = 
         \begin{cases}
             0, & j \neq k, \\
             \alpha_j > 0, & j = k
@@ -164,12 +164,12 @@ Si además $\alpha_j = 1$ para cada $j = 0, 1, 2, \cdots, n$, se dice que el con
 
 Ejemplo: $\{ \cos nx, \sen mx \}, n, m = 0, 1,  \cdots$ es ortogonal en $[-\pi, \pi]$ con $w(x) = 1$:
 \begin{mathcols}
-    \langle \cos nx, \cos mx \rangle &= 0 \\
-    \langle \sen nx, \sen mx \rangle &= 0 \\
-    \langle \cos nx, \sen mx \rangle &= 0 \\
+    \langle \cos nx, \cos mx \rangle_w &= 0 \\
+    \langle \sen nx, \sen mx \rangle_w &= 0 \\
+    \langle \cos nx, \sen mx \rangle_w &= 0 \\
     \changecol
-    \langle \cos nx, \cos nx \rangle &= \pi \\
-    \langle \sen nx, \sen nx \rangle &= \pi \\
+    \langle \cos nx, \cos nx \rangle_w &= \pi \\
+    \langle \sen nx, \sen nx \rangle_w &= \pi \\
     n \neq m
 \end{mathcols}
 \end{columns}
@@ -182,7 +182,7 @@ Ejemplo: $\{ \cos nx, \sen mx \}, n, m = 0, 1,  \cdots$ es ortogonal en $[-\pi, 
     Si $\{\phi_0, \cdots, \phi_n \}$ es un conjunto ortogonal de funciones en un intervalo $[a, b]$ respecto de la función de peso $w(x)$, entonces la aproximación por mínimos cuadrados para $f$ en $[a, b]$ respecto de $w$ es:
     \[P(x) = \sum_{j=0}^n a_j \phi_j(x) \]
     donde para cada $j = 0, 1, \cdots, n$:
-    \[ a_j = \frac{1}{\alpha_j} \langle f, \phi_j \rangle \]
+    \[ a_j = \frac{1}{\alpha_j} \langle f, \phi_j \rangle_w \]
 \end{theorem} \pause
 
 \cx
@@ -190,14 +190,14 @@ Ejemplo: $\{ \cos nx, \sen mx \}, n, m = 0, 1,  \cdots$ es ortogonal en $[-\pi, 
     El conjunto de polinomios $\{\phi_0, \phi_1, \cdots, \phi_n\}$ definido de la siguiente forma es ortogonal en $[a, b]$ respecto de la función de peso $w(x)$:
     \[ \phi_0(x) \equiv 1, \; \phi_1(x) = x - B_1, \forall x \in [a, b] \]
     donde 
-    \[ B_1 = \frac{ \langle x \phi_0, \phi_0 \rangle} {\langle \phi_0, \phi_0 \rangle} \]
+    \[ B_1 = \frac{ \langle x \phi_0, \phi_0 \rangle_w} {\langle \phi_0, \phi_0 \rangle_w} \]
     y cuando $k \geq 2$:
     \[ \phi_k(x) = (x - B_k) \phi_{k-1}(x) - C_k \phi_{k-2}(x), \, \forall x \in [a, b] \]
     donde
     \begin{mathcols}
-        B_k &= \frac{ \langle x \phi_{k-1}, \phi_{k-1} \rangle } { \langle \phi_{k-1}, \phi_{k-1} \rangle } 
+        B_k &= \frac{ \langle x \phi_{k-1}, \phi_{k-1} \rangle_w } { \langle \phi_{k-1}, \phi_{k-1} \rangle_w } 
         \changecol
-        C_k = \frac{ \langle x \phi_{k-1}, \phi_{k-2} \rangle }{\langle \phi_{k-2}, \phi_{k-2} \rangle }
+        C_k = \frac{ \langle x \phi_{k-1}, \phi_{k-2} \rangle_w }{\langle \phi_{k-2}, \phi_{k-2} \rangle_w }
     \end{mathcols} 
 \end{theorem}
 \centering {\small (Proceso de Gram-Schmidt)}
@@ -305,18 +305,43 @@ Para $n \neq m$:
 
 Entonces:
 \begin{align*}
-    \langle T_n, T_m \rangle &= \frac{1}{2} \int_0^{\pi} \cos[(n+m) \theta] \, d\theta \\
+    \langle T_n, T_m \rangle_w &= \frac{1}{2} \int_0^{\pi} \cos[(n+m) \theta] \, d\theta \\
       &+\frac{1}{2} \int_0^{\pi} \cos[(n-m) \theta] \, d\theta \\
       &= \left[ \frac{\sen[(n+m) \theta]}{2(n+m)} + \frac{\sen[(n-m) \theta]}{2(n-m)} \right]_0^{\pi}  \\
       &= 0
 \end{align*}
 y
-\[ \langle T_n, T_n \rangle =  \frac{\pi}{2}, \; n \geq 1 \]
+\[ \langle T_n, T_n \rangle_w = 
+    \begin{cases}
+    \frac{\pi}{2}, &n \geq 1 \\
+    \pi, &n = 0
+\end{cases} \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[c]
+\cx
+\textbf{Reducción de grado de polinomio:}
+
+\[ q(x) = x^5 - 4 x^4 + x^3 - x - 3 \]
+
+Aproximación por:
+\[ P_4(x) = c_0 + c_1 T_1(x) + c_2 T_2(x) + c_3 T_3(x) + c_4 T_4(x) \]
+donde
+\[ c_j = \frac{\langle q, T_j \rangle_w}{\langle T_j, T_j \rangle_w} \] \pause
+
+\textbf{Resultado:} ver \texttt{code/plot-07.py}.
+\[ P(x) = - 4.0 x^4 + 2.25 x^3 - 1.31 x - 3.0 \]
+
+\cx
+\begin{center}
+    \includegraphics[height=1.0\textheight]{figs/fig-07.pdf}
+\end{center}
 
 
 \end{columns}
 \end{frame}
-
 
 
 %% =======================
@@ -325,6 +350,8 @@ y
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}
 \begin{itemize}
     \item \fullcite{burden2017}. Capítulo 8.
+    \item \fullcite{salgado2023}. Capítulo 11.
+    \item \fullcite{quarteroni2000}. Capítulo 10.
     \item \fullcite{kreyszig2011}. Capítulo 25.9.
 \end{itemize}
 \end{frame}
