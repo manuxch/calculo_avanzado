@@ -57,4 +57,4 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### Ajustes por mínimos cuadrados
 - Clase 13: Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. [Clase](aproximacion/clase_13/clase_13.pdf), [problemas](aproximacion/clase_13/problemas_13.pdf).
-- Clase 14: Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. [Clase](), [problemas]().
+- Clase 14: Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. [Clase](aproximacion/clase_14/clase_14.pdf), [problemas](aproximacion/clase_14/problemas_14.pdf).
