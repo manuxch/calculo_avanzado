@@ -11,7 +11,7 @@ def modelo(x, a, b, c):
 rng = np.random.default_rng(13)
 x_datos = np.linspace(0, 4, 50)
 y = modelo(x_datos, 2.5, 1.3, 0.5)
-y_ruido = 0.2 * rng.normal(size=x_datos.size)
+y_ruido = 0.5 * rng.normal(size=x_datos.size)
 y_datos = y + y_ruido
 
 popt, pcov = curve_fit(modelo, x_datos, y_datos)

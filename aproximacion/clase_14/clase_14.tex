@@ -81,7 +81,7 @@ a_0 + \frac{1}{2} a_1 + \frac{1}{3} a_2 &= \frac{2}{\pi} \\
 \begin{itemize}
 \item matriz de Hilbert
 \begin{align*}
-    H_{ij} &= \int_a^b x^{j+k+1} \, dx = \frac{b^{j+k+1} - a^{j+k+1}}{j + k + 1} \\
+    H_{ij} &= \int_a^b x^{j+k} \, dx = \frac{b^{j+k+1} - a^{j+k+1}}{j + k + 1} \\
     \bm{H} &= \begin{bmatrix}
         1 & \frac{1}{2} & \frac{1}{3} \\
         \frac{1}{2}& \frac{1}{3} & \frac{1}{4} \\
@@ -100,7 +100,7 @@ entonces $c_0 = c_1 = \cdots = c_n = 0$. De lo contrario, se dice que el conjunt
 \end{definition}  \pause
 
 \begin{theorem}[Polinomios LI]
-    Si para cada $j = 0, 1, \cdots, n$, $\phi_j(x)$ es un polinomio de grado $j$, entonces el conjunto $\{ \phi_o, \cdots, \phi_n \}$ es LI en cualquier intervalo $[a, b]$.
+    Si para cada $j = 0, 1, \cdots, n$, $\phi_j(x)$ es un polinomio de grado $j$, entonces el conjunto $\{ \phi_0, \cdots, \phi_n \}$ es LI en cualquier intervalo $[a, b]$.
 \end{theorem}
 
 \end{columns}
@@ -264,7 +264,7 @@ T_{n+1}(\theta) &= \cos(n+1) \theta = \cos \theta \cos(n \theta) - \sen \theta \
 T_{n-1}(\theta) &= \cos(n-1) \theta =  \cos \theta \cos(n \theta) + \sen \theta \sen (n \theta) 
 \end{align*}
 Sumando: 
-\[ T_{n+1} = 2x T_n(x) - T_{n-1}(x) \] \pause
+\[ T_{n+1}(\theta) = 2 \cos \theta \cos(n \theta) - T_{n-1}(\theta) \] \pause
 
 \cx
 Regresando a $x = \cos \theta$, para $n \geq 1$:
