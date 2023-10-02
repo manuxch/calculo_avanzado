@@ -542,6 +542,21 @@ En todos los casos: si $a_{ii} \ne 0 \mapsto$ no intercambiar filas. \medskip
 \framebox[1.1\width]{\alert{Nota:} en matemática ``$x=0,\, x\neq 0$'', en \textit{mundo real} ``$|x|<\varepsilon, \, |x| > \varepsilon$''.}                                                                        \end{center}
 \end{frame}
 
+\section{Ejemplos de código}
+\begin{frame}[containsverbatim,fragile]{Ejemplo C++11} 
+ \begin{columns}[c]
+  \cx
+  \cppcode[firstline=1]{./code/sislin.cpp}
+  \cx
+  Compilación:
+  \begin{shell}
+$ g++ sislin.cpp -o sislin -O3 -larmadillo
+  \end{shell}
+\end{columns}
+\end{frame}
+
+
+
 \begin{frame}[fragile]
 \begin{columns}[c]
 \cx

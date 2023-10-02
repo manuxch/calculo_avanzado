@@ -1,0 +1,129 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../utils/preamble}
+\addbibresource{../utils/refs.bib}
+
+\title{Resolución de problemas de valor inicial}
+\subtitle{}
+
+%%%%
+% Bibliografía
+%%%%
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.45}
+\textbf{Problema de valor inicial:}
+\vspace{1em}
+
+\[ \begin{system}
+    y'(t) = f[t, y(t)], \quad t_0 \leq t \leq T \\
+    y(t_0) = y_0
+\end{system} \] \pause 
+\vspace{1em}
+\begin{definition}[Condición de Lipschitz]
+    Una función $f(t, y)$ satisface una \textbf{condición de Lipschitz} en la variable $y$ en un conjunto $D \in \R^2$ si existe una constante $L > 0$ tal que 
+    \[ \abs{f(t, y_1) - f(t, y_2)} \leq L \abs{y_1 - y_2} \]
+    siempre que $(t, y_1)$ y $(t, y_2)$ estén en $D$. La constante $L$ se llama \textbf{constante de Lipschitz} para $f$.
+\end{definition}
+
+\cw{0.45}
+\textbf{Ejemplo:} mostrar que $f(t, y) = t \abs{y}$ satisface una condición de Lipschitz en el intevalo $D = \{ (t, y) \, | \, 1 \leq t \leq2 \text{ y } -3 \leq y \leq 4\}$:
+
+Para cada par de puntos $(t, y_1)$ y $(t, y_2)$ en $D$, tenemos:
+\begin{align*}
+    \abs{f(t, y_1) - f(t, y_2)} &= \abs{t \abs{y_1} - t \abs{y_2}} \\
+                                &= \abs{t} \abs{\abs{y_1} - \abs{y_2}} \\
+                                &\leq 2 \abs{y_1 - y_2}
+\end{align*}
+$f$ satisface una condición de Lipschitz sobre $D$ con $L = 2$ (menor valor posible). Por ejemplo:
+\[ \abs{f(2, 1) - f(2, 0)} = \abs{2 - 0} = 2 \abs{1 - 0} \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\cx 
+\begin{definition}[Conjunto convexo]
+    Un conjunto $D \in \R^2$ se dice que es \textbf{convexo} si, dados $(t_1, y_1)$ y $(t_2, y_2)$ pertenecientes a $D$, entonces
+    \[ [(1 - \lambda) t_1 + \lambda t_2, (1 - \lambda) y_1 + \lambda y_2] \in D \;  \forall \lambda \in [0, 1] \]
+\end{definition}
+\begin{center}
+    \includegraphics[width=1.0\textwidth]{figs/fig-01.pdf}
+\end{center}
+
+\cx 
+\begin{theorem}[]
+Sea $f(t, y)$ definida en un conjunto convexo $D \in \R^2$. Si existe una constante $L > 0$ tal que
+\[ \abs{ \frac{\partial f(t, y)}{\partial y} } \leq L, \; \forall (t, y) \in D \]
+entonce $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$ con constante de Lipschitz $L$.
+\end{theorem}
+
+\begin{theorem}[]
+    Sea $D = \{(t, y) \,|\, t_0 \leq t \leq T \text{ y } -\infty < y < \infty \}$, y $f(t, y)$ continua en $D$. Si $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$, entonces el problema de valor inicial:
+    \[ \begin{system} y'(t) = f(t, y), \; t_0 \leq T \leq b \\  y(t_0) = y_0 \end{system} \]
+
+    tiene una solución única $y(t)$ para $t_0 \leq t \leq T$.
+\end{theorem}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+%En el ámbito del cálculo numérico, la expresión "well-posed problems" se traduce generalmente como "problemas bien planteados" o "problemas bien formulados". Un problema bien planteado en este contexto se refiere a un problema matemático que cumple con ciertas propiedades fundamentales que garantizan la existencia, unicidad y estabilidad de la solución. Estas propiedades son:
+
+%1. Existencia: Significa que el problema tiene al menos una solución.
+
+%2. Unicidad: Significa que el problema tiene una única solución, es decir, no tiene múltiples soluciones válidas.
+
+%3. Estabilidad: Significa que pequeñas variaciones en los datos de entrada del problema no generan cambios drásticos en la solución, lo que implica que la solución es sensible de manera continua a las perturbaciones en los datos iniciales.
+
+%Cuando un problema cumple con estas tres propiedades, se considera bien planteado en el contexto de cálculo numérico. Los problemas bien planteados son más adecuados para ser resueltos mediante métodos numéricos, ya que proporcionan una base sólida para obtener soluciones numéricas confiables y estables.
+\begin{columns}[t]
+\cx
+\textbf{Problema bien formulado:}
+\begin{itemize}
+    \item Existencia: el problema tiene al menos una solución.
+    \item Unicidad: el problema tiene solución única.
+    \item Estabilidad: pequeñas variaciones en los datos de entrada no generan grandes cambios en la solución. 
+\end{itemize} \pause
+
+El problema de valor inicial:
+\[ \begin{system} y'(t) = f(t, y), \; t_0 \leq t \leq T \\ y(t_0) = y_0 \end{system} \]
+está bien formulado si:
+\begin{itemize}
+    \item Existe una solución única $y(t)$, y
+    \item Existen constantes $\varepsilon_0 > 0$ y $k > 0$ tal que para cada $0 < \varepsilon < \varepsilon_0$, siempre que $\delta(t)$ sea continua con $\abs{\delta(t)} < \varepsilon, \; \forall t \in [t_0, T]$, y cuando $\abs{\delta_0} < \varepsilon$, el problema de valor inicial:
+\end{itemize}
+
+\cx
+        \[ \begin{system} z'(t) = f(t, z) + \delta (t), \; t_0 \leq t \leq T \\ z(t_0) = y_0 + \delta_0 \end{system}\]
+tiene una solución única que satisface
+\[ \abs{z(t) - y(t)} < k \varepsilon, \; \forall t \in [t_0, T] \]
+
+\begin{theorem}
+Sea $D = \{(t, y) \,|\, t_0 \leq t \leq T \text{ y } -\infty < y < \infty \}$. Si $f$ es continua y satisface una condición de Lipschitz en la variable $y$ sobre el conjunto $D$, el problema de valor inicial:
+\[ \begin{system} y'(t) = f(t, y), \; t_0 \leq t \leq T \\ y(t_0) = y_0 \end{system} \] 
+está bien formulado.
+\end{theorem}
+
+\end{columns}
+\end{frame}
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+    \item \fullcite{burden2017}. Capítulo 6.
+    \item \fullcite{strang2006}. Capítulo 7.
+    \item \fullcite{salgado2023}. Capítulo 3.
+    \item \fullcite{quarteroni2000}. Capítulo 3.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
