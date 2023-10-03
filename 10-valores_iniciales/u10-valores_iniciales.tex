@@ -11,6 +11,8 @@
 
 %%%%
 % Bibliografía
+% Burden y Faires
+% Mathews y Fink
 %%%%
 
 \begin{document}
@@ -111,7 +113,42 @@ Sea $D = \{(t, y) \,|\, t_0 \leq t \leq T \text{ y } -\infty < y < \infty \}$. S
 \[ \begin{system} y'(t) = f(t, y), \; t_0 \leq t \leq T \\ y(t_0) = y_0 \end{system} \] 
 está bien formulado.
 \end{theorem}
+\end{columns}
+\end{frame}
 
+\begin{frame}
+\begin{columns}[t]
+\vspace{1em}
+
+\cx
+\textbf{Serie de Taylor}: $f \in C^{(\infty)}$
+ \begin{multline*} f(t) = f(t_0) + \frac{f'(t_0)}{1!} (t - t_0) + \frac{f''(t_0)}{2!} (t - t_0)^2 \\ + \frac{f^{(3)}(t_0)}{3!} (t - t_0)^3 + \cdots \end{multline*}   \pause
+ \vspace{-2em}
+ \begin{theorem}[Teorema de Taylor]
+     Sea $k \geq 1$ un entero y $f: \R \mapsto \R$ $k$ veces diferenciable en $t_0 \in \R$. Entonces existe $h_k : \R \mapsto \R$ tal que: \vspace{-1em}
+ \begin{multline*} f(t) = f(t_0) + \frac{f'(t_0)}{1!} (t - t_0) + \frac{f''(t_0)}{2!} (t - t_0)^2 \\ + \frac{f^{(3)}(t_0)}{3!} (t - t_0)^3 + \dots + \frac{f^{(k)}(t_0)}{k!} (t - t_0)^k \\+ h_k(t) (t-t_0)^k \end{multline*}
+ y 
+ \[ \lim_{t \to t_0} h_k(t) = 0 \]
+\end{theorem}
+\pause
+
+\cx 
+\textbf{Forma de Lagrange para el resto:} Sea $f: \R \to \R$ $k+1$ veces diferenciable en $(t_0, t)$ con $f^{(k)}$ continua en ${t_0, t}$:
+\[ R_k(t) = \frac{f^{(k+1)}(\tau)}{(k+1)!} (t - t_0)^{k+1} \]
+para $t_0 \leq \tau \leq t$.
+\vspace{1em}
+
+\textbf{Método de Euler:}
+$h = t_1 - t_0, y'(t) = f(t, y)$
+\begin{align*}
+    y_1 = y(t_1) &= y(t_0) + y'(t_0) (t_1 - -t_0) + \frac{y''(\tau)}{2} (t_1 - t_0)^2 \\
+                 &= y_0 + h f[t_0, y(t_0, y_0)] + y''(\tau) \frac{h^2}{2}
+\end{align*}
+\begin{itemize}
+\item Aproximación: $y_1 = y_0 + h f(t_0, y_0)$
+\item Error local: $\bigO(h^2)$
+\item Error global: $\bigO(h)$
+\end{itemize}
 \end{columns}
 \end{frame}
 
