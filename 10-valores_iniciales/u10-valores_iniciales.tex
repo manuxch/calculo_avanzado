@@ -152,13 +152,180 @@ $h = t_1 - t_0, y'(t) = f(t, y)$
 \end{columns}
 \end{frame}
 
+\begin{frame}
+    \textbf{Método de Taylor:} $y$ tiene $n+1$ derivadas continuas en $[t_0, T]$, expansión de Taylor alrededor de $t_i$:
+    \[ y(t) = y_0 + y'_i + \frac{y''_i}{2}(t-t_i)^2 + \cdots + \frac{y^{(n)}_i}{n!} (t-t_i)^n + \frac{y^{(n+1)}(\tau)}{(n+1)!} (t-t_i)^{n+1} \]
+\begin{align*}
+    y'_i &= f(t_i, y_i) \\
+    y''_i &= \left. \frac{d}{dt} f(t, y) \right|_{t = t_i} = \left. \left(\frac{\partial f}{\partial t} + \frac{\partial f}{\partial y} f \right) \right|_{t = t_i} \\
+    y'''_i &= \left. \frac{d^2}{dt^2} f(t, y) \right|_{t = t_i} = \left. \left( \frac{\partial^2f}{\partial t^2} + 2 f \frac{\partial^2 f}{\partial t \partial y} + \frac{\partial^2 f}{\partial y^2} f^2 + \frac{\partial f}{\partial y} \frac{\partial f}{\partial t} + \left(\frac{\partial f}{\partial y} \right)^2 f \right) \right|_{t=t_i}
+\end{align*}
+Evaluando en $t=t_{i+1}$, descartando el resto y haciendo $h = t_{i+1} - t_i$:
+\[ y_{i+1} = y_i + h f(t_i, y_i) + \frac{h^2}{2} \left. \frac{d}{dt} f(t, y) \right|_{(t_i, y_i)} + \cdots + \frac{h^n}{n!} \left. \frac{d^{n-1}}{dt^{n-1}} f(t, y) \right|_{(t_i, y_i)} \] 
+        
+        {\centering \alert{Nota:} el método de Euler es el de Taylor con $n = 1$. }
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cx
+\textbf{Runge-Kutta de segundo orden}
+\[
+    \begin{system}
+        y' = f(t, y), \; t_0 \leq t \leq T \\
+        y(t_0) = y_0
+    \end{system}
+\]
+\[ y_{n+1} = y_n + \int_{t_n}^{t_{n+1}} f(t, y) \, dt \]
+Regla del trapecio:
+\[ \int_{t_n}^{t_{n+1}} f(t, y) \, dt \simeq \frac{h}{2} [f(t_n, y_n) + f(t_{n+1}, y_{n+1})] \] 
+Aproximamos:
+\begin{align*}
+    y_{n+1} \approx \lbar{y}_{n+1} &= y_n + h f(t_n, y_n) \\
+    y_{n+1} &= y_n + \frac{h}{2} [f(t_n, y_n) + f(t_{n+1},\lbar{y}_{n+1})]
+\end{align*}
+
+\cx
+Forma canónica:
+\begin{align*}
+    k_1 &= hf(t_n, y_n) \\
+    k_2 &= h f(t_{n+1}, y_n + k_1) \\
+    y_{n+1} &= y_n + \frac{1}{2} (k_1 + k_2)
+\end{align*}
+
+Errores:
+\begin{itemize}
+    \item Error local: $\bigO(h^3)$
+    \item Error global $\bigO(h^2)$
+\end{itemize}
+
+RK2 óptimo (minimiza coeficiente de error): %% VERIFICAR EXPRESIONES !!
+\begin{align*}
+    k_1 &= \frac{2}{3} h f(t_i, y_i) \\
+    k_2 &= \frac{3}{4} h f(t_i + \tfrac{2h}{3}, k_1) \\
+    y_{n+1} &= y_n + \frac{1}{4} \left(\tfrac{3}{2} k_1 + 4 k_2\right)
+\end{align*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.4}
+\textbf{Runge-Kutta de cuarto orden}
+\[
+    \begin{system}
+        y' = f(t, y), \; t_0 \leq t \leq T \\
+        y(t_0) = y_0
+    \end{system}
+\]
+\[ y_{n+1} = y_n + \frac{1}{6} (k_0 + 2 k_1 + 2 k_2 + k_3) \]
+con 
+\begin{align*}
+    k_0 &= h f(t_n, y_n) \\
+    k_1 &= h f \left(t_n + \frac{h}{2}, y_n + \frac{k_0}{2}\right) \\
+    k_2 &= h f \left(t_n + \frac{h}{2}, y_n + \frac{k_1}{2}\right) \\
+    k_3 &= h f \left(t_n + h, y_n + k_2  \right) 
+\end{align*} 
+Errores:
+\begin{itemize}
+    \item Error local: $\bigO(h^5)$
+    \item Error global $\bigO(h^4)$
+\end{itemize}
+
+\cw{0.55}
+\textbf{Nota:} %% Alex Gezerlis
+    Si $f(t, y) = f(t)$: regla de integración de Simpson
+        \[ y_{n+1} = y_n + \frac{h}{6} \left[ f(x_n) + 4 f(x_n + \tfrac{h}{2}) + f(t_{n+1}) \right] \] 
+
+\textbf{Sistema de ecuaciones:}
+\[ \begin{system} \bm{y}'(t) = \bm{f}(t, \bm{y}(t)) \\ \bm{y}(t_0) = \bm{y}_0 \end{system} \]
+\begin{columns}[t]
+\cw{0.4}
+Euler:
+\[ \bm{y}_{n+1} = \bm{y}_n + h \bm{f}(t_n, \bm{y}_n) \]
+
+\cw{0.6}
+RK4:
+\begin{align*}
+    \bm{k}_0 &= h \bm{f}(t_n, \bm{y}_n) \\
+    \bm{k}_1 &= h \bm{f} \left(t_n + \frac{h}{2}, \bm{y}_n + \frac{\bm{k}_0}{2}\right) \\
+        \bm{k}_2 &= h \bm{f} \left(t_n + \frac{h}{2}, \bm{y}_n + \frac{\bm{k}_1}{2}\right) \\
+        \bm{k}_3 &= h \bm{f} \left(t_n + h, \bm{y}_n + \bm{k}_2  \right)
+\end{align*} 
+\[ \bm{y}_{n+1} = \bm{y}_n + \frac{1}{6} (\bm{k}_0 + 2 \bm{k}_1 + 2 \bm{k}_2 + \bm{k}_3) \]
+
+\end{columns}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cw{0.45}
+\pycode[firstline=2, lastline=26]{code/euler.py}
+
+\cw{0.5}
+\begin{center}
+    \textbf{Euler hacia adelante}
+
+    \includegraphics[width=0.9\textwidth]{code/euler.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cw{0.45}
+\pycode[firstline=12, lastline=30]{code/rk4.py}
+
+\cw{0.5}
+\begin{center}
+    \textbf{Runge-Kutta de cuarto orden}
+
+    \includegraphics[width=0.9\textwidth]{code/rk4.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cw{0.45}
+\pycode[firstline=12]{code/ivp.py}
+
+\cw{0.5}
+\begin{center}
+    \textbf{\mip{solve\_ivp} de SciPy}
+
+    \includegraphics[width=0.9\textwidth]{code/solve_ivp.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cw{0.45}
+\pycode[]{code/lotka-volterra.py}
+
+\cw{0.5}
+\begin{center}
+    \textbf{Sistema Lotka-Volterra}
+    \begin{align*}
+        \frac{dx}{dt} &= \alpha x - \beta x y \\
+        \frac{dy}{dt} &= \delta x y - \gamma y \\
+        x(0) &= x_0, \, y(0) = y_0
+    \end{align*}
+
+    \includegraphics[width=0.9\textwidth]{code/lv.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
 \section*{Bibliografía}
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}
 \begin{itemize}
-    \item \fullcite{burden2017}. Capítulo 6.
-    \item \fullcite{strang2006}. Capítulo 7.
-    \item \fullcite{salgado2023}. Capítulo 3.
-    \item \fullcite{quarteroni2000}. Capítulo 3.
+    \item \fullcite{burden2017}. Capítulo 5.
+    \item \fullcite{bradie2006}. Capítulo 7.
+    \item \fullcite{gezerlis2020}. Capítulo 8.
+    \item \fullcite{kiusalaas2013}. Capítulo 7.
 \end{itemize}
 \end{frame}
 
