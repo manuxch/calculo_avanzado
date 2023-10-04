@@ -59,4 +59,4 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 - Clase 13: Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. [Clase](aproximacion/clase_13/clase_13.pdf), [problemas](aproximacion/clase_13/problemas_13.pdf).
 - Clase 14: Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. [Clase](aproximacion/clase_14/clase_14.pdf), [problemas](aproximacion/clase_14/problemas_14.pdf).
 ### Unidad 10: Resolución de problemas de valor inicial
-Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/u10-valores_iniciales.pdf).
+Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/u10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_u10.pdf).
