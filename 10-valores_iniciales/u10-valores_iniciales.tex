@@ -30,10 +30,10 @@
 \end{system} \] \pause 
 \vspace{1em}
 \begin{definition}[Condición de Lipschitz]
-    Una función $f(t, y)$ satisface una \textbf{condición de Lipschitz} en la variable $y$ en un conjunto $D \in \R^2$ si existe una constante $L > 0$ tal que 
+    Una función $f(t, y)$ satisface una \textbf{condición de Lipschitz} en la variable $y$, y en un conjunto $D \in \R^2$ si existe una constante $L > 0$ tal que 
     \[ \abs{f(t, y_1) - f(t, y_2)} \leq L \abs{y_1 - y_2} \]
     siempre que $(t, y_1)$ y $(t, y_2)$ estén en $D$. La constante $L$ se llama \textbf{constante de Lipschitz} para $f$.
-\end{definition}
+\end{definition} \pause
 
 \cw{0.45}
 \textbf{Ejemplo:} mostrar que $f(t, y) = t \abs{y}$ satisface una condición de Lipschitz en el intevalo $D = \{ (t, y) \, | \, 1 \leq t \leq2 \text{ y } -3 \leq y \leq 4\}$:
@@ -58,14 +58,14 @@ $f$ satisface una condición de Lipschitz sobre $D$ con $L = 2$ (menor valor pos
 \end{definition}
 \begin{center}
     \includegraphics[width=1.0\textwidth]{figs/fig-01.pdf}
-\end{center}
+\end{center} \pause
 
 \cx 
 \begin{theorem}[]
 Sea $f(t, y)$ definida en un conjunto convexo $D \in \R^2$. Si existe una constante $L > 0$ tal que
 \[ \abs{ \frac{\partial f(t, y)}{\partial y} } \leq L, \; \forall (t, y) \in D \]
 entonce $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$ con constante de Lipschitz $L$.
-\end{theorem}
+\end{theorem} \pause
 
 \begin{theorem}[]
     Sea $D = \{(t, y) \,|\, t_0 \leq t \leq T \text{ y } -\infty < y < \infty \}$, y $f(t, y)$ continua en $D$. Si $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$, entonces el problema de valor inicial:
@@ -100,7 +100,7 @@ El problema de valor inicial:
 está bien formulado si:
 \begin{itemize}
     \item Existe una solución única $y(t)$, y
-    \item Existen constantes $\varepsilon_0 > 0$ y $k > 0$ tal que para cada $0 < \varepsilon < \varepsilon_0$, siempre que $\delta(t)$ sea continua con $\abs{\delta(t)} < \varepsilon, \; \forall t \in [t_0, T]$, y cuando $\abs{\delta_0} < \varepsilon$, el problema de valor inicial:
+    \item Existen constantes $\varepsilon_0 > 0$ y $k > 0$ tales que para cada cualquier $\varepsilon \in(0, \varepsilon_0)$, siempre que $\delta(t)$ sea continua con $\abs{\delta(t)} < \varepsilon, \; \forall t \in [t_0, T]$, y cuando $\abs{\delta_0} < \varepsilon$, el problema de valor inicial:
 \end{itemize}
 
 \cx
@@ -119,7 +119,6 @@ está bien formulado.
 \begin{frame}
 \begin{columns}[t]
 \vspace{1em}
-
 \cx
 \textbf{Serie de Taylor}: $f \in C^{(\infty)}$
  \begin{multline*} f(t) = f(t_0) + \frac{f'(t_0)}{1!} (t - t_0) + \frac{f''(t_0)}{2!} (t - t_0)^2 \\ + \frac{f^{(3)}(t_0)}{3!} (t - t_0)^3 + \cdots \end{multline*}   \pause
@@ -135,13 +134,13 @@ está bien formulado.
 \cx 
 \textbf{Forma de Lagrange para el resto:} Sea $f: \R \to \R$ $k+1$ veces diferenciable en $(t_0, t)$ con $f^{(k)}$ continua en ${t_0, t}$:
 \[ R_k(t) = \frac{f^{(k+1)}(\tau)}{(k+1)!} (t - t_0)^{k+1} \]
-para $t_0 \leq \tau \leq t$.
+para $t_0 \leq \tau \leq t$. \pause
 \vspace{1em}
 
 \textbf{Método de Euler:}
 $h = t_1 - t_0, y'(t) = f(t, y)$
 \begin{align*}
-    y_1 = y(t_1) &= y(t_0) + y'(t_0) (t_1 - -t_0) + \frac{y''(\tau)}{2} (t_1 - t_0)^2 \\
+    y_1 = y(t_1) &= y(t_0) + y'(t_0) (t_1 -t_0) + \frac{y''(\tau)}{2} (t_1 - t_0)^2 \\
                  &= y_0 + h f[t_0, y(t_0, y_0)] + y''(\tau) \frac{h^2}{2}
 \end{align*}
 \begin{itemize}
@@ -154,7 +153,7 @@ $h = t_1 - t_0, y'(t) = f(t, y)$
 
 \begin{frame}
     \textbf{Método de Taylor:} $y$ tiene $n+1$ derivadas continuas en $[t_0, T]$, expansión de Taylor alrededor de $t_i$:
-    \[ y(t) = y_0 + y'_i + \frac{y''_i}{2}(t-t_i)^2 + \cdots + \frac{y^{(n)}_i}{n!} (t-t_i)^n + \frac{y^{(n+1)}(\tau)}{(n+1)!} (t-t_i)^{n+1} \]
+    \[ y(t) = y_0 + y'_i (t-t_i) + \frac{y''_i}{2}(t-t_i)^2 + \cdots + \frac{y^{(n)}_i}{n!} (t-t_i)^n + \frac{y^{(n+1)}(\tau)}{(n+1)!} (t-t_i)^{n+1} \]
 \begin{align*}
     y'_i &= f(t_i, y_i) \\
     y''_i &= \left. \frac{d}{dt} f(t, y) \right|_{t = t_i} = \left. \left(\frac{\partial f}{\partial t} + \frac{\partial f}{\partial y} f \right) \right|_{t = t_i} \\
@@ -234,8 +233,8 @@ Errores:
 
 \cw{0.55}
 \textbf{Nota:} %% Alex Gezerlis
-    Si $f(t, y) = f(t)$: regla de integración de Simpson
-        \[ y_{n+1} = y_n + \frac{h}{6} \left[ f(x_n) + 4 f(x_n + \tfrac{h}{2}) + f(t_{n+1}) \right] \] 
+    Si $f(t, y) = f(t)$: integración de $1/3$ de Simpson
+        \[ y_{n+1} = y_n + \frac{h}{6} \left[ f(x_n) + 4 f(x_n + \tfrac{h}{2}) + f(t_{n+1}) \right] \]  \pause
 
 \textbf{Sistema de ecuaciones:}
 \[ \begin{system} \bm{y}'(t) = \bm{f}(t, \bm{y}(t)) \\ \bm{y}(t_0) = \bm{y}_0 \end{system} \]
@@ -293,7 +292,7 @@ RK4:
 
 \cw{0.5}
 \begin{center}
-    \textbf{\mip{solve\_ivp} de SciPy}
+    \textbf{\texttt{solve\_ivp} de SciPy}
 
     \includegraphics[width=0.9\textwidth]{code/solve_ivp.pdf}
 \end{center}
@@ -303,7 +302,7 @@ RK4:
 \begin{frame}[fragile]
 \begin{columns}
 \cw{0.45}
-\pycode[]{code/lotka-volterra.py}
+\pycode{code/lotka-volterra.py}
 
 \cw{0.5}
 \begin{center}
