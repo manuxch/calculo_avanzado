@@ -1,0 +1,276 @@
+\documentclass[9pt, aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\setbeamertemplate{itemize items}{\faAngleRight}
+
+\input{../utils/preamble}
+\addbibresource{../utils/refs.bib}
+
+\title{Resolución de problemas de contorno}
+\subtitle{}
+
+%%%%
+% Bibliografía
+% Bradie
+% Kiusalaas
+% Epperson
+% Mathews Fink: cond. de existencia y unicidad pg 539
+% Burden Faires 
+%%%%
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.45}
+\textbf{Problema de contorno}
+\begin{equation*}
+    \begin{split}
+        y'' = f(x, y, y'), \; a \leq x \leq b \\
+        \alpha_1 y(a) + \alpha_2 y'(a) = \alpha \\
+        \beta_1 y(b) + \beta_2 y'(b) = \beta
+    \end{split}
+\label{eq:pc}
+\end{equation*}
+
+Si $f$ es de la forma
+\[ f(x, y, y') = p(x) y' + q(x) y + r(x) \]
+el problema de contorno se llama \textbf{lineal}, de otro modo es \textbf{no lineal}.
+\pause
+\vspace{1em}
+
+\textbf{Condiciones de borde o frontera:}
+\begin{itemize}
+    \item Dirichlet: $\alpha_2 = \beta_2 = 0$
+    \item Neumann: $\alpha_1 = \beta_1 = 0$
+    \item Robin: combinación lineal de valores de la función y sus derivadas en la frontera
+\end{itemize}
+\pause 
+
+\cw{0.45}
+\begin{theorem}[Existencia y unicidad]
+Sea $f(x, y, y') \in C$ en el conjunto
+\[ \begin{split} D = \{(x, y, y') \, | \, a \leq x \leq b, -\infty \leq y \leq \infty, \\ -\infty \leq y' \leq \infty \} \end{split} \]
+y que las derivadas parciales $f_y$ y $f_{y'}$ son también continuas en $D$. Si
+\begin{itemize}
+    \item $f_y(x, y, y') > 0, \, \forall (x, y, y') \in D$ y 
+    \item existe una constante $M$ tal que
+        \[ \abs{f_{y'}(x, y, y') } \leq M, \, \forall (x, y, y') \in D \]
+\end{itemize}
+entonces el problema con valores de contorno tiene una solución.
+\end{theorem}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\cx
+\textbf{Ejemplo:} mostrar que 
+\[ \begin{split}
+    y'' + e^{-xy} + \sen y' = 0, \, 1 \leq x \leq 2 \\
+    y(1) = y(2) = 0
+\end{split}\]
+tiene una solución única.
+
+\textbf{Solución:} tenemos
+\[ f(x, y, y') = -e^{-xy} - \sen y' \]
+y para todas las $x$ en $[1, 2]$:
+\[ \begin{split}
+    f_y(x, y, y') = x e^{-xy} > 0 \txt{y} \\
+    \abs{f_{y'}(x, y, y')} = \abs{-\cos y'} \leq 1
+\end{split}\]
+Por lo que el problema tiene solución única. \pause
+
+\cx
+\begin{theorem}[Problema lineal (corolario)]
+Si el problema lineal
+\[ \begin{split}
+    y'' = p(x) y' + q(x) y + r(x), \, a \leq x \leq b \\
+y(a) = \alpha,\; y(b) = \beta 
+  \end{split}\]
+satisface
+\begin{itemize}
+    \item $p(x)$, $q(x)$ y $r(x)$ son continuas en $[a, b]$
+    \item $q(x) > 0$ en $[a, b]$
+\end{itemize}
+Entonces el problema con valor en la frontera tiene una única solución.
+\end{theorem} \pause
+\vspace{1em}
+
+\textbf{Métodos de solución:}
+\begin{itemize}
+    \item Método de disparo
+    \item Diferencias finitas
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[t]
+\cx
+\textbf{Método de disparo:} transformamos el problema de condiciones de contorno (Dirichlet):
+\[ \begin{split} y'' = f(x, y, y'), \, a \leq x \leq b \\ y(a) = \alpha,\; y(b) = \beta \end{split} \]
+en un problema de valor inicial:
+\[ \begin{split} y'' = f(x, y, y'), \, a \leq x \leq b \\ y(a) = \alpha,\; y'(a) = r_0 \end{split} \]
+donde $r_0$ es un parámetro inicial: $y(b) \mapsto y(b, r_0)$ 
+
+Resolvemos el problema de valor inicial con algún método conocido (por ejemplo Runge-Kutta de cuarto orden).
+
+Si $y(b, r_0)$ no está cerca de $\beta$, corregimos la aproximación con $r_1, r_2, \ldots$ hasta que 
+\[
+    \abs{y(b, r_k) - \beta} < \varepsilon
+\]
+
+\cx
+Si $f(x, y, y')$ satisface las condiciones de existencia y unicidad, el problema:
+\[ y(b, r) - \beta = 0 \]
+es una ecuación no lineal en la variable $r$. \pause
+
+\textbf{Procedimiento:}
+\begin{itemize}
+    \item Seleccionamos aproximaciones iniciales $r_0$ y $r_1$ que \alert{encierren} la solución: 
+        \[ y(b, r_0) < \beta < f(b, r_1) \]
+    \item Calculamos la raíz $r^*$ de
+        \[ f_{\text{residuo}}(r) = f(b, r) - \beta \]
+        con el método de bisección.
+    \item Resolvemos el problema de valor inicial con 
+        \[y(a) = \alpha,\; y'(a) = r^{*} \]
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[t]
+\cw{0.4}
+\textbf{Ejemplo:}
+\[ \begin{split} y'' = 12 x - 4 y, \; 0 \leq x \leq 1 \\ y(0) = 1,\; y(1) = 3.5 \end{split} \]
+Exploramos la solución para los valores $y'(0) = r_1 = 4$ y $y'(0) = r_2 = 6$:
+\pycode[firstline=9, lastline=13]{code/disparo.py}
+\cw{0.55}
+\pycode[firstline=22, lastline=33]{code/disparo.py}
+\end{columns}
+\begin{center}
+   \includegraphics[height=0.5\textheight]{code/disparo-pre.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\cw{0.45}
+\pycode[firstline=15, lastline=20]{code/disparo.py}
+\pycode[firstline=36, lastline=42]{code/disparo.py}
+
+\begin{shell}
+$ ./disparo.py 
+      converged: True
+           flag: 'converged'
+ function_calls: 42
+     iterations: 40
+           root: 5.016654027140248
+\end{shell}
+\pause
+
+\cw{0.45}
+\begin{center}
+   \includegraphics[width=0.9\textwidth]{code/disparo.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+%\begin{columns}[t]
+%\cx
+\textbf{Diferencias finitas:} aproximación de derivadas por diferencias finitas. Problema lineal con valores de contorno:
+\begin{equation} y'' = p(x) y' + q(x) y + r(x), \; a \leq x \leq b, \; y(a) = \alpha, \, y(b) = \beta \label{eq:plineal} \end{equation} \pause
+\vspace{-1.0em}
+
+\textbf{Malla:} dividimos $[a, b]$ en $(N + 1)$ subintervalos:
+\begin{center}
+    \includegraphics[scale=1.0]{figs/grilla-1d.pdf}
+\end{center}
+con $h = (b-a)/(N+1)$, $x_i = a + ih, i = 0, 1, \ldots, N, N+1$. \pause
+
+Expansión de $y$: polinomio de Taylor, alrededor de $x_i$ evaluando en $x_{i+1}$ y $x_{i-1}$, con $y \in C^4[x_{i-1}, x_{i+1}]$:
+\begin{align*}
+    y(x_i+h) &= y(x_i) + h y'(x_i) + \frac{h^2}{2} y''(x_i) + \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} h^{(4)} y^{(4)}(\xi_i^+) \\
+    y(x_i-h) &= y(x_i) - h y'(x_i) + \frac{h^2}{2} y''(x_i) - \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} h^{(4)} y^{(4)}(\xi_i^-) 
+\end{align*}
+con $\xi_i^+ (x_i, x_i+h)$ y $\xi_i^- \in (x_i - h, x_i)$. Restando y sumando: \vspace{-0.5em}
+\begin{columns}
+\cw{0.6}
+\begin{equation}
+    \begin{split}
+    y'(x_i) &=\frac{1}{2h} [y(x_{i+1}) - y(x_{i-1})] - \frac{h^2}{6} y'''(\eta_i) \\
+y''(x_i) &= \frac{1}{h^2} [ y(x_{i+1}) - 2 y(x_i) + y(x_{i-1})] - \frac{h^2}{12} y^{(4)}(\xi_i)
+\end{split}
+\label{eq:diffin}
+\end{equation}
+\cw{0.3}
+con $\eta_i, \xi_i \in (x_{i-1}, x_{i+1})$.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+Reemplazando \eqref{eq:diffin} en \eqref{eq:plineal}:
+\[
+\frac{y(x_{i+1}) - 2 y(x_i) + y(x_{i-1})}{h^2} = p(x_{i}) \left[\frac{y(x_{i+1}) - y(x_{i-1})}{2h}\right] + q(x_i) y(x_i) + r(x_i) - \frac{h^2}{12}[2 p(x_i) y'''(\eta_i) - y^{(4)}] \]
+\pause
+
+$y(x_i) \mapsto y_i$, condiciones de borde $y_0 = \alpha, \, y_{N + 1} = \beta$, error de truncamiento $\bigO(h^2)$ $\mapsto$ sistema de ecuaciones lineales:
+\[ \left(\frac{-y_{i+1} + 2 y_i - y_{i-1}}{h^2}\right) + p(x_i) \left(\frac{y_{i+1} - y_{i-1}}{2 h}\right) + q(x_i) y_i = -r(x_i) \]
+para los puntos interiores de la malla $i = 1, 2, \ldots, N$. Reordenando:
+\[ -\left(1 + \frac{h}{2}p(x_i)\right) y_{i-1} + \left(2 + h^2 q(x_i)\right) y_i - \left(1 - \frac{h}{2} p(x_i)\right) y_{i+1} = -h^2 r(x_i) \]
+
+Sistema con matriz tridiagonal $N \mul N$:
+\[ \bm{A} \bm{y} = \bm{b} \]
+\end{frame}
+
+\begin{frame}
+    \[ \bm{A} = \begin{bmatrix}
+        2 + h^2 q(x_1) & -1 + \frac{h}{2} p(x_1) & & & & & \text{\Huge 0} \\
+        -1-\frac{h}{2} p(x_2) & 2 + h^2 q(x_2) & -1 +\frac{h}{2} p(x_2) & & & \\
+                              & -1-\frac{h}{2} p(x_3) & 2 + h^2 q(x_3) & -1 +\frac{h}{2} p(x_3)  & & \\
+                              & & & & \ddots  & & \\
+                              & & && & & -1 +\frac{h}{2} p(x_{N-1}) \\
+        \text{\Huge 0}              & & & & & -1 - \frac{h}{2} p(x_N) & 2 + h^2 q(x_N)
+    \end{bmatrix} \]
+    \[ \bm{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_{N-1} \\ y_N \end{bmatrix}, \quad 
+    \bm{b} = \begin{bmatrix} 
+        -h^2 r(x_1) + \left(1 + \frac{h}{2} p(x_1)\right) y_0 \\
+        -h^2 r(x_2) \\
+        \vdots \\
+    -h^2 r(x_{N-1}) \\
+    -h^2 r(x_n) + \left(1 - \frac{h}{2} p(x_N)\right) y_{N+1}
+\end{bmatrix} 
+    \]
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section*{Bibliografía}
+\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{itemize}
+    \item \fullcite{burden2017}. Capítulo 11.
+    \item \fullcite{bradie2006}. Capítulo 8.
+    \item \fullcite{kiusalaas2013}. Capítulo 8.
+    \item \fullcite{mathews2004}. Capítulo 9.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
