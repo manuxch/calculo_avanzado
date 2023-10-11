@@ -4,7 +4,7 @@
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
-\date{Unidad 10: Problemas de valores iniciales}
+\date{Unidad 11: Problemas de contorno}
 
 
 \begin{document}
@@ -27,8 +27,8 @@
 
 \begin{center}
 \begin{tabular}{r l}
-    \textbf{Práctica:} & Unidad 10 \\
- \textbf{Tema:} & Problemas de valores iniciales. \\
+    \textbf{Práctica:} & Unidad 11 \\
+ \textbf{Tema:} & Problemas de contorno. \\
  \textbf{Profesor Titular:} & Manuel Carlevaro \\
  \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
  \textbf{Ayudante de Primera:} & Lucas Basiuk 
@@ -36,56 +36,46 @@
 
 \vspace{1em}
 
-\begin{question} % James Epperson p. 5 pg 335 (solución pg 213)
-Para cada problema de valor inicial siguiente, determine la constante de Lipschitz $L$ en el dominio dado.
+\begin{question} % J Kiusalaas Example 8.1 pg 295
+Resolver mediante el método de disparo el siguiente problema con valores de contorno:
+\[ y'' + 3 y y' = 0, \quad y(0) = 0, \; y(2) = 1 \]
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.1 pg 304 Problema 1
+La integración numérica del problema de valor inicial:
+\[ y'' + y' -y = 0, \quad y(0) = 0, \; y'(0) = 1 \]
+conduce a $y(1) = 0.741028$. ¿Cuál es el valor de $y'(0)$ que daría como resultado $y(1) = 1$ asumiendo que el valor de $y(0)$ no cambia?
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.1 pg 304 Problemas 8 - 10
+Resuelva los siguientes problemas de contorno usando el método de disparo:
 \begin{enumerate}[a)]
-    \item $y' = 1 - 3y, y(0) = 0, D = \{(t, y) \, | \, -1 \leq t \leq 1; 0 \leq y \leq 2 \}$;
-    \item $y' = y(1-y), y(0) = 1/2, D = (-1, 1) \times (0, 2)$;
-    \item $y' = y^2, y(0) = 1, D = (-1, 1) \times (0, 2)$.
+    \item $y'' + (1 - 0.2 x) y^2 = 0, \; y(0) = 0, \, y(\pi/2) = 1$
+    \item $y'' + 2 y' + 3 y^2 = 0, \; y(0) = 0, \, y(2) = -1$
+    \item $y'' + \sen y + 1 = 0, \; y(0) = 0, \, y(\pi) = 0$
 \end{enumerate}
 \end{question}
 
-\begin{question} % James Epperson p. 1 pg 338 (solución pg 213)
-Use el método de Euler con $h = 1/4$ para calcular aproximadamente los valores de $y(1)$ para cada problema de valor inicial siguiente. Realizar los cálculos, sin un programa de computadora, para producir una tabla ordenada de pares $(t_k, y_k)$.
+\end{question}
+\begin{question} % J Kiusalaas Problem set 8.2 pg 317 Problemas 1 - 3
+Use aproximaciones en diferencias finitas de las derivadas para transformar los problemas con valores de contorno en ecuaciones simultáneas $\bm{A} \bm{y} = \bm{b}$.
 \begin{enumerate}[a)]
-    \item $y' = y(1-y), y(0) = 1/2$;
-    \item $t y' = y(\sen t), y(0) = 2$;
-    \item $y' = y(1 + e^{2 t}), y(0) = 1$;
-    \item $y' + 2 y = 1, y(0) = 2$.
+    \item $y'' = y + x^2,\; y(0) = 0, \, y(1) = 1$;
+    \item $y'' = e^{-x} y',\; y(0) = 1, \, y(1) = 0$;
+    \item $y'' = (2 + x) y,\; y(0) = 0, \, y'(1) = 5$;
 \end{enumerate}
 \end{question}
 
-
-\begin{question} % James Epperson p. 3 pg 338 (solución pg 214)
-Escriba un programa en Python que resuelva cada uno de los problemas de valor inicial del Ejercicio 2, utilizando el método de Euler con un paso $h = 1/16$.
-\end{question}
-
-
-\begin{question} % James Epperson p. 4 pg 338 (solución pg 213)
-Para cada uno de los problemas de valor inicial siguiente, aproxime la solución utilizando el método de Euler con una secuencia de pasos decreciente $h^{-1} = 2, 4, 8, \ldots$. Para los problemas en que se da la solución exacta, compare la precisión alcanzada en el intervalo $[0, 1]$ con la precisión teórica.
+\begin{question} % J Kiusalaas Problem set 8.2 pg 317 Problemas 6 - 10
+Resuelva los problemas de contorno siguiente mediante el método de diferencias finitas usando $N = 20$. Compare el resultado obtenido con la solución exacta cuando se indica.
 \begin{enumerate}[a)]
-    \item $y' + 4 y = 1, y(0) = 1; y(t) = \tfrac{1}{4}(3 e^{-4t} + 1)$;
-    \item $y'= -y \ln y, y(0) = 3; y(t) = e^{(\ln 3) e^{-t}}$;
-    \item $y' + y = \sen 4 \pi t, y(0) = 1/2$;
-    \item $y' + \sen y = 0, y(0) = 1$.
+    \item $y'' = xy,\; y(1) = 1.5, \, y(2) = 3$;
+    \item $y'' + 2 y' + y = 0,\; y(0) = 0, \, y(1) = 1$. Solución exacta: $y = x e^{1 - x}$.
+    \item $x^2 y'' + x y' + y = 0,\; y(1) = 0, \, y(2) = 0.638961$. Solución exacta: $y = \sen(\ln x)$.
+    \item $y'' = y^2 \sen y,\; y'(0) = 0, \, y(\pi) = 1$. 
+    \item $y'' + 2 y (2 x y' + y)= 0,\; y(0) = 1/2, \, y'(1) = -2/9$. Solución exacta: $y = (2 + x^2)^{-1}$.
 \end{enumerate}
 \end{question}
 
-
-\begin{question} % James Epperson p. 1 pg 365 (solución pg 225)
-Utilize el método de Runge-Kutta de segundo orden para resolver el Ejercicio 2.
-\end{question}
-
-\begin{question} % James Epperson p. 2 pg 365 (solución pg 226)
-Repita el Ejercicio anterior usando el método de Runge-Kutta de cuarto orden. Compare la precisión obtenida con los resultados generados con los métodos anteriores.
-\end{question}
-
-\begin{question} % James Epperson p. 4 pg 365 (solución pg 227)
-Escriba un programa en Python que resuelva los problemas con valores iniciales del Ejercicio 2 utilizando el método de Runge-Kutta de cuarto orden con $h = 1/16$. Compare los resultados obtenidos con los del Ejercicio 3.
-\end{question}
-
-\begin{question} % James Epperson p. 6 pg 365
-Repita el Ejercicio 4, pero utilizando ahora el método de Runge-Kutta de cuarto orden.
-\end{question}
 
 \end{document}
