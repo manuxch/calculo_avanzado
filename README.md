@@ -60,3 +60,6 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 - Clase 14: Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. [Clase](aproximacion/clase_14/clase_14.pdf), [problemas](aproximacion/clase_14/problemas_14.pdf).
 ### Unidad 10: Resolución de problemas de valor inicial
 Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/u10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_u10.pdf).
+
+### Unidad 11: Resolución de problemas con valores de contorno
+Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/u11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas_u11.pdf).
