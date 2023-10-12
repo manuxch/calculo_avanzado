@@ -193,8 +193,8 @@ con $h = (b-a)/N$, $x_i = a + ih, i = 0, 1, \ldots, N-1, N$. \pause
 
 Expansión de $y$: polinomio de Taylor, alrededor de $x_i$ evaluando en $x_{i+1}$ y $x_{i-1}$, con $y \in C^4[x_{i-1}, x_{i+1}]$:
 \begin{align*}
-    y(x_i+h) &= y(x_i) + h y'(x_i) + \frac{h^2}{2} y''(x_i) + \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} h^{(4)} y^{(4)}(\xi_i^+) \\
-    y(x_i-h) &= y(x_i) - h y'(x_i) + \frac{h^2}{2} y''(x_i) - \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} h^{(4)} y^{(4)}(\xi_i^-) 
+    y(x_i+h) &= y(x_i) + h y'(x_i) + \frac{h^2}{2} y''(x_i) + \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} y^{(4)}(\xi_i^+) \\
+    y(x_i-h) &= y(x_i) - h y'(x_i) + \frac{h^2}{2} y''(x_i) - \frac{h^3}{6} y'''(x_i) + \frac{h^4}{24} y^{(4)}(\xi_i^-) 
 \end{align*}
 con $\xi_i^+ (x_i, x_i+h)$ y $\xi_i^- \in (x_i - h, x_i)$. Restando y sumando: \vspace{-0.5em}
 \begin{columns}
@@ -219,9 +219,9 @@ Reemplazando \eqref{eq:diffin} en \eqref{eq:plineal}:
 \pause
 
 Condiciones de borde $y_0 = \alpha, \, y_{N + 1} = \beta$, error de truncamiento $\bigO(h^2)$ $\mapsto$ sistema de ecuaciones lineales:
-\[ \left(\frac{y_{i+1} - 2 y_i + y_{i-1}}{h^2}\right) + p(x_i) \left(\frac{y_{i+1} - y_{i-1}}{2 h}\right) + q(x_i) y_i = -r(x_i) \]
+\[ \left(\frac{-y_{i+1} + 2 y_i - y_{i-1}}{h^2}\right) + p(x_i) \left(\frac{y_{i+1} - y_{i-1}}{2 h}\right) + q(x_i) y_i = -r(x_i) \]
 para los puntos interiores de la malla $i = 1, 2, \ldots, N - 1$. Reordenando:
-\[\left(-1 - \frac{h}{2}p_i\right) y_{i-1} + \left(2 + h^2 q_i \right) y_i + \left(-1 + \frac{h}{2} p_i \right) y_{i+1} = -h^2 r(x_i) \]
+\[ -\left(1 + \frac{h}{2}p_i\right) y_{i-1} + \left(2 + h^2 q_i \right) y_i - \left(1 - \frac{h}{2} p_i \right) y_{i+1} = -h^2 r(x_i) \]
 \begin{columns}[t]
 \cx
 Sistema con matriz tridiagonal $(N - 1) \mul (N - 1)$:
