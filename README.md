@@ -63,3 +63,6 @@ Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Ru
 
 ### Unidad 11: Resolución de problemas con valores de contorno
 Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/u11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas_u11.pdf).
+
+### Unidad 12: Ecuaciones en derivadas parciales
+Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/u12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas_u12.pdf). 
