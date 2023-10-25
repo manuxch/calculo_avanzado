@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+
+\input{../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Unidad 12: Ecuaciones en derivadas parciales}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & Unidad 11 \\
+ \textbf{Tema:} & Ecuaciones en derivadas parciales. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+ \textbf{Ayudante de Primera:} & Lucas Basiuk 
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % Burden y Faires, Numerical Analysis, Ex.Set 12.1 p1 pg 723 
+Aproxime utilizando diferencias finitas la ecuación en derivadas parciales elíptica
+\[ \frac{\partial^2 u}{\partial x^2} +  \frac{\partial^2 u}{\partial y^2} = 4, \quad 0 < x < 1, \; 0 < y < 2 \]
+con las condiciones de frontera:
+\begin{align*}
+    u(x, 0) &= x^2,\; u(x, 2) = (x - 2)^2,\; 0 \leq x \leq 1 \\
+    u(0, y) &= y^2,\; u(1, y) = (y - 1)^2,\; 0 \leq y \leq 2 \\
+\end{align*}
+Use $h = k = 1/2$ y compare los resultados con la solución exacta $u(x, y) = (x - y)^2$.
+\end{question}
+
+\begin{question} % Burden y Faires, Numerical Analysis, Ex.Set 12.1 p2 pg 723 
+Aproxime utilizando diferencias finitas la ecuación en derivadas parciales elíptica
+\[ \frac{\partial^2 u}{\partial x^2} +  \frac{\partial^2 u}{\partial y^2} = 0, \quad 1 < x < 2, \; 0 < y < 1 \]
+con las condiciones de frontera:
+\begin{align*}
+    u(x, 0) &= 2 \ln x,\; u(x, 1) = \ln(x^2 + 1),\; 1 \leq x \leq 2 \\
+    u(1, y) &= \ln(y^2 + 1),\; u(2, y) = \ln(y^2 + 4),\; 0 \leq y \leq 1 \\
+\end{align*}
+Use $h = k = 1/3$ y compare los resultados con la solución exacta $u(x, y) = \ln(x^2 + y^2)$.
+\end{question}
+
+\begin{question} % Burden y Faires, Numerical Analysis, Ex.Set 12.2 p1 pg 723 
+Aproxime utilizando diferencias finitas hacia adelante la ecuación en derivadas parciales parabólica
+\[ \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = 0, \quad 0 < x < 2, \; 0 < t < T \]
+con las condiciones de frontera:
+\begin{equation*}
+    u(0, t) = u(2, t) = 0,\;0 < t; \; u(x, 0) = \sen \frac{\pi}{2} x, \; 0 \leq x \leq 2 
+\end{equation*}
+Use $n = 2$ (puntos en $x$), $T = 0.1$ y $m = 4$ (divisiones de $t$). Compare los resultados con la solución exacta $u(x, t) = \exp[-(\pi^2/4) t] \sen(\pi x/ 2)$.
+\end{question}
+
+
+\end{document}
