@@ -312,7 +312,7 @@ Condición inicial:
     \begin{columns}[t]
 \cx
     \textbf{Análisis de estabilidad:}
-\[ \frac{\partial u}{\partial t} (x, t) = \alpha \frac{\partial^2 u}{\partial x^2}(x, t), \; 0 < x < l, \; 0 < t \]
+\[ \frac{\partial u}{\partial t} (x, t) = \alpha^2 \frac{\partial^2 u}{\partial x^2}(x, t), \; 0 < x < l, \; 0 < t \]
 Condiciones de frontera:
 \begin{align*}
 u(0, t) &= u(l, t) = 0, t > 0; \\
@@ -326,12 +326,12 @@ Diferencia hacia adelante (o progresiva):
 con $t_j \in(t_j, t_{j+1}), \xi_i \in (x_i, x_{i+1})$
 \cx
 Resulta:
-\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1,j}}{h^2} = 0 \]
+\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1,j}}{h^2} = 0 \]
 con un error local de truncación:
 \[ \epsilon_{i,j} = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) - \alpha^2 \frac{h^2}{12} \frac{\partial^4 u}{\partial x^4}(\xi_i, t_j) \]
 
 Solución explícita:
-\[ u_{i, j+1}  =\left(1 - \frac{2 \alpha k}{h^2}\right) u_{i,j} + \alpha \frac{k}{h^2} (u_{i+1, j} + u_{i-1, j}) \]
+\[ u_{i, j+1}  =\left(1 - \frac{2 \alpha k}{h^2}\right) u_{i,j} + \alpha^2 \frac{k}{h^2} (u_{i+1, j} + u_{i-1, j}) \]
 \begin{center}
     \includegraphics[width=0.8\textwidth]{figs/forward}
 \end{center}
@@ -351,7 +351,7 @@ Matriz $(n-1)\mul(n-1)$:
     0 & \cdots & 0 & \lambda & (1-2\lambda)
 \end{bmatrix} \]
 
-con $\lambda = \alpha k / h^2$
+con $\lambda = \alpha^2 k / h^2$
 
 Si $\bm{u^{(0)}} = (f(x_1), f(x_2), \cdots, f(x_{n-1}))^T $, la solución aproximada es:
 \[ \bm{u}^{(j)} = \bm{A} \bm{u}^{(j-1)} \]
@@ -361,6 +361,7 @@ Supongamos un error $\bm{e}^{(0)} = (e_1^{(0)}, e_2^{(0)}, \cdots, e_{n-1}^{(0)}
 
 Para el paso $k$, el error en $\bm{u}^{(k)} = \bm{A}^{k} \bm{e}^{(0)}$. El método es \alert{estable} si $\norm{\bm{A}^{k} \bm{e}^{(0)}} \leq \norm{\bm{e}^{(0)}}$
 \[ \norm{\bm{A}^k} \leq 1 \then \rho(\bm{A}^k) = (\rho(\bm{A}))^k \leq 1 \]
+\pause
 
 \cx
 Autovalores de $\bm{A}$:
@@ -370,11 +371,11 @@ Norma $L_{\infty}$:
 que se simplifica a
 \[ 0 \leq \lambda \pow{\sen\left(\frac{i \pi}{2n}\right)}{2} \leq \frac{1}{2}, \; i = 1, 2, \ldots, n-1 \]
 Esta desigualdad debe valer cuando $h \to 0, n \to \infty$:
-\[ \lim_{n\to\infty} \left[\sen\pow{\frac{(n-1)\pi}{2 n})}{2}\right] = 1 \]
+\[ \lim_{n\to\infty} \left[\sen\pow{\frac{(n-1)\pi}{2 n}}{2}\right] = 1 \]
 Por lo tanto habrá estabilidad si $0 \leq \lambda \leq 1/2$:
 \begin{columns}
     \cw{0.4}
-\[ \alpha \frac{k}{h^2} \leq \frac{1}{2} \]
+\[ \alpha^2 \frac{k}{h^2} \leq \frac{1}{2} \]
 \cw{0.6}
 $\leftarrow$ \alert{condicionalmente estable}.
 \end{columns}
@@ -448,19 +449,19 @@ $i$ & $x_i$ & $u_{i,50}$ & $u(x_i, 50)$ & $\abs{u_{i, 50} - u(x_i, 50)}$ \\
 \begin{frame}
     \begin{columns}[t]
 \cx
-\textbf{Condicionalmente estable:} diferencias regresivas (implícito).
+\textbf{Incondicionalmente estable:} diferencias regresivas (implícito).
 \[ \frac{\partial u}{\partial t} (x_i, t_j) = \frac{u(x_i, t_j) - u(x_i, t_{j-1})}{k} - \frac{k}{2}\frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \]
 con $\mu_j \in (t_{j-1}, t_j)$.
 
 Reemplazando en la ecuación en derivadas parciales:
-\[ \frac{u_{i,j} - u_{i, j-1}}{k} - \alpha \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
+\[ \frac{u_{i,j} - u_{i, j-1}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
 para $i = 1, 2, \ldots, n-1$ y $j = 1, 2, \ldots$.
 \begin{center}
     \includegraphics[width=0.7\textwidth]{figs/backward}
-\end{center}
+\end{center} \pause
 
 \cx
-Hacemos $\lambda = \alpha k / h^2$:
+Hacemos $\lambda = \alpha^2 k / h^2$:
 \[ (1 + 2\lambda) u_{i,j} - \lambda u_{i+1, j} - \lambda u_{i-1, j} = u_{i, j-1} \]
 Con las condiciones de frontera:
 \begin{align*}
@@ -530,8 +531,8 @@ Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}$ es una matriz convergente:
 \[ \lim_{j \to \infty} (\bm{A}^{-1})^j \bm{e}^{(0)} = \bm{0} \]
 \cw{0.6}
 $\leftarrow$ \alert{incondicionalmente estable}.
-\end{columns}
-\centering Precisión: $\bigO(k + h^2)$.
+\end{columns} \pause
+\centering Precisión: $\bigO(k + h^2) \leftarrow$ \faThumbsODown
 \end{columns}
 \end{frame}
 
@@ -541,36 +542,34 @@ $\leftarrow$ \alert{incondicionalmente estable}.
 \textbf{Método de Crank-Nicolson}:
 
 Diferencias progresivas:
-\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
+\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
 con error de truncamiento:
 \[ \epsilon_p = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) + \bigO(h^2) \]
 
 Diferencias regresivas:
-\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} = 0 \]
+\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} = 0 \]
 con error de truncamiento:
 \[ \epsilon_r = -\frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) + \bigO(h^2) \]
 Suponiendo que:
 \[ \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \approx \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) \]
 
 \cx
-Suponiendo que:
-\[ \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \approx \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) \]
 el método de la diferencia promediado:
 \begin{multline*}
-    \frac{u_{i, j+1} - u_{i,j}}{k} - \frac{\alpha}{2} \left[ \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} \right. \\
+    \frac{u_{i, j+1} - u_{i,j}}{k} - \frac{\alpha^2}{2} \left[ \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} \right. \\
         + \left. \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} \right] = 0
 \end{multline*}
-tiene un error de truncamiento $\bigO(k^2 + h²)$.
+tiene un error de truncamiento $\bigO(k^2 + h^2) \leftarrow$ \faThumbsOUp
 
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{figs/crank-nicolson}
+    \includegraphics[width=0.8\textwidth]{figs/crank-nicolson}
 \end{center}
 \end{columns}
 \end{frame}
 
 \begin{frame}
 En forma matricial:
-\[ \bm{A} \bm{u}^{(j+1)} = \bm{B} \bm{u}^{(j)}, \txt{para cada} j = 0, 1, \ldots,\txt{donde} \lambda = \alpha \frac{k}{h^2}, \; \bm{u}^{(j)} = (u_{1,j}, u_{2, j}, \cdots, u_{n-1, j})^T \]
+\[ \bm{A} \bm{u}^{(j+1)} = \bm{B} \bm{u}^{(j)}, \txt{para cada} j = 0, 1, \ldots,\txt{donde} \lambda = \alpha^2 \frac{k}{h^2}, \; \bm{u}^{(j)} = (u_{1,j}, u_{2, j}, \cdots, u_{n-1, j})^T \]
 y
 \[
 \bm{A} = \begin{bmatrix}
@@ -595,7 +594,7 @@ y
 \cw{0.45}
 \textbf{Ejemplo:} 
 \begin{align*}
-\frac{\partial u}{\partial t} (x, t) &= \alpha \frac{\partial^2 u}{\partial x^2}(x, t), \; 0 < x < 1, \; 0 < t \\
+\frac{\partial u}{\partial t} (x, t) &= \alpha^2 \frac{\partial^2 u}{\partial x^2}(x, t), \; 0 < x < 1, \; 0 < t \\
 u(0, t) &= u(1, t) = 0, t > 0; \\
 u(x, 0) &= \sen(\pi x), 0 \leq x \leq 1
 \end{align*}
@@ -603,7 +602,7 @@ con $h = 0.1$ y \alert{$k = 0.01$}.
 
 Solución exacta:
 \[u(x, t) = e^{-\pi^2 t} \sen (\pi x) \]
-\centering Solución: \texttt{parabolica-regresiva.py}
+\centering Solución: \texttt{crank-nicolson.py}
 
 \cw{0.55}
 \begin{center}
@@ -704,7 +703,7 @@ Enfoque matricial:
     \begin{bmatrix} u_{1,j} \\ u_{2,j} \\ u_{3,j} \\ \vdots \\ u_{n-1,j} \end{bmatrix}
     -
     \begin{bmatrix} u_{1,j-1} \\ u_{2,j-1} \\ u_{3,j-1} \\ \vdots \\ u_{n-1,j-1} \end{bmatrix}
-\]
+\] \pause
 \begin{columns}[t]
 \cw{0.4}
 \alert{Problema:} ¿$u_{i, 1}$? 
@@ -715,7 +714,8 @@ Aproximación por diferencias progresivas:
 \[ \frac{\partial u}{\partial t}(x, 0) = \frac{u(x_i, t_1) - u(x_i, 0)}{k} - \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
 Resolviendo:
 \[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) +  \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
-Error de truncamiento: $\bigO(k)$
+Error de truncamiento: $\bigO(k) \leftarrow$ \faThumbsODown
+\pause
 
 \cw{0.6}
 Mejora: expansión de McLaurin ($\sim$ Taylor):
@@ -724,7 +724,7 @@ Si $f''$ existe:
 \[ \frac{\partial^2 u}{\partial t^2}(x_i, 0) = \alpha^2 \frac{\partial^2 u}{\partial x^2}(x_i, 0) = \alpha^2 f''(x_i) \]
 entonces:
 \[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) + \frac{\alpha^2 k^2}{2} f''(x_i) \]
-con error $\bigO(k^3)$. \pause \alert{¿Y si no tenemos $f''(x_i)$?}
+con error $\bigO(k^3) \leftarrow$ \faThumbsOUp. \pause \alert{¿Y si no tenemos $f''(x_i)$?}
 \end{columns}
 \end{frame}
 
@@ -740,6 +740,20 @@ y la ecuación matricial para $j = 2, 3, \ldots$
 
 \end{frame}
 
+\begin{frame}
+\begin{columns}
+    \cw{0.4}
+\texttt{hiperbolica.py}
+\pycode[firstline=6, lastline=27]{code/hiperbolica.py}
+\pause
+
+\cw{0.5}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{code/onda-1.pdf}
+    \includegraphics[width=0.7\textwidth]{code/onda-2.pdf}
+\end{center}
+\end{columns}
+\end{frame}
 
 \section*{Bibliografía}
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}

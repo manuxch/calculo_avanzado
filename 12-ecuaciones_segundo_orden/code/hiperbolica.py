@@ -1,60 +1,60 @@
 #!/usr/bin/env python3
 
 import numpy as np
-
-def f(x):
-    return 4 * x * (1 - x)
-
-n_x, n_t = 101, 50
-Lx = 1
-h = Lx / n_x
-k = 0.001
-alfa = 1
-C = alfa * k / h # Número de Courant
-print(C)
-C2 = C**2
-
-u = np.full((n_t, n_x), 0.0)
-
-# Condición inicial
-x = np.linspace(0, 1, n_x)
-u[0, :] = f(x)
-print(u[0, :])
-
-# Primer paso temporal:
-u[1, 1:-1] = (1 - C2) * f(x[1:-1]) * C2/2 * f(x[2:]) + C2/2 * f(x[:-2])
-u[1, 0] = u[1, -1] = 0
-print(u[1,:])
-
-for j in range(1, n_t - 1):
-    u[j+1, 1:-1] = 2*(1-C2) * u[j, 1:-1] + C2*(u[j, 2:] + u[j, :-2]) - u[j-1, 1:-1]
-    u[j+1, 0] = u[j+1, -1] = 0.0
-
-print(u[-1:])
-
-import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.rcParams.update({"text.usetex": True})
-fig, ax = plt.subplots(figsize=(8,6))
 
-def plotheatmap(x, u_k, j):
-    # Limpiamos la figura
-    plt.clf()
+# Parámetros
+L, T = 1.0, 1.0    # Dominio
+Nx, Nt = 100, 1000 # Grilla
+c = 1.0            # Velocidad
+# Discretización
+h, k = L / (Nx - 1), T / (Nt - 1)
+l2 = (c * k / h)**2  # lambda**2
+x = np.linspace(0, L, Nx)
+t = np.linspace(0, T, Nt)
 
-    plt.title(f"Onda en t = {j*k:.2f} u.t.")
-    plt.xlabel(r"$x$", fontsize=20)
-    plt.ylabel(r"$u(x, t)$", fontsize=20)
-    plt.plot(x, u_k[j, :])
-    return plt
+# Inicialización
+u = np.zeros((Nt, Nx))
+u[0, :] = np.sin(np.pi * x)  # Condición inicial
+u[1, 1:Nx-1] = u[0, 1:Nx-1] + 0.5 * l2 * (u[0, 2:Nx] \
+    - 2 * u[0, 1:Nx-1] + u[0, 0:Nx-2])
 
-import matplotlib.animation as animation
-from matplotlib.animation import FuncAnimation
+# Iteración en el tiempo
+for n in range(1, Nt - 1):
+    for i in range(1, Nx - 1):
+        u[n + 1, i] = 2 * (1 - l2) * u[n, i] \
+            - u[n - 1, i] + l2 * (u[n, i + 1] \
+            + u[n, i - 1])
 
-def animate(k):
-    plotheatmap(x, u, k)
+#Visualización de la solución
+plt.imshow(u, extent=[0, L, 0, T], origin='lower',
+           aspect='auto', cmap='seismic')
+plt.colorbar()
+plt.xlabel('Posición (x)')
+plt.ylabel('Tiempo (t)')
+plt.savefig('onda-1.pdf')
+# plt.show()
 
-anim = animation.FuncAnimation(plt.figure(),
-    animate, interval=50, frames=n_t, repeat=False)
-anim.save("solucion_ecuacion_onda.mp4")
+# def plotheatmap(x, u, k):
+    # # Limpiamos la figura
+    # plt.clf()
+    # plt.xlabel(r"$x$", fontsize=20)
+    # plt.ylabel(r"$y$", fontsize=20)
+    # # Ploteamos u_k (u_{i,j} en `paso de tiempo k)
+    # plt.xlim([0, 1])
+    # plt.ylim([-1, 1])
+    # plt.plot(x, u[k, :])
+    # return plt
 
-print("¡Hecho!")
+# import matplotlib.animation as animation
+# from matplotlib.animation import FuncAnimation
+
+# def animate(k):
+    # plotheatmap(x, u, k)
+
+# anim = animation.FuncAnimation(plt.figure(),
+    # animate, interval=5, frames=Nt, repeat=False)
+# anim.save("solucion_ecuacion_onda-2.mp4")
+
+# print("¡Hecho!")
+

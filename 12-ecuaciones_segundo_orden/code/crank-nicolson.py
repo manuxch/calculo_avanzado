@@ -22,9 +22,9 @@ def solve_matricial(u, h, k, alfa):
     diagonals_B = [lamb/2, 1 - lamb, lamb/2]
     B = diags(diagonals_B, [-1, 0, 1], shape=(n, n)).tocsc()
     n_t = int(0.5 / k)
-    print(A.todense())
-    print(B.todense())
-    print(u)
+    # print(A.todense())
+    # print(B.todense())
+    # print(u)
     for i in range(1, n_t + 1):
         u = spsolve(A, B @ u)
         u[0] = u[-1] = 0.0
