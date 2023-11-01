@@ -81,7 +81,7 @@ para todo $(x, y) \in D$.
 \end{frame}
 
 \begin{frame}
-Ecuación de Poisson (elíptica):
+\textbf{Ecuación de Poisson (elíptica):}
 \[ \nabla^2 u(x, y) = \frac{\partial^2 u}{\partial x^2}(x, y) + \frac{\partial^2 u}{\partial y^2}(x, y) = f(x, y) \]
 en $R = \{(x, y) | a < x < b, c < y < d \}$, con $u(x, y) = g(x, y)$ para $(x, y) \in S$, siendo $S$ la frontera de $R$.
 \begin{columns}
@@ -192,7 +192,7 @@ Solución exacta: $u(x, y) = 400 xy$ por lo que la aproximación en diferencias 
 \begin{frame}
     \begin{columns}[t]
 \cw{0.4}
-Ecuación de calor (parabólica):
+\textbf{Ecuación de calor (parabólica):}
 \[ \frac{\partial u}{\partial t} = \alpha \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) \] \pause
   \begin{center}
   \begin{overprint}
@@ -372,7 +372,12 @@ que se simplifica a
 Esta desigualdad debe valer cuando $h \to 0, n \to \infty$:
 \[ \lim_{n\to\infty} \left[\sen\pow{\frac{(n-1)\pi}{2 n})}{2}\right] = 1 \]
 Por lo tanto habrá estabilidad si $0 \leq \lambda \leq 1/2$:
+\begin{columns}
+    \cw{0.4}
 \[ \alpha \frac{k}{h^2} \leq \frac{1}{2} \]
+\cw{0.6}
+$\leftarrow$ \alert{condicionalmente estable}.
+\end{columns}
 \end{columns}
 \end{frame}
 
@@ -489,6 +494,7 @@ con $h = 0.1$ y \alert{$k = 0.01$}.
 
 Solución exacta:
 \[u(x, t) = e^{-\pi^2 t} \sen (\pi x) \]
+\centering Solución: \texttt{parabolica-regresiva.py}
 
 \cw{0.55}
 \begin{center}
@@ -511,11 +517,228 @@ $i$ & $x_i$ & $u_{i,50}$ & $u(x_i, 50)$ & $\abs{u_{i, 50} - u(x_i, 50)}$ \\
 \end{tabular} 
 \end{center}
 \end{columns} \pause
+\begin{columns}
+\cx
+Autovalores de $\bm{A}$:
+\[ \mu_i = 1 + 4 \lambda \left[ \sen \left(\frac{i \pi}{2 n}\right) \right]^2 \]
+para $i = 1, 2, \cdots, n-1$. Como $\lambda > 0$, $\mu_i > 0$.
+
+\cx
+Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}$ es una matriz convergente:
+\begin{columns}
+\cw{0.4}
+\[ \lim_{j \to \infty} (\bm{A}^{-1})^j \bm{e}^{(0)} = \bm{0} \]
+\cw{0.6}
+$\leftarrow$ \alert{incondicionalmente estable}.
+\end{columns}
+\centering Precisión: $\bigO(k + h^2)$.
+\end{columns}
 \end{frame}
 
+\begin{frame}
+\begin{columns}
+\cx
+\textbf{Método de Crank-Nicolson}:
 
+Diferencias progresivas:
+\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
+con error de truncamiento:
+\[ \epsilon_p = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) + \bigO(h^2) \]
 
+Diferencias regresivas:
+\[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} = 0 \]
+con error de truncamiento:
+\[ \epsilon_r = -\frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) + \bigO(h^2) \]
+Suponiendo que:
+\[ \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \approx \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) \]
 
+\cx
+Suponiendo que:
+\[ \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \approx \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) \]
+el método de la diferencia promediado:
+\begin{multline*}
+    \frac{u_{i, j+1} - u_{i,j}}{k} - \frac{\alpha}{2} \left[ \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} \right. \\
+        + \left. \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} \right] = 0
+\end{multline*}
+tiene un error de truncamiento $\bigO(k^2 + h²)$.
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{figs/crank-nicolson}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+En forma matricial:
+\[ \bm{A} \bm{u}^{(j+1)} = \bm{B} \bm{u}^{(j)}, \txt{para cada} j = 0, 1, \ldots,\txt{donde} \lambda = \alpha \frac{k}{h^2}, \; \bm{u}^{(j)} = (u_{1,j}, u_{2, j}, \cdots, u_{n-1, j})^T \]
+y
+\[
+\bm{A} = \begin{bmatrix}
+    (1+\lambda) & -\lambda/2 & 0 & \cdots &  0 \\
+    -\lambda/2 & (1+\lambda) & -\lambda/2 & \cdots & 0 \\
+    0 & \cdots & \cdots & \cdots &  0 \\
+    0 & \cdots & \cdots & \cdots &  -\lambda/2 \\
+    0 & \cdots & 0 & -\lambda/2 & (1+\lambda)
+\end{bmatrix} \txt{y}
+\bm{B} = \begin{bmatrix}
+    (1-\lambda) & \lambda/2 & 0 & \cdots &  0 \\
+    \lambda/2 & (1-\lambda) & \lambda/2 & \cdots & 0 \\
+    0 & \cdots & \cdots & \cdots &  0 \\
+    0 & \cdots & \cdots & \cdots &  \lambda/2 \\
+    0 & \cdots & 0 & \lambda/2 & (1-\lambda)
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\cw{0.45}
+\textbf{Ejemplo:} 
+\begin{align*}
+\frac{\partial u}{\partial t} (x, t) &= \alpha \frac{\partial^2 u}{\partial x^2}(x, t), \; 0 < x < 1, \; 0 < t \\
+u(0, t) &= u(1, t) = 0, t > 0; \\
+u(x, 0) &= \sen(\pi x), 0 \leq x \leq 1
+\end{align*}
+con $h = 0.1$ y \alert{$k = 0.01$}.
+
+Solución exacta:
+\[u(x, t) = e^{-\pi^2 t} \sen (\pi x) \]
+\centering Solución: \texttt{parabolica-regresiva.py}
+
+\cw{0.55}
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$i$ & $x_i$ & $u_{i,50}$ & $u(x_i, 50)$ & $\abs{u_{i, 50} - u(x_i, 50)}$ \\
+\midrule
+0 & 0.0 & 0.00000 & 0.00000 & 0.000e+00 \\
+1 & 0.1 & 0.00488 & 0.00222 & 2.660e-03 \\
+2 & 0.2 & 0.00812 & 0.00423 & 3.895e-03 \\
+3 & 0.3 & 0.01066 & 0.00582 & 4.842e-03 \\
+4 & 0.4 & 0.01228 & 0.00684 & 5.436e-03 \\
+5 & 0.5 & 0.01283 & 0.00719 & 5.639e-03 \\
+6 & 0.6 & 0.01228 & 0.00684 & 5.436e-03 \\
+7 & 0.7 & 0.01066 & 0.00582 & 4.842e-03 \\
+8 & 0.8 & 0.00812 & 0.00423 & 3.895e-03 \\
+9 & 0.9 & 0.00488 & 0.00222 & 2.660e-03 \\
+10 & 1.0 & 0.00000 & 0.00000 & 8.808e-19 \\
+\bottomrule
+\end{tabular} 
+\end{center}
+\end{columns} 
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[t]
+\cx
+\textbf{Ecuación de onda (hiperbólica)}
+\[ \frac{\partial^2 u}{\partial t^2} (x, t) - \alpha^2 \frac{\partial^2 u}{\partial x^2}(x, t) = 0, \; 0 < x < l, \; 0 < t \]
+Con las ecuaciones de frontera:
+\begin{align*}
+u(0, t) &= u(l, t) = 0, t > 0; \\
+u(x, 0) &= f(x),\; \frac{\partial u}{\partial t}(x, 0) = g(x); \, 0 \leq x \leq l
+\end{align*}
+
+Malla:
+\[ x_i = i h, \; t_j = j k \]
+para $i = 0, 1, \ldots, n$ y $j = 0, 1, \cdots$
+
+En todos los puntos de la malla interior:
+\[ \frac{\partial^2 u}{\partial t^2} (x_i, t_j) - \alpha^2 \frac{\partial^2 u}{\partial x^2}(x_i, t_j) = 0 \]
+
+Diferencias centrales para las derivadas segundas:
+\cx
+\begin{multline*}
+    \frac{\partial^2 u}{\partial t^2} (x_i, t_j) = \frac{u(x_i, t_{j+1}) - 2 u(x_i, t_j) + u(x_i, t_{j-1})}{k^2} \\
+    - \frac{k^2}{12} \frac{\partial^4 u}{\partial t^4}(x_i, \mu_j)
+\end{multline*}
+\begin{multline*}
+    \frac{\partial^2 u}{\partial x^2} (x_i, t_j) = \frac{u(x_{i+1}, t_j) - 2 u(x_i, t_j) + u(x_{i-1}, t_j)}{h^2} \\
+    - \frac{h^2}{12} \frac{\partial^4 u}{\partial x^4}(\xi_i, t_j)
+\end{multline*}
+donde $\xi_i \in (x_{i-1}, x_{i+1}), \mu_i \in (t_{j-1}, t_{j+1})$. Resulta:
+\begin{multline*}
+    \frac{u_{i,j+1} - 2 u_{i,j} + u_{i,j-1}}{k^2} \\
+    - \alpha^2 \frac{u_{i+1,j} - 2 u_{i,j} + u_{i-1,j}}{h^2} = \epsilon_{i,j}
+\end{multline*}
+con 
+\[ \epsilon_{i,j} = \frac{1}{12} \left[k^2 \frac{\partial^4u}{\partial t^4}(x_i, t_j) - \alpha^2 h^2 \frac{\partial^4 u}{\partial x^4}(x_i, t_j)\right] \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\cx
+Ignorando $\epsilon_{i,j}$ y haciendo $\lambda = \alpha k / h$ (número de Courant):
+\[ u_{i, j+1} - 2 u_{i,j} + u_{i, j-1} - \lambda^2 u_{i+1, j} + 2 \lambda^2 u_{i,j} - \lambda^2 u_{i-1, j} = 0 \]
+
+Resolviendo para el paso temporal:
+\[ u_{i, j+1} = 2(1 - \lambda^2) u_{i,j} + \lambda^2( u_{i+1, j} + u_{i-1, j}) - u_{i, j-1} \]
+para $i = 1, 2, \ldots, n-1$ y $j = 1, 2, \ldots$.
+
+Las condiciones de frontera resultan:
+\[ u_{0, j} = u_{n, j} = 0, \; j = 1, 2, \ldots \]
+y la condición inicial:
+\[ u_{i, 0} = f(x_i), \; i = 1, 2, \ldots, n-1 \]
+
+\cx
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{figs/hiperbolica.pdf}
+\end{center}
+
+Enfoque matricial:
+\[ \bm{u}^{(j+1)} = \bm{A} \bm{u}^{(j)} - \bm{u}^{(j-1)} \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\[
+    \begin{bmatrix} u_{1,j+1} \\ u_{2,j+1} \\ u_{3,j+1} \\ \vdots \\ u_{n-1,j+1} \end{bmatrix}
+    =
+    \begin{bmatrix}
+    2(1-\lambda^2) & \lambda^2 & 0 & \cdots &  0 \\
+    \lambda^2 & 2(1-\lambda^2) & \lambda^2 & \cdots & 0 \\
+    0 & \cdots & \cdots & \cdots &  0 \\
+    0 & \cdots & \cdots & \cdots &  \lambda^2 \\
+    0 & \cdots & 0 & \lambda^2 & 2(1+\lambda^2) \end{bmatrix} \;
+    \begin{bmatrix} u_{1,j} \\ u_{2,j} \\ u_{3,j} \\ \vdots \\ u_{n-1,j} \end{bmatrix}
+    -
+    \begin{bmatrix} u_{1,j-1} \\ u_{2,j-1} \\ u_{3,j-1} \\ \vdots \\ u_{n-1,j-1} \end{bmatrix}
+\]
+\begin{columns}[t]
+\cw{0.4}
+\alert{Problema:} ¿$u_{i, 1}$? 
+
+Condición de velocidad inicial:
+\[ \frac{\partial u}{\partial t}(x, 0) = g(x), \; 0 \leq x \leq l \]
+Aproximación por diferencias progresivas:
+\[ \frac{\partial u}{\partial t}(x, 0) = \frac{u(x_i, t_1) - u(x_i, 0)}{k} - \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
+Resolviendo:
+\[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) +  \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
+Error de truncamiento: $\bigO(k)$
+
+\cw{0.6}
+Mejora: expansión de McLaurin ($\sim$ Taylor):
+\[ u(x_i, t_1) = u(x_i, 0) + k \frac{\partial u}{\partial t}(x_i,0) + \frac{k^2}{2} \frac{\partial^2 u}{\partial t^2}(x_i, 0) + \frac{k^3}{6} \frac{\partial^3 u}{\partial t^3}(x_i, \hat{\mu}_i) \]
+Si $f''$ existe:
+\[ \frac{\partial^2 u}{\partial t^2}(x_i, 0) = \alpha^2 \frac{\partial^2 u}{\partial x^2}(x_i, 0) = \alpha^2 f''(x_i) \]
+entonces:
+\[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) + \frac{\alpha^2 k^2}{2} f''(x_i) \]
+con error $\bigO(k^3)$. \pause \alert{¿Y si no tenemos $f''(x_i)$?}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+Ecuación en diferencias:
+\[ f''(x_i) = \frac{f(x_{i+1}) - 2 f(x_i) + f(x_{i-1})}{h^2} - \frac{h^2}{12} f^{(4)}(\xi_i) \]
+Usando $\lambda = \alpha k / h$:
+\[ u(x_i, 1) = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) + \bigO(k^3 + h^2 k^2) \]
+
+Entonces, para $i = 1, 2, \ldots, n-1$ usamos:
+\[ u_{i, 1} = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) \]
+y la ecuación matricial para $j = 2, 3, \ldots$
+
+\end{frame}
 
 
 \section*{Bibliografía}
