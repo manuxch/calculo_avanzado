@@ -10,7 +10,7 @@
 \usepackage{graphicx}
 \usepackage{mismath}
 \usepackage{bm}
-\usepackage{fontawesome}
+\usepackage{fontawesome5}
 \usepackage{csquotes}
 \usepackage[backend=biber, natbib, sorting=nyt, doi=true, url=false, url=false, isbn=false, maxbibnames=10]{biblatex}
 %\addbibresource{../../utils/refs.bib}
@@ -18,12 +18,13 @@
 \usepackage[spanish, es-nodecimaldot]{babel}
 \deftranslation[to=spanish]{Definition}{Definición}
 \deftranslation[to=spanish]{Theorem}{Teorema}
+\deftranslation[to=spanish]{Example}{Ejemplo}
 
 \usepackage{mathtools, mathrsfs}
 \usefonttheme{professionalfonts}
-\usepackage{textcomp}
+\usepackage{textcomp, wasysym}
 
-\setsansfont[BoldFont={Iwona Bold}, Numbers={Lining, Proportional}]{Iwona Light}
+\setsansfont[BoldFont={Iwona Heavy}, Numbers={Lining, Proportional}]{Iwona Light}
 % \setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
 \setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 
@@ -51,6 +52,8 @@
 
  
 \usepackage{gensymb,amssymb}
+\usepackage{siunitx}
+\DeclareSIUnit{\nada}{\relax}
 \usepackage{upquote}
 \usepackage{cancel}
 \usepackage{algpseudocode}
@@ -69,7 +72,7 @@
   \vspace{6em}
   \centering
   {\tiny
-  Cálculo Avanzado \enspace • \enspace 2023 \\
+  Cálculo Avanzado \enspace • \enspace 2024 \\
     \faLinux \- $\cdot$ \- \fontspec{TeX Gyre Pagella}\XeLaTeX \- $\cdot$ \- \ccbysa }
 }
 

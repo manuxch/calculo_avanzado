@@ -207,15 +207,15 @@ Matriz $m \times n \mapsto$ vector $m \cdot n$. Sea $\bm{A} = [a_{ij}] \in \math
 \begin{columns}[t]
 \cx
 \begin{theorem}[Norma inducida]
-Si $\lVert \cdot \rVert_$ es una norma vectorial en $K^n$, entonces
-\[ \lVert \bm{A} \rVert = \max_{\lVert \bm{x} \rVert = 1} \lVert \bm{A} \bm{x} \rVert \]
+    Si $\norm{\cdot}$ es una norma vectorial en $K^n$, entonces
+    \[ \norm{\bm{A}} = \max_{\norm{\bm{x}} = 1} \norm{\bm{A} \bm{x}} \]
 es la norma matricial \textbf{natural} o \textbf{inducida} asociada con la norma vectorial.
 \end{theorem}
 Alternativamente: 
-\[ \lVert \bm{A} \rVert = \max_{\bm{z} \neq \bm{0}} \frac{ \lVert \bm{A} \bm{z}\rVert }{\lVert \bm{z} \rVert} \]
+\[ \norm{\bm{A}} = \max_{\bm{z} \neq \bm{0}} \frac{ \norm{\bm{A} \bm{z}}}{\norm{\bm{z}}} \]
 
-\textbf{Corolario:} $\forall \bm{z} \neq \bm{0}, \bm{A}$ y cualquier norma natural $\lVert \cdot \rVert$:
-\[ \lVert \bm{A} \bm{z} \rVert \leq \lVert \bm{A} \rVert \cdot \lVert \bm{z} \rVert \]
+\textbf{Corolario:} $\forall \bm{z} \neq \bm{0}, \bm{A}$ y cualquier norma natural $\norm{\cdot}$:
+\[ \norm{\bm{A} \bm{z}} \leq \norm{\bm{A}} \cdot \norm{\bm{z}} \]
 \pause
 
 \cx
