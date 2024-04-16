@@ -20,13 +20,13 @@ u_inicial = 50
 def inicializar_u(max_iter_tiempo, ni=Lx, nj=Ly):
     # Inicializar la solución: u(k, i, j)
     u = np.full((max_iter_tiempo, ni, nj), u_inicial)
-    # Establecer condiciones de borde
-    u[:, 0, :] = u_NO + np.arange(ni) * delta_x
+    # Establecer condiciones de borde (t, fila, columna)
+    u[:, 0, :] = u_NO + np.arange(ni) * delta_x \
                 * (u_NE - u_NO) / Lx
-    u[:, :, 0] = u_NO - np.arange(nj) * delta_x
+    u[:, :, 0] = u_NO - np.arange(nj) * delta_x \
                 * u_NO / Ly
     u[:, -1, :] = np.arange(ni) * delta_x * u_SE / Lx
-    u[:, :, -1] = u_NE - np.arange(nj) * delta_x
+    u[:, :, -1] = u_NE - np.arange(nj) * delta_x \
                 * u_SE / Ly
     return u
 
