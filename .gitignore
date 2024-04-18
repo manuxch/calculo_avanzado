@@ -18,3 +18,4 @@
 **/*.synctex(busy)
 **/_minted*
 **/*__pycache__*
+**/*SAVE-ERROR

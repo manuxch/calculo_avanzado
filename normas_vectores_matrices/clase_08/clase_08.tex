@@ -236,9 +236,9 @@ Alternativamente:
 \[ \lVert \bm{A} \rVert_p = \max_{\bm{x} \neq \bm{0}} \frac{ \lVert \bm{A} \bm{x}\rVert_p }{\lVert \bm{x} \rVert_p} \]
 \begin{itemize}
     \item \textbf{Norma inducida $l_1$:} (norma suma columna)
-    \[ \lVert \bm{A} \rVert_1 = \max_{j = 1,\ldots, n} \sum_{i=1}^m |a_{ij}| \]
+        \[ \norm{\bm{A}}_1 = \max_{1 \leq j \leq n} \sum_{i=1}^m |a_{ij}| \]
     \item \textbf{Norma inducida ${\infty}$:} (norma suma fila)
-        \[ \lVert \bm{A} \rVert_{\infty} = \max_{i = 1,\ldots, m} \sum_{j=1}^n |a_{ij}| \]
+        \[ \norm{\bm{A}}_{\infty} = \max_{1 \leq i \leq m} \sum_{j=1}^n |a_{ij}| \]
     \item \textbf{Norma inducida $l_2$:} $\mapsto$ \alert{próxima clase}.
 \end{itemize}
 \pause
@@ -257,7 +257,7 @@ En matrices cuadradas, las normas inducidas son \textbf{sub-multiplicativas} y \
 \end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Ejemplos}
 \begin{columns}[t]
 \cx
 Determinar $\lVert \bm{A} \rVert_{1}$ y $\lVert \bm{A} \rVert_{\infty}$ para la matriz
