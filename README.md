@@ -45,7 +45,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 - Clase 07: Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
 
 ### Normas de vectores y matrices
-- Clase 08: Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](normas_vectores_matrices/clase_08/clase_08.pdf), [problemas](normas_vectores_matrices/clase_08/problemas_08.pdf).
+- Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](normas_vectores_matrices/normas.pdf), [problemas](normas_vectores_matrices/problemas_normas.pdf).
 
 ### Autovalores y autovectores
 - Clase 09: Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. [Clase](autoval-autovec/clase_09/clase_09.pdf), [problemas](autoval-autovec/clase_09/problemas_09.pdf).
