@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-\input{../../utils/preamble_problemas}
+\input{../utils/preamble_problemas}
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
@@ -27,11 +27,10 @@
 
 \begin{center}
 \begin{tabular}{r l}
-    \textbf{Práctica:} & 9 \\
- \textbf{Tema:} & Autovalores y autovectores I. \\
+    \textbf{Práctica:} & 7 \\
+ \textbf{Tema:} & Autovalores y autovectores. \\
  \textbf{Profesor Titular:} & Manuel Carlevaro \\
  \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
- \textbf{Ayudante de Primera:} & Lucas Basiuk 
 \end{tabular}\end{center}
 
 \vspace{1em}
@@ -85,7 +84,24 @@ el vector $\bm{v} = [3, 5]^{\intercal}$ es un autovector. Compruebe esta afirmac
 \end{question}
 
 \begin{question} 
-Utilice el método de las potencias para determinar el autovalor dominante y su autovector asociado de la matriz
+Utilice el método de las potencias para determinar el autovalor dominante y su autovector asociado de las matrices:
+\begin{multicols}{3}
+\begin{enumerate}[a)]
+  \item 
 \[ \bm{A} = \begin{bmatrix} 4 & 2 & 3 \\ 3 & 0 & 4 \\ 1 & 2 & 5 \end{bmatrix} \]
+\item 
+\[ \bm{B} = \begin{bmatrix} 0 & 1 & 0 & 1 & 0 \\ 1 & 0 & 1 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 1 & 0 & 1 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \end{bmatrix} \]
+\item 
+    \[ \bm{C} = \begin{bmatrix}
+        1 & 2 & 3 & 4 & 5 & 6 \\
+        7 & 8 & 9 & 10 & 11 & 12 \\
+        13 & 14 & 15 & 16 & 17 & 18 \\
+        19 & 20 & 21 & 22 & 23 & 24 \\
+        25 & 26 & 27 & 28 & 29 & 30 \\
+        31 & 32 & 33 & 34 & 35 & 36
+    \end{bmatrix} \]
+
+\end{enumerate}
+\end{multicols}
 \end{question}
 \end{document}

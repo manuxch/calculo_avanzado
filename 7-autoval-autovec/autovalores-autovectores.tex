@@ -155,73 +155,91 @@ Factorizando $\lambda_1$ en la última ecuación:
 \[ \bm{A}^k \bm{x} = \lambda_1^k \sum_{j=1}^n \beta_j \left(\frac{\lambda_j}{\lambda_1}\right)^k \bm{v}_j \]
 Dado que $\forall j, \,|\lambda_1| > |\lambda_j|; \lim_{k \rightarrow \infty} (\lambda_j/\lambda_1)^k = 0$, y
 \begin{equation} \lim_{k \rightarrow \infty} \bm{A}^k \bm{x} = \lim_{k \rightarrow \infty} \lambda_1^k \beta_1 \bm{v}_1 \label{eq:avv02} \end{equation}
-Si $|\lambda_1| < 1$, \eqref{eq:avv02} $\mapsto \bm{0}$, si $|\lambda_1| > 1$, \eqref{eq:avv02} diverge ($\beta_1 \neq 0$). Elegimos $\bm{x} = \bm{x}^{(0)}$ con $\lVert \cdot \rVert_{\infty}$: $x_{p_0}^{(0)}$ con 
-\[ x_{p_0}^{(0)} = 1 = \lVert \bm{x}^{(0)} \rVert_{\infty} \]
-Hacemos $\bm{y}_{(1)} = \bm{A} \bm{x}^{(0)}$ y definimos $\mu^{(1)} = y_{p_0}^{(1)}$:
-\begin{align*}
-    \mu^{(1)} &= y_{p_0}^{(1)} = \frac{y_{p_1}^{(1)}}{x_{p_0}^{(0)}} = \frac{\beta_1 \lambda_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j v_{p_0}^{(j)}}{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j v_{p_0}^{(j)}} \\
-              &= \lambda_1 \left[ \frac{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1) v_{p_0}^{(j)}}{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j v_{p_0}^{(j)}} \right]
-\end{align*}
+Si $|\lambda_1| < 1$, \eqref{eq:avv02} $\mapsto \bm{0}$, si $|\lambda_1| > 1$, \eqref{eq:avv02} diverge ($\beta_1 \neq 0$). 
+\pause
+
+\textbf{Procedimiento:}
+\begin{itemize}
+    \item Iniciamos con $\bm{x} = [1, 1, \cdots, 1]^{\intercal}$
+    \item Generamos la secuencia
+        \[ \bm{y}_k = \bm{A} \bm{x}_k, \quad \bm{x}_{k+1} = \frac{1}{c_{k+1}} \bm{y}_k \]
+        donde $c_{k+1} = \norm{\bm{y}_k}_{\infty}$
+\end{itemize}
+
+\textbf{Entonces:}
+\[ \lim_{k \rightarrow \infty} \bm{x}_k = \bm{v}_1, \quad \lim_{k \rightarrow \infty} c_k = \lambda_1 \]
+
+
+
+
+%Elegimos $\bm{x} = \bm{x}^{(0)}$ con $\lVert \cdot \rVert_{\infty}$: $x_{p_0}^{(0)}$ con 
+%\[ x_{p_0}^{(0)} = 1 = \lVert \bm{x}^{(0)} \rVert_{\infty} \]
+%Hacemos $\bm{y}_{(1)} = \bm{A} \bm{x}^{(0)}$ y definimos $\mu^{(1)} = y_{p_0}^{(1)}$:
+%\begin{align*}
+    %\mu^{(1)} &= y_{p_0}^{(1)} = \frac{y_{p_1}^{(1)}}{x_{p_0}^{(0)}} = \frac{\beta_1 \lambda_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j v_{p_0}^{(j)}}{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j v_{p_0}^{(j)}} \\
+              %&= \lambda_1 \left[ \frac{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1) v_{p_0}^{(j)}}{\beta_1 v_{p_0}^{(1)} + \sum_{j=2}^n \beta_j v_{p_0}^{(j)}} \right]
+%\end{align*}
 \end{columns}
 \end{frame}
 
-\begin{frame}
-\vspace{1em}
-\begin{columns}[t]
-\cx
-Sea $p_1$ el menor entero tal que $|y_{p_1}^{(1)}| = \lVert \bm{y}^{(1)} \rVert_{\infty}$:
-\[ \bm{x}^{(1)} = \frac{\bm{y}^{(1)}}{y_{p_1}^{(1)}} = \frac{1}{y_{p_1}^{(1)}} \bm{A} \bm{x}^{(0)} \]
-Entonces: $x_{p_1}^{(1)} = 1 = \lVert \bm{x}^{(1)} \rVert_{\infty}$. Ahora
-\[ \bm{y}^{(2)} = \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
-y
-\begin{align*}
-    \mu^{(2)} &= y_{p_1}^{(2)} = \frac{y_{p_1}^{(2)}}{x_{p_1}^{(1)}} = \frac{ \left[ \beta_1 \lambda_1^2 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j^2 v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]}{ \left[ \beta_1 \lambda_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]} \\
-              &= \lambda_1 \left[ \frac{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1)^2 v_{p_1}^{(j)}}{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1) v_{p_1}^{(j)}} \right]
-\end{align*}
-Sea $p_2$ el menor entero tal que $|y_{p_2}^{(2)}| = \lVert \bm{y}^{(2)} \rVert_{\infty}$:
-\[ \bm{x}^{(2)} = \frac{\bm{y}^{(2)}}{y_{p_2}^{(2)}} = \frac{1}{y_{p_2}^{(2)}} \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_2}^{(2)} y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
+%\begin{frame}
+%\vspace{1em}
+%\begin{columns}[t]
+%\cx
+%Sea $p_1$ el menor entero tal que $|y_{p_1}^{(1)}| = \lVert \bm{y}^{(1)} \rVert_{\infty}$:
+%\[ \bm{x}^{(1)} = \frac{\bm{y}^{(1)}}{y_{p_1}^{(1)}} = \frac{1}{y_{p_1}^{(1)}} \bm{A} \bm{x}^{(0)} \]
+%Entonces: $x_{p_1}^{(1)} = 1 = \lVert \bm{x}^{(1)} \rVert_{\infty}$. Ahora
+%\[ \bm{y}^{(2)} = \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
+%y
+%\begin{align*}
+    %\mu^{(2)} &= y_{p_1}^{(2)} = \frac{y_{p_1}^{(2)}}{x_{p_1}^{(1)}} = \frac{ \left[ \beta_1 \lambda_1^2 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j^2 v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]}{ \left[ \beta_1 \lambda_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j \lambda_j v_{p_1}^{(j)} \middle/ y_{p_1}^{(1)} \right]} \\
+              %&= \lambda_1 \left[ \frac{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1)^2 v_{p_1}^{(j)}}{\beta_1 v_{p_1}^{(1)} + \sum_{j=2}^n \beta_j (\lambda_j/\lambda_1) v_{p_1}^{(j)}} \right]
+%\end{align*}
+%Sea $p_2$ el menor entero tal que $|y_{p_2}^{(2)}| = \lVert \bm{y}^{(2)} \rVert_{\infty}$:
+%\[ \bm{x}^{(2)} = \frac{\bm{y}^{(2)}}{y_{p_2}^{(2)}} = \frac{1}{y_{p_2}^{(2)}} \bm{A} \bm{x}^{(1)} = \frac{1}{y_{p_2}^{(2)} y_{p_1}^{(1)}} \bm{A}^2 \bm{x}^{(0)} \]
 
-\cx
-$\mapsto$ secuencias $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$, $\{ \bm{y}^{(m)} \}_{m=0}^{\infty}$, $\{ \mu^{(m)} \}_{m=0}^{\infty}$, inductivamente:
-\[ \bm{y}^{(m)} = \bm{A} \bm{x}^{(m-1)} \] 
-\begin{align*} \mu^{(m)} &= y_{p_{m - 1}}^{(m)} \\
-&= \lambda_1 \left[ \frac{\beta_1 v_{p_{m-1}}^{(1)} + \sum_{j=2}^n (\lambda_j/\lambda_1)^m \beta_j v_{p_{m-1}}^{(j)}}{\beta_1 v_{p_{m-1}}^{(1)} + \sum_{j=2}^n (\lambda_j/\lambda_1)^{m-1} \beta_j v_{p_{m-1}}^{(j)}} \right] \end{align*}
-y
-\[ \bm{x}^{(m)} = \frac{\bm{y}^{(m)}}{y_{p_{m}^{(m)}}} = \frac{\bm{A}^m \bm{x}^{(0)}}{ \prod_{k=1}^m y_{p_k}^{(k)}} \]
-donde para cada paso, $p_m$ es el menor entero para el cual $|y_{p_m}^{(m)}| = \lVert \bm{y}^{(m)} \rVert_{\infty}$.
+%\cx
+%$\mapsto$ secuencias $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$, $\{ \bm{y}^{(m)} \}_{m=0}^{\infty}$, $\{ \mu^{(m)} \}_{m=0}^{\infty}$, inductivamente:
+%\[ \bm{y}^{(m)} = \bm{A} \bm{x}^{(m-1)} \] 
+%\begin{align*} \mu^{(m)} &= y_{p_{m - 1}}^{(m)} \\
+%&= \lambda_1 \left[ \frac{\beta_1 v_{p_{m-1}}^{(1)} + \sum_{j=2}^n (\lambda_j/\lambda_1)^m \beta_j v_{p_{m-1}}^{(j)}}{\beta_1 v_{p_{m-1}}^{(1)} + \sum_{j=2}^n (\lambda_j/\lambda_1)^{m-1} \beta_j v_{p_{m-1}}^{(j)}} \right] \end{align*}
+%y
+%\[ \bm{x}^{(m)} = \frac{\bm{y}^{(m)}}{y_{p_{m}^{(m)}}} = \frac{\bm{A}^m \bm{x}^{(0)}}{ \prod_{k=1}^m y_{p_k}^{(k)}} \]
+%donde para cada paso, $p_m$ es el menor entero para el cual $|y_{p_m}^{(m)}| = \lVert \bm{y}^{(m)} \rVert_{\infty}$.
 
-Dado que $|\lambda_j/\lambda_1| < 1, j=2, \cdots, n$, $\lim_{m \rightarrow \infty} \mu^{(m)} = \lambda_1$, eligiendo $\bm{x}^{(0)}$ tal que $\beta_1 \neq 0$. Además, la secuencia $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$ converge al autovalor asociado con $\lambda_1$ con norma $l_{\infty}$ igual a 1.
-\end{columns}
-\end{frame}
+%Dado que $|\lambda_j/\lambda_1| < 1, j=2, \cdots, n$, $\lim_{m \rightarrow \infty} \mu^{(m)} = \lambda_1$, eligiendo $\bm{x}^{(0)}$ tal que $\beta_1 \neq 0$. Además, la secuencia $\{ \bm{x}^{(m)} \}_{m=0}^{\infty}$ converge al autovalor asociado con $\lambda_1$ con norma $l_{\infty}$ igual a 1.
+%\end{columns}
+%\end{frame}
 
 \begin{frame}
 \begin{columns}[t]
 \cx
 \textbf{Ejemplo:}
 \[ \bm{A} = \begin{bmatrix} -2 & -3 \\ 6 & 7 \end{bmatrix}, \bm{v}_1 = \begin{bmatrix} 1 \\ -2 \end{bmatrix}, \bm{v}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}  \]
-Con $\sigma(\bm{A}) = \{4, 1\}$. Tomemos $\bm{x}^{(0)} = [1, 1]^{\intercal}$:
+Con $\sigma(\bm{A}) = \{4, 1\}$. Tomemos $\bm{x}_0 = [1, 1]^{\intercal}$:
+
 \begin{align*} 
-    \bm{x}^{(1)} &= \bm{A} \bm{x}^{(0)} = \begin{bmatrix} -5 \\ 13 \end{bmatrix},  \bm{x}^{(2)} = \bm{A} \bm{x}^{(1)} = \begin{bmatrix} -29 \\ 61 \end{bmatrix} \\
-    \bm{x}^{(3)} &= \bm{A} \bm{x}^{(2)} = \begin{bmatrix} -125 \\ 253 \end{bmatrix},  \bm{x}^{(4)} = \bm{A} \bm{x}^{(3)} = \begin{bmatrix} -509 \\ 1021 \end{bmatrix} \\
-    \bm{x}^{(5)} &= \bm{A} \bm{x}^{(4)} = \begin{bmatrix} -2045 \\ 4093 \end{bmatrix},  \bm{x}^{(6)} = \bm{A} \bm{x}^{(5)} = \begin{bmatrix} -8189 \\ 16381 \end{bmatrix} 
+    \bm{A}\bm{x}_0 &= \begin{bmatrix} -5 \\ 13 \end{bmatrix} = 13 [-0.38462, 1]^{\intercal} = c_1 \bm{x}_1 \\
+    \bm{A}\bm{x}_1 &= \begin{bmatrix} -2.23077 \\ 4.69231 \end{bmatrix} = 4.69231 [-0.47541, 1]^{\intercal} = c_2 \bm{x}_2 \\
+    \bm{A}\bm{x}_2 &= \begin{bmatrix} -2.04918 \\ 4.14754 \end{bmatrix} = 4.14754 [ -0.49407, 1 ]^{\intercal} = c_3 \bm{x}_3
 \end{align*}
 
 \cx
-Aproximaciones al autovalor dominante $\lambda_1$:
-\begin{align*}
-    \lambda_1^{(1)} &= \frac{61}{13} = 4.6923, &\lambda_1^{(2)} = \frac{253}{61} = 4.14654 \\
-    \lambda_1^{(3)} &= \frac{1021}{253} = 4.03557, &\lambda_1^{(4)} = \frac{4093}{1021} = 4.00881 \\
- \lambda_1^{(5)} &= \frac{16381}{4093} = 4.00200
+\begin{align*} 
+    \bm{A}\bm{x}_3 &= \begin{bmatrix} -2.01186 \\  4.03557 \end{bmatrix} = 4.03557 [ -0.49853, 1 ]^{\intercal} = c_4 \bm{x}_4 \\
+    \bm{A}\bm{x}_4 &= \begin{bmatrix} -2.00294 \\ 4.00881 \end{bmatrix} = 4.00881 [ -0.49963, 1 ]^{\intercal} = c_5 \bm{x}_5 \\
+    \bm{A}\bm{x}_5 &= \begin{bmatrix} -2.00073 \\ 4.00220 \end{bmatrix} = 4.00220 [ -0.49991, 1]^{\intercal} = c_6 \bm{x}_6 \\
 \end{align*}
-Un autovector aproximado para $\lambda_1^{(5)} = 16381/4093 = 4.00200$ es
-\[ \bm{x}^{(6)} = \begin{bmatrix} -8189 \\ 16381 \end{bmatrix} \rightarrow \begin{bmatrix} -0.49908 \\ 1 \end{bmatrix} \approx \bm{v}_1 \]
+
+\textbf{Resulta:}
+\[ \lim_{k \rightarrow \infty} \bm{x}_k = \begin{bmatrix} -\dfrac{1}{2} \\ 1 \end{bmatrix}, \quad \lim_{k \rightarrow \infty} c_k = 4 \]
 \end{columns}
 \hrulefill \pause
 
 \textbf{Desventajas:}
 \begin{itemize}
     \item No se sabe al inicio si $\bm{A}$ tiene un autovalor dominante.
-    \item No se conoce cómo debe elegirse $\bm{x}^{(9)}$ para que tenga una contribución no nula del autovector asociado al autovalor dominante, si existe.
+    \item No se conoce cómo debe elegirse $\bm{x}_0$ para que tenga una contribución no nula del autovector asociado al autovalor dominante, si existe.
 \end{itemize}
 \end{frame}
 
@@ -230,16 +248,16 @@ Un autovector aproximado para $\lambda_1^{(5)} = 16381/4093 = 4.00200$ es
 \begin{columns}[t]
     \cw{0.45}
 \textbf{Método de las potencias: código}
-\pycode[firstline=1, lastline=21]{code/potencias.py}
+\pycode[firstline=1, lastline=19]{code/potencias.py}
 
 \cw{0.45}
-\pycode[firstline=23, lastline=37]{code/potencias.py}
+\pycode[firstline=21, lastline=34]{code/potencias.py}
 
 \begin{shell}
 $ ./potencias.py 
-Autovalor dominante: 3.000000000000001
+Autovalor dominante: 3.9999999999999876
 Autovector correspondiente:
-[ 2.62486865e-19 -7.07106781e-01 -7.07106781e-01]
+[0.4 0.6 1. ]
 \end{shell}
 \end{columns}
 \end{frame}
