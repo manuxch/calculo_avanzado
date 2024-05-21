@@ -292,6 +292,37 @@ Dado que $\langle \bm{x}, \bm{x} \rangle = \lVert \bm{x} \rVert_2^2, \forall \bm
 \end{frame}
 
 \begin{frame}
+    \frametitle{Ejemplo}
+    \begin{columns}[c]
+        \column{0.5\textwidth}
+        \[ S = \left\{ \bm{x}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix}, \bm{x}_2 = \begin{bmatrix} 2 \\ 2 \end{bmatrix} \right\} \]
+        \pause
+
+        \begin{align*}
+            \bm{v}_1 & = \bm{x}_1 = \begin{bmatrix} 3 \\ 1 \end{bmatrix} \\
+            \bm{v}_2 &= \bm{x}_2 - \frac{\langle \bm{x}_2, \bm{v}_1 \rangle }{\langle \bm{v}_1, \bm{v}_1 \rangle } \bm{v}_1 \\
+                     &= \begin{bmatrix} 2 \\ 2 \end{bmatrix} - \frac{8}{10} \begin{bmatrix} 3 \\ 1 \end{bmatrix} = \begin{bmatrix} -2/5 \\ 6/5 \end{bmatrix}
+        \end{align*}
+        \pause
+        Verificación:
+        \[ \langle \bm{v}_1, \bm{v}_2 \rangle = -\frac{6}{5} + \frac{6}{5} = 0 \]
+\pause
+
+        \column{0.5\textwidth}
+        \begin{center}
+          \includegraphics[width=0.8\textwidth]{code/gram-schmidt.pdf}
+        \end{center}
+
+        Vectores ortonormales:
+        \begin{align*}
+            \uvec{e}_1 &= \frac{1}{\sqrt{10}} \begin{bmatrix} 3 \\ 1 \end{bmatrix} \\
+            \uvec{e}_2  &= \frac{1}{\sqrt{\frac{40}{25}}} \begin{bmatrix} -2/5 \\ 6/5 \end{bmatrix} = \frac{1}{\sqrt{10}} \begin{bmatrix} -1 \\ 3 \end{bmatrix}
+        \end{align*}    
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
 \begin{columns}[t]
 \cx
 \begin{definition}[Matriz ortogonal]
