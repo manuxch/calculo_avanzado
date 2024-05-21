@@ -10,9 +10,8 @@ def iter_potencia(A, num_iteraciones):
         # Multiplicar la matriz A por el vector x
         y = np.dot(A, x)
         # Obtener la norma máxima
-        yy = np.abs(y)
-        c = yy.max()
-        print(c)
+        y_abs = np.abs(y)
+        c = y_abs.max()
         # Normalizar el vector resultante
         x = y / c
 
