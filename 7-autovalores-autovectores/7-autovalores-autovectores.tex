@@ -379,19 +379,19 @@ Se cumple $\lVert \bm{U} \bm{x} \rVert_2 = \lVert \bm{x} \rVert_2, \forall \bm{x
 \textbf{Ortogonalización de Gram-Schmidt:} $\bm{A} = [\bm{a}_1 | \bm{a}_2 | \cdots | \bm{a}_n]$
 {\small
 \begin{align*}
-\bm{u}_1 &= \bm{a}_1, \quad \bm{e}_1 = \frac{\bm{u}_1}{\lVert\bm{u}_1 \rVert} \\
-\bm{u}_2 &= \bm{a}_2 - \langle \bm{e}_1, \bm{a}_2 \rangle, \quad \bm{e}_2 = \frac{\bm{u}_2}{\lVert\bm{u}_2 \rVert} \\
-\bm{u}_3 &= \bm{a}_3 - \langle \bm{e}_1, \bm{a}_3 \rangle - \langle \bm{e}_2, \bm{a}_3 \rangle, \quad \bm{e}_3 = \frac{\bm{u}_3}{\lVert\bm{u}_3 \rVert} \\
+\bm{u}_1 &= \bm{a}_1, \quad \uvec{e}_1 = \frac{\bm{u}_1}{\lVert\bm{u}_1 \rVert} \\
+\bm{u}_2 &= \bm{a}_2 - \langle \uvec{e}_1, \bm{a}_2 \rangle \uvec{e}_1, \quad \uvec{e}_2 = \frac{\bm{u}_2}{\lVert\bm{u}_2 \rVert} \\
+\bm{u}_3 &= \bm{a}_3 - \langle \uvec{e}_1, \bm{a}_3 \rangle \uvec{e}_1 - \langle \uvec{e}_2, \bm{a}_3 \rangle \uvec{e}_2, \quad \uvec{e}_3 = \frac{\bm{u}_3}{\lVert\bm{u}_3 \rVert} \\
          &\vdots \\
-\bm{u}_k &= \bm{a}_k - \sum_{j=1}^{k-1} \langle \bm{e}_j, \bm{a_k} \rangle, \quad \bm{e}_k = \frac{\bm{u}_k}{\lVert \bm{u}_k \rVert}
+\bm{u}_k &= \bm{a}_k - \sum_{j=1}^{k-1} \langle \uvec{e}_j, \bm{a_k} \rangle, \quad \uvec{e}_k = \frac{\bm{u}_k}{\lVert \bm{u}_k \rVert}
 \end{align*} \pause
 Ahora podemos expresar los $\bm{a}_i$ en la nueva base:
 \begin{align*}
-    \bm{a}_1 &= \langle \bm{e}_1, \bm{a}_1 \rangle \bm{e}_1 \\
-    \bm{a}_1 &= \langle \bm{e}_1, \bm{a}_2 \rangle \bm{e}_1 + \langle \bm{e}_2, \bm{a}_2 \rangle \bm{e}_2  \\
-    \bm{a}_3 &= \langle \bm{e}_1, \bm{a}_3 \rangle \bm{e}_1 + \langle \bm{e}_2, \bm{a}_3 \rangle \bm{e}_2 + \langle \bm{e}_3, \bm{a}_3 \rangle \bm{e}_3 \\
+    \bm{a}_1 &= \langle \uvec{e}_1, \bm{a}_1 \rangle \uvec{e}_1 \\
+    \bm{a}_2 &= \langle \uvec{e}_1, \bm{a}_2 \rangle \uvec{e}_1 + \langle \uvec{e}_2, \bm{a}_2 \rangle \uvec{e}_2  \\
+    \bm{a}_3 &= \langle \uvec{e}_1, \m{a}_3 \rangle \uvec{e}_1 + \langle \uvec{e}_2, \bm{a}_3 \rangle \uvec{e}_2 + \langle \uvec{e}_3, \bm{a}_3 \rangle \uvec{e}_3 \\
              &\cdots \\
-    \bm{a}_k &= \sum_{j=1}^k \langle \bm{e}_j, \bm{a}_k \rangle \bm{e}_j
+    \bm{a}_k &= \sum_{j=1}^k \langle \uvec{e}_j, \bm{a}_k \rangle \uvec{e}_j
 \end{align*}
 }
 \end{columns}
@@ -440,14 +440,14 @@ Algoritmo recursivo que computa $\{ \bm{A}_k \}_{k = 0}^{\infty}$ con los siguie
     \item Para $k = 0, 1, 2, \ldots,$ dado $\bm{A}_k$:
         \begin{enumerate}
         \item Calcular $\bm{Q}_{k+1} \bm{R}_{k+1} = \bm{A}_k $
-        \item Definir $\bm{A}_{k+1} = \bm{Q}_{k+1} \bm{R}_{k+1}$
+        \item Definir $\bm{A}_{k+1} = \bm{R}_{k+1} \bm{Q}_{k+1}$
         \end{enumerate}
 \end{enumerate} \pause
 
 \begin{theorem}[Convergencia]
     Si los autovalores de una matriz $\bm{A}$ verifican que
     \[ |\lambda_1| > |\lambda_2| > \cdots > |\lambda_n| > 0 \]
-    entonces la suceción de matrices equivalentes contruidas con el algoritmo QR converge a una matriz triangular superior.
+    entonces la sucesión de matrices equivalentes contruidas con el algoritmo QR converge a una matriz triangular superior.
 \end{theorem}
 
 \cw{0.45}
