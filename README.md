@@ -48,7 +48,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 - Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](6-normas-vectores-matrices/normas.pdf), [problemas](6-normas-vectores-matrices/problemas_normas.pdf), [*notebook*](6-normas-vectores-matrices/code/normas.ipynb).
 
 ### Autovalores y autovectores
-- Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](7-autovalores-autovectores/autovalores-autovectores.pdf), [problemas](7-autovalores-autovectores/7-problemas.pdf).
+- Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](7-autovalores-autovectores/7-autovalores-autovectores.pdf), [problemas](7-autovalores-autovectores/7-problemas.pdf).
 
 ### Sistema de ecuaciones lineales
 - Clase 11: Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. [Clase](sistemas_lineales/clase_11/clase_11.pdf), [problemas](sistemas_lineales/clase_11/problemas_11.pdf).
