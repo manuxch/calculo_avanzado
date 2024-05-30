@@ -3,10 +3,10 @@
 \usetheme{metropolis}
 \setbeamertemplate{itemize items}{\faAngleRight}
 
-\input{../../utils/preamble}
+\input{../utils/preamble}
 
 \title{Solución de sistemas de ecuaciones lineales}
-\subtitle{Condicionamiento. Métodos directos: eliimnación gaussiana, factorización LU. Pivoteo.}
+\subtitle{Condicionamiento. Métodos directos: eliminación gaussiana, factorización LU. Pivoteo. Métodos indirectos. Gauss-Seidel.}
 
 %%%%
 % Bibliografía
@@ -67,35 +67,14 @@ $n = 50$, Intel i7: 200 Gflops $\approx 5 \times 10^{45}$ años.
 \begin{frame}
     \begin{columns}[t]
 \cx
-\textbf{Métodos:}
-\begin{itemize}
-    \item Directos: alcanzan la solución en un número finito de pasos. $\bigO(2/3N^3$).
-        \begin{itemize}
-            \item Eliminación gaussiana
-            \item Factorización $LU$
-            \item LDM$^T$
-            \item Factorización de Cholesky
-            \item Factorización $QR$
-        \end{itemize}
-    \item Iterativos: más eficientes en casos particulares. $\bigO(N^2$).
-        \begin{itemize}
-            \item Jacobi
-            \item Gauss-Seidel
-            \item Subespacios de Krylov
-            \item GMRES
-        \end{itemize}
-\end{itemize}
-
-\hrulefill \pause \vspace{1em}
-
 \textbf{Estabilidad de la solución:} 
+
 \begin{equation*}(\mathbb{A} + \delta \mathbb{A}) (\bm{x} + \textcolor{red}{\delta \bm{x}}) = \bm{b} + \delta \bm{b} \end{equation*}
 
 Unicidad de la solución: $\mathbb{A}$ es \alert{no singular}: $|\mathbb{A}| \neq 0$.
 
 Número de condición: $\cond(\mathbb{A}) = \norm{\mathbb{A}} \norm{\mathbb{A}^{-1}}$.
 
-\cx
 
 %¿Que ocurre si $\mathbb{A}$ es \textit{casi} singular ($|\mathbb{A}|$ pequeño)? El determinante es pequeño si $|\mathbb{A}| \ll \norm{\mathbb{A}}$. \pause
 
@@ -110,20 +89,14 @@ se cumple:
 En general es muy costoso evaluar $\norm{\mathbb{A}}$. Usualmente se compara $|\mathbb{A}|$ con $a_{ij}$. 
 
 
+\cx
 \textbf{Ejemplo:}
 \[
 \begin{system}
 2 x + y = 3 \\ 2 x + 1.001 y = 0
 \end{system}, \quad |\mathbb{A}| = 0.002 \]
 Solución: $x = 1501.5, y = -3000$. 
-
-\footnotetext[1]{Ver \bcite{moreno2014}, sección 2.3., y \bcite{quarteroni2000}, sección 3.1.}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{columns}[t]
-\cx
+\pause
 \[ \begin{system}
 2 x + y = 3 \\ 2x + 1.002 y = 0
 \end{system}, \quad |\mathbb{A}| = 0.004 \] 
@@ -132,17 +105,27 @@ Solución: $x = 751.5, y = -1500$.
 \fbox{0.1\% de cambio en $a_{ij} \mapsto$ 100\% de cambio en $\bm{x}$.}\\
 \begin{alertblock}{Mal condicionamiento}
     Si la solución de un sistema lineal cambia mucho cuando el problema cambia muy poco, la matriz está \alert{mal condicionada}.
-\end{alertblock} \pause
+\end{alertblock}
+
+\end{columns}
+
+\footnotetext[1]{Ver \bcite{moreno2014}, sección 2.3., y \bcite{quarteroni2000}, sección 3.1.}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}[t]
+\cx
 
 \textbf{Otro ejemplo:}
 \[ \mathbb{A} = \begin{bmatrix} 1 & 100 \\ 0 & 1 \end{bmatrix}, \quad |\mathbb{A}| = 1 \]
 \[ \mathbb{A}^{-1} = \begin{bmatrix} 1 & -100 \\ 0 & 1 \end{bmatrix}, \quad |\mathbb{A}^{-1}| = 1 \]
 \pause
-\cx
+
 \textbf{Soluciones:}
 \[ \bm{b} = \begin{bmatrix} 100 \\ 1 \end{bmatrix} \rightarrow \bm{x} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \; \bm{b} = \begin{bmatrix} 100 \\ 0 \end{bmatrix} \rightarrow \bm{x} = \begin{bmatrix} 100 \\ 0 \end{bmatrix}  \]
 \fbox{1\% de cambio en $\bm{b} \mapsto$ 100\% de cambio en $\bm{x}$.} \pause
 
+\cx
 \pycode{code/cond.py}
 \begin{shell}
 $ ./cond.py 
@@ -154,6 +137,33 @@ cond(a) = 10001.999900019995
 \end{frame}
 
 \begin{frame}
+\textbf{Métodos:}
+\begin{columns}[t]
+    \column{0.45\textwidth}
+\begin{itemize}
+    \item Directos: alcanzan la solución en un número finito de pasos. $\bigO(2/3N^3$).
+        \begin{itemize}
+            \item Eliminación gaussiana
+            \item Factorización $LU$
+            \item LDM$^T$
+            \item Factorización de Cholesky
+            \item Factorización $QR$
+        \end{itemize}
+\end{itemize}
+\column{0.45\textwidth}
+\begin{itemize}
+    \item Iterativos: más eficientes en casos particulares. $\bigO(N^2$).
+        \begin{itemize}
+            \item Jacobi
+            \item Gauss-Seidel
+            \item Subespacios de Krylov
+            \item GMRES
+        \end{itemize}
+\end{itemize}
+\end{columns}
+\pause
+
+\hrulefill \vspace{1em}
 \begin{columns}[c]
 \cw{0.3}
 \textbf{Métodos directos:}
@@ -174,30 +184,30 @@ Eliminación de Gauss-Jordan & $\mathbb{A} \mathbf{x} = \mathbf{b}$ & $\mathbb{I
 \bottomrule
 \end{tabular} 
 \end{center}
-\end{columns} \pause
+\end{columns} 
 
-\vspace{2em}
+%\vspace{2em}
 
-\begin{columns}[t]
-\cw{0.4}
- Matriz triangular superior 3x3
-\[
-    \mathbb{U} = \begin{bmatrix} 
- U_{11} & U_{12} &  U_{13} \\
- 0      & U_{22} &  U_{23} \\
- 0      & 0      &  U_{33}
- \end{bmatrix} 
-\]
+%\begin{columns}[t]
+%\cw{0.4}
+ %Matriz triangular superior 3x3
+%\[
+    %\mathbb{U} = \begin{bmatrix} 
+ %U_{11} & U_{12} &  U_{13} \\
+ %0      & U_{22} &  U_{23} \\
+ %0      & 0      &  U_{33}
+ %\end{bmatrix} 
+%\]
 
-\cw{0.4}
-Matriz triangular inferior 3x3
-\[
-    \mathbb{L} = \begin{bmatrix} 
- L_{11} & 0      & 0 \\
- L_{21} & L_{22} & 0 \\
- L_{31} & L_{32} & L_{33}
- \end{bmatrix} \] 
-\end{columns}
+%\cw{0.4}
+%Matriz triangular inferior 3x3
+%\[
+    %\mathbb{L} = \begin{bmatrix} 
+ %L_{11} & 0      & 0 \\
+ %L_{21} & L_{22} & 0 \\
+ %L_{31} & L_{32} & L_{33}
+ %\end{bmatrix} \] 
+%\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -543,27 +553,128 @@ En todos los casos: si $a_{ii} \ne 0 \mapsto$ no intercambiar filas. \medskip
 \end{frame}
 
 \section{Ejemplos de código}
-\begin{frame}[containsverbatim,fragile]{Ejemplo C++11} 
- \begin{columns}[c]
-  \cx
-  \cppcode[firstline=1]{./code/sislin.cpp}
-  \cx
-  Compilación:
-  \begin{shell}
-$ g++ sislin.cpp -o sislin -O3 -larmadillo
-  \end{shell}
-\end{columns}
-\end{frame}
-
-
-
 \begin{frame}[fragile]
 \begin{columns}[c]
-\cx
+\column{0.45\textwidth}
 \textbf{ Ejemplo con Python: }
 \pycode{code/ejemplo.py}
 
-\cx
+\column{.45\textwidth}
+
+\begin{shell}
+$ ./ejemplo.py 
+x =  [ 2. -2.  9.]
+a @ x ? [ True  True  True]
+a @ x ? True
+a @ x = [ 2.  4. -1.]
+[[1. 0. 0.]
+ [0. 0. 1.]
+ [0. 1. 0.]]
+[[ 1.          0.          0.        ]
+ [ 0.          1.          0.        ]
+ [ 0.33333333 -0.33333333  1.        ]]
+[[3.         2.         0.        ]
+ [0.         5.         1.        ]
+ [0.         0.         0.33333333]]
+\end{shell}
+\end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim,fragile]
+ \frametitle{Métodos indirectos}
+ \begin{columns}[]
+     \column{0.45\textwidth}
+\textbf{Ventajas:}
+\begin{itemize}
+ \item Es posible almacenar solo los elementos no nulos de la matriz
+ \item Las iteraciones son auto-correctivas
+\end{itemize}
+\bigskip \pause
+
+\textbf{Desventajas:}
+\begin{itemize}
+ \item Más lentos que los métodos directos
+ \item No siempre convergen (garantizado cuando la matriz es diagonalmente dominante)
+\end{itemize}
+\pause
+\column{0.45\textwidth}
+\textbf{Algoritmo de Gauss-Seidel}
+
+Escribimos las ecuaciones $\mathbb{A} \mathbf{x}= \mathbf{b}$ en notación escalar:
+\begin{equation*}
+ \sum_{j=1}^N a_{ij}x_j = b_i, \; i = 1, 2, \ldots, n
+\end{equation*}
+Extraemos el término que contiene $x_i$:
+\begin{equation*}
+ a_{ii}x_i + \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j = b_i, \; i = 1, 2, \ldots, n
+\end{equation*}
+Resolviendo para $x_i$ tenemos:
+\begin{equation*}
+ x_i = \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right), \;  i = 1, 2, \ldots, n
+\end{equation*}
+ \end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim,fragile]
+ \frametitle{Algoritmo de Gauss-Seidel (cont.)}
+  
+Esquema iterativo:
+\begin{equation*}
+ x_i \leftarrow \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right), \;  i = 1, 2, \ldots, n
+\end{equation*} \pause
+Técnica de relajación:
+\begin{equation*}
+ x_i \leftarrow \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right) + (1-\omega)x_i, \;  i = 1, 2, \ldots, n
+\end{equation*}
+Determinación de $\omega$:
+\bigskip
+
+Si $\Delta x^{(k)} = \vert x^{(k-1)}-x^{(k)} \vert$ calculado con $\omega = 1$:
+\begin{equation*}
+ \omega_{\text{opt}} \approx \dfrac{2}{1+\sqrt{1-(\Delta x^{(k+p)})/\Delta x^{(k)})^{1/p}}}
+\end{equation*}
+donde $p$ es un entero positivo.
+\end{frame}
+
+\begin{frame}[containsverbatim,fragile]
+ \frametitle{Gauss-Seidel}
+
+\begin{columns}[t]
+  \cx
+\textbf{Esquema general con relajación:} \bigskip
+\begin{itemize}
+ \item Realizar $k$ iteraciones con $\omega = 1$ ($k = 10$). Luego de la iteración $k$ almacenar $\Delta x^{(k)}$. \medskip
+ \item Realizar $p$ iteraciones adicionales y almacenar $\Delta x^{(k+p)}$ para la última iteración. \medskip
+ \item Realizar las iteraciones siguientes con $\omega = \omega_{\text{opt}}$.
+\end{itemize} \pause
+  \cx
+  \textbf{Algoritmo:} \bigskip
+\begin{algorithmic}[1]
+ \Require $\mathbb{A}, \mathbf{b}$ y $\omega$ \Comment{inputs}
+ \Ensure $\mathbf{x}$ \Comment{output}
+ \State $\mathbf{x} \gets \text{ valores aleatorios}$
+\Repeat
+  \For{$i \gets 1,\ldots,N$}
+    \State $\sigma \gets 0$
+    \For{$j \gets 1,\ldots,N$}
+       \If {$j \neq i$}
+	\State $\sigma \gets \sigma + a_{ij} x_j$
+       \EndIf
+    \EndFor \Comment{Fin $j$-loop}
+    \State $x_i \gets x_i+\omega \left( \frac{b_i - \sigma}{a_{ii}} - x_i \right)$
+  \EndFor \Comment{Fin $i$-loop}
+  \State Verificar convergencia
+\Until{Convergencia alcanzada}
+\end{algorithmic}
+\end{columns}
+\end{frame} 
+
+\begin{frame}[fragile]{Ejemplo Python}
+\begin{columns}[c]] 
+\cw{0.4}
+\pycode{code/ejemplo.py}
+
+\cw{0.4}
 \begin{shell}
 $ ./ejemplo.py 
 x =  [ 2. -2.  9.]

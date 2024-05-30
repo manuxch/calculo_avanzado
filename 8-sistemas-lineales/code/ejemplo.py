@@ -10,8 +10,8 @@ print('x = ', x)
 
 # Verificación
 print('a @ x ?', (np.dot(a, x) == b))
-print('a @ x ?', np.allclose(a@x, b))
-print('a @ x =', a@x)
+print('a @ x ?', np.allclose(a @ x, b))
+print('a @ x =', a @ x)
 # Descomposición LU
 p, l, u = linalg.lu(a)
 print(p)
