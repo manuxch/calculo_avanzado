@@ -598,7 +598,7 @@ a @ x = [ 2.  4. -1.]
 \end{itemize}
 \pause
 \column{0.45\textwidth}
-\textbf{Algoritmo de Gauss-Seidel}
+\textbf{Método de Jacobi}
 
 Escribimos las ecuaciones $\mathbb{A} \mathbf{x}= \mathbf{b}$ en notación escalar:
 \begin{equation*}
@@ -616,24 +616,21 @@ Resolviendo para $x_i$ tenemos:
 \end{frame}
 
 \begin{frame}[containsverbatim,fragile]
- \frametitle{Algoritmo de Gauss-Seidel (cont.)}
+ \frametitle{Método de Jacobi (cont.)}
   
-Esquema iterativo:
+ Esquema iterativo: para cada $k \geq 1$, generamos $x_i^{(k)}$ de $\bm{x}^{(k)}$ a partir de $\bm{x}^{(k-1)}$ mediante
 \begin{equation*}
- x_i \leftarrow \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right), \;  i = 1, 2, \ldots, n
+    x_i^{(k)} = \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j^{(k-1)} \right), \;  i = 1, 2, \ldots, n
 \end{equation*} \pause
-Técnica de relajación:
-\begin{equation*}
- x_i \leftarrow \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right) + (1-\omega)x_i, \;  i = 1, 2, \ldots, n
-\end{equation*}
-Determinación de $\omega$:
-\bigskip
 
-Si $\Delta x^{(k)} = \vert x^{(k-1)}-x^{(k)} \vert$ calculado con $\omega = 1$:
+\textbf{Método de Gauss-Seidel:}
+
+Para $i > 1$ tenemos $x_1^{(k)}, x_2^{(k)}, \cdots,x_{i-1}^{(k)}$ de $\bm{x}^{(k)}$:
 \begin{equation*}
- \omega_{\text{opt}} \approx \dfrac{2}{1+\sqrt{1-(\Delta x^{(k+p)})/\Delta x^{(k)})^{1/p}}}
-\end{equation*}
-donde $p$ es un entero positivo.
+    x_i^{(k)} = \dfrac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i + 1}^N a_{ij}x_j^{(k-1)} \right), \;  i = 1, 2, \ldots, n
+\end{equation*} \pause
+
+
 \end{frame}
 
 \begin{frame}[containsverbatim,fragile]
@@ -641,14 +638,26 @@ donde $p$ es un entero positivo.
 
 \begin{columns}[t]
   \cx
-\textbf{Esquema general con relajación:} \bigskip
+  \textbf{Técnica de relajación (Jacobi):}
+\begin{equation*}
+    x_i^{(k)} = \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j^{(k-1)}  \right) + (1-\omega)x_i^{(k)} 
+\end{equation*}
+Determinación de $\omega$:
+
+Si $\Delta x^{(k)} = \vert x^{(k-1)}-x^{(k)} \vert$ calculado con $\omega = 1$:
+\begin{equation*}
+ \omega_{\text{opt}} \approx \dfrac{2}{1+\sqrt{1-(\Delta x^{(k+p)})/\Delta x^{(k)})^{1/p}}}
+\end{equation*}
+donde $p$ es un entero positivo.
+
+\textbf{Esquema general con relajación:} 
 \begin{itemize}
- \item Realizar $k$ iteraciones con $\omega = 1$ ($k = 10$). Luego de la iteración $k$ almacenar $\Delta x^{(k)}$. \medskip
- \item Realizar $p$ iteraciones adicionales y almacenar $\Delta x^{(k+p)}$ para la última iteración. \medskip
+ \item Realizar $k$ iteraciones con $\omega = 1$ ($k = 10$). Luego de la iteración $k$ almacenar $\Delta x^{(k)}$.
+ \item Realizar $p$ iteraciones adicionales y almacenar $\Delta x^{(k+p)}$ para la última iteración.
  \item Realizar las iteraciones siguientes con $\omega = \omega_{\text{opt}}$.
 \end{itemize} \pause
   \cx
-  \textbf{Algoritmo:} \bigskip
+  \textbf{Algoritmo:}
 \begin{algorithmic}[1]
  \Require $\mathbb{A}, \mathbf{b}$ y $\omega$ \Comment{inputs}
  \Ensure $\mathbf{x}$ \Comment{output}
