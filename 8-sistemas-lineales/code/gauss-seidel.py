@@ -1,25 +1,29 @@
 #!/usr/bin/env python3
 import numpy as np
-def gauss_seidel(A, b, tolerance=1e-10, max_iterations=10000):
 
-    x = np.zeros_like(b, dtype=np.double)
+def gauss_seidel(A, b, w=1.0, tol=1e-10, max_iter=10000):
+    n = len(b)
+    x = np.zeros_like(b, dtype=np.float64)
+    for it in range(max_iter):
+        for i in range(n):
+            sigma = 0
+            for j in range(n):
+                if j != i:
+                    sigma += A[i, j] * x[j]
 
-    #Iterate
-    for k in range(max_iterations):
-        x_old  = x.copy()
-        #Loop over rows
-        for i in range(A.shape[0]):
-            x[i] = (b[i] - np.dot(A[i,:i], x[:i]) - np.dot(A[i,(i+1):], x_old[(i+1):])) / A[i ,i]
+            x[i] = (1 - w) * x[i] + w * (b[i] - sigma) / A[i, i]
 
-        #Stop condition
-        if np.linalg.norm(x - x_old, ord=np.inf) / np.linalg.norm(x, ord=np.inf) < tolerance:
+        if np.linalg.norm(A @ x - b, ord=np.inf) < tol:
             break
 
-    return x, k
+    return x, it
 
-a = np.array([[3, 2, 0], [1, -1, 0], [0, 5, 1]])
-b = np.array([2, 4, -1])
-x, k = gauss_seidel(a, b)
-print(x, k)
-print(a @ x - b)
-
+a = np.array([[4, -1, -6, 0],
+              [-5, -4, 10, 8],
+              [0, 9, 4, -2],
+              [1, 0, -7, 5]])
+b = np.array([2, 21, -12, -6])
+x, k = gauss_seidel(a, b, w = 0.0)
+residuo = np.linalg.norm(a @ x - b, ord=np.inf)
+print(f"Iter: {k}, x: {x}")
+print(f"Residuo: {residuo:10.6g}")
