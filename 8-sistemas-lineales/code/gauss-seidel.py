@@ -15,10 +15,11 @@ def gauss_seidel(A, b, tolerance=1e-10, max_iterations=10000):
         if np.linalg.norm(x - x_old, ord=np.inf) / np.linalg.norm(x, ord=np.inf) < tolerance:
             break
 
-    return x
+    return x, k
 
 a = np.array([[3, 2, 0], [1, -1, 0], [0, 5, 1]])
 b = np.array([2, 4, -1])
-x = gauss_seidel(a, b)
-print(x)
+x, k = gauss_seidel(a, b)
+print(x, k)
+print(a @ x - b)
 
