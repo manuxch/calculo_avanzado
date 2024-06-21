@@ -50,9 +50,8 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 ### 7 - Autovalores y autovectores
 - Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](7-autovalores-autovectores/7-autovalores-autovectores.pdf), [problemas](7-autovalores-autovectores/7-problemas.pdf), [_notebook_](7-autovalores-autovectores/code/autovalores-autovectores.ipynb).
 
-### Sistema de ecuaciones lineales
-- Clase 11: Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. [Clase](sistemas_lineales/clase_11/clase_11.pdf), [problemas](sistemas_lineales/clase_11/problemas_11.pdf).
-- Clase 12: Métodos iterativos (**completar**).
+### 8 - Sistema de ecuaciones lineales
+- Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. Métodos indirectos: Jacobi y Gauss-Seidel. Relajación. Ejemplos con Python. [Clase](8-sistemas-lineales/8-sistemas-lineales.pdf), [problemas](8-sistemas-lineales/problemas-8.pdf).
 
 ### Ajustes por mínimos cuadrados
 - Clase 13: Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. [Clase](aproximacion/clase_13/clase_13.pdf), [problemas](aproximacion/clase_13/problemas_13.pdf).
