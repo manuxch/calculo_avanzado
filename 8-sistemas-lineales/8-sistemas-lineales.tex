@@ -596,7 +596,55 @@ a @ x = [ 2.  4. -1.]
  \item Más lentos que los métodos directos
  \item No siempre convergen (garantizado cuando la matriz es diagonalmente dominante)
 \end{itemize}
+\medskip
+
+\textbf{Objetivo:} a partir de una conjetura inicial $\bm{x}^{(0)}$, producir una aproximación mejorada $\bm{x}^{(k+1)}$ a partir de la anterior $\bm{x}^{(k)}$. 
 \pause
+\column{0.45\textwidth}
+Si $\mathbb{A} = \mathbb{S} - \mathbb{T}$, $\mathbb{A} \bm{x} = \bm{b}$ es igual a $\mathbb{S} \bm{x} = \mathbb{T} \bm{x} + \bm{b}$, entonces:
+\[\text{Iteración: } x^{(k)} \rightarrow x^{(k+1)}: \quad \mathbb{S} \bm{x}^{(k+1)} = \mathbb{T} \bm{x}^{(k)} + \bm{b} \]
+
+Una descomposición útil $\mathbb{S} - \mathbb{T}$ debe cumplir:
+\begin{itemize}
+    \item $\bm{x}^{(k+1)}$ debe ser \textbf{fácil de calcular}: $\mathbb{S}$ debe ser una matriz simple e invertible (diagonal o triangular).
+    \item La secuencia $\bm{x}^{(k)}$ debe \textbf{converger} a la solución $\bm{x}$. Definiendo el error en la iteración $k$ como:
+        \[ \bm{e}^{(k)} = \bm{x} - \bm{x}^{(k)} \]
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Métodos indirectos}
+\begin{columns}[t]
+    \column{0.45\textwidth}
+    podemos sustraer la ecuación de iteración de la ecuación original:
+        \[ \text{Ecuación de error: } \mathbb{S} \bm{e}^{(k+1)} = \mathbb{T} \bm{e}^{(k)} \]
+    
+    Iniciando con un error $\bm{e}^{(0)}$, después de $k$ iteraciones se produce el error $\bm{e}^{(k)} = (\mathbb{S}^{-1} \mathbb{T})^k \bm{e}^{(0)}$.
+    La convergencia y estabilidad determinan que
+    \[ \bm{x}^{(k)} \rightarrow \bm{x} \txt{exactamente cuando} \bm{e}^{(k)} \rightarrow \bm{0} \]
+
+    El método iterativo es \textbf{convergente} si y solo si todo autovalor de $\mathbb{S}^{-1} \mathbb{T}$ satisface $|\lambda| < 1$, la velocidad de convergencia depende del radio espectral:
+    \[ \rho(\mathbb{S}^{(-1)} \mathbb{T}) = \max_{i} |\lambda_i| \]
+
+    \column{0.45\textwidth}
+    Dado que una solución típica de $\bm{e}^{(k+1)} = (\mathbb{S}^{-1} \mathbb{T}) \bm{e}^{(k)}$ es una combinación lineal de autovectores, el error luego de $k$ iteraciones es:
+    \[ \bm{e}^{(k)} = c_1 \lambda_1^k \bm{v}_1 + \cdots + c_n \lambda_n^k \bm{v}_n \]
+    el radio espectral $\rho = |\lambda_{\text{max}}|$ gobierna la velocidad a la que $\bm{e}^{(k)}$ converge a cero. 
+    \medskip
+
+    \textbf{Tres posibilidades:}
+    \begin{enumerate}
+        \item $\mathbb{S}$: parte diagonal de $\mathbb{A}$ (método de Jacobi).
+        \item $\mathbb{S}$: parte triangular de $\mathbb{A}$ (método de Gauss-Seidel).
+        \item $\mathbb{S}$: combinación de 1 y 2 (sobrerrelajación sucesiva -- SOR).
+    \end{enumerate}
+
+ \end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim,fragile]
+ \frametitle{Métodos indirectos}
+ \begin{columns}[]
 \column{0.45\textwidth}
 \textbf{Método de Jacobi}
 
@@ -612,56 +660,45 @@ Resolviendo para $x_i$ tenemos:
 \begin{equation*}
  x_i = \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j \right), \;  i = 1, 2, \ldots, n
 \end{equation*}
- \end{columns}
-\end{frame}
+ 
+\column{0.5\textwidth}
 
-\begin{frame}[containsverbatim,fragile]
- \frametitle{Método de Jacobi (cont.)}
-  
  Esquema iterativo: para cada $k \geq 1$, generamos $x_i^{(k)}$ de $\bm{x}^{(k)}$ a partir de $\bm{x}^{(k-1)}$ mediante
 \begin{equation*}
     x_i^{(k)} = \dfrac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j^{(k-1)} \right), \;  i = 1, 2, \ldots, n
 \end{equation*} \pause
 
-\textbf{Método de Gauss-Seidel:}
-
-Para $i > 1$ tenemos $x_1^{(k)}, x_2^{(k)}, \cdots,x_{i-1}^{(k)}$ de $\bm{x}^{(k)}$:
+  \textbf{Técnica de relajación:}
 \begin{equation*}
-    x_i^{(k)} = \dfrac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i + 1}^N a_{ij}x_j^{(k-1)} \right), \;  i = 1, 2, \ldots, n
-\end{equation*} \pause
-
-
-\end{frame}
-
-\begin{frame}[containsverbatim,fragile]
- \frametitle{Gauss-Seidel}
-
-\begin{columns}[t]
-  \cx
-  \textbf{Técnica de relajación (Jacobi):}
-\begin{equation*}
-    x_i^{(k)} = \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j^{(k-1)}  \right) + (1-\omega)x_i^{(k)} 
+    x_i^{(k)} = \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\j \neq i}}^N a_{ij}x_j^{(k-1)}  \right) + (1-\omega)x_i^{(k - 1)} 
 \end{equation*}
-Determinación de $\omega$:
 
+Determinación de $\omega$:
 Si $\Delta x^{(k)} = \vert x^{(k-1)}-x^{(k)} \vert$ calculado con $\omega = 1$:
 \begin{equation*}
  \omega_{\text{opt}} \approx \dfrac{2}{1+\sqrt{1-(\Delta x^{(k+p)})/\Delta x^{(k)})^{1/p}}}
 \end{equation*}
 donde $p$ es un entero positivo.
+\end{columns}
+\end{frame}
 
+\begin{frame}[containsverbatim,fragile]
+ \frametitle{Método de Jacobi (cont.)}
+\begin{columns}[c]
+    \column{0.5\textwidth}
 \textbf{Esquema general con relajación:} 
 \begin{itemize}
  \item Realizar $k$ iteraciones con $\omega = 1$ ($k = 10$). Luego de la iteración $k$ almacenar $\Delta x^{(k)}$.
  \item Realizar $p$ iteraciones adicionales y almacenar $\Delta x^{(k+p)}$ para la última iteración.
  \item Realizar las iteraciones siguientes con $\omega = \omega_{\text{opt}}$.
 \end{itemize} \pause
-  \cx
+
+    \column{0.5\textwidth}
   \textbf{Algoritmo:}
 \begin{algorithmic}[1]
  \Require $\mathbb{A}, \mathbf{b}$ y $\omega$ \Comment{inputs}
  \Ensure $\mathbf{x}$ \Comment{output}
- \State $\mathbf{x} \gets \text{ valores aleatorios}$
+ \State $\mathbf{x} \gets \text{ valores aleatorios, ceros}$
 \Repeat
   \For{$i \gets 1,\ldots,N$}
     \State $\sigma \gets 0$
@@ -678,31 +715,34 @@ donde $p$ es un entero positivo.
 \end{columns}
 \end{frame} 
 
-\begin{frame}[fragile]{Ejemplo Python}
-\begin{columns}[c]] 
-\cw{0.4}
-\pycode{code/ejemplo.py}
+\begin{frame}{Método de Gauss-Seidel}
 
-\cw{0.4}
-\begin{shell}
-$ ./ejemplo.py 
-x =  [ 2. -2.  9.]
-a @ x ? [ True  True  True]
-a @ x ? True
-a @ x = [ 2.  4. -1.]
-[[1. 0. 0.]
- [0. 0. 1.]
- [0. 1. 0.]]
-[[ 1.          0.          0.        ]
- [ 0.          1.          0.        ]
- [ 0.33333333 -0.33333333  1.        ]]
-[[3.         2.         0.        ]
- [0.         5.         1.        ]
- [0.         0.         0.33333333]]
-\end{shell}
-\end{columns}
+Para $i > 1$ tenemos $x_1^{(k)}, x_2^{(k)}, \cdots,x_{i-1}^{(k)}$ de $\bm{x}^{(k)}$:
+\begin{equation*}
+    x_i^{(k)} = \dfrac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i + 1}^N a_{ij}x_j^{(k-1)} \right), \;  i = 1, 2, \ldots, n
+\end{equation*} \pause
+
+Con el método de \textbf{sobrerrelajación sucesiva} (SOR):
+\begin{equation*}
+    x_i^{(k)} = \dfrac{\omega}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij}x_j^{(k)} - \sum_{j=i + 1}^N a_{ij}x_j^{(k-1)} \right) + (1 - \omega) x_i^{(k - 1)}, \;  i = 1, 2, \ldots, n
+\end{equation*} \pause
+
 \end{frame}
 
+\begin{frame}[fragile]{Ejemplo Python}
+\begin{columns}[t]
+    \column{0.45\textwidth}
+    \pycode[firstline=1, lastline=20]{code/gauss-seidel.py}
+    \column{0.45\textwidth}
+    \pycode[firstline=21, lastline=30]{code/gauss-seidel.py}
+    \begin{shell}
+$ ./gauss-seidel.py
+Iteración: 374, x: [ 3. -2.  2.  1.]
+Residuo: 9.55289e-11
+    \end{shell}
+    
+\end{columns}
+\end{frame}
 
 \section*{Bibliografía}
 \begin{frame}[allowframebreaks]{Lecturas recomendadas}
@@ -711,8 +751,8 @@ a @ x = [ 2.  4. -1.]
     \item \fullcite{strang2006}. Capítulo 7.
     \item \fullcite{salgado2023}. Capítulo 3.
     \item \fullcite{quarteroni2000}. Capítulo 3.
+    \item \fullcite{strang2006}. Capítulo 7.
 \end{itemize}
 \end{frame}
-
 \end{document}
 

@@ -11,7 +11,8 @@ def gauss_seidel(A, b, w=1.0, tol=1e-10, max_iter=10000):
                 if j != i:
                     sigma += A[i, j] * x[j]
 
-            x[i] = (1 - w) * x[i] + w * (b[i] - sigma) / A[i, i]
+            x[i] = x[i] + \
+                w * ((b[i] - sigma) / A[i, i] - x[i])
 
         if np.linalg.norm(A @ x - b, ord=np.inf) < tol:
             break
@@ -23,7 +24,7 @@ a = np.array([[4, -1, -6, 0],
               [0, 9, 4, -2],
               [1, 0, -7, 5]])
 b = np.array([2, 21, -12, -6])
-x, k = gauss_seidel(a, b, w = 0.0)
+x, k = gauss_seidel(a, b, w = 1.0, max_iter=1000000)
 residuo = np.linalg.norm(a @ x - b, ord=np.inf)
-print(f"Iter: {k}, x: {x}")
+print(f"Iteración: {k}, x: {x}")
 print(f"Residuo: {residuo:10.6g}")
