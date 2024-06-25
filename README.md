@@ -53,9 +53,9 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 ### 8 - Sistema de ecuaciones lineales
 - Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. Métodos indirectos: Jacobi y Gauss-Seidel. Relajación. Ejemplos con Python. [Clase](8-sistemas-lineales/8-sistemas-lineales.pdf), [problemas](8-sistemas-lineales/problemas-8.pdf).
 
-### Ajustes por mínimos cuadrados
-- Clase 13: Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. [Clase](aproximacion/clase_13/clase_13.pdf), [problemas](aproximacion/clase_13/problemas_13.pdf).
-- Clase 14: Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. [Clase](aproximacion/clase_14/clase_14.pdf), [problemas](aproximacion/clase_14/problemas_14.pdf).
+### 9 - Ajustes por mínimos cuadrados
+- Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](9-aproximacion/9-aproximacion.pdf), [problemas](9-aproximacion/problemas-9.pdf).
+
 ### Unidad 10: Resolución de problemas de valor inicial
 Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/u10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_u10.pdf).
 
