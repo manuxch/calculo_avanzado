@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 
 def f(x) :
@@ -28,4 +28,4 @@ ax2.tick_params(axis="y", labelcolor=color)
 
 ax1.legend(loc='center')
 fig.tight_layout()
-plt.savefig("fig-02.pdf")
+plt.savefig("fig-07.pdf")

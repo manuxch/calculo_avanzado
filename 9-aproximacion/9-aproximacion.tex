@@ -1,12 +1,13 @@
 \documentclass[9pt, aspectratio=169]{beamer}
 
+%\usetheme{uumetropolis}
 \usetheme{metropolis}
 \setbeamertemplate{itemize items}{\faAngleRight}
 
-\input{../../utils/preamble}
+\input{../utils/preamble}
 
 \title{Aproximación por mínimos cuadrados}
-\subtitle{Ajuste continuo polinómico, Funciones ortogonales. Polinomios de Legendre. Polinomios de Chebishev.}
+\subtitle{Motivación. Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste continuo polinómico, Funciones ortogonales. Polinomios de Legendre. Polinomios de Chebishev.}
 
 %%%%
 % Bibliografía
@@ -15,6 +16,377 @@
 \begin{document}
 \maketitle
 
+\begin{frame}[standout]
+    \begin{center}
+        {\Huge Ajuste discreto}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.45}
+\textbf{Datos:}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$x_i$ & $y_i$ & $x_i$ & $y_i$ \\
+\midrule
+ 1 & 7.07 &  6 & 18.02 \\
+ 2 & 6.99 &  7 & 21.69 \\
+ 3 & 11.37 &  8 & 23.94 \\
+ 4 & 14.73 &  9 & 25.07 \\
+ 5 & 16.03 & 10 & 28.15 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\cw{0.45}
+\textbf{Figura:}
+\begin{center}
+    \includegraphics[scale=0.40]{figs/fig-01.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.45}
+\textbf{Ajuste exacto:} polinomio de grado 9
+
+\begin{align*}
+    P_{9}(x) &= 30.63 - 55.47 x + 53.23 x^2 \\
+             &- 30.82 x^3 \+ 12.24 x^4 -3.21 x^5 \\
+             & +0.53 x^6 - 0.053 x^7 + 0.0029 x^8 \\
+             &- 6.4 \times 10^{-5} x^9
+\end{align*}
+\begin{center}
+    \includegraphics[scale=0.40]{figs/fig-02.pdf}
+\end{center} \pause
+
+\cw{0.45}
+\textbf{Aproximación lineal:}
+\[ y = a_1 \, x + a_0 \]
+
+\begin{itemize}
+    \item  Problema \textbf{minimax}: 
+        \[ E_{\infty}(a_0, a_1) = \max_{1 \leq i \leq 10} \{|y_i - (a_1 x_i + a_0)|\} \]  \pause
+    \item Desviación absoluta: 
+        \[ E_1(a_0, a_1) = \sum_{i = 1}^{10} |y_i - (a_1 x_i + a_0) | \] \pause
+    \item \textbf{Mínimos cuadrados:}
+    \[ E_2(a_0, a_1) = \sum_{i = 1}^{10} [y_i - (a_1 x_i + a_0)]^2 \]
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\cw{0.55}
+Para el conjunto $\{(x_i, y_i)\}_{i=1}^m$, \textbf{minimizar} respecto de \\ $a_0, a_1$:
+\[ E \equiv E_2(a_0, a_1) = \sum_{i = 1}^{m} [y_i - (a_1 x_i + a_0)]^2 \] 
+\pause
+\[ \frac{\partial E}{\partial a_0} = 0 \txt{y} \frac{\partial E}{\partial a_1} = 0 \]
+Esto es:
+\[ 0 = \frac{\partial}{\partial a_0} \sum_{i = 1}^m [y_i - (a_1 x_i + a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_0)(-1) \]
+\[ 0 = \frac{\partial}{\partial a_1} \sum_{i = 1}^m [y_i - (a_1 x_i + a_0)]^2 = 2 \sum_{i=1}^m (y_i - a_1 x_i - a_0)(-x_i) \]
+\pause
+
+\cw{0.35}
+\textbf{Ecuaciones normales:}
+\begin{align*}
+    a_0 \cdot m + a_1 \sum_{i=1}^m x_i &= \sum_{i=1}^m y_i \\
+    a_0 \sum_{i=1}^m x_i + a_1 \sum_{i=1}^m x_i^2 &= \sum_{i=1}^m x_i \, y_i \\
+\end{align*}
+\pause
+
+\textbf{Solución:}
+\begin{align*}
+    a_0 &= \frac{\dsum_{i=1}^m x_i^2 \dsum_{i=1}^m y_i - \dsum_{i=1}^m x_i y_i \dsum_{i=1}^m x_i}{m \left( \dsum_{i=1}^m x_i^2 \right) - \pow{\dsum_{i=1}^m x_i}{2} } \\
+    a_1 &= \frac{ m \dsum_{i=1}^m x_i y_i - \dsum_{i=1}^m x_i \dsum_{i=1}^m y_i}{m \left( \dsum_{i=1}^m x_i^2 \right) - \pow{\dsum_{i=1}^m x_i}{2} } \\
+\end{align*}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \textbf{Ejemplo:} Encontrar la recta de mínimos cuadrados:
+\begin{columns}
+\cx
+\begin{tabular}{ccccc}
+\toprule
+$x_i$ & $y_i$ & $x_i^2$ & $x_i y_i$ & $P(x_i) = 2.437 x_i + 3.903$ \\
+\midrule
+ 1 & 7.07 &  1 & 7.07 & 6.34 \\ 
+ 2 & 6.99 &  4 & 13.97 & 8.78 \\ 
+ 3 & 11.37 &  9 & 34.10 & 11.21 \\ 
+ 4 & 14.73 & 16 & 58.92 & 13.65 \\ 
+ 5 & 16.03 & 25 & 80.14 & 16.09 \\ 
+ 6 & 18.02 & 36 & 108.10 & 18.52 \\ 
+ 7 & 21.69 & 49 & 151.85 & 20.96 \\ 
+ 8 & 23.94 & 64 & 191.52 & 23.40 \\ 
+ 9 & 25.07 & 81 & 225.62 & 25.83 \\ 
+10 & 28.15 & 100 & 281.49 & 28.27 \\ 
+\midrule
+55 & 173.04 & 385 & 1152.77 & $E \approx 6.62$ \\
+\bottomrule
+\end{tabular}
+\pause 
+
+\cx
+\begin{align*}
+    a_0 &= \frac{385 (173.04) - 55 (1152.77)}{10 (385) - 55^2} = 3.903 \\
+    a_1 &= \frac{10 (1152.77) - 55 (173.04)}{10 (385) - 55^2} = 2.437
+\end{align*}
+
+\begin{center}
+    \includegraphics[scale=0.4]{figs/fig-03.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}[t]
+\cx
+\textbf{Mínimos cuadrados polinomiales:}
+\[ P_n(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \]
+$\{(x_i, y_i)\}, i = 1, \ldots m$, $n < m-1$. Minimizar:
+\begin{align*}
+    E &= \sum_{i=1}^m [y_i - P_n(x_i)]^2 \\
+      &= \sum_{i=1}^m y_i^2 - 2 \sum_{i=1}^m P_n(x_i) y_i + \sum_{i=1}^m [P_n(x_i)]^2 \\
+      &= \sum_{i=1}^m y_i^2 -2 \sum_{i=1}^m \left(\sum_{j=0}^n a_j x_i^j \right) y_i + \sum_{i=1}^m \pow{\sum_{j=0}^n a_j x_i^j}{2} \\
+      &= \sum_{i=1}^m y_i^2 -2 \sum_{j=0}^n a_j \left( \sum_{i=1}^m y_i x_i^j \right) + \sum_{j=0}^n \sum_{k=0}^n a_j a_k \left( \sum_{i=1}^m x_i^{j+k} \right) 
+\end{align*}
+\pause
+
+\cw{0.4}
+Minimización: $\partial E / \partial a_j = 0, j = 0, 1, \ldots n$.
+\[ 0 = \frac{\partial E}{\partial a_j} = -2 \sum_{i=1}^m y_i x_i^j + 2 \sum_{k=0}^na_k \sum_{i=1}^m x_i^{j+k} \]
+$(n+1)$ \textbf{ecuaciones normales}:
+\[ \sum_{k=0}^n a_k \sum_{i=1}^m x_i^{j+k} = \sum_{i=1}^m y_i x_i^j, \; j=0, 1, \ldots n \]
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{align*}
+    a_0 \sum_{i=1}^m x_i^0 + a_1 \sum_{i=1}^m x_i^1 + a_2 \sum_{i=1}^m x_i^2 + \cdots + a_n \sum_{i=1}^m x_i^n &= \sum_{i=1}^m y_i x_i^0 \\ 
+    a_0 \sum_{i=1}^m x_i^1 + a_1 \sum_{i=1}^m x_i^2 + a_2 \sum_{i=1}^m x_i^3 + \cdots + a_n \sum_{i=1}^m x_i^{n+1} &= \sum_{i=1}^m y_i x_i^1 \\
+                                                                                                                     &\vdots \\
+    a_0 \sum_{i=1}^m x_i^n + a_1 \sum_{i=1}^m x_i^{n+1} + a_2 \sum_{i=1}^m x_i^{n+2} + \cdots + a_n \sum_{i=1}^m x_i^{2n} &= \sum_{i=1}^m y_i x_i^n  
+\end{align*}
+
+\centering \alert{Solución única:} $x_i \neq x_j \quad \forall i \neq j$.
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\cx
+    \textbf{Ejemplo:}
+\begin{center}
+\begin{tabular}{ccc}
+    \toprule
+    $i$ & $x_i$ & $y_i$ \\
+    \midrule
+    1 & 0 & 1.0000 \\
+    2 & 0.25 & 1.2840 \\
+    3 & 0.50 & 1.6487 \\
+    4 & 0.75 & 2.1170 \\
+    5 & 1.00 & 2.7183 \\
+    \bottomrule
+\end{tabular} 
+\end{center} \pause
+
+$n = 2, m = 5$
+\begin{align*}
+    5 a_0 + 2.5 a_1 + 1.875 a_2 &= 8.7680 \\
+    2.5 a_0 + 1.875 a_1 + 1.5625 a_2 &= 5.4514 \\
+    1.875 a_0 + 1.5625 a_1 + 1.3828 a_2 &= 4.4015
+\end{align*} \pause
+
+\textbf{Solución:}
+\[a_0 = 1.005, \; a_1 = 0.8642, \; a_2 = 0.8437 \] 
+
+\cx
+\[P_2(x)= 1.005 + 0.8642 x + 0.8437 x^2 \]
+
+\textbf{Error total:}
+\[ E = \sum_{i=1}^5[y_i - P_2(x_i)]^2 = 2.74 \mul 10^{-4} \]
+\pause
+
+\begin{center}
+    \includegraphics[scale=0.4]{figs/fig-04.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\begin{columns}[t]
+\cx 
+\textbf{Relación exponencial:}
+\[ y = b \, e^{a x} \]
+Minimizar:
+\[ E = \sum_{i=1}^m (y_i - b e^{a x_i})^2 \]
+Ecuaciones normales:
+\begin{align*}
+0 &= \frac{\partial E}{\partial b} = 2 \sum_{i=1}^m (y_i - b e^{a x_i})(-e^{a x_i}) \\
+0 &= \frac{\partial E}{\partial a} = 2 \sum_{i=1}^m (y_i - b e^{a x_i})(-b x_i e^{a x_i}) \\
+\end{align*}
+\alert{Alternativa:}
+\[ \ln y = \ln b + a x \]
+
+\cx
+\textbf{Relación potencial:}
+\[ y = b \, x^{a} \]
+Minimizar:
+\[ E = \sum_{i=1}^m (y_i - b x_i^a)^2 \]
+Ecuaciones normales:
+\begin{align*}
+0 &= \frac{\partial E}{\partial b} = 2 \sum_{i=1}^m (y_i - b x_i^{a})(-x_i^{a}) \\
+0 &= \frac{\partial E}{\partial a} = 2 \sum_{i=1}^m (y_i - b x_i^{a})[-b \ln(x_i) x_i^{a}] \\
+\end{align*}
+\alert{Alternativa:}
+\[ \ln y = \ln b + a \ln x \]
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\begin{columns}
+\cx
+\textbf{Ejemplo:}
+
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$i$ & $x_i$ & $y_i$ & $\ln y_i$ & $x_i^2$ & $x_i \ln y_i$ \\
+\midrule
+ 1 & 1.00 & 5.10 & 1.63 & 1.00 & 1.63 \\ 
+ 2 & 1.25 & 5.79 & 1.76 & 1.56 & 2.20 \\
+ 3 & 1.50 & 6.53 & 1.88 & 2.25 & 2.81 \\
+ 4 & 1.75 & 7.45 & 2.01 & 3.06 & 3.51 \\ 
+ 5 & 2.00 & 8.46 & 2.14 & 4.00 & 4.27 \\
+\midrule
+   & 7.50 & & 9.41 & 11.88 & 14.42 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\cx
+\begin{center}
+    \begin{overprint}
+    \onslide<1-2> \includegraphics[scale=0.4]{figs/fig-05.pdf}
+    \onslide<3> \includegraphics[scale=0.4]{figs/fig-05b.pdf} 
+\end{overprint}
+\end{center}
+\end{columns} \pause
+
+\begin{columns}
+\cx
+    \[ y = b e^{ax} \Rightarrow \ln y = \ln b + a x \]
+
+\begin{align*}
+    a &= \frac{5 (14.42) - (7.5)(9.41)}{5 (11.88) - (7.5)^2} = 0.5057 \\
+    \ln b&= \frac{(11.88)(9.41) - (14.42)(7.5)}{5 (11.88) - (7.5)^2} = 1.122 
+\end{align*}
+
+\cx
+$\ln b = 1.122 \rightarrow b = e^{1.122} = 3.071$
+\[ y = 3.071 e^{0.5056 x} \]
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\column{0.45\textwidth}
+
+\textbf{Python: ejemplo 1}
+\pycode[firstline=5, lastline=15]{code/ejemplo-01.py}
+
+\begin{shell}
+$ ./ejemplo-01.py 
+ 
+2.437 x + 3.903
+a_0 = 3.90314, a_1 = 2.43661
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-01.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\column{0.45\textwidth}
+
+\textbf{Python: ejemplo 2}
+\pycode[firstline=5, lastline=15]{code/ejemplo-02.py}
+
+\begin{shell}
+$ ./ejemplo-02.py 
+
+0.5057 x + 1.122
+ln(b) = 1.12249, a = 0.50572
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-02.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\column{0.45\textwidth}
+
+\textbf{Python: ejemplo 3}
+\pycode[firstline=5, lastline=16]{code/ejemplo-03.py}
+
+\begin{shell}
+$ ./ejemplo-03.py 
+      2
+2.55 x - 3.099 x - 1.205
+a_0 = -1.20479, a_1 = -3.09868, a_2 = 2.54970
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-03.pdf}
+\end{center}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\column{0.45\textwidth}
+
+\textbf{Python: ejemplo 4}
+\pycode[firstline=5, lastline=18]{code/ejemplo-04.py}
+
+\begin{shell}
+> ./ejemplo-04.py 
+[2.50685815 1.21831291 0.51137751]
+\end{shell}
+
+\cx
+\begin{center}
+\includegraphics[scale=0.40]{code/ejem-04.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[standout]\
+    \begin{center}
+        {\Huge Ajuste continuo}
+    \end{center}
+\end{frame}
+
 \begin{frame}
 \begin{columns}[t]
 \cw{0.45}
@@ -22,7 +394,7 @@
 $f(x) \in \C[a, b]$, hallar $P_n(x)$ que minimize:
 \[ \int_a^b [f(x) - P_n(x)]^2 \, dx \]
 \begin{center}
-    \includegraphics[width=1.0\textwidth]{figs/fig-01.pdf}
+    \includegraphics[width=1.0\textwidth]{figs/fig-06.pdf}
 \end{center}
 \pause
 
@@ -68,7 +440,7 @@ a_0 + \frac{1}{2} a_1 + \frac{1}{3} a_2 &= \frac{2}{\pi} \\
 
 \cw{0.4}
 \begin{center}
-    \includegraphics[width=1.0\textwidth]{figs/fig-02.pdf}
+    \includegraphics[width=1.0\textwidth]{figs/fig-07.pdf}
 \end{center}
 
 \end{columns}
@@ -147,7 +519,7 @@ Entonces:
 Ejemplo: 
 \[ w(x) = \frac{1}{\sqrt{1 - x^2}} \]
 \begin{center}
-    \includegraphics[width=0.9\textwidth]{figs/fig-03.pdf}
+    \includegraphics[width=0.9\textwidth]{figs/fig-08.pdf}
 \end{center} \pause
 
 \cw{0.55}
@@ -226,7 +598,7 @@ Luego:
 \end{align*} \pause
 
 \begin{center}
-    \includegraphics[width=0.9\textwidth]{figs/fig-04.pdf}
+    \includegraphics[width=0.9\textwidth]{figs/fig-09.pdf}
 \end{center}
 \end{columns}
 \end{frame}
@@ -244,7 +616,10 @@ Luego:
 
 \begin{frame}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{figs/fig-05.pdf}
+        \includegraphics<1>[width=0.8\textwidth]{figs/fig-10-1.pdf}
+        \includegraphics<2>[width=0.8\textwidth]{figs/fig-10-2.pdf}
+        \includegraphics<3>[width=0.8\textwidth]{figs/fig-10-3.pdf}
+        \includegraphics<4>[width=0.8\textwidth]{figs/fig-10-4.pdf}
     \end{center}
 \end{frame}
 
@@ -280,7 +655,7 @@ T_4(x) &= 2 x T_3(x) - T_2(x) = 8 x^4 - 8 x^2 + 1
 \end{align*}
 
 \begin{center}
-    \includegraphics[width=0.8\textwidth]{figs/fig-06.pdf}
+    \includegraphics[width=0.8\textwidth]{figs/fig-11.pdf}
 \end{center}
 \end{columns}
 \end{frame}
@@ -331,23 +706,20 @@ Aproximación por:
 donde
 \[ c_j = \frac{\langle q, T_j \rangle_w}{\langle T_j, T_j \rangle_w} \] \pause
 
-\textbf{Resultado:} ver \texttt{code/plot-07.py}.
+\textbf{Resultado:} ver \texttt{code/plot-12.py}.
 \[ P(x) = - 4.0 x^4 + 2.25 x^3 - 1.31 x - 3.0 \]
 
 \cx
 \begin{center}
-    \includegraphics[height=1.0\textheight]{figs/fig-07.pdf}
+    \includegraphics[height=1.0\textheight]{figs/fig-12.pdf}
 \end{center}
-
 
 \end{columns}
 \end{frame}
 
 
-%% =======================
-
 \section*{Bibliografía}
-\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{frame}{Lecturas recomendadas}
 \begin{itemize}
     \item \fullcite{burden2017}. Capítulo 8.
     \item \fullcite{salgado2023}. Capítulo 11.
@@ -355,7 +727,5 @@ donde
     \item \fullcite{kreyszig2011}. Capítulo 25.9.
 \end{itemize}
 \end{frame}
-
-
 \end{document}
 

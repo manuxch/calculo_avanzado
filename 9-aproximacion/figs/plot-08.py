@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 
 def f(x) :
@@ -31,4 +31,4 @@ ax.axvline(x=1, color='tab:grey')
 
 
 fig.tight_layout()
-plt.savefig("fig-03.pdf")
+plt.savefig("fig-08.pdf")

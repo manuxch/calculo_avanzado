@@ -2,7 +2,7 @@
 
 from math import exp
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 
 x = np.array([1.00, 1.25, 1.50, 1.75, 2.00])

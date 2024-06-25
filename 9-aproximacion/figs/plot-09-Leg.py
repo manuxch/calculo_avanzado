@@ -3,7 +3,7 @@
 import matplotlib as mpl
 from matplotlib import cm
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 from scipy.special import legendre
 
@@ -33,4 +33,4 @@ ax.spines['left'].set_position(('data', 0))
 
 plt.legend(fontsize=10)
 fig.tight_layout()
-plt.savefig("fig-04.pdf")
+plt.savefig("fig-09.pdf")

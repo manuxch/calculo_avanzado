@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 
 rng = np.random.default_rng(14)

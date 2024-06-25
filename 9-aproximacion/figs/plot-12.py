@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 import sympy as sym
 from sympy.abc import x, n
@@ -47,4 +47,4 @@ plt.xticks(fontsize=12)
 ax1.tick_params(axis='both', which='major', labelsize=10)
 ax2.tick_params(axis='both', which='major', labelsize=10)
 plt.tight_layout()
-plt.savefig("fig-07.pdf")
+plt.savefig("fig-12.pdf")

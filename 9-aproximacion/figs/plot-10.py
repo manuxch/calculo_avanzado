@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 import sympy as sym
 from sympy.abc import x, n
@@ -21,6 +21,7 @@ x_points = np.linspace(-1, 1, 100)
 plt.plot(x_points, f_num(x_points),
     label=r'$f(x)=e^{-x} - (x-1/2)^2$', alpha=0.5)
 
+# for n in range(1, 5):
 for n in range(1, 5):
     print(f"n = {n}")
     L = [sym.legendre(n, x) for n in range(n)]
@@ -38,4 +39,4 @@ for n in range(1, 5):
 plt.legend(fontsize=10)
 plt.xlabel('$x$')
 plt.tight_layout()
-plt.savefig("fig-05.pdf")
+plt.savefig("fig-10-4.pdf")
