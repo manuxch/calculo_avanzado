@@ -444,7 +444,7 @@ a_0 + \frac{1}{2} a_1 + \frac{1}{3} a_2 &= \frac{2}{\pi} \\
 \changecol
 &\txt{Solución} & \\
     a_0 &= \frac{12 \pi^2 - 120}{\pi^3} \approx -0.050465 \\
-    a_1 &= -a2 = \frac{720 - 60 \pi^2}{\pi^3} \approx 4.12251
+    a_1 &= -a_2 = \frac{720 - 60 \pi^2}{\pi^3} \approx 4.12251
 \end{mathcols}
 
 \cw{0.4}
@@ -476,7 +476,7 @@ a_0 + \frac{1}{2} a_1 + \frac{1}{3} a_2 &= \frac{2}{\pi} \\
 \cw{0.55}
 \begin{definition}[ Funciones linealmente independientes ]
 Se dice que el conjunto de funciones $\{ \phi_0, \cdots, \phi_n \}$ es \textbf{linealmente independiente} (LI) en $[a, b]$ si
-\[ P(x) = c_0 \phi_0(x) + c_1 \phi_1(x) + \cdots + c_n \phi_n(x) = 0, \forall x \in [a, b] \]
+\[ c_0 \phi_0(x) + c_1 \phi_1(x) + \cdots + c_n \phi_n(x) = 0, \forall x \in [a, b] \]
 entonces $c_0 = c_1 = \cdots = c_n = 0$. De lo contrario, se dice que el conjunto de funciones es \textbf{linealmente dependiente}.
 \end{definition}  \pause
 
@@ -616,10 +616,12 @@ Luego:
 \begin{columns}[t]
 \cw{0.45}
 \textbf{Ejemplo:} Python
-\pycode[firstline=1, lastline=22]{figs/plot-05.py}
+\pycode[firstline=1, lastline=22]{figs/plot-10.py}
+%\pycode[firstline=1, lastline=22]{figs/plot-05.py}
 
 \cw{0.5}
-\pycode[firstline=24]{figs/plot-05.py}
+\pycode[firstline=24]{figs/plot-10.py}
+%\pycode[firstline=24]{figs/plot-05.py}
 \end{columns}
 \end{frame}
 
@@ -715,7 +717,7 @@ Aproximación por:
 donde
 \[ c_j = \frac{\langle q, T_j \rangle_w}{\langle T_j, T_j \rangle_w} \] \pause
 
-\textbf{Resultado:} ver \texttt{code/plot-12.py}.
+\textbf{Resultado:} ver \texttt{figs/plot-12.py}.
 \[ P(x) = - 4.0 x^4 + 2.25 x^3 - 1.31 x - 3.0 \]
 
 \cx
