@@ -56,7 +56,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 ### 9 - Ajustes por mínimos cuadrados
 - Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](9-aproximacion/9-aproximacion.pdf), [problemas](9-aproximacion/problemas-9.pdf).
 
-### Unidad 10: Resolución de problemas de valor inicial
+### 10 - Resolución de problemas de valor inicial
 Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_10.pdf).
 
 ### Unidad 11: Resolución de problemas con valores de contorno
