@@ -25,7 +25,17 @@
       \includegraphics[width=0.6\textwidth]{figs/pendulo.pdf}
     \end{center}
     \column{0.5\textwidth}
-    \[ \frac{d^2 \theta}{dt^2} + \frac{g}{L} \sen \theta = 0, \qquad \theta(t_0) = \theta_0, \qquad \theta  (t_0) = \theta \]
+    \[ \boxed{\frac{d^2 \theta}{dt^2} + \frac{g}{L} \sen \theta = 0, \quad \theta(t_0) = \theta_0, \quad \theta'  (t_0) = \theta'_0} \]
+\pause
+
+    \begin{itemize}
+      \item \alert{Aproximación analítica:} $ \sen \theta \approx \theta $ cuando $ \theta_0 \ll 1 $
+    \[ \frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0, \quad \theta(t_0) = \theta_0, \quad \theta'  (t_0) = \theta'_0 \]
+    \[ \theta(t) = \theta_0 \cos \left(\sqrt{\frac{g}{L}}t\right) \]
+    \pause
+\item \alert{Aproximación numérica:} resultados precisos sobre un conjunto discreto de valores.
+
+    \end{itemize}
 \end{columns}
 \end{frame}
 
