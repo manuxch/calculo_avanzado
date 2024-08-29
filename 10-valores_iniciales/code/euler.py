@@ -23,7 +23,7 @@ t_e = np.linspace(1, 6, 100)
 plt.plot(t_e, y_exacta(t_e), label='Exacta')
 for n in [3, 4, 5, 7, 10]:
     t, y = euler(f, 1, 6, n, 2)
-    plt.plot(t, y, '.-', label=f"n = {n}")
+    plt.plot(t, y, '.-', label=f"n = {n - 1}")
 
 plt.xlabel(r"$t$")
 plt.ylabel(r"$y(t)$")

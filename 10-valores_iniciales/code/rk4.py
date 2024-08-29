@@ -27,7 +27,7 @@ t_e = np.linspace(1, 6, 100)
 plt.plot(t_e, y_exacta(t_e), label='Exacta')
 for n in [3, 4, 5]:
     t, y = rk4(f, 1, 6, n, 2)
-    plt.plot(t, y, '.-', label=f"n = {n}", alpha=0.7)
+    plt.plot(t, y, '.-', label=f"n = {n - 1}", alpha=0.7)
 
 plt.xlabel(r"$t$")
 plt.ylabel(r"$y(t)$")

@@ -141,9 +141,38 @@ está bien formulado.
 \begin{frame}
 \begin{columns}[t]
 \vspace{1em}
-\cx
+\cw{0.45}
 \textbf{Serie de Taylor}: $f \in C^{(\infty)}$
  \begin{multline*} f(t) = f(t_0) + \frac{f'(t_0)}{1!} (t - t_0) + \frac{f''(t_0)}{2!} (t - t_0)^2 \\ + \frac{f^{(3)}(t_0)}{3!} (t - t_0)^3 + \cdots \end{multline*}   \pause
+ \vspace{-2em}
+\textbf{Ejemplo:} $ f(t) = e^t $, $ t_0 = 0 $ 
+
+\begin{align*}
+    f'(t) &= e^t, f'(t_0) = 1 \\
+    f''(t) &= e^t, f''(t_0) = 1 \\
+           & \vdots
+\end{align*}
+
+Entonces:
+\[ e^t = 1 + t + \frac{t^{2}}{2!} + \frac{t^{3}}{3!} + \frac{t^{4}}{4!} + \cdots \]
+
+\cw{0.55}
+\begin{center}
+  \includegraphics<2>[width=0.9\textwidth]{code/taylor-1.pdf}
+  \includegraphics<3>[width=0.9\textwidth]{code/taylor-2.pdf}
+  \includegraphics<4>[width=0.9\textwidth]{code/taylor-3.pdf}
+  \includegraphics<5>[width=0.9\textwidth]{code/taylor-4.pdf}
+  \includegraphics<6>[width=0.9\textwidth]{code/taylor-5.pdf}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[t]
+\vspace{1em}
+\cx
+\textbf{Serie de Taylor}: $f \in C^{(\infty)}$
+ \begin{multline*} f(t) = f(t_0) + \frac{f'(t_0)}{1!} (t - t_0) + \frac{f''(t_0)}{2!} (t - t_0)^2 \\ + \frac{f^{(3)}(t_0)}{3!} (t - t_0)^3 + \cdots \end{multline*} 
  \vspace{-2em}
  \begin{theorem}[Teorema de Taylor]
      Sea $k \geq 1$ un entero y $f: \R \mapsto \R$ $k$ veces diferenciable en $t_0 \in \R$. Entonces existe $h_k : \R \mapsto \R$ tal que: \vspace{-1em}
@@ -160,10 +189,10 @@ para $t_0 \leq \tau \leq t$. \pause
 \vspace{1em}
 
 \textbf{Método de Euler:}
-$h = t_1 - t_0, y'(t) = f(t, y)$
+\[h = t_1 - t_0, \quad  y'(t) = f(t, y), \quad  y(t_0) = y_0 \]
 \begin{align*}
     y_1 = y(t_1) &= y(t_0) + y'(t_0) (t_1 -t_0) + \frac{y''(\tau)}{2} (t_1 - t_0)^2 \\
-                 &= y_0 + h f[t_0, y(t_0, y_0)] + y''(\tau) \frac{h^2}{2}
+                 &= y_0 + h f(t_0, y_0) + y''(\tau) \frac{h^2}{2}
 \end{align*}
 \begin{itemize}
 \item Aproximación: $y_1 = y_0 + h f(t_0, y_0)$
@@ -285,10 +314,12 @@ RK4:
 \pycode[firstline=2, lastline=26]{code/euler.py}
 
 \cw{0.5}
+\[ \begin{system} y'(t) = 3 t - \dfrac{y}{t} \\ y(1) = 2 \end{system} \]
+ 
 \begin{center}
     \textbf{Euler hacia adelante}
 
-    \includegraphics[width=0.9\textwidth]{code/euler.pdf}
+    \includegraphics[width=1.0\textwidth]{code/euler.pdf}
 \end{center}
 \end{columns}
 \end{frame}
@@ -299,10 +330,12 @@ RK4:
 \pycode[firstline=12, lastline=30]{code/rk4.py}
 
 \cw{0.5}
+\[ \begin{system} y'(t) = 3 t - \dfrac{y}{t} \\ y(1) = 2 \end{system} \]
+
 \begin{center}
     \textbf{Runge-Kutta de cuarto orden}
 
-    \includegraphics[width=0.9\textwidth]{code/rk4.pdf}
+    \includegraphics[width=1.0\textwidth]{code/rk4.pdf}
 \end{center}
 \end{columns}
 \end{frame}
@@ -310,13 +343,13 @@ RK4:
 \begin{frame}[fragile]
 \begin{columns}
 \cw{0.45}
-\pycode[firstline=12]{code/ivp.py}
+\pycode[firstline=2]{code/ivp.py}
 
 \cw{0.5}
 \begin{center}
     \textbf{\texttt{solve\_ivp} de SciPy}
 
-    \includegraphics[width=0.9\textwidth]{code/solve_ivp.pdf}
+    \includegraphics[width=1.0\textwidth]{code/solve_ivp.pdf}
 \end{center}
 \end{columns}
 \end{frame}
@@ -329,11 +362,12 @@ RK4:
 \cw{0.5}
 \begin{center}
     \textbf{Sistema Lotka-Volterra}
-    \begin{align*}
-        \frac{dx}{dt} &= \alpha x - \beta x y \\
-        \frac{dy}{dt} &= \delta x y - \gamma y \\
-        x(0) &= x_0, \, y(0) = y_0
-    \end{align*}
+   \[ \begin{system}
+        \dfrac{dx}{dt} = \alpha x - \beta x y \\
+        \dfrac{dy}{dt} = \delta x y - \gamma y \\
+        x(0) = x_0, \, y(0) = y_0
+    \end{system}
+\]
 
     \includegraphics[width=0.9\textwidth]{code/lv.pdf}
 \end{center}
