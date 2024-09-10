@@ -14,9 +14,9 @@ def f(x, y):
 
 def residuo(r, a, b, beta):
     x = np.linspace(a, b, 100)
-    sol = solve_ivp(f, [a, b], [1, r], dense_output=True)
-    z = sol.sol(x)
-    resid = z.T[-1, 0] - beta
+    sol = solve_ivp(f, [a, b], [1, r], dense_output=False)
+    y_b = sol.y[0, -1]
+    resid = y_b - beta
     return resid
 
 x_a, x_b = 0.0, 1.0
@@ -39,7 +39,8 @@ print(r_opt[1])
 sol = solve_ivp(f, [x_a, x_b], [1.0, r_opt[0]],
     dense_output=True)
 y = sol.sol(x)
-plt.plot(x, y.T[:, 0], '-r', label=r"$r^* = 5.01665$")
+lbl = f"r^* = {r_opt[0]:.2f}"
+plt.plot(x, y.T[:, 0], '-r', label=r"$" + lbl + r"$")
 
 plt.legend()
 plt.xlabel(r"$x$")
