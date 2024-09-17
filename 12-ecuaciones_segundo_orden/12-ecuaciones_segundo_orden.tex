@@ -133,11 +133,11 @@ Resulta:
 \includegraphics[scale=1.1]{figs/malla-03.pdf}
 \end{center}
 
-$u_{i,j} \mapsto u_l,\; l = i + m (j -1) $
+$u_{i,j} \mapsto u_l,\; l = i + (m - 1 -j) (n - 1) $
 \begin{align*}
-    u_{1,1} &= u_1,\; u_{2,1} = u_2,\; u_{3,1} = u_{3} \\
+    u_{1,1} &= u_7,\; u_{2,1} = u_8,\; u_{3,1} = u_{9} \\
     u_{1,2} &= u_4,\; u_{2,2} = u_5,\; u_{3,2} = u_{6} \\
-    u_{1,3} &= u_7,\; u_{2,3} = u_8,\; u_{3,3} = u_{9} \\
+    u_{1,3} &= u_1,\; u_{2,3} = u_2,\; u_{3,3} = u_{2} \\
 \end{align*}
 \cx
 \[ \frac{\partial^2 u}{\partial x^2}(x, y) + \frac{\partial^2 u}{\partial y^2}(x, y) = 0; \;(x, y) \in [0, 0.5]^2 \]
@@ -150,8 +150,8 @@ Condiciones de borde:
 \begin{align*}
     u_{0,0} &= u_{0,1} = u_{0,2} = u_{0,3} = u_{0, 4} = 0 \\
     u_{1,0} &= u_{2,0} = u_{3,0} = u_{4, 0} = 0 \\
-    u_{1,4} &= u_{4,1} = 25; u_{2,4} = u_{4,2} = 50 \\
-    u_{3,4} &= u_{4,3} = 75; u_{4,4} = 100
+    u_{1,4} &= u_{4,1} = 25; \quad u_{2,4} = u_{4,2} = 50 \\
+    u_{3,4} &= u_{4,3} = 75; \quad u_{4,4} = 100
 \end{align*}
 \end{columns}
 \end{frame}
@@ -182,10 +182,10 @@ Condiciones de borde:
         u_{3,4} + u_{3,4} \\
     \end{bmatrix} \rightarrow
     \begin{bmatrix} u_1 \\ u_2 \\ u_3 \\ u_4 \\ u_5 \\ u_6 \\ u_7 \\ u_8 \\ u_9 \end{bmatrix} = 
-    \begin{bmatrix} 6.25 \\ 12.5 \\ 18.75 \\ 12.5 \\ 25 \\ 37.5 \\ 18.75 \\ 37.5 \\ 56.25 \end{bmatrix}
+    \begin{bmatrix} 18.75 \\ 37.50 \\ 56.25 \\ 12.50 \\ 25.00 \\ 37.50 \\ 6.25 \\ 12.50 \\ 18.75 \end{bmatrix}
 \] \pause
 
-Solución exacta: $u(x, y) = 400 xy$ por lo que la aproximación en diferencias finitas no tiene error:
+\alert{Solución exacta:} $u(x, y) = 400 xy$ por lo que la aproximación en diferencias finitas no tiene error:
 \[ \frac{\partial^4 u}{\partial x^4} = \frac{\partial^4 u}{\partial y^4} = 0 \]
 \end{frame}
 
@@ -193,7 +193,9 @@ Solución exacta: $u(x, y) = 400 xy$ por lo que la aproximación en diferencias 
     \begin{columns}[t]
 \cw{0.4}
 \textbf{Ecuación de calor (parabólica):}
-\[ \frac{\partial u}{\partial t} = \alpha \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) \] \pause
+\[ \frac{\partial u}{\partial t} = \alpha \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) \] 
+\centering (más condiciones de borde/inicial)
+\pause
   \begin{center}
   \begin{overprint}
    \onslide<2-3>\includegraphics[width=1.0\textwidth]{figs/grilla}
@@ -275,9 +277,9 @@ Condición inicial:
 \cw{0.45}
 \pycode[firstline=35, lastline=47]{code/ec-calor.py}
 \cw{0.45}
-\pycode[firstline=49, lastline=60]{code/ec-calor.py}
+%\pycode[firstline=49, lastline=60]{code/ec-calor.py}
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{code/temp-inicial.pdf}
+    \includegraphics[width=1.0\textwidth]{code/temp-inicial.pdf}
 \end{center}
 \end{columns}
 \end{frame}
