@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+
+\input{../utils/preamble_problemas}
+
+\title{Cálculo avanzado}
+\author{Dpto. de Ingenería Mecánica}
+\date{Unidad 11: Problemas de contorno}
+
+
+\begin{document}
+% \maketitle
+
+\begin{center}
+\framebox[1.0\textwidth][c]{
+\huge{\textsc{Cálculo Avanzado}} 
+}
+\end{center} 
+
+\begin{center}
+\vspace{\baselineskip}
+\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+\textsc{Facultad Regional La Plata} \\
+\textsc{Universidad Tecnológica Nacional}
+\end{center}
+
+% \vspace{1em}
+
+\begin{center}
+\begin{tabular}{r l}
+    \textbf{Práctica:} & Unidad 11 \\
+ \textbf{Tema:} & Problemas de contorno. \\
+ \textbf{Profesor Titular:} & Manuel Carlevaro \\
+ \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
+\end{tabular}\end{center}
+
+\vspace{1em}
+
+\begin{question} % J Kiusalaas Example 8.1 pg 295
+Resolver mediante el método de disparo el siguiente problema con valores de contorno:
+\[ y'' + 3 y y' = 0, \quad y(0) = 0, \; y(2) = 1 \]
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.1 pg 304 Problema 1
+La integración numérica del problema de valor inicial:
+\[ y'' + y' -y = 0, \quad y(0) = 0, \; y'(0) = 1 \]
+conduce a $y(1) = 0.741028$. ¿Cuál es el valor de $y'(0)$ que daría como resultado $y(1) = 1$ asumiendo que el valor de $y(0)$ no cambia?
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.1 pg 304 Problemas 8 - 10
+Resuelva los siguientes problemas de contorno usando el método de disparo:
+\begin{enumerate}[a)]
+    \item $y'' + (1 - 0.2 x) y^2 = 0, \; y(0) = 0, \, y(\pi/2) = 1$
+    \item $y'' + 2 y' + 3 y^2 = 0, \; y(0) = 0, \, y(2) = -1$
+    \item $y'' + \sen y + 1 = 0, \; y(0) = 0, \, y(\pi) = 0$
+\end{enumerate}
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.2 pg 317 Problemas 1 - 3
+Use aproximaciones en diferencias finitas de las derivadas para transformar los problemas con valores de contorno en ecuaciones simultáneas $\bm{A} \bm{y} = \bm{b}$.
+\begin{enumerate}[a)]
+    \item $y'' = y + x^2,\; y(0) = 0, \, y(1) = 1$;
+    \item $y'' = e^{-x} y',\; y(0) = 1, \, y(1) = 0$;
+    \item $y'' = (2 + x) y,\; y(0) = 0, \, y'(1) = 5$;
+\end{enumerate}
+\end{question}
+
+\begin{question} % J Kiusalaas Problem set 8.2 pg 317 Problemas 6 - 10
+Resuelva los problemas de contorno siguiente mediante el método de diferencias finitas usando $N = 20$. Compare el resultado obtenido con la solución exacta cuando se indica.
+\begin{enumerate}[a)]
+    \item $y'' = xy,\; y(1) = 1.5, \, y(2) = 3$;
+    \item $y'' + 2 y' + y = 0,\; y(0) = 0, \, y(1) = 1$. Solución exacta: $y = x e^{1 - x}$.
+    \item $x^2 y'' + x y' + y = 0,\; y(1) = 0, \, y(2) = 0.638961$. Solución exacta: $y = \sen(\ln x)$.
+    \item $y'' = y^2 \sen y,\; y'(0) = 0, \, y(\pi) = 1$. 
+    \item $y'' + 2 y (2 x y' + y)= 0,\; y(0) = 1/2, \, y'(1) = -2/9$. Solución exacta: $y = (2 + x^2)^{-1}$.
+\end{enumerate}
+\end{question}
+
+
+\end{document}
