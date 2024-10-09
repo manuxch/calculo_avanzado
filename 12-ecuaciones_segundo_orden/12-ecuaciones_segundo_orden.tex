@@ -337,7 +337,7 @@ con un error local de truncación:
 \[ \epsilon_{i,j} = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) - \alpha^2 \frac{h^2}{12} \frac{\partial^4 u}{\partial x^4}(\xi_i, t_j) \]
 
 Solución explícita:
-\[ u_{i, j+1}  =\left(1 - \frac{2 \alpha k}{h^2}\right) u_{i,j} + \alpha^2 \frac{k}{h^2} (u_{i+1, j} + u_{i-1, j}) \]
+\[ u_{i, j+1}  =\left(1 - \frac{2 \alpha^2 k}{h^2}\right) u_{i,j} + \alpha^2 \frac{k}{h^2} (u_{i+1, j} + u_{i-1, j}) \]
 \begin{center}
     \includegraphics[width=0.8\textwidth]{figs/forward}
 \end{center}
@@ -359,10 +359,10 @@ Matriz $(n-1)\mul(n-1)$:
 
 con $\lambda = \alpha^2 k / h^2$
 
-Si $\bm{u^{(0)}} = (f(x_1), f(x_2), \cdots, f(x_{n-1}))^T $, la solución aproximada es:
+Si $\bm{u^{(0)}} = [f(x_1), f(x_2), \cdots, f(x_{n-1})]^T $, la solución aproximada es:
 \[ \bm{u}^{(j)} = \bm{A} \bm{u}^{(j-1)} \]
 
-Supongamos un error $\bm{e}^{(0)} = (e_1^{(0)}, e_2^{(0)}, \cdots, e_{n-1}^{(0)})^T$:
+Supongamos un error $\bm{e}^{(0)} = [e_1^{(0)}, e_2^{(0)}, \cdots, e_{n-1}^{(0)}]^T$:
 \[ \bm{u}^{(1)} = \bm{A} (\bm{u}^{(0)} + \bm{e}^{(0)}) = \bm{A} \bm{u}^{(0)} + \bm{A} \bm{e}^{(0)} \]
 
 Para el paso $k$, el error en $\bm{u}^{(k)} = \bm{A}^{k} \bm{e}^{(0)}$. El método es \alert{estable} si $\norm{\bm{A}^{k} \bm{e}^{(0)}} \leq \norm{\bm{e}^{(0)}}$
@@ -377,7 +377,7 @@ Norma $L_{\infty}$:
 que se simplifica a
 \[ 0 \leq \lambda \pow{\sen\left(\frac{i \pi}{2n}\right)}{2} \leq \frac{1}{2}, \; i = 1, 2, \ldots, n-1 \]
 Esta desigualdad debe valer cuando $h \to 0, n \to \infty$:
-\[ \lim_{n\to\infty} \left[\sen\pow{\frac{(n-1)\pi}{2 n}}{2}\right] = 1 \]
+\[ \lim_{n\to\infty} \pow{\sen\frac{(n-1)\pi}{2 n}}{2} = 1 \]
 Por lo tanto habrá estabilidad si $0 \leq \lambda \leq 1/2$:
 \begin{columns}
     \cw{0.4}
@@ -485,7 +485,7 @@ Matriz $(n-1)\mul(n-1)$:
     0 & \cdots & \cdots & \cdots &  -\lambda \\
     0 & \cdots & 0 & -\lambda & (1+2\lambda)
 \end{bmatrix} \]
-$\bm{u}^{(j)} = (u_{1, j}, u_{2, j}, \cdots, u_{n-1, j})^T$, $\bm{u}^{(j-1)} = (u_{1, j-1}, u_{2, j-1}, \cdots, u_{n-1, j-1})^T$
+$\bm{u}^{(j)} = [u_{1, j}, u_{2, j}, \cdots, u_{n-1, j}]^T$, $\bm{u}^{(j-1)} = [u_{1, j-1}, u_{2, j-1}, \cdots, u_{n-1, j-1}]^T$
 \[ \mapsto \bm{A} \bm{u}^{(j)} = \bm{u}^{(j-1)}, \, j = 1, 2, \ldots \]
 \end{columns}
 \end{frame}
@@ -578,7 +578,7 @@ tiene un error de truncamiento $\bigO(k^2 + h^2) \leftarrow$ \faThumbsOUp
 
 \begin{frame}
 En forma matricial:
-\[ \bm{A} \bm{u}^{(j+1)} = \bm{B} \bm{u}^{(j)}, \txt{para cada} j = 0, 1, \ldots,\txt{donde} \lambda = \alpha^2 \frac{k}{h^2}, \; \bm{u}^{(j)} = (u_{1,j}, u_{2, j}, \cdots, u_{n-1, j})^T \]
+\[ \bm{A} \bm{u}^{(j+1)} = \bm{B} \bm{u}^{(j)}, \txt{para cada} j = 0, 1, \ldots,\txt{donde} \lambda = \alpha^2 \frac{k}{h^2}, \; \bm{u}^{(j)} = [u_{1,j}, u_{2, j}, \cdots, u_{n-1, j}]^T \]
 y
 \[
 \bm{A} = \begin{bmatrix}

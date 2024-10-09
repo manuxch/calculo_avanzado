@@ -14,15 +14,16 @@ def sol_exacta(x, t):
     return u
 
 def solve_matricial(u, h, k, alfa):
-    lamb = alfa * k / h**2
+    lamb = alfa**2 * k / h**2
     n = u.shape[0]
     print(f"{alfa=} {h=} {k=} {lamb=} {n=}")
     diagonals = [-lamb, 1 + 2 * lamb, -lamb]
     A = diags(diagonals, [-1, 0, 1], shape=(n, n)).tocsc()
     n_t = int(0.5 / k)
+    print(f"{n_t=}")
     print(A.todense())
     print(u)
-    for i in range(1, n_t + 1):
+    for i in range(n_t):
         u = spsolve(A, u)
         u[0] = u[-1] = 0.0
     return u

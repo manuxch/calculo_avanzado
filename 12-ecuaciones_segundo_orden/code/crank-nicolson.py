@@ -14,7 +14,7 @@ def sol_exacta(x, t):
     return u
 
 def solve_matricial(u, h, k, alfa):
-    lamb = alfa * k / h**2
+    lamb = alfa**2 * k / h**2
     n = u.shape[0]
     print(f"{alfa=} {h=} {k=} {lamb=} {n=}")
     diagonals_A = [-lamb/2, 1 + lamb, -lamb/2]
@@ -25,7 +25,7 @@ def solve_matricial(u, h, k, alfa):
     # print(A.todense())
     # print(B.todense())
     # print(u)
-    for i in range(1, n_t + 1):
+    for i in range(n_t):
         u = spsolve(A, B @ u)
         u[0] = u[-1] = 0.0
     return u
