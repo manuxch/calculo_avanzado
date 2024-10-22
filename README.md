@@ -22,11 +22,9 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ## Temas
 
-### Introducción a la variable compleja
+### 1 - Introducción a la variable compleja
 
-- Clase 01: Números complejos (repaso). Funciones de variable compleja. Límite, continuidad de funciones de variable compleja. Diferenciacibilidad y funciones analíticas.
-[Clase](complejos/clase_01/clase_01.pdf), [problemas](complejos/clase_01/problemas_01.pdf), [*notebook*](complejos/clase_01/code/practica_01.ipynb).
-- Clase 02: Integración de funciones de variable compleja. Sucesiones y series. [Clase](complejos/clase_02/clase_02.pdf), [problemas](complejos/clase_02/problemas_02.pdf), [*notebook*](complejos/clase_02/code/practica_02.ipynb).
+Números complejos (repaso). Funciones de variable compleja. Límite, continuidad de funciones de variable compleja. Diferenciacibilidad y funciones analíticas. Integración de funciones de variable compleja. Sucesiones y series. [Clase](1-complejos/1-complejos.pdf), [problemas](1-complejos/problemas_01.pdf), [*notebook #1*](1-complejos/code/practica_01.ipynb), [*notebook #2*](1-complejos/code/practica_02.ipynb). 
 
 ### Series y transformada de Fourier
 
@@ -59,8 +57,8 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 ### 10 - Resolución de problemas de valor inicial
 - Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_10.pdf).
 
-### Unidad 11: Resolución de problemas con valores de contorno
+### 11 - Resolución de problemas con valores de contorno
 Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/u11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas_u11.pdf).
 
-### Unidad 12: Ecuaciones en derivadas parciales
+### 12 - Ecuaciones en derivadas parciales
 Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/u12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas_u12.pdf), [códigos](12-ecuaciones_segundo_orden/code).
