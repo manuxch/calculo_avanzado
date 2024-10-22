@@ -58,7 +58,7 @@ Números complejos (repaso). Funciones de variable compleja. Límite, continuida
 - Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_10.pdf).
 
 ### 11 - Resolución de problemas con valores de contorno
-Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/u11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas_u11.pdf).
+Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas_11.pdf).
 
 ### 12 - Ecuaciones en derivadas parciales
-Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/u12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas_u12.pdf), [códigos](12-ecuaciones_segundo_orden/code).
+Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas_12.pdf), [códigos](12-ecuaciones_segundo_orden/code).
