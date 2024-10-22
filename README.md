@@ -61,4 +61,4 @@ Números complejos (repaso). Funciones de variable compleja. Límite, continuida
 Sistemas lineales y no lineales. Condiciones de borde o frontera. Condición de unicidad. Método de disparo. Método de diferencias finitas. Ejemplos con Python. [Clase](11-problemas_contorno/11-problemas_contorno.pdf), [problemas](11-problemas_contorno/problemas-11.pdf).
 
 ### 12 - Ecuaciones en derivadas parciales
-Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas_12.pdf), [códigos](12-ecuaciones_segundo_orden/code).
+Clasificación. Ecuaciones elípticas con el método de diferencias finitas. Ecuación parabólica. [Clase](12-ecuaciones_segundo_orden/12-ecuaciones_segundo_orden.pdf), [problemas](12-ecuaciones_segundo_orden/problemas-12.pdf), [códigos](12-ecuaciones_segundo_orden/code).
