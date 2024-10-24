@@ -329,7 +329,7 @@ Diferencia hacia adelante (o progresiva):
 \begin{align*} \frac{\partial u}{\partial t} (x_i, t_j) &= \frac{u(x_i, t_j+k) - u(x_i, t_j)}{k} - \frac{k}{2}\frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \\
     \frac{\partial^2 u}{\partial x^2} (x_i, t_j) &= \frac{u(x_i+h, t_j) - 2 u (x_i, t_j) + u(x_i-h, t_j)}{h^2}\\ &- \frac{h^2}{12} \frac{\partial^4 u}{\partial x^4}(\xi_i, t_j)
 \end{align*}
-con $t_j \in(t_j, t_{j+1}), \xi_i \in (x_i, x_{i+1})$
+con $\mu_j \in(t_j, t_{j+1}), \; \xi_i \in (x_i, x_{i+1})$
 \cx
 Resulta:
 \[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1,j}}{h^2} = 0 \]
@@ -370,8 +370,8 @@ Para el paso $k$, el error en $\bm{u}^{(k)} = \bm{A}^{k} \bm{e}^{(0)}$. El méto
 \pause
 
 \cx
-Autovalores de $\bm{A}$:
-\[ \mu_i = 1 - 4 \lambda \pow{\sen\left(\frac{i \pi}{2 n}\right)}{2} \]
+Autovalores y autovectores de $\bm{A}$:
+\[ \mu_i = 1 - 4 \lambda \pow{\sen\left(\frac{i \pi}{2 n}\right)}{2}, \; \bm{v}^{(i)} \text{ con } v_j^{(i)} = \sen \dfrac{i j \pi}{n} \]
 Norma $L_{\infty}$:
 \[ \rho(\bm{A}) = \max_{1 \leq i \leq n} \abs{1 - 4 \lambda \pow{\sen\left(\frac{i \pi}{2 n}\right)}{2}} \]
 que se simplifica a
@@ -534,7 +534,7 @@ Autovalores de $\bm{A}$:
 para $i = 1, 2, \cdots, n-1$. Como $\lambda > 0$, $\mu_i > 0$.
 
 \cx
-Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}$ es una matriz convergente:
+Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}^{-1}$ es una matriz convergente:
 \begin{columns}
 \cw{0.4}
 \[ \lim_{j \to \infty} (\bm{A}^{-1})^j \bm{e}^{(0)} = \bm{0} \]
@@ -550,12 +550,12 @@ $\leftarrow$ \alert{incondicionalmente estable}.
 \cx
 \textbf{Método de Crank-Nicolson}:
 
-Diferencias progresivas:
+Diferencias progresivas en $t = j k$:
 \[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
 con error de truncamiento:
 \[ \epsilon_p = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) + \bigO(h^2) \]
 
-Diferencias regresivas:
+Diferencias regresivas en $t = (j +1)k$:
 \[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} = 0 \]
 con error de truncamiento:
 \[ \epsilon_r = -\frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) + \bigO(h^2) \]
@@ -741,7 +741,7 @@ con error $\bigO(k^3) \leftarrow$ \faThumbsOUp. \pause \alert{¿Y si no tenemos 
 Ecuación en diferencias:
 \[ f''(x_i) = \frac{f(x_{i+1}) - 2 f(x_i) + f(x_{i-1})}{h^2} - \frac{h^2}{12} f^{(4)}(\xi_i) \]
 Usando $\lambda = \alpha k / h$:
-\[ u(x_i, 1) = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) + \bigO(k^3 + h^2 k^2) \]
+\[ u(x_i, t_1) = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) + \bigO(k^3 + h^2 k^2) \]
 
 Entonces, para $i = 1, 2, \ldots, n-1$ usamos:
 \[ u_{i, 1} = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) \]
@@ -752,14 +752,14 @@ y la ecuación matricial para $j = 2, 3, \ldots$
 \begin{frame}
 \begin{columns}
     \cw{0.4}
-\texttt{hiperbolica.py}
-\pycode[firstline=6, lastline=27]{code/hiperbolica.py}
+\texttt{hiperbolica.py} \vspace{-1em}
+\pycode[firstline=6, lastline=29]{code/hiperbolica.py}
 \pause
 
 \cw{0.5}
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{code/onda-1.pdf}
-    \includegraphics[width=0.7\textwidth]{code/onda-2.pdf}
+    \includegraphics[width=0.75\textwidth]{code/onda-1.pdf}
+    \includegraphics[width=0.75\textwidth]{code/onda-2.pdf}
 \end{center}
 \end{columns}
 \end{frame}

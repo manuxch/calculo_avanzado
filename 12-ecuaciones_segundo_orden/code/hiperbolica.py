@@ -16,15 +16,17 @@ t = np.linspace(0, T, Nt)
 # Inicialización
 u = np.zeros((Nt, Nx))
 u[0, :] = np.sin(np.pi * x)  # Condición inicial
-u[1, 1:Nx-1] = u[0, 1:Nx-1] + 0.5 * l2 * (u[0, 2:Nx] \
-    - 2 * u[0, 1:Nx-1] + u[0, 0:Nx-2])
+u[1, 1 : Nx - 1] = (u[0, 1 : Nx - 1]
+                 + 0.5 * l2 * (u[0, 2 : Nx]
+                 - 2 * u[0, 1 : Nx - 1]
+                 + u[0, 0 : Nx - 2]))
 
 # Iteración en el tiempo
-for n in range(1, Nt - 1):
+for j in range(1, Nt - 1):
     for i in range(1, Nx - 1):
-        u[n + 1, i] = 2 * (1 - l2) * u[n, i] \
-            - u[n - 1, i] + l2 * (u[n, i + 1] \
-            + u[n, i - 1])
+        u[j + 1, i] = (2 * (1 - l2) * u[j, i]
+            - u[j - 1, i] + l2 * (u[j, i + 1]
+            + u[j, i - 1]))
 
 #Visualización de la solución
 plt.imshow(u, extent=[0, L, 0, T], origin='lower',
@@ -35,26 +37,26 @@ plt.ylabel('Tiempo (t)')
 plt.savefig('onda-1.pdf')
 # plt.show()
 
-# def plotheatmap(x, u, k):
-    # # Limpiamos la figura
-    # plt.clf()
-    # plt.xlabel(r"$x$", fontsize=20)
-    # plt.ylabel(r"$y$", fontsize=20)
-    # # Ploteamos u_k (u_{i,j} en `paso de tiempo k)
-    # plt.xlim([0, 1])
-    # plt.ylim([-1, 1])
-    # plt.plot(x, u[k, :])
-    # return plt
+def plotheatmap(x, u, k):
+    # Limpiamos la figura
+    plt.clf()
+    plt.xlabel(r"$x$", fontsize=20)
+    plt.ylabel(r"$y$", fontsize=20)
+    # Ploteamos u_k (u_{i,j} en `paso de tiempo k)
+    plt.xlim([0, 1])
+    plt.ylim([-1, 1])
+    plt.plot(x, u[k, :])
+    return plt
 
-# import matplotlib.animation as animation
-# from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
+from matplotlib.animation import FuncAnimation
 
-# def animate(k):
-    # plotheatmap(x, u, k)
+def animate(k):
+    plotheatmap(x, u, k)
 
-# anim = animation.FuncAnimation(plt.figure(),
-    # animate, interval=5, frames=Nt, repeat=False)
-# anim.save("solucion_ecuacion_onda-2.mp4")
+anim = animation.FuncAnimation(plt.figure(),
+    animate, interval=5, frames=Nt, repeat=False)
+anim.save("solucion_ecuacion_onda-1.mp4")
 
-# print("¡Hecho!")
+print("¡Hecho!")
 
