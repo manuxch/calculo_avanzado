@@ -24,7 +24,7 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 ### 1 - Introducción a la variable compleja
 
-Números complejos (repaso). Funciones de variable compleja. Límite, continuidad de funciones de variable compleja. Diferenciacibilidad y funciones analíticas. Integración de funciones de variable compleja. Sucesiones y series. [Clase](1-complejos/1-complejos.pdf), [problemas](1-complejos/problemas_01.pdf), [*notebook #1*](1-complejos/code/practica_01.ipynb), [*notebook #2*](1-complejos/code/practica_02.ipynb). 
+Números complejos (repaso). Funciones de variable compleja. Límite, continuidad de funciones de variable compleja. Diferenciacibilidad y funciones analíticas. Integración de funciones de variable compleja. Sucesiones y series. [Clase](01-complejos/01-complejos.pdf), [problemas](01-complejos/problemas_01.pdf), [*notebook*](01-complejos/code/practica_01.ipynb).
 
 ### 2 - Series y transformada de Fourier
 
