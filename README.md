@@ -26,20 +26,20 @@ Repositorio de las clases de **Cálculo Avanzado** - UTN FRLP.
 
 Números complejos (repaso). Funciones de variable compleja. Límite, continuidad de funciones de variable compleja. Diferenciacibilidad y funciones analíticas. Integración de funciones de variable compleja. Sucesiones y series. [Clase](1-complejos/1-complejos.pdf), [problemas](1-complejos/problemas_01.pdf), [*notebook #1*](1-complejos/code/practica_01.ipynb), [*notebook #2*](1-complejos/code/practica_02.ipynb). 
 
-### Series y transformada de Fourier
+### 2 - Series y transformada de Fourier
 
 - Clase 03: Funciones ortogonales. Serie de Fourier. [Clase](fourier/clase_03/clase_03.pdf), [problemas](fourier/clase_03/problemas_03.pdf), [*notebook*](fourier/clase_03/code/practica_03.ipynb).
 - Clase 04: Integral de Fourier. Transformada seno y coseno de Fourier. Transformada de Fourier. [Clase](fourier/clase_04/clase_04.pdf), [problemas](fourier/clase_04/problemas_04.pdf), [*notebook*](fourier/clase_04/code/practica_04.ipynb).
 
-### Transformada de Laplace
+### 3 - Transformada de Laplace
 
 - Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](laplace/clase_05/clase_05.pdf), [problemas](laplace/clase_05/problemas_05.pdf), [*notebook*](laplace/clase_05/code/practica_05.ipynb).
 
-### Errores
+### 4 - Errores
 
 - Clase 6: Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf), [*notebook*](errores/clase_06/code/practica_06.ipynb).
 
-### Raíces de ecuaciones de una variable
+### 5 - Raíces de ecuaciones de una variable
 - Clase 07: Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
 
 ### 6 - Normas de vectores y matrices
