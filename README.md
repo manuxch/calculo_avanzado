@@ -28,8 +28,7 @@ Números complejos (repaso). Funciones de variable compleja. Límite, continuida
 
 ### 2 - Series y transformada de Fourier
 
-- Clase 03: Funciones ortogonales. Serie de Fourier. [Clase](fourier/clase_03/clase_03.pdf), [problemas](fourier/clase_03/problemas_03.pdf), [*notebook*](fourier/clase_03/code/practica_03.ipynb).
-- Clase 04: Integral de Fourier. Transformada seno y coseno de Fourier. Transformada de Fourier. [Clase](fourier/clase_04/clase_04.pdf), [problemas](fourier/clase_04/problemas_04.pdf), [*notebook*](fourier/clase_04/code/practica_04.ipynb).
+Funciones ortogonales. Serie de Fourier. Integral de Fourier. Transformada seno y coseno de Fourier. Transformada de Fourier. [Clase](02-fourier/02-fourier.pdf), [problemas](02-fourier/problemas_02.pdf), [*notebook*](02-fourier/code/practica_02.ipynb).
 
 ### 3 - Transformada de Laplace
 
