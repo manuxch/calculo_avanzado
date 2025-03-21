@@ -1,14 +1,12 @@
 \documentclass[11pt]{article}
 
-\input{../../utils/preamble_problemas}
+\input{../utils/preamble_problemas}
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
-\date{Clase 4: integral y transformada de Fourier}
 
 
 \begin{document}
-% \maketitle
 
 \begin{center}
 \framebox[1.0\textwidth][c]{
@@ -27,14 +25,64 @@
 
 \begin{center}
 \begin{tabular}{r l}
-    \textbf{Práctica:} & 3 \\
- \textbf{Tema:} & Funciones ortogonales. Series de Fourier. \\
+    \textbf{Práctica:} & 2 \\
+ \textbf{Tema:} & Funciones ortogonales. Series de Fourier. Integral y transformada de Fourier. \\
  \textbf{Profesor Titular:} & Manuel Carlevaro \\
- \textbf{Jefe de Trabajos Prácticos:} & Diego Amiconi \\
- \textbf{Ayudante de Primera:} & Lucas Basiuk 
+ \textbf{Ayudante de Primera:} & Christian Molina
 \end{tabular}\end{center}
 
 \vspace{1em}
+
+\begin{question} % H. Gross 3.8.1(L) pg. 4
+ Mostrar que el conjunto de funciones
+ \[ \{1 , \cos x, \cos 2x, \ldots, \cos nx, \ldots, \sen x, \sen 2x, \ldots, \sen nx, \ldots \} \]
+ es ortogonal en el intervalo $[-\pi, \pi]$.
+\end{question}
+
+\begin{question} % H. Gross 3.8.2(L) pg. 4
+Suponga que $f(x)$ es integrable en $[-\pi, \pi]$ y sea
+\[ F(x) = \sum_{n = 0}^{\infty} a_n \cos nx + \sum_{n = 1}^{\infty} a_n \sen nx \]
+la representación de Fourier de $f(x)$ relativa a $\{1, \cos x, \cos 2x, \ldots, \sen x, \sen 2x, \ldots \}$. Usar el método descripto en la clase para determinar $a_n$ y $b_n$.
+\end{question}
+
+\begin{question} % H. Gross 3.8.3(L) pg. 4
+Definiendo $f(x)$ en $[-\pi, \pi]$ como
+\[ f(x) = \begin{cases}
+    -1,&  -\pi < x < 0 \\
+    \phantom{-}1,&  0 < x < \pi
+        \end{cases} \]
+\begin{enumerate}[a)]
+\item Derive la representación de Fourier de $f(x)$.
+\item Use la parte a) para evaluar la suma
+    \[ \sum_{n = 0}^{\infty} \frac{(-1)^n}{2 n + 1} \]
+\end{enumerate}
+\end{question}
+
+\begin{question} % H. Gross 3.8.4(L) pg. 4
+    \begin{enumerate}[ a) ]
+    \item Halle la representación de Fourier de $f(x) = |x|, \; -\pi \leq x \leq \pi$.
+    \item Use el resultado de la parte a) para computar
+        \[ \sum_{n = 0}^{\infty} \frac{1}{(2 n + 1)^2} \]
+\end{enumerate}
+\end{question}
+
+\begin{question} % H. Gross 3.8.5(L) pg. 5
+\begin{enumerate}[a)]
+\item Encuentre la expansión en serie de Fourier de la función
+    \[ f(x) = 
+        \begin{cases}
+            0,& -\pi < x < 0 \\
+            x^2,& 0 \leq x < \pi
+        \end{cases} \]
+\item Dibuje $y = F(x)$ donde $F$ es la representación de Fourier de $f$.
+\item Use a) para evaluar
+    \[ \sum_{n = 1}^{\infty} \frac{1}{n^2} \]
+\end{enumerate}
+\end{question}
+
+\begin{question} % H. Gross 3.8.7(L) pg. 6
+Sea $f$ definida por $f(x) = x, \; -1 < x < 1$. Exprese $f$ como una serie trigonométrica.
+\end{question}
 
 \begin{question} % Kreyszig problem set 11.7 - 1 pg. 517
 Halle la representación integral de Fourier de la función $f(x)$ dada por:
