@@ -32,7 +32,7 @@ Funciones ortogonales. Serie de Fourier. Integral de Fourier. Transformada seno 
 
 ### 3 - Transformada de Laplace
 
-- Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](laplace/clase_05/clase_05.pdf), [problemas](laplace/clase_05/problemas_05.pdf), [*notebook*](laplace/clase_05/code/practica_05.ipynb).
+- Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](03-laplace/03-laplace.pdf), [problemas](03-laplace/problemas_03.pdf), [*notebook*](03-laplace/code/practica_03.ipynb).
 
 ### 4 - Errores
 
