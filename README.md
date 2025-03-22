@@ -32,14 +32,14 @@ Funciones ortogonales. Serie de Fourier. Integral de Fourier. Transformada seno 
 
 ### 3 - Transformada de Laplace
 
-- Clase 05: Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](03-laplace/03-laplace.pdf), [problemas](03-laplace/problemas_03.pdf), [*notebook*](03-laplace/code/practica_03.ipynb).
+Transformada de Laplace. Transformada inversa. Solución de problemas con valores iniciales. [Clase](03-laplace/03-laplace.pdf), [problemas](03-laplace/problemas_03.pdf), [*notebook*](03-laplace/code/practica_03.ipynb).
 
 ### 4 - Errores
 
-- Clase 6: Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf), [*notebook*](errores/clase_06/code/practica_06.ipynb).
+Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf), [*notebook*](errores/clase_06/code/practica_06.ipynb).
 
 ### 5 - Raíces de ecuaciones de una variable
-- Clase 07: Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
+Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
 
 ### 6 - Normas de vectores y matrices
 - Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](6-normas-vectores-matrices/normas.pdf), [problemas](6-normas-vectores-matrices/problemas_normas.pdf), [*notebook*](6-normas-vectores-matrices/code/normas.ipynb).
