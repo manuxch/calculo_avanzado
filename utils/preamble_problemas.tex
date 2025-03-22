@@ -1,3 +1,4 @@
+\usepackage{fontspec}
 \usepackage{minted}
 \usepackage[scale=1]{ccicons}
 \usepackage{metalogo}
@@ -7,43 +8,42 @@
 \usepackage{bm}
 \usepackage{fontawesome}
 \usepackage{exsheets}
-\usepackage[paper=a4paper, headheight=110pt,showframe=false, 
-            layoutvoffset=2em,
-            bottom=2cm, top=3.5cm]{geometry}
+\usepackage[paper=a4paper, headheight=110pt,showframe=false,
+	layoutvoffset=2em,
+	bottom=2cm, top=3.5cm]{geometry}
 \usepackage[spanish, es-nodecimaldot]{babel}
 \usepackage[babel]{microtype}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{mismath}
+\usepackage{mathrsfs}
 \usepackage{gensymb,amssymb}
 \setlength{\parindent}{3em}
-\setlength{\parskip}{1em} 
+\setlength{\parskip}{1em}
 \usepackage[shortlabels]{enumitem}
 \usepackage{subcaption}
 \usepackage{wrapfig}
+\usepackage[svgnames]{xcolor} % Gestión de colores
 %\usepackage{mathspec}
-\usepackage{unicode-math}
+% \usepackage{unicode-math}
 
 
 % Fonts can be customized here.
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont [Ligatures={Common}]{Linux Libertine O}
-\setmonofont[Scale=0.9]{Linux Libertine Mono O}
-%\usepackage[svgnames]{xcolor} % Gestión de colores
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\setmonofont[Ligatures=TeX]{Linux Libertine Mono O}
 \usepackage{hyperref}
 \hypersetup{
-  colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
-  breaklinks=true, pageanchor=true,%
-  pdfpagemode=UseNone, %
-  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
-  urlcolor=Maroon, linkcolor=RoyalBlue, citecolor=Blue, %pagecolor=RoyalBlue,%
-  pdftitle={},%
-  pdfauthor={\textcopyright\ C. Manuel Carlevaro},%
-  pdfsubject={},%
-  pdfkeywords={},%
-  pdfcreator={XeLaTeX},%
-  pdfproducer={XeLaTeX}%
+	colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+	breaklinks=true, pageanchor=true,%
+	pdfpagemode=UseNone, %
+	plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+	hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+	urlcolor=Maroon, linkcolor=RoyalBlue, citecolor=Blue, %pagecolor=RoyalBlue,%
+	pdftitle={},%
+	pdfauthor={\textcopyright\ C. Manuel Carlevaro},%
+	pdfsubject={},%
+	pdfkeywords={},%
+	pdfcreator={XeLaTeX}%
 }
 
 %% Operadores
@@ -53,7 +53,7 @@
 \newcommand{\T}[1]{\underline{\bm{#1}}}
 \DeclareMathOperator{\Tr}{Tr}
 %\NewDocumentCommand{\evalat}{sO{\big}mm}{%
-  %\IfBooleanTF{#1}
-   %{\mleft. #3 \mright|_{#4}}
-   %{#3#2|_{#4}}%
+%\IfBooleanTF{#1}
+%{\mleft. #3 \mright|_{#4}}
+%{#3#2|_{#4}}%
 %}
