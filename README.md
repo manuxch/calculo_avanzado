@@ -36,7 +36,7 @@ Transformada de Laplace. Transformada inversa. Solución de problemas con valore
 
 ### 4 - Errores
 
-Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](errores/clase_06/clase_06.pdf), [problemas](errores/clase_06/problemas_06.pdf), [*notebook*](errores/clase_06/code/practica_06.ipynb).
+Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](04-errores/04-errores.pdf), [problemas](04-errores/problemas_04.pdf), [*notebook*](04-errores/code/practica_04.ipynb).
 
 ### 5 - Raíces de ecuaciones de una variable
 Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
