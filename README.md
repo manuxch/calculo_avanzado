@@ -47,11 +47,11 @@ Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráf
 ### 7 - Autovalores y autovectores
 Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](07-autovalores-autovectores/07-autovalores-autovectores.pdf), [problemas](07-autovalores-autovectores/problemas_07.pdf), [_notebook_](07-autovalores-autovectores/code/practica_07.ipynb).
 
-### 8 - Sistema de ecuaciones lineales
+### 8 - Sistemas de ecuaciones lineales
 Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. Métodos indirectos: Jacobi y Gauss-Seidel. Relajación. Ejemplos con Python. [Clase](08-sistemas-lineales/08-sistemas_lineales.pdf), [problemas](08-sistemas-lineales/problemas-8.pdf).
 
 ### 9 - Ajustes por mínimos cuadrados
-Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](9-aproximacion/9-aproximacion.pdf), [problemas](9-aproximacion/problemas-9.pdf).
+Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](09-aproximacion_minimos_cuadrados/09-aproximacion.pdf), [problemas](https://github.com/manuxch/calculo_avanzado/blob/main/09-aproximacion_minimos_cuadrados/problemas-09.pdf).
 
 ### 10 - Resolución de problemas de valor inicial
 Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_10.pdf).
