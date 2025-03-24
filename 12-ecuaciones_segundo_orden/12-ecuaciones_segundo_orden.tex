@@ -5,7 +5,7 @@
 
 \input{../utils/preamble}
 \usepackage{animate}
-\addbibresource{../utils/refs.bib}
+% \addbibresource{../utils/refs.bib}
 \input{embed_video}
 
 \title{Ecuaciones diferenciales parciales de segundo orden}
@@ -99,8 +99,8 @@ en $R = \{(x, y) | a < x < b, c < y < d \}$, con $u(x, y) = g(x, y)$ para $(x, y
 \end{itemize}
 
 \textbf{Aproximación en diferencias finitas (serie de Taylor):}
-\[ \frac{\partial^2 u}{\partial x^2} = \frac{u(x_{i+1}, y_j) - 2 u(x_i, y_j) + u(x_{i-1},y_j)}{h^2} + \bigO(h^2) \]
-\[ \frac{\partial^2 u}{\partial y^2} = \frac{u(x_i, y_{j+1}) - 2 u(x_i, y_j) + u(x_i,y_{j-1})}{k^2} + \bigO(k^2) \]
+\[ \frac{\partial^2 u}{\partial x^2} = \frac{u(x_{i+1}, y_j) - 2 u(x_i, y_j) + u(x_{i-1},y_j)}{h^2} + \mathcal{O}(h^2) \]
+\[ \frac{\partial^2 u}{\partial y^2} = \frac{u(x_i, y_{j+1}) - 2 u(x_i, y_j) + u(x_i,y_{j-1})}{k^2} + \mathcal{O}(k^2) \]
 \end{columns}
 \end{frame}
 
@@ -527,22 +527,22 @@ $i$ & $x_i$ & $u_{i,50}$ & $u(x_i, 0.5)$ & $\abs{u_{i, 50} - u(x_i, 0.5)}$ \\
 \end{center}
 \end{columns} \pause
 \vspace{1em}
-\begin{columns}
-\cx
-Autovalores de $\bm{A}$:
-\[ \mu_i = 1 + 4 \lambda \left[ \sen \left(\frac{i \pi}{2 n}\right) \right]^2 \]
-para $i = 1, 2, \cdots, n-1$. Como $\lambda > 0$, $\mu_i > 0$.
+  \begin{columns}
+  \cx
+  Autovalores de $\bm{A}$:
+  \[ \mu_i = 1 + 4 \lambda \left[ \sen \left(\frac{i \pi}{2 n}\right) \right]^2 \]
+  para $i = 1, 2, \cdots, n-1$. Como $\lambda > 0$, $\mu_i > 0$.
 
-\cx
-Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}^{-1}$ es una matriz convergente:
-\begin{columns}
-\cw{0.4}
-\[ \lim_{j \to \infty} (\bm{A}^{-1})^j \bm{e}^{(0)} = \bm{0} \]
-\cw{0.6}
-$\leftarrow$ \alert{incondicionalmente estable}.
-\end{columns} \pause
-\centering Precisión: $\bigO(k + h^2) \leftarrow$ \faThumbsODown
-\end{columns}
+  \cx
+  Entonces $\rho(\bm{A}^{-1}) < 1 \mapsto \bm{A}^{-1}$ es una matriz convergente:
+  \begin{columns}
+  \cw{0.4}
+  \[ \lim_{j \to \infty} (\bm{A}^{-1})^j \bm{e}^{(0)} = \bm{0} \]
+  \cw{0.6}
+  $\leftarrow$ \alert{incondicionalmente estable}.
+  \end{columns} \pause
+  \centering Precisión: $\mathcal{O}(k + h^2) \leftarrow$ \faThumbsODown
+  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -553,12 +553,12 @@ $\leftarrow$ \alert{incondicionalmente estable}.
 Diferencias progresivas en $t = j k$:
 \[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} = 0 \]
 con error de truncamiento:
-\[ \epsilon_p = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) + \bigO(h^2) \]
+\[ \epsilon_p = \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) + \mathcal{O}(h^2) \]
 
 Diferencias regresivas en $t = (j +1)k$:
 \[ \frac{u_{i, j+1} - u_{i,j}}{k} - \alpha^2 \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} = 0 \]
 con error de truncamiento:
-\[ \epsilon_r = -\frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) + \bigO(h^2) \]
+\[ \epsilon_r = -\frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) + \mathcal{O}(h^2) \]
 Suponiendo que:
 \[ \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_j) \approx \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \hat{\mu}_j) \]
 
@@ -568,7 +568,7 @@ el método de la diferencia promediado:
     \frac{u_{i, j+1} - u_{i,j}}{k} - \frac{\alpha^2}{2} \left[ \frac{u_{i+1, j} - 2 u_{i,j} + u_{i-1, j}}{h^2} \right. \\
         + \left. \frac{u_{i+1, j+1} - 2 u_{i,j+1} + u_{i-1, j+1}}{h^2} \right] = 0
 \end{multline*}
-tiene un error de truncamiento $\bigO(k^2 + h^2) \leftarrow$ \faThumbsOUp
+tiene un error de truncamiento $\mathcal{O}(k^2 + h^2) \leftarrow$ \faThumbsOUp
 
 \begin{center}
     \includegraphics[width=0.8\textwidth]{figs/crank-nicolson}
@@ -723,7 +723,7 @@ Aproximación por diferencias progresivas:
 \[ \frac{\partial u}{\partial t}(x, 0) = \frac{u(x_i, t_1) - u(x_i, 0)}{k} - \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
 Resolviendo:
 \[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) +  \frac{k}{2} \frac{\partial^2 u}{\partial t^2}(x_i, \mu_i) \]
-Error de truncamiento: $\bigO(k) \leftarrow$ \faThumbsODown
+Error de truncamiento: $\mathcal{O}(k) \leftarrow$ \faThumbsODown
 \pause
 
 \cw{0.6}
@@ -733,7 +733,7 @@ Si $f''$ existe:
 \[ \frac{\partial^2 u}{\partial t^2}(x_i, 0) = \alpha^2 \frac{\partial^2 u}{\partial x^2}(x_i, 0) = \alpha^2 f''(x_i) \]
 entonces:
 \[ u(x_i, t_1) = u(x_i, 0) + k g(x_i) + \frac{\alpha^2 k^2}{2} f''(x_i) \]
-con error $\bigO(k^3) \leftarrow$ \faThumbsOUp. \pause \alert{¿Y si no tenemos $f''(x_i)$?}
+con error $\mathcal{O}(k^3) \leftarrow$ \faThumbsOUp. \pause \alert{¿Y si no tenemos $f''(x_i)$?}
 \end{columns}
 \end{frame}
 
@@ -741,7 +741,7 @@ con error $\bigO(k^3) \leftarrow$ \faThumbsOUp. \pause \alert{¿Y si no tenemos 
 Ecuación en diferencias:
 \[ f''(x_i) = \frac{f(x_{i+1}) - 2 f(x_i) + f(x_{i-1})}{h^2} - \frac{h^2}{12} f^{(4)}(\xi_i) \]
 Usando $\lambda = \alpha k / h$:
-\[ u(x_i, t_1) = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) + \bigO(k^3 + h^2 k^2) \]
+\[ u(x_i, t_1) = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) + \mathcal{O}(k^3 + h^2 k^2) \]
 
 Entonces, para $i = 1, 2, \ldots, n-1$ usamos:
 \[ u_{i, 1} = (1-\lambda^2)f(x_i) + \frac{\lambda^2}{2} f(x_{i+1}) + \frac{\lambda^2}{2} f(x_{i-1}) + k g(x_i) \]
@@ -765,7 +765,7 @@ y la ecuación matricial para $j = 2, 3, \ldots$
 \end{frame}
 
 \section*{Bibliografía}
-\begin{frame}[allowframebreaks]{Lecturas recomendadas}
+\begin{frame}{Lecturas recomendadas}
 \begin{itemize}
     \item \fullcite{burden2017}. Capítulo 12.
     \item \fullcite{nakamura1992}. Capítulos 11, 12 y 13.
