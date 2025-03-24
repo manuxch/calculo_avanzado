@@ -45,7 +45,7 @@ Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergenci
 Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](06-normas_vectores_matrices/06-normas.pdf), [problemas](06-normas_vectores_matrices/problemas_06.pdf), [*notebook*](06-normas_vectores_matrices/code/practica_06.ipynb).
 
 ### 7 - Autovalores y autovectores
-Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](7-autovalores-autovectores/7-autovalores-autovectores.pdf), [problemas](7-autovalores-autovectores/7-problemas.pdf), [_notebook_](7-autovalores-autovectores/code/autovalores-autovectores.ipynb).
+Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](07-autovalores-autovectores/07-autovalores-autovectores.pdf), [problemas](07-autovalores-autovectores/problemas_07.pdf), [_notebook_](07-autovalores-autovectores/code/practica_07.ipynb).
 
 ### 8 - Sistema de ecuaciones lineales
 Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. Métodos indirectos: Jacobi y Gauss-Seidel. Relajación. Ejemplos con Python. [Clase](8-sistemas-lineales/8-sistemas-lineales.pdf), [problemas](8-sistemas-lineales/problemas-8.pdf).
