@@ -39,7 +39,7 @@ Transformada de Laplace. Transformada inversa. Solución de problemas con valore
 Tipos de errores. Representación de punto fijo y punto flotante. Representación binaria computacional. Errores de truncamiento y redondeo. Errores absoluto y relativo. Propagación de errores. [Clase](04-errores/04-errores.pdf), [problemas](04-errores/problemas_04.pdf), [*notebook*](04-errores/code/practica_04.ipynb).
 
 ### 5 - Raíces de ecuaciones de una variable
-Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](raices_ecuaciones/clase_07/clase_07.pdf), [problemas](raices_ecuaciones/clase_07/problemas_07.pdf).
+Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](05-raices_ecuaciones/05-raices_ecuaciones.pdf), [problemas](05-raices_ecuaciones/problemas_05.pdf).
 
 ### 6 - Normas de vectores y matrices
 - Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](6-normas-vectores-matrices/normas.pdf), [problemas](6-normas-vectores-matrices/problemas_normas.pdf), [*notebook*](6-normas-vectores-matrices/code/normas.ipynb).
