@@ -42,7 +42,7 @@ Tipos de errores. Representación de punto fijo y punto flotante. Representació
 Método de bisección, punto fijo y Newton-Raphson. Diagramas coweb. Convergencia. [Clase](05-raices_ecuaciones/05-raices_ecuaciones.pdf), [problemas](05-raices_ecuaciones/problemas_05.pdf).
 
 ### 6 - Normas de vectores y matrices
-- Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](06-normas_vectores_matrices/06-normas.pdf), [problemas](06-normas_vectores_matrices/problemas_06.pdf), [*notebook*](>06-normas_vectores_matrices/code/practica_06.ipynb).
+- Espacios vectoriales. Producto escalar. Norma de vectores. Interpretación gráfica. Norma matricial. Norma matricial inducida. Interpretación gráfica. [Clase](06-normas_vectores_matrices/06-normas.pdf), [problemas](06-normas_vectores_matrices/problemas_06.pdf), [*notebook*](06-normas_vectores_matrices/code/practica_06.ipynb).
 
 ### 7 - Autovalores y autovectores
 - Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de las potencias. Método QR. Códigos de ejemplo. [Clase](7-autovalores-autovectores/7-autovalores-autovectores.pdf), [problemas](7-autovalores-autovectores/7-problemas.pdf), [_notebook_](7-autovalores-autovectores/code/autovalores-autovectores.ipynb).
