@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="91.732483mm"
-   height="79.440681mm"
-   viewBox="0 0 91.732483 79.440681"
+   width="81.337914mm"
+   height="76.312454mm"
+   viewBox="0 0 81.337914 76.312454"
    version="1.1"
    id="svg5"
-   sodipodi:docname="fig-02.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="fig-07.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,15 +24,16 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.9683221"
-     inkscape:cx="152.10613"
-     inkscape:cy="164.73953"
+     inkscape:zoom="2.0989207"
+     inkscape:cx="45.02314"
+     inkscape:cy="137.4516"
      inkscape:window-width="1920"
-     inkscape:window-height="1013"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showguides="false" />
   <defs
      id="defs2">
     <marker
@@ -195,7 +196,7 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-46.4613, -109.821)">
+     transform="translate(-46.376605,-110.94239)">
     <path
        style="fill:none;stroke:#434343;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="m 67.033024,170.30457 c 13.166807,-0.61806 25.759412,-5.26783 29.054647,-21.79113"
@@ -273,7 +274,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="translate(101.66618,146.48383)"
+       transform="translate(99.523214,146.862)"
        id="g789">
       <g
          id="g787"
@@ -311,7 +312,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="translate(102.04703,114.77523)"
+       transform="translate(94.737907,110.94239)"
        id="g949">
       <g
          id="g947"
@@ -361,7 +362,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="translate(123.48662,111.23152)"
+       transform="translate(99.330861,131.01963)"
        id="g1499">
       <g
          id="g1497"
@@ -418,7 +419,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="translate(103.33106,128.25589)"
+       transform="translate(121.06906,114.43987)"
        id="g1994">
       <g
          id="g1992"
@@ -455,8 +456,8 @@
       </g>
     </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker2812);marker-end:url(#marker2812);marker-mid:url(#Arrow2)"
-       d="m 112.4566,129.16074 5.51872,-5.19445 5.51873,-5.19445"
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker2812);marker-mid:url(#Arrow2);marker-end:url(#marker2812)"
+       d="m 106.84105,128.8042 5.51872,-5.19445 5.51873,-5.19445"
        id="path4316"
        sodipodi:nodetypes="ccc" />
     <g
@@ -513,5 +514,10 @@
         </g>
       </g>
     </g>
+    <path
+       style="fill:none;stroke:#838383;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2)"
+       d="m 96.822943,119.71506 h 8.378757 l 4.05731,2.90165"
+       id="path1"
+       sodipodi:nodetypes="ccc" />
   </g>
 </svg>
