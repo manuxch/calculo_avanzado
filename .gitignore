@@ -12,6 +12,7 @@
 **/*.snm
 **/*.gz
 **/*.toc
+**/*.xdv
 **/.directory
 **/*ipynb_checkpoints*
 **/*jupyter*

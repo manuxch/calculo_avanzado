@@ -8,6 +8,12 @@
 \title{Serie y Transformada de Fourier}
 \subtitle{Funciones ortogonales. Series de Fourier. Integral de Fourier. Transformada seno y coseno. Transformada de Fourier. Ejemplos.}
 
+%%
+%% ver: https://youtu.be/ZYf0tz9oVz8?si=njTb4eYMM7jol9Ru
+%%
+
+
+
 \begin{document}
 \maketitle
 
@@ -18,13 +24,15 @@ Secuencia infinita $\{\phi_n(x)\}$ integrable en $[a, b]$ y
 \[ \int_a^b \phi_i(x) \phi_j(x) \, dx = 0, \quad i \neq j \]
 \pause
 
-Supongamos que existe
+\vspace{-1em}
+familia \alert{ortogonal} de funciones en $[a, b]$. Supongamos que existe
 \[ \int_a^b f(x) \, dx \]
 y
 \[ f(x) = \sum_{n = 1}^{\infty} c_n \phi_n(x) \]
 \[c_3 = \color{red}{?} \]
 \[ f(x) \phi_3(x) = \sum_{i = 1}^{\infty} c_n \phi_n(x) \phi_3(x) \]
 \pause
+
 \cw{0.3} \vspace{-1.5em}
 \begin{multline*}
 \int_a^b f(x) \phi_3(x) \, dx = \\
@@ -60,12 +68,12 @@ Se puede demostrar:
 \cx
 \textbf{Caso especial:}
 \begin{multline*}
-\{\cos x, \cos 2x, \cos 3x, \cdots, \\
+\{1, \cos x, \cos 2x, \cos 3x, \cdots, \\
 \sen x, \sen 2x, \sen 3x,  \cdots \} 
 \end{multline*}
-ortogonales en $[-\pi, \pi]$.
+$\mapsto$ conjunto ortogonal en $[-\pi, \pi]$.
 
-Por ejemplo:
+Por ejemplo, si $m \neq n$:
 \begin{multline*}
 \int_{-\pi}^{\pi} \cos mx \, \cos nx \, dx = \\
 \frac{1}{2} \int_{-\pi}^{\pi} [\cos(m + n) x + \cos(m - n) x] \, dx = \\
@@ -79,8 +87,8 @@ Por ejemplo:
 
 Supongamos que $f(x)$ sea suave a tramos en $[-\pi, \pi]$, y que
 \[ F(x) = \sum_{n = 0}^{\infty} a_n \cos nx + \sum_{n = 0}^{\infty} b_n \sen nx \]
-es la representación de Fourier de $f(x)$. Entonces, para $x \in [-\pi, \pi]$:
-\[ F(x) = \frac{f(x^+) + f(x^-)}{2} \]
+es la representación de Fourier de $f(x)$. Entonces, para $x_0 \in [-\pi, \pi]$:
+\[ F(x_0) = \frac{f(x_0^+) + f(x_0^-)}{2} \]
 
 \begin{exampleblock}{Ejemplo:}
     \begin{equation*}
@@ -97,7 +105,7 @@ es la representación de Fourier de $f(x)$. Entonces, para $x \in [-\pi, \pi]$:
 \begin{columns}[t]
 \cx
 \begin{align*}
-F(x) &= \frac{4}{\pi} \sum_{n \text{ par}}^{\infty} \frac{\sen nx}{n} =  \frac{4}{\pi} \sum_{n = 0}^{\infty} \frac{\sen (2 n + 1) x}{2 n + 1}\\
+F(x) &= \frac{4}{\pi} \sum_{n \text{ impar}}^{\infty} \frac{\sen nx}{n} =  \frac{4}{\pi} \sum_{n = 0}^{\infty} \frac{\sen (2 n + 1) x}{2 n + 1}\\
      &= \frac{4}{\pi} \left( \sen x + \frac{\sen 3x}{3} + \frac{\sen 5 x}{5} + \cdots \right)
 \end{align*}
 Primeros dos términos:
@@ -150,7 +158,7 @@ e^x = \sum_{n = 0}^{\infty} \frac{x^n}{n!} \\
 \begin{frame}{Integral de Fourier}
 \begin{columns}[t]
     \cw{0.3}
-Del ejercicio 6 (Práctica 3):
+Del ejercicio 6 (Práctica 2):
 \begin{equation*}
 f_L(x) =
 \begin{cases}
