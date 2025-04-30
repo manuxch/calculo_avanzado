@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
-plt.style.use('../../../utils/clases.mplstyle')
+plt.style.use('../../utils/clases.mplstyle')
 import numpy as np
 
 def f(x, L):
@@ -34,10 +34,11 @@ def plot(L, n, mas, menos, idx_fig):
     print(w_n)
     ax[1].axvline(c='tab:gray')
     ax[1].axhline(c='tab:gray')
-    ax[1].plot(w, np.sin(w)/w, '--')
+    ax[1].plot(w, np.sin(w)/(w), '--')
     for p, a in zip(w_n, a_n):
         ax[1].plot([p, p], [0, a], c='tab:red')
     ax[1].set_xlabel(r"$\omega_n = n \pi / L$")
+    ax[1].set_ylabel(r"$a_n$")
     plt.tight_layout()
     file_out = f"fig-01-{idx_fig}.pdf"
     plt.savefig(file_out)
