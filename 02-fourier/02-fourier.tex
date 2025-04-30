@@ -261,7 +261,7 @@ donde:
 
 \begin{align*}
     A(\omega) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(\xi) \cos \omega \xi \, d\xi \\
-              &= \frac{1}{\pi} \int_{-1}^{1} f(\xi) \cos \omega \xi \, d\xi = \left. \frac{\sen \omega \xi}{\pi \omega} \right|_{-1}^1 = \frac{2 \sen \omega}{\pi \omega} \\
+              &= \frac{1}{\pi} \int_{-1}^{1}  \cos \omega \xi \, d\xi = \left. \frac{\sen \omega \xi}{\pi \omega} \right|_{-1}^1 = \frac{2 \sen \omega}{\pi \omega} \\
     B(\omega) &= \frac{1}{\pi} \int_{-\infty}^{\infty} f(\xi) \sen \omega \xi \, d\xi = 0 
 \end{align*}
 \[    \boxed{ f(x) = \frac{2}{\pi} \int_0^{\infty} \frac{\cos \omega x \sen \omega}{w} \, d\omega } \]
@@ -318,11 +318,11 @@ De las ecuaciones \eqref{eq:01} y \eqref{eq:02}:
     \left. + \sen \omega \xi \sen \omega x \right] \, d\xi \, d\omega \\
     = \frac{1}{\pi} \int_0^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
 \end{multline*}
-$[\cdot]$ es una función par:
+$[\cdot]$ es una función par de $\omega$:
 \begin{equation}\label{eq:03}
-    f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
+    f(x) = \frac{1}{2\pi} \int_{\infty}^{\infty} \left[ \int_{0}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
 \end{equation}
-Si usamos $\sen$ en vez de $\cos$, $[\cdot]$ es impar y
+Si usamos $\sen$ en vez de $\cos$, $[\cdot]$ es impar en $\omega$ y
 \begin{equation}\label{eq:04}
     \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} f(\xi) \sen(\omega x - \omega \xi) d\xi \right] d\omega = 0
 \end{equation}
@@ -465,9 +465,6 @@ Sean $f(x)$ y $g(x)$ funciones acotadas, continuas por tramos, y absolutamente i
  \item \fullcite{kreyszig2011}. Capítulo 11 (11.7 -- 11.9).
  \item \fullcite{oneil2012es}. Capítulo 3.
  \item \fullcite{stroud2020}. Capítulos 9.
- \item \fullcite{kreyszig2011}. Capítulo 11 (11.1 -- 11.6).
- \item \fullcite{oneil2012es}. Capítulo 2.
- \item \fullcite{stroud2020}. Capítulos 7 y 8.
 \end{itemize}
 \end{frame}
 
