@@ -40,6 +40,9 @@
 \end{frame}
 
 \begin{frame}{Transformada integral}
+  %%%
+  %%% https://en.wikipedia.org/wiki/Integral_transform
+  %%%
 	\textbf{Caso general:}
 	\[ (Tf)(u) = \int_{t_1}^{t_2} f(t) \, K(t, u) \, dt \\ = F(u) \]
 	donde $K(t, u)$ es la función \textbf{núcleo} o \textbf{kernel}.
@@ -98,6 +101,24 @@
 		\[ \boxed{ \mathscr{L}(e^{at}) = \frac{1}{s -a}} \]
 		cuando $s -a > 0$.
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Tabla de transformadas más comunes}
+\begin{center}
+\begin{tabular}{cccccc}
+  \toprule
+\( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) \\
+\midrule
+\( 1 \) & \( \frac{1}{s} \) & \( \cos(at) \) & \( \frac{s}{s^2 + a^2} \) & \( \delta(t) \) & \( 1 \) \\
+\( t \) & \( \frac{1}{s^2} \) & \( \sin(at) \) & \( \frac{a}{s^2 + a^2} \) & \( \delta(t - a) \) & \( e^{-as} \) \\
+\( t^n \) & \( \frac{n!}{s^{n+1}} \) & \( \sinh(at) \) & \( \frac{a}{s^2 - a^2} \) & \( u(t - a) \) & \( \frac{e^{-as}}{s} \) \\
+\( e^{at} \) & \( \frac{1}{s - a} \) & \( \cosh(at) \) & \( \frac{s}{s^2 - a^2} \) & \( e^{-at}f(t) \) & \( F(s + a) \) \\
+\( e^{at}t \) & \( \frac{1}{(s - a)^2} \) & \( t e^{at} \) & \( \frac{1}{(s - a)^2} \) & \( f'(t) \) & \( sF(s) - f(0) \) \\
+\( \frac{\sin(at)}{t} \) & \( \tan^{-1}\left( \frac{a}{s} \right) \) & \( \frac{1 - e^{-at}}{t} \) & \( \ln\left( \frac{s + a}{s} \right) \) & \( f''(t) \) & \( s^2 F(s) - sf(0) - f'(0) \) \\
+\( \int_0^t f(\tau)\, d\tau \) & \( \frac{F(s)}{s} \) & \( \frac{1}{\sqrt{t}} \) & \( \sqrt{\frac{\pi}{s}} \) & \( \frac{J_0(at)}{t} \) & \( \frac{1}{\sqrt{s^2 + a^2}} \) \\
+\bottomrule
+\end{tabular}
+\end{center}
 \end{frame}
 
 \begin{frame}{Linealidad}
@@ -208,24 +229,6 @@
 
 		\[ \boxed{\mathscr{L}(\sen \omega t) =  \frac{\omega}{s^2 + \omega^2} } \]
 	\end{columns}
-\end{frame}
-
-\begin{frame}{Tabla de transformadas más comunes}
-\begin{center}
-\begin{tabular}{cccccc}
-  \toprule
-\( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) \\
-\midrule
-\( 1 \) & \( \frac{1}{s} \) & \( \cos(at) \) & \( \frac{s}{s^2 + a^2} \) & \( \delta(t) \) & \( 1 \) \\
-\( t \) & \( \frac{1}{s^2} \) & \( \sin(at) \) & \( \frac{a}{s^2 + a^2} \) & \( \delta(t - a) \) & \( e^{-as} \) \\
-\( t^n \) & \( \frac{n!}{s^{n+1}} \) & \( \sinh(at) \) & \( \frac{a}{s^2 - a^2} \) & \( u(t - a) \) & \( \frac{e^{-as}}{s} \) \\
-\( e^{at} \) & \( \frac{1}{s - a} \) & \( \cosh(at) \) & \( \frac{s}{s^2 - a^2} \) & \( e^{-at}f(t) \) & \( F(s + a) \) \\
-\( e^{at}t \) & \( \frac{1}{(s - a)^2} \) & \( t e^{at} \) & \( \frac{1}{(s - a)^2} \) & \( f'(t) \) & \( sF(s) - f(0) \) \\
-\( \frac{\sin(at)}{t} \) & \( \tan^{-1}\left( \frac{a}{s} \right) \) & \( \frac{1 - e^{-at}}{t} \) & \( \ln\left( \frac{s + a}{s} \right) \) & \( f''(t) \) & \( s^2 F(s) - sf(0) - f'(0) \) \\
-\( \int_0^t f(\tau)\, d\tau \) & \( \frac{F(s)}{s} \) & \( \frac{1}{\sqrt{t}} \) & \( \sqrt{\frac{\pi}{s}} \) & \( \frac{J_0(at)}{t} \) & \( \frac{1}{\sqrt{s^2 + a^2}} \) \\
-\bottomrule
-\end{tabular}
-\end{center}
 \end{frame}
 
 \begin{frame}{Ecuaciones diferenciales: problema con valores iniciales}
