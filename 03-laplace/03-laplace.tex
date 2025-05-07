@@ -210,6 +210,24 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Tabla de transformadas más comunes}
+\begin{center}
+\begin{tabular}{cccccc}
+  \toprule
+\( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) & \( f(t) \) & \( \mathcal{L}\{f(t)\} \) \\
+\midrule
+\( 1 \) & \( \frac{1}{s} \) & \( \cos(at) \) & \( \frac{s}{s^2 + a^2} \) & \( \delta(t) \) & \( 1 \) \\
+\( t \) & \( \frac{1}{s^2} \) & \( \sin(at) \) & \( \frac{a}{s^2 + a^2} \) & \( \delta(t - a) \) & \( e^{-as} \) \\
+\( t^n \) & \( \frac{n!}{s^{n+1}} \) & \( \sinh(at) \) & \( \frac{a}{s^2 - a^2} \) & \( u(t - a) \) & \( \frac{e^{-as}}{s} \) \\
+\( e^{at} \) & \( \frac{1}{s - a} \) & \( \cosh(at) \) & \( \frac{s}{s^2 - a^2} \) & \( e^{-at}f(t) \) & \( F(s + a) \) \\
+\( e^{at}t \) & \( \frac{1}{(s - a)^2} \) & \( t e^{at} \) & \( \frac{1}{(s - a)^2} \) & \( f'(t) \) & \( sF(s) - f(0) \) \\
+\( \frac{\sin(at)}{t} \) & \( \tan^{-1}\left( \frac{a}{s} \right) \) & \( \frac{1 - e^{-at}}{t} \) & \( \ln\left( \frac{s + a}{s} \right) \) & \( f''(t) \) & \( s^2 F(s) - sf(0) - f'(0) \) \\
+\( \int_0^t f(\tau)\, d\tau \) & \( \frac{F(s)}{s} \) & \( \frac{1}{\sqrt{t}} \) & \( \sqrt{\frac{\pi}{s}} \) & \( \frac{J_0(at)}{t} \) & \( \frac{1}{\sqrt{s^2 + a^2}} \) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
 \begin{frame}{Ecuaciones diferenciales: problema con valores iniciales}
 	\begin{columns}[t]
 		\cx
