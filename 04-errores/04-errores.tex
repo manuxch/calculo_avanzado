@@ -69,7 +69,7 @@
             Ejemplo: $35.6247, 0.4573, -1.0000$ \\
             Enteros: 0 números decimales $\mapsto$ \textbf{exacta}
       \item \textbf{Punto flotante:} cantidad fija de cifras significativas\\
-            Ejemplo: $0.1900 \cdot 10^4, 0.8691 \cdot 10^{-6}, -0.2000 \cdot 10^{-13}$ (4 cifras significativas) $\mapsto$ representación \textbf{aproximada}
+            Ejemplo: $0.1973 \cdot 10^4, 0.8691 \cdot 10^{-6}, -0.2000 \cdot 10^{-13}$ (4 cifras significativas) $\mapsto$ representación \textbf{aproximada}
     \end{itemize}
     \begin{py}
       >>> 7 + 0.000000000000001
@@ -98,8 +98,8 @@
 
     Ejemplo binario:
     \begin{align*}
-      r & = \pm m \cdot 2^n, \quad m = 0.d_1d_2\cdots d_k, \quad d_1 > 0 \\
-      r & = \pm(d_1 2^{-1} + d_2 2^{-2} + \cdots + d_n 2^{-n}) \cdot 2^n
+      r & = \pm m \cdot 2^e, \quad m = 0.d_1d_2\cdots d_n, \quad d_1 > 0 \\
+      r & = \pm(d_1 2^{-1} + d_2 2^{-2} + \cdots + d_n 2^{-n}) \cdot 2^e
     \end{align*}
     número de máquina de $k$-dígitos.
   \end{columns}
@@ -107,7 +107,7 @@
 
 \begin{frame}
   \textbf{Ejemplo 1:} $0.1011 \cdot 2^3$:
-  \[ r = 4 + 1 + \frac{1}{2} = 5.5 \]
+  \[ r = 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 1 \cdot 2^{-1} = 4 + 0 + 1 + \frac{1}{2} = 5.5 \]
   \bigskip \pause
 
   \textbf{Ejemplo 2:} Números enteros con exponente fijo $e = n$ $b = 2$, $n = 3$ ($r \geq 0$)
@@ -168,9 +168,11 @@
 
 %%%%%
 %% /TODO
-%% Ver capítulo 1 de Bulirsh: Introduction to Numerical Analysis
+%% Ver capítulo 1 de Bulirsch: Introduction to Numerical Analysis
 %% para ver el tema del redondeo
 %% me gusta más que como lo presenté en 2023
+%% NOTA 2025: revisé este capítulo de Stoer-Bulirsch y no me gustó.
+%% Me quedo con la presentación de C.M. González, Cap.1.
 %%%%
 
 
