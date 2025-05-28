@@ -295,10 +295,10 @@ Diferencia: 0.0
     Serie de Taylor alrededor de $\alpha$, ($f(\alpha) = 0$):
     \begin{equation} f(\alpha) = f(x_n) + f'(x_n) (\alpha - x_n) + R_1 \end{equation}
     Forma de Lagrange de $R_1$:
-    \begin{equation*}R_1 = \frac{1}{2!} f''(\xi_n) (\alpha- \x_n)^2 \end{equation*}
+    \begin{equation*}R_1 = \frac{1}{2!} f''(\xi_n) (\alpha- x_n)^2 \end{equation*}
     donde $\xi_n$ está entre $\alpha$ y $x_n$. Como $f(\alpha) = 0$:
     \begin{equation}
-      0 = f(x_n) + f'(x_n) (\alpha - x_n) + \frac{1}{2!} f''(\xi_n) (\alpha- \x_n)^2
+      0 = f(x_n) + f'(x_n) (\alpha - x_n) + \frac{1}{2!} f''(\xi_n) (\alpha- x_n)^2
     \end{equation}
     Dividiendo (2) por $f'(x_n)$ y reacomodando:
     \begin{equation}
@@ -312,7 +312,7 @@ Diferencia: 0.0
     resulta:
     \[ \underbrace{\alpha - x_{n+1}}_{\epsilon_{n + 1}} = -\frac{f''(\xi_n)}{2 f'(x_n)} (\underbrace{\alpha - x_n}_{\epsilon_n})^2 \]
     \begin{equation}
-      \left| \epsilon_{n + 1} \right| = \frac{|f''(x_n)|}{2|f'(x_n)|} \cdot \epsilon_n^2
+      \left| \epsilon_{n + 1} \right| = \frac{|f''(\xi_n)|}{2|f'(x_n)|} \cdot \epsilon_n^2
     \end{equation}
     Convergencia al menos \textbf{cuadrática} si:
     \begin{itemize}
