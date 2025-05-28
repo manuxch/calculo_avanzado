@@ -30,4 +30,4 @@ def g(x):
     return r * x * (1 - x)
 
 pfijo = punto_fijo(g, 0.1)
-print(f"La raiz de g(x) = 0 es {pfijo}")
+print(f"El punto fijo de g(p) = p es {pfijo}")

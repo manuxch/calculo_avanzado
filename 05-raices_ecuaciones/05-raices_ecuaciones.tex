@@ -200,7 +200,7 @@ $ ./pfijo.py
 ... ...
 94 0.6551757611798358 0.0000070667498989
 95 0.6551694011125498 -0.0000063600672859
-La raiz de g(x) = 0 es 0.6551694011125498
+El punto fijo de g(p) = p es 0.6551694011125498
 \end{shell}
   \end{columns}
 \end{frame}
@@ -262,7 +262,7 @@ La raiz de g(x) = 0 es 0.6551694011125498
         \[f(x) = f(x_n) + (x - x_n) f'(x_n) + \frac{1}{2} (x - x_n)^2 f''(\xi) \]
         $\xi_n \in (x, x_n)$ Hacemos $f(x) = 0$:
         \[ x = x_n - \frac{f(x_n)}{f'(x_n)} - \frac{1}{2} (x - x_n)^2 \frac{f''(\xi_n)}{f'(x_n)} \]
-        \[ \mapsto x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)'} \]
+        \[ \mapsto x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \]
       }
     \end{overprint}
   \end{columns}
@@ -310,7 +310,7 @@ Diferencia: 0.0
     \end{equation}
     \cx
     resulta:
-    \[ \underbrace{\alpha - x_{n+1}}_{\epsilon_{n + 1}} = -\frac{f''\xi_n)}{2 f'(x_n)} (\underbrace{\alpha - x_n}_{\epsilon_n})^2 \]
+    \[ \underbrace{\alpha - x_{n+1}}_{\epsilon_{n + 1}} = -\frac{f''(\xi_n)}{2 f'(x_n)} (\underbrace{\alpha - x_n}_{\epsilon_n})^2 \]
     \begin{equation}
       \left| \epsilon_{n + 1} \right| = \frac{|f''(x_n)|}{2|f'(x_n)|} \cdot \epsilon_n^2
     \end{equation}
@@ -365,7 +365,7 @@ Método: toms748, raiz = 0.7346035077893033
   \begin{itemize}
     \item \fullcite{burden2017}. Capítulo 2.
     \item \fullcite{epperson2013}. Capítulo 3.
-    \item \fullcite{kiusalaas2005}. Capítulo 4.
+    \item \fullcite{kiusalaas2013}. Capítulo 4.
     \item \fullcite{kreyszig2011}. Capítulo 19.
   \end{itemize}
 \end{frame}
