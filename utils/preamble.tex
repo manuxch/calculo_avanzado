@@ -1,5 +1,5 @@
 \metroset{titleformat=smallcaps,block=fill,numbering=counter,progressbar=frametitle,sectionpage=none}
-\setbeamersize{text margin left=5mm,text margin right=5mm} 
+\setbeamersize{text margin left=5mm,text margin right=5mm}
 % \input{embed_video}
 \usepackage{fontspec,minted}
 \usepackage[scale=1]{ccicons}
@@ -36,20 +36,20 @@
 \setbeamercolor{block body}{bg=black!20,fg=black}
 \setbeamertemplate{theorem begin}
 {%
-\begin{\inserttheoremblockenv}
-{%
-\inserttheoremheadfont
-%{Teorema:}
-\inserttheoremname
-\ifx\inserttheoremaddition\@empty\else\ : \inserttheoremaddition\fi%
-\inserttheorempunctuation
-}%
-}
-\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+	\begin{\inserttheoremblockenv}
+		{%
+			\inserttheoremheadfont
+			%{Teorema:}
+			\inserttheoremname
+			\ifx\inserttheoremaddition\@empty\else\ : \inserttheoremaddition\fi%
+			\inserttheorempunctuation
+		}%
+		}
+		\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
 \makeatother
 
 
- 
+
 \usepackage{gensymb,amssymb}
 \usepackage{siunitx}
 \DeclareSIUnit{\nada}{\relax}
@@ -65,16 +65,16 @@
 
 \author{Manuel Carlevaro}
 \date{{\tiny \texttt{Departamento de Ingeniería Mecánica \\[-0.5em]
-         Grupo de Materiales Granulares - UTN FRLP \\[-0.5em]
-         manuel.carlevaro@gmail.com }}}
+				Grupo de Materiales Granulares - UTN FRLP \\[-0.5em]
+				manuel.carlevaro@gmail.com }}}
 
 
 \institute{
-  \vspace{6em}
-  \centering
-  {\tiny
-  Cálculo Avanzado \enspace • \enspace 2025 \\
-    \faLinux \- $\cdot$ \- \fontspec{TeX Gyre Pagella}\XeLaTeX \- $\cdot$ \- \ccbysa }
+	\vspace{6em}
+	\centering
+	{\tiny
+		Cálculo Avanzado \enspace • \enspace 2025 \\
+		\faLinux \- $\cdot$ \- \fontspec{TeX Gyre Pagella}\XeLaTeX \- $\cdot$ \- \ccbysa }
 }
 
 %% Operadores
@@ -89,11 +89,11 @@
 
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=blue,
-    urlcolor=blue
+	colorlinks,
+	citecolor=blue,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=blue
 }
 \urlstyle{same}
 
@@ -141,47 +141,47 @@
 \usetikzlibrary{shapes,shadows,arrows,positioning,matrix,chains,backgrounds,fit}
 
 \tikzset{
-    %Define standard arrow tip
-    >=stealth',
-    %Define style for boxes
-    obj/.style={
-           rectangle,
-           rounded corners,
-           draw, very thick,
-           text width=10em, fill=green!20,
-           minimum height=2em,
-           text centered, drop shadow},
-    proc/.style={
-	    rectangle, rounded corners,
-	    draw,fill=red!50,very thick,
-	    text width=8em,minimum height=2em,
-	    text centered, drop shadow},
-    % Define arrow style
-    pil/.style={
-           ->,
-           thick,
-           shorten <=2pt,
-           shorten >=2pt,}
+	%Define standard arrow tip
+	>=stealth',
+	%Define style for boxes
+	obj/.style={
+			rectangle,
+			rounded corners,
+			draw, very thick,
+			text width=10em, fill=green!20,
+			minimum height=2em,
+			text centered, drop shadow},
+	proc/.style={
+			rectangle, rounded corners,
+			draw,fill=red!50,very thick,
+			text width=8em,minimum height=2em,
+			text centered, drop shadow},
+	% Define arrow style
+	pil/.style={
+			->,
+			thick,
+			shorten <=2pt,
+			shorten >=2pt,}
 }
 
 \setbeamertemplate{bibliography item}{%
-  \ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
-    or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
-    or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
-    {\setbeamertemplate{bibliography item}{\faBook}}
-    {\ifentrytype{online}
-            {\setbeamertemplate{bibliography item}{\faGlobe}}
-   {\setbeamertemplate{bibliography item}{\faFileText}}}%
-  \usebeamertemplate{bibliography item}}
+	\ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+		or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+		or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
+	{\setbeamertemplate{bibliography item}{\faBook}}
+	{\ifentrytype{online}
+		{\setbeamertemplate{bibliography item}{\faGlobe}}
+		{\setbeamertemplate{bibliography item}{\faFileText}}}%
+	\usebeamertemplate{bibliography item}}
 
 \defbibenvironment{bibliography}
-  {\list{}
-     {\settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
-      \setlength{\leftmargin}{\labelwidth}%
-      \setlength{\labelsep}{\biblabelsep}%
-      \addtolength{\leftmargin}{\labelsep}%
-      \setlength{\itemsep}{\bibitemsep}%
-      \setlength{\parsep}{\bibparsep}}}
-  {\endlist}
-  {\item}
+{\list{}
+	{\settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{\biblabelsep}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\item}
 \newcommand{\bcite}[1]{\citeauthor{#1}, \citetitle{#1} (\citeyear{#1})}
