@@ -13,5 +13,5 @@ metodos = ['bisect', 'newton', 'brentq', 'toms748']
 for m in metodos:
     sol = optimize.root_scalar(f, x0=1.0,
             bracket=[0.01, 2], fprime=df, method=m)
-    print(f"Método: {m:7s}, raiz = {sol.root}")
-    print(sol)
+    print(f"Método: {m:>7s}, raiz = {sol.root}")
+    # print(sol)

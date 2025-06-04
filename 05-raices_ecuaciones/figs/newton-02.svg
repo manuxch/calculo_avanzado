@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
-   sodipodi:docname="newton-02-n.svg"
+   sodipodi:docname="newton-02.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -589,7 +589,7 @@
        cy="96.533798"
        r="0.85510749" />
     <path
-       style="fill:none;stroke:#109236;stroke-width:0.303732;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#109236;stroke-width:0.405;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 39.338875,96.410259 63.841449,77.635312"
        id="path1107"
        sodipodi:nodetypes="cc" />
