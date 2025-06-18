@@ -73,7 +73,7 @@
 \begin{enumerate}
   \item Es lineal respecto de los vectores en $V$:
       \[ \langle \gamma \bm{x} + \lambda \bm{z}, \bm{y} \rangle = \gamma \langle \bm{x}, \bm{y} \rangle + \lambda \langle \bm{z}, \bm{y} \rangle \]
-      $\forall \bm{x}, \bm{z} \in V, \; \forall \gamma, \lambda \in K$.
+      $\forall \bm{x}, \bm{y}, \bm{z} \in V, \; \forall \gamma, \lambda \in K$.
   \item Es hermítico:
       \[ \langle \bm{y},\bm{x} \rangle = \overline{ \langle \bm{x}, \bm{y} \rangle }, \, \forall \bm{x}, \bm{y} \in V \]
   \item Es definido positivo:
@@ -129,7 +129,7 @@ Camino más corto:
 \end{columns} \pause
 
 \textbf{Desigualdad de Cauchy-Schwarz:} $\forall \bm{x}, \bm{y} \in \mathbb{R}^n$:
-\[ | \langle \bm{x}, \bm{y} \rangle | \leq \lVert \bm{x} \, \rVert_2 \lvert \bm{y} \rVert_2 \]
+\[ | \langle \bm{x}, \bm{y} \rangle | \leq \lVert \bm{x}  \rVert_2 \lVert \bm{y} \rVert_2 \]
 donde la igualdad vale si y solo si $\bm{y} = \alpha \bm{x}, \alpha \in \mathbb{R}$.
 
 \textbf{Continuidad:} Cualquier $\lVert \cdot \rVert$ en $V$ es una \textbf{función continua} de sus argumentos: $\forall \varepsilon > 0, \exists C > 0$ tal que si $\lVert \bm{x} - \hat{\bm{x}} \rVert \leq \varepsilon$, entonces $| \lVert \bm{x} \rVert - \lVert \hat{\bm{x}} \rVert | \leq C \varepsilon$ para cualquier $\bm{x}, \hat{\bm{x}} \in V$.
@@ -255,6 +255,18 @@ Alternativamente:
 \end{definition}
 En matrices cuadradas, las normas inducidas son \textbf{sub-multiplicativas} y \textbf{consistentes}.
 \end{columns}
+%% Nota:
+%%
+%% La importancia de la sub-multiplicatividad tiene que ver con la estimación de errores y convergencia, 
+%% la estabilidad de algoritmos, el comportamiento de itneraciones y exponenciales de matrices.
+%% Permite definir y analizar la condición de una matriz.
+%%
+%% La importancia de la consistencia tiene que ver con el control del efecto de una matriz sobre un
+%% vector, para estimar errores, para el diseño y análisis de métodos iterativos, y la continuidad 
+%% de operadores lineales.
+%%
+%% En definitiva, la sub-multiplicatividad controla productos de matrices, y la consistencia
+%% controla el efecto sobre vectores.
 \end{frame}
 
 \begin{frame}{Ejemplos}
