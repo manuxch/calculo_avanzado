@@ -83,30 +83,30 @@
 		\only<1>{\phantom{\alert{Segundo parcial: 4/11} }}
 		\only<2>{\alert{Segundo parcial: 4/11, \\ recuperatorios: 18/11 y 2/12.} }
 	\end{columns}
-  \begin{center}
-    \only<2>{\alert{Tercera instancia evaluativa: 24/2/2027.}}
-  \end{center}
+	\begin{center}
+		\only<2>{\alert{Tercera instancia evaluativa: 24/2/2027.}}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Recursos}
-  \begin{columns}[t]
-  \cx 
-	\textbf{Específicos de Cálculo Avanzado:}
-	\begin{itemize}
-		\item CVG: \href{https://frlp.cvg.utn.edu.ar/course/view.php?id=189}{Cálculo Avanzado}
-		\item GitHub: \url{https://github.com/manuxch/calculo_avanzado}
-	\end{itemize}
-  \cx 
-  \textbf{Calendario de Goolge}
-  \begin{center}
-    \includegraphics[scale=0.5]{figs/calendario-2026.pdf}
-  \end{center}
-\end{columns}
+	\begin{columns}[t]
+		\cx
+		\textbf{Específicos de Cálculo Avanzado:}
+		\begin{itemize}
+			\item CVG: \href{https://frlp.cvg.utn.edu.ar/course/view.php?id=189}{Cálculo Avanzado}
+			\item GitHub: \url{https://github.com/manuxch/calculo_avanzado}
+		\end{itemize}
+		\cx
+		\textbf{Calendario de Goolge}
+		\begin{center}
+			\includegraphics[scale=0.5]{figs/calendario-2026.pdf}
+		\end{center}
+	\end{columns}
 
 	\textbf{Recursos adicionales:}
 	\begin{itemize}
 		\item Python y programación: \url{https://github.com/gmg-utn/compTools}
-		% \item \LaTeX - \XeLaTeX: \url{https://es.wikibooks.org/wiki/Manual_de_LaTeX}
+		      % \item \LaTeX - \XeLaTeX: \url{https://es.wikibooks.org/wiki/Manual_de_LaTeX}
 	\end{itemize}
 \end{frame}
 
@@ -130,7 +130,7 @@
 			\item \fullcite{gupta2019}.
 			\item \fullcite{strang2006}.
 			\item \fullcite{pine2019}.
-      \item \fullcite{batista_carlevaro_python_2025}. \url{https://libropython.science/}
+			\item \fullcite{batista_carlevaro_python_2025}. \url{https://libropython.science/}
 			      }
 		\end{itemize}
 	\end{columns}
@@ -276,7 +276,7 @@
 
 
 		\cx
-    Raíces: encontrar $\sqrt[6]{i}$
+		Raíces: encontrar $\sqrt[6]{i}$
 		\begin{equation*}
 			\sqrt[6]{i} = x + i y \rightarrow i = (x + i y)^6 = 0 + 1 i
 		\end{equation*}
@@ -586,14 +586,13 @@
 
 		\[ C: \begin{cases}
 				x = x(t) \\
-				y = y(y) \\
-			\end{cases} =
+				y = y(t) \\
+			\end{cases} \mapsto
 			\begin{cases}
 				\vec{R} = x(t) \hat{i} + y(t) \hat{j} \\
-				z = x(t) + i y(t)                     \\
 			\end{cases} \]
 
-		$\qquad t_0 \leq t \leq t_1$
+		$\quad \mapsto z = x(t) + i y(t);\; \quad t_0 \leq t \leq t_1$
 
 		\begin{multline*} \int_{C: z_0}^{z_1} f(z) \, dz = \lim_{\substack{\max \\ \Delta z \rightarrow 0}} \sum_{k=1}^n f(c_k(t_k)) \frac{\Delta z_k}{\Delta t_k} \Delta t_k \\
 			\therefore \int_{C: z_0}^{z_1} f(z) \, dz = \int_{t_0}^{t_1} f(z(t)) z'(t) \, dt

@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    sodipodi:docname="fig-07.svg"
-   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,10 +25,10 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="2.0989207"
-     inkscape:cx="45.02314"
+     inkscape:cx="45.261357"
      inkscape:cy="137.4516"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1014"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -36,6 +36,25 @@
      showguides="false" />
   <defs
      id="defs2">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7" />
+    </marker>
     <marker
        style="overflow:visible"
        id="marker2812"
@@ -63,8 +82,8 @@
        refY="0"
        orient="auto"
        inkscape:stockid="Dot"
-       markerWidth="5.6666665"
-       markerHeight="5.6666665"
+       markerWidth="5.66666651"
+       markerHeight="5.66666651"
        viewBox="0 0 5.6666667 5.6666667"
        inkscape:isstock="true"
        inkscape:collect="always"
@@ -456,8 +475,8 @@
       </g>
     </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker2812);marker-mid:url(#Arrow2);marker-end:url(#marker2812)"
-       d="m 106.84105,128.8042 5.51872,-5.19445 5.51873,-5.19445"
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker2812);marker-end:url(#ConcaveTriangle)"
+       d="m 106.88406,128.75829 4.89195,-4.56045 4.89197,-4.56045"
        id="path4316"
        sodipodi:nodetypes="ccc" />
     <g
@@ -518,6 +537,11 @@
        style="fill:none;stroke:#838383;stroke-width:0.265;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2)"
        d="m 96.822943,119.71506 h 8.378757 l 4.05731,2.90165"
        id="path1"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465001;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker2812);marker-end:url(#Dot)"
+       d="m 106.88345,128.75809 6.46786,-6.00991 6.46789,-6.0099"
+       id="path2"
        sodipodi:nodetypes="ccc" />
   </g>
 </svg>
