@@ -200,7 +200,7 @@ donde
 \begin{align*}
     \omega_n &= \frac{n \pi}{L} \quad a_0= \frac{1}{2L} \int_{-L}^{L} f_L(x) \, dx \\
     a_n &= \frac{1}{L} \int_{-L}^{L} f_L(x) \cos \omega_n \, dx \\
-    b_0 &= \frac{1}{L} \int_{-L}^{L} f_L(x) \sen \omega_n \, dx \\
+    b_n &= \frac{1}{L} \int_{-L}^{L} f_L(x) \sen \omega_n \, dx \\
 \end{align*} \vspace{-3em}
 \begin{multline*}
     f_L(x) = \frac{1}{2L} \int_{-L}^{L} f_L(\xi) \, d\xi \\
@@ -320,7 +320,7 @@ De las ecuaciones \eqref{eq:01} y \eqref{eq:02}:
 \end{multline*}
 $[\cdot]$ es una función par de $\omega$:
 \begin{equation}\label{eq:03}
-    f(x) = \frac{1}{2\pi} \int_{\infty}^{\infty} \left[ \int_{0}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
+    f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{0}^{\infty} f(\xi) \cos(\omega x - \omega \xi) d\xi \right] d\omega
 \end{equation}
 Si usamos $\sen$ en vez de $\cos$, $[\cdot]$ es impar en $\omega$ y
 \begin{equation}\label{eq:04}
