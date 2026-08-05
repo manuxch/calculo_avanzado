@@ -19,7 +19,7 @@
 
 \begin{frame}{Motivación}
 
-	\begin{columns}[t]
+	\begin{columns}[c]
 		\column{0.48\textwidth}
 		\textbf{¿Por qué estudiar autovalores/autovectores?}
 		\begin{itemize}
@@ -35,29 +35,56 @@
 		\column{0.48\textwidth}
 		\textbf{Ejemplo: Vibraciones en un sistema masa-resorte}
 
-		\vspace{0.5em}
 		\begin{center}
-			\begin{tikzpicture}[scale=0.8, thick]
-				% Bases fijas
-				\draw[gray, thick] (0.0,0.75) -- (0.0,-0.75);
-				\draw[gray, thick] (6.5,0.75) -- (6.5,-0.75);
+			\begin{tikzpicture}[
+					wall/.style={line width=2pt},
+					mass/.style={draw, thick, minimum width=0.5cm, minimum height=0.85cm, fill=gray!10},
+					spring/.style={decorate, decoration={coil, segment length=2pt, amplitude=3pt, pre length=2pt, post length=2pt}, thick},
+					label distance/.initial=0.45cm,
+          scale=0.8
+				]
+				% Parámetros de geometría
+				\def\L{1.6}      % longitud de cada resorte
+				\def\w{1.0}      % ancho de cada masa
+				\def\h{0.7}      % alto de cada masa
+				\def\y{0}        % línea central vertical
 
-				% Resortes
-				\foreach \i in {0,2,4} {
-						\draw[decorate,decoration={aspect=0.3, segment length=2mm, amplitude=2mm,coil}]
-						(\i,0) -- (\i+1,0);
-					}
-				\draw[decorate,decoration={aspect=0.3, segment length=2mm, amplitude=2mm,coil}]
-				(6,0) -- (6.5,0);
+				% --- Pared izquierda ---
+				\draw[wall] (0,\y-0.6) -- (0,\y+0.6);
 
-				% Masas
-				\foreach \i/\label in {1/1, 3/2, 5/3} {
-						\draw[fill=blue!20] (\i,-0.5) rectangle ++(1,1);
-						\node at (\i+0.5,0) {\large $m_{\label}$};
-					}
+				% --- Resorte k1 ---
+				\draw[spring] (0,\y) -- (\L,\y);
+				\node at (\L/2, \y+0.55) {$k_1$};
+
+				% --- Masa m1 ---
+				\draw (\L,\y-\h/2) rectangle (\L+\w,\y+\h/2);
+				\node at (\L+\w/2, \y) {$m_1$};
+
+				% --- Resorte k2 ---
+				\draw[spring] (\L+\w,\y) -- (2*\L+\w,\y);
+				\node at (\L+\w+\L/2, \y+0.55) {$k_2$};
+
+				% --- Masa m2 ---
+				\draw (2*\L+\w,\y-\h/2) rectangle (2*\L+2*\w,\y+\h/2);
+				\node at (2*\L+\w+\w/2, \y) {$m_2$};
+
+				% --- Resorte k3 ---
+				\draw[spring] (2*\L+2*\w,\y) -- (3*\L+2*\w,\y);
+				\node at (2*\L+2*\w+\L/2, \y+0.55) {$k_3$};
+
+				% --- Masa m3 ---
+				\draw (3*\L+2*\w,\y-\h/2) rectangle (3*\L+3*\w,\y+\h/2);
+				\node at (3*\L+2*\w+\w/2, \y) {$m_3$};
+
+				% --- Resorte k4 ---
+				\draw[spring] (3*\L+3*\w,\y) -- (4*\L+3*\w,\y);
+				\node at (3*\L+3*\w+\L/2, \y+0.55) {$k_4$};
+
+				% --- Pared derecha ---
+				\draw[wall] (4*\L+3*\w,\y-0.6) -- (4*\L+3*\w,\y+0.6);
+
 			\end{tikzpicture}
 		\end{center}
-
 		\vspace{0.5em}
 		\textbf{Ecuación dinámica:} \\
 		\( M \ddot{x}(t) + K x(t) = 0 \)
@@ -65,7 +92,7 @@
 		\textbf{Autovalores:} \\
 		\( (K - \omega^2 M)\phi = 0 \quad \Rightarrow \quad A\phi = \lambda \phi \)
 
-		{\small $\mapsto$ Ver ejercicio 13 de la práctica 7}
+		\raggedleft {\small  $\mapsto$ Ver ejercicio 13 de la práctica 7.}
 	\end{columns}
 
 \end{frame}
