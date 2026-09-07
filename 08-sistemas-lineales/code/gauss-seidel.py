@@ -7,13 +7,12 @@ def gauss_seidel(A, b, w=1.0, tol=1e-10, max_iter=10000):
     for it in range(max_iter):
         for i in range(n):
             suma = 0
-            # x_old = x.copy()
             for j in range(n):
                 if j != i:
                     suma += A[i, j] * x[j]
 
-            # x[i] = w * ((b[i] - suma) / A[i, i] + (1 - w) * x_old[i])
-            x[i] = (w / A[i,i]) * (b[i] - suma) + (1 - w) * x[i]
+            x[i] = (w / A[i,i]) * (b[i] - suma) \
+                    + (1 - w) * x[i]
 
         # print(it, x, suma, np.dot(A, x), b)
         if np.linalg.norm(A @ x - b) < tol:
