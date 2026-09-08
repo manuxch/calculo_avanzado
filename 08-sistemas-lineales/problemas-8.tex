@@ -102,7 +102,7 @@
 \end{question}
 
 \begin{question} % Armadura - ejemplo de motivación, unidad 8
-	Se desea analizar la armadura estáticamente determinada de la figura, con nudos
+	Se desea analizar la armadura estáticamente determinada de la figura, con nodos
 	$A=(0,0)$ m (apoyo fijo), $B=(2,0)$ m, $C=(4,0)$ m (apoyo móvil) y $D=(2, 1.6)$ m,
 	sometida a una carga vertical $F = 10$ kN aplicada en $D$.
 
@@ -132,19 +132,19 @@
 			\node[above=2pt of A] {$A$};
 			\node[below=2pt of B] {$B$};
 			\node[above=2pt of C] {$C$};
-			\node[above=2pt of D] {$D$};
+			\node[above=2pt of D] {$D$}; 
 		\end{tikzpicture}
 	\end{center}
 
 	La armadura tiene 5 barras ($AB$, $BC$, $AD$, $CD$, $BD$) y 3 reacciones de apoyo
 	($A_x$, $A_y$, $C_y$). Planteando el equilibrio de fuerzas horizontal y vertical en
-	cada uno de los 4 nudos se obtienen 8 ecuaciones lineales para las 8 incógnitas
+	cada uno de los 4 nodos se obtienen 8 ecuaciones lineales para las 8 incógnitas
 	$\bm{x} = (A_x, A_y, N_{AB}, N_{BD}, N_{BC}, C_y, N_{AD}, N_{CD})^T$, donde $N_{ij}$
 	es el esfuerzo normal en la barra $ij$ (positivo en tracción), que puede escribirse
 	en la forma $\mathbb{A} \bm{x} = \bm{b}$.
 
 	\begin{enumerate}[a)]
-		\item Plantee las ecuaciones de equilibrio en los cuatro nudos ($A$, $B$, $C$ y
+		\item Plantee las ecuaciones de equilibrio en los cuatro nodos ($A$, $B$, $C$ y
 		      $D$) y arme la matriz $\mathbb{A}$ y el vector $\bm{b}$ del sistema.
 		\item Resuelva el sistema por descomposición LU y obtenga las reacciones de
 		      apoyo y el esfuerzo en cada barra, indicando si trabaja en tracción o
