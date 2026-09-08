@@ -1,24 +1,24 @@
+% !TEX program = lualatex
 \documentclass[11pt]{article}
 
-% -- Reduce PDF object streams & compression (mejora compatibilidad con PDF.js) --
-\makeatletter
-% Para pdfTeX (pdflatex)
-\ifdefined\pdfobjcompresslevel
-  \pdfobjcompresslevel=0 % deshabilita object streams
-\fi
-\ifdefined\pdfcompresslevel
-  \pdfcompresslevel=0    % reduce/disable compresión de streams
-\fi
-\ifdefined\pdfminorversion
-  \pdfminorversion=4     % forzar PDF 1.4 (opcional, mejora compatibilidad)
-\fi
-% Para LuaTeX / LuaLaTeX
-\ifdefined\pdfvariable
-  \pdfvariable objcompresslevel=0
-  \pdfvariable compresslevel=0
-\fi
-\makeatother
-% -----------------------------------------------------------------------
+% \makeatletter
+% % Para pdfTeX (pdflatex)
+% \ifdefined\pdfobjcompresslevel
+%   \pdfobjcompresslevel=0 % deshabilita object streams
+% \fi
+% \ifdefined\pdfcompresslevel
+%   \pdfcompresslevel=0    % reduce/disable compresión de streams
+% \fi
+% \ifdefined\pdfminorversion
+%   \pdfminorversion=4     % forzar PDF 1.4 (opcional, mejora compatibilidad)
+% \fi
+% % Para LuaTeX / LuaLaTeX
+% \ifdefined\pdfvariable
+%   \pdfvariable objcompresslevel=0
+%   \pdfvariable compresslevel=0
+% \fi
+% \makeatother
+% % -----------------------------------------------------------------------
 
 
 \input{../utils/preamble_problemas}
