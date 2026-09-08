@@ -128,33 +128,34 @@
 	sometida a una carga vertical $F = 10$ kN aplicada en $D$.
 
 	\begin{center}
-		\begin{tikzpicture}[
-				node/.style={circle, draw, fill=black, inner sep=1.3pt},
-				bar/.style={thick},
-				support/.style={thick},
-				force/.style={-{Latex[length=2.5mm]}, thick, red},
-				scale=1.2]
-			\coordinate (A) at (0,0);
-			\coordinate (B) at (2,0);
-			\coordinate (C) at (4,0);
-			\coordinate (D) at (2,1.6);
-
-			\draw[bar] (A) -- (B) -- (C) -- (D) -- (A);
-			\draw[bar] (B) -- (D);
-
-			\draw[support] (A) ++(-0.25,-0.3) -- ++(0.5,0) -- (A) -- cycle;
-			\draw[support] (C) ++(-0.25,-0.3) -- ++(0.5,0) -- (C) -- cycle;
-
-			\foreach \p in {A,B,C,D}{\node[node] at (\p) {};}
-
-			\draw[force] (D) -- ++(0,-0.9) node[below right, xshift=1pt, yshift=10.5pt] {$F$};
-			% \draw[force] (D) -- ++(0,-0.9) node[below right] {$F$};
-
-			\node[above=2pt of A] {$A$};
-			\node[below=2pt of B] {$B$};
-			\node[above=2pt of C] {$C$};
-			\node[above=2pt of D] {$D$}; 
-		\end{tikzpicture}
+    \includegraphics{figs/estructura.png}
+		% \begin{tikzpicture}[
+		% 		node/.style={circle, draw, fill=black, inner sep=1.3pt},
+		% 		bar/.style={thick},
+		% 		support/.style={thick},
+		% 		force/.style={-{Latex[length=2.5mm]}, thick, red},
+		% 		scale=1.2]
+		% 	\coordinate (A) at (0,0);
+		% 	\coordinate (B) at (2,0);
+		% 	\coordinate (C) at (4,0);
+		% 	\coordinate (D) at (2,1.6);
+		%
+		% 	\draw[bar] (A) -- (B) -- (C) -- (D) -- (A);
+		% 	\draw[bar] (B) -- (D);
+		%
+		% 	\draw[support] (A) ++(-0.25,-0.3) -- ++(0.5,0) -- (A) -- cycle;
+		% 	\draw[support] (C) ++(-0.25,-0.3) -- ++(0.5,0) -- (C) -- cycle;
+		%
+		% 	\foreach \p in {A,B,C,D}{\node[node] at (\p) {};}
+		%
+		% 	\draw[force] (D) -- ++(0,-0.9) node[below right, xshift=1pt, yshift=10.5pt] {$F$};
+		% 	% \draw[force] (D) -- ++(0,-0.9) node[below right] {$F$};
+		%
+		% 	\node[above=2pt of A] {$A$};
+		% 	\node[below=2pt of B] {$B$};
+		% 	\node[above=2pt of C] {$C$};
+		% 	\node[above=2pt of D] {$D$}; 
+		% \end{tikzpicture}
 	\end{center}
 
 	La armadura tiene 5 barras ($AB$, $BC$, $AD$, $CD$, $BD$) y 3 reacciones de apoyo
