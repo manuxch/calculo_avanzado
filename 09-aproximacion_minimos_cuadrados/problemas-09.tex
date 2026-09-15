@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 
 \input{../utils/preamble_problemas}
+\usetikzlibrary{arrows.meta}
 
 \title{Cálculo avanzado}
 \author{Dpto. de Ingenería Mecánica}
@@ -11,117 +12,221 @@
 % \maketitle
 
 \begin{center}
-\framebox[1.0\textwidth][c]{
-\huge{\textsc{Cálculo Avanzado}} 
-}
-\end{center} 
+	\framebox[1.0\textwidth][c]{
+		\huge{\textsc{Cálculo Avanzado}}
+	}
+\end{center}
 
 \begin{center}
-\vspace{\baselineskip}
-\Large{\textsc{Departamento de Ingenería Mecánica}} \\
-\textsc{Facultad Regional La Plata} \\
-\textsc{Universidad Tecnológica Nacional}
+	\vspace{\baselineskip}
+	\Large{\textsc{Departamento de Ingenería Mecánica}} \\
+	\textsc{Facultad Regional La Plata} \\
+	\textsc{Universidad Tecnológica Nacional}
 \end{center}
 
 % \vspace{1em}
 
 \begin{center}
-\begin{tabular}{r l}
-    \textbf{Práctica:} & Unidad 9. \\
- \textbf{Tema:} & Aproximación discreta por mínimos cuadrados. \\
- \textbf{Profesor Titular:} & Manuel Carlevaro. \\
- \textbf{Ayudante de Primera} & Christian Molina. \\
-\end{tabular}\end{center}
+	\begin{tabular}{r l}
+		\textbf{Práctica:}           & Unidad 9.                                    \\
+		\textbf{Tema:}               & Aproximación discreta por mínimos cuadrados. \\
+		\textbf{Profesor Titular:}   & Manuel Carlevaro.                            \\
+		\textbf{Ayudante de Primera} & Christian Molina.                            \\
+	\end{tabular}\end{center}
 \vspace{1em}
 
 \begin{question} % Bradie  Excersise 5 pg 441
-El costo total de producción en función del número de horas de máquina se proporciona para una muestra de nueve procesos de producción. Estime los costos fijos y variables asociados con este proceso.
+	El costo total de producción en función del número de horas de máquina se proporciona para una muestra de nueve procesos de producción. Estime los costos fijos y variables asociados con este proceso.
 
-\begin{center}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        \textbf{Horas de máquina} & 22 & 23 & 19 & 12 & 12 & 9 & 7 & 11 & 14 \\
-        \textbf{Costo total} (en miles \$) & 23 & 25 & 20 & 20 & 20 & 15 & 14 & 14 & 16 \\
-        \bottomrule
-    \end{tabular}
-\end{center}
+	\begin{center}
+		\begin{tabular}{lccccccccc}
+			\toprule
+			\textbf{Horas de máquina}          & 22 & 23 & 19 & 12 & 12 & 9  & 7  & 11 & 14 \\
+			\textbf{Costo total} (en miles \$) & 23 & 25 & 20 & 20 & 20 & 15 & 14 & 14 & 16 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{question}
 
 \begin{question} % Bradie Excersise 6 pg 441
-La resistividad del platino como función de la temperatura se da en la tabla siguiente. Estime los parámetros de un ajuste lineal de los datos y prediga la resistividad cuando la temperatura es $365$ K.
+	La resistividad del platino como función de la temperatura se da en la tabla siguiente. Estime los parámetros de un ajuste lineal de los datos y prediga la resistividad cuando la temperatura es \qty{365}{\kelvin}.
 
-\begin{center}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        \textbf{Temperatura} (K) & 100 & 200 & 300 & 400 & 500 \\
-        \textbf{Resistividad} (\textohm{} cm, $\mul 10^6$) & 4.1 & 8.0 & 12.6 & 16.3 & 19.4 \\
-        \bottomrule
-    \end{tabular}
-\end{center}
+	\begin{center}
+		\begin{tabular}{lccccccccc}
+			\toprule
+			\textbf{Temperatura} (\unit{\kelvin})                          & 100 & 200 & 300  & 400  & 500  \\
+			\textbf{Resistividad} (\unit{\ohm\centi\metre}, $\mul 10^{6}$) & 4.1 & 8.0 & 12.6 & 16.3 & 19.4 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{question}
 
 \begin{question} % Bradie Excersise 7 pg 441
-La tabla siguiente muestra el tiempo (en segundos) requerido para descargar un tanque de agua a través de un orificio en su fondo, como función de la altura de llenado (en cm) del tanque.
-\begin{center}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        \textbf{Altura} (cm) & 0.5 & 1.0 & 1.5 & 2.0 & 2.5 & 3.0 & 3.5 & 4.0 \\
-        \textbf{Tiempo} (s) & 65.99 & 120.28 & 166.69 & 207.85 & 245.41 & 279.95 & 313.04 & 344.24 \\
-        \bottomrule
-    \end{tabular}
-\end{center}
-\begin{enumerate}[a)]
-    \item Construir un gráfico de estos datos. ¿Cuál es la forma funcional más apropiada para ajustar los datos?
-    \item Ajuste los datos para la función indicada en la parte a).
-\end{enumerate}
+	La tabla siguiente muestra el tiempo (en \unit{\second}) requerido para descargar un tanque de agua a través de un orificio en su fondo, como función de la altura de llenado (en \unit{\centi\metre}) del tanque.
+	\begin{center}
+		\begin{tabular}{lccccccccc}
+			\toprule
+			\textbf{Altura} (\unit{\centi\metre}) & 0.5   & 1.0    & 1.5    & 2.0    & 2.5    & 3.0    & 3.5    & 4.0    \\
+			\textbf{Tiempo} (\unit{\second})      & 65.99 & 120.28 & 166.69 & 207.85 & 245.41 & 279.95 & 313.04 & 344.24 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{enumerate}[a)]
+		\item Construir un gráfico de estos datos. ¿Cuál es la forma funcional más apropiada para ajustar los datos?
+		\item Ajuste los datos para la función indicada en la parte a).
+	\end{enumerate}
 \end{question}
 
 \begin{question} % Bradie Excersise 9 pg 441
-La presión barométrica, como función de la altura sobre el nivel del mar, $h$, se modela con la relación $P = \alpha e^{-\beta h}$. Use los datos de la tabla siguiente para estimar los parámtros del model y predecir la presión barométrica a una altura de 
-\begin{center}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        \textbf{Presión barométrica} (mmHg) & 29.9 & 29.4 & 29.0 & 28.4 & 27.7 \\
-        \textbf{Altura} (m) & 0.0 & 12.7 & 25.4 & 38.1 & 50.8 \\
-        \bottomrule
-    \end{tabular}
-\end{center}
+	La presión barométrica, como función de la altura sobre el nivel del mar, $h$, se modela con la relación $P = \alpha e^{-\beta h}$. Use los datos de la tabla siguiente para estimar los parámetros del modelo y predecir la presión barométrica a una altura de \qty{365.76}{m}.
+	\begin{center}
+		\begin{tabular}{lccccccccc}
+			\toprule
+			\textbf{Presión barométrica} (\unit{mmHg}) & 29.9 & 29.4   & 29.0   & 28.4   & 27.7   \\
+			\textbf{Altura} (\unit{\metre})            & 0.0  & 152.40 & 304.80 & 457.20 & 609.60 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+\end{question}
+
+\begin{question} % Aplicación: curva característica de una bomba centrífuga
+	El ensayo de una bomba centrífuga a velocidad de giro constante entrega los pares caudal-altura manométrica de la tabla siguiente.
+
+	\begin{center}
+		\begin{minipage}{0.92\textwidth}
+			\centering
+			\begin{tikzpicture}[
+								pipe/.style={line width=1.2pt},
+								flow/.style={-{Latex[length=2mm]}, thick, red},
+								scale=1.25
+							]
+							% voluta
+							\draw[pipe] (0,0) circle (0.72);
+							\draw[thick, gray] (0,0) circle (0.42);
+							\foreach \a in {0,60,...,300}{%
+									\draw[thick, gray] (\a:0.42) arc (\a+180:\a+120:0.30);}
+							\node[circle, fill=black, inner sep=1pt] at (0,0) {};
+							% aspiración
+							\draw[pipe] (-2.0,0.18) -- (-0.68,0.18);
+							\draw[pipe] (-2.0,-0.18) -- (-0.68,-0.18);
+							\draw[flow] (-1.85,0) -- (-1.15,0);
+							\node[above] at (-1.5,0.20) {\scriptsize $Q$};
+							% impulsión
+							\draw[pipe] (0.54,0.48) -- (1.5,1.44);
+							\draw[pipe] (0.20,0.78) -- (1.16,1.74);
+							\draw[flow] (0.75,1.05) -- (1.25,1.55);
+							\node[right] at (1.2,1.15) {\scriptsize $H$};
+						\end{tikzpicture}
+		
+					{\small Bomba centrífuga: el rodete entrega al fluido una energía por unidad de peso $H$ (altura manométrica) al trasegar un caudal $Q$.}
+		\end{minipage}
+	\end{center}
+
+	\begin{center}
+		\begin{tabular}{lcccccccccc}
+			\toprule
+			\textbf{Caudal} $Q$ (\unit[per-mode=symbol]{\cubic\metre\per\hour}) & 0     & 10    & 20    & 30    & 40    & 50    & 60    & 70    & 80    & 90    \\
+			\textbf{Altura} $H$ (\unit{\metre})                                 & 52.00 & 51.68 & 50.48 & 48.75 & 47.00 & 44.30 & 41.83 & 38.95 & 34.18 & 29.67 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}[a)]
+		\item Plantee las ecuaciones normales para el ajuste cuadrático $H(Q) = a_0 + a_1 Q + a_2 Q^2$ y resuélvalas. Verifique el resultado con \texttt{numpy.polyfit}.
+		\item Calcule el error $E = \sum_i [H_i - P_2(Q_i)]^2$ y grafique los residuos. ¿Muestran alguna estructura sistemática?
+		\item Interprete físicamente $a_0$ y el signo de $a_2$.
+		\item La bomba se instala en un circuito cuya curva resistente es $H_s(Q) = H_e + K Q^2$, con $H_e = \qty{18}{\metre}$ y $K = \num{0.0035}$ (con $Q$ en \unit[per-mode=symbol]{\cubic\metre\per\hour} y $H_s$ en \unit{\metre}). Determine el \textbf{punto de funcionamiento} de la instalación.
+		\item Calcule el número de condición de la matriz del sistema normal y compárelo con el que se obtiene al escalar previamente las abscisas al intervalo $[0, 1]$. ¿Qué ocurre si se intenta un ajuste de grado 6?
+	\end{enumerate}
 \end{question}
 
 \begin{question} % Burden ej 8.2 1) a, b, d y e pg 185
-Encuentre la aproximación lineal por mínimos cuadrados para $f(x)$ en el intervalo indicado si:
-\begin{enumerate}[a)]
-    \item $f(x) = x^2 + 3 x + 2$, en $[0, 1]$
-    \item $f(x) = x^3$ en $[0, 2]$
-    \item $f(x) = e^x$, en $[0, 2]$
-    \item $f(x) = \frac{1}{2} \cos x + \frac{1}{3} \sen x$, en $[0, 1]$
-\end{enumerate}
+	Encuentre la aproximación lineal por mínimos cuadrados para $f(x)$ en el intervalo indicado si:
+	\begin{enumerate}[a)]
+		\item $f(x) = x^2 + 3 x + 2$, en $[0, 1]$
+		\item $f(x) = x^3$ en $[0, 2]$
+		\item $f(x) = e^x$, en $[0, 2]$
+		\item $f(x) = \frac{1}{2} \cos x + \frac{1}{3} \sen x$, en $[0, 1]$
+	\end{enumerate}
 \end{question}
 
 \begin{question} % Burden ej 8.2 3) pg 186
-    Encuentre la aproximación polinomial por mínimos cuadrados de grado 2 para las funciones e intervalos del Ejercicio 1.
+	Encuentre la aproximación polinomial por mínimos cuadrados de grado 2 para las funciones e intervalos del Ejercicio 6.
 \end{question}
 
 \begin{question} % Burden ej 8.2 2) pg 186
-    Encuentre la aproximación polinomial por mínimos cuadrados de grado 2 para las funciones del Ejercicio 1 en el intervalo $[-1, 1]$.
+	Encuentre la aproximación polinomial por mínimos cuadrados de grado 2 para las funciones del Ejercicio 6 en el intervalo $[-1, 1]$.
 \end{question}
 
 \begin{question} % Epperson Example 4.14 pg 244 
-    Construya una aproximación de mínimos cuadrados de cuarto grado a la función exponencial
-    \[ f(x) = e^x \]
-    sobre el intervalo $[-1, 1]$ usando polinomios de Legedre.
+	Construya una aproximación de mínimos cuadrados de cuarto grado a la función exponencial
+	\[ f(x) = e^x \]
+	sobre el intervalo $[-1, 1]$ usando polinomios de Legedre.
 \end{question}
 
 \begin{question} % Moreno Gonzalez. Ej. 40 pg. 119
-Determinar la mejor aproximación a $x^3$ con un polinomio de segundo grado usando polinomios de Chebishev.
+	Determinar la mejor aproximación a $x^3$ con un polinomio de segundo grado usando polinomios de Chebishev.
 \end{question}
 
 
 \begin{question} % Moreno Gonzalez. Ej. 42 pg. 120
-Hallar la recta que mejor aproxima la gráfica de la función 
-\[ f(x) = \frac{1}{1 + x^2} \]
-con la norma inducida por el producto interno:
-\[ \langle f, g \rangle = \int_0^5 f(x) g(x) \, dx \] 
-usando una base de polinomios ortogonales.
+	Hallar la recta que mejor aproxima la gráfica de la función
+	\[ f(x) = \frac{1}{1 + x^2} \]
+	con la norma inducida por el producto interno:
+	\[ \langle f, g \rangle = \int_0^5 f(x) g(x) \, dx \]
+	usando una base de polinomios ortogonales.
+\end{question}
+
+\begin{question} % Aplicación: cinemática del mecanismo biela-manivela
+	En un mecanismo biela-manivela de radio de manivela $r = \qty{45}{\milli\metre}$ y longitud de biela $l = \qty{150}{\milli\metre}$, el desplazamiento del pistón medido desde el punto muerto superior es, en forma exacta,
+	\[ x(\theta) = r (1 - \cos \theta) + l \left( 1 - \sqrt{1 - \lambda^2 \sen^2 \theta} \right), \qquad \lambda = \frac{r}{l} . \]
+	La raíz cuadrada dificulta derivar, integrar e identificar el contenido armónico del movimiento, por lo que se busca reemplazarla por una aproximación más simple en $[0, \pi]$ (basta ese intervalo porque $x$ es par y $2\pi$-periódica).
+
+	\begin{center}
+		\begin{minipage}{0.92\textwidth}
+			\centering
+			\begin{tikzpicture}[
+								bar/.style={line width=1.1pt},
+								scale=1.45
+							]
+							% cilindro
+							\draw[thick, gray] (1.85,-0.42) -- (3.25,-0.42);
+							\draw[thick, gray] (1.85,0.42) -- (3.25,0.42);
+							\draw[thick, gray] (3.25,-0.42) -- (3.25,0.42);
+							% punto muerto superior (x = 0)
+							\draw[dashed, gray] (2.60,-0.75) -- (2.60,0.55);
+							\node[above, gray] at (2.60,0.52) {\scriptsize PMS};
+							% manivela
+							\draw[dashed, gray] (0,0) circle (0.7);
+							\draw[bar] (0,0) -- (0.4015,0.5734);
+							\node[circle, fill=black, inner sep=1.2pt] at (0,0) {};
+							\node[circle, fill=black, inner sep=1.2pt] at (0.4015,0.5734) {};
+							% biela
+							\draw[bar] (0.4015,0.5734) -- (2.2129,0);
+							% pistón
+							\draw[fill=gray!15, thick] (2.2129,-0.34) rectangle (2.72,0.34);
+							\node[circle, fill=black, inner sep=1.2pt] at (2.2129,0) {};
+							% ejes y ángulo
+							\draw[dotted] (0,0) -- (3.25,0);
+							\draw[-{Latex[length=1.5mm]}] (0.5,0) arc (0:55:0.5);
+							\node at (0.72,0.22) {\scriptsize $\theta$};
+							\node at (0.10,0.40) {\scriptsize $r$};
+							\node at (1.35,0.42) {\scriptsize $l$};
+							\draw[{Bar[width=4pt]}-{Bar[width=4pt]}] (2.2129,-0.62) -- (2.60,-0.62);
+							\node[below] at (2.41,-0.60) {\scriptsize $x$};
+						\end{tikzpicture}
+		
+					{\small Mecanismo biela-manivela. El desplazamiento $x$ del pistón se mide desde el punto muerto superior (PMS), que corresponde a $\theta = 0$.}
+		\end{minipage}
+	\end{center}
+
+	\begin{enumerate}[a)]
+		\item Plantee las ecuaciones normales para la aproximación polinómica continua de grado 4 en la base $\{1, \theta, \theta^2, \theta^3, \theta^4\}$, resuélvalas y calcule el número de condición de la matriz del sistema. Evalúe el error $E = \int_0^{\pi} [x(\theta) - P_4(\theta)]^2 d\theta$ y el error máximo.
+		\item Verifique que el conjunto $\{1, \cos \theta, \cos 2\theta, \cos 3\theta \}$ es ortogonal en $[0, \pi]$ con $w(x) \equiv 1$ y calcule $\alpha_j = \langle \phi_j, \phi_j \rangle_w$.
+		\item Obtenga la aproximación $x(\theta) \approx c_0 + c_1 \cos \theta + c_2 \cos 2 \theta$ usando esa base ortogonal. Justifique por qué resulta $c_1 = -r$ de manera exacta y por qué $c_3$ es despreciable.
+		\item Compare el error de la aproximación de tres términos del inciso c) con el del polinomio de grado 4 del inciso a). ¿Cuál es mejor? ¿Qué pesa más: la cantidad de términos o la elección de la base?
+		\item El desarrollo binomial habitual en los textos de máquinas, $\sqrt{1-u} \approx 1 - u/2$, conduce a $x(\theta) \approx r(1 - \cos \theta) + \frac{r \lambda}{4}(1 - \cos 2 \theta)$. Compare sus coeficientes y su error con los del inciso c).
+		\item Si la manivela gira con velocidad angular constante $\omega$, muestre que la aproximación de tres términos da $\ddot{x} \approx -\omega^2 (c_1 \cos \theta + 4 c_2 \cos 2 \theta)$, e identifique las amplitudes de los armónicos primario y secundario de la fuerza de inercia alternativa $F = -m_{\text{alt}} \ddot{x}$ para $\omega$ correspondiente a \qty{3000}{rpm} y $m_{\text{alt}} = \qty{0.35}{\kilo\gram}$. Verifique que la relación entre ambas amplitudes es aproximadamente $\lambda$.
+	\end{enumerate}
 \end{question}
 \end{document}
