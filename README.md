@@ -51,7 +51,8 @@ Definiciones. Interpretación geométrica. Círculos de Gerschgorin. Método de 
 Condicionamiento. Métodos directos: eliminación gaussiana y factorización LU. Pivoteo. Métodos indirectos: Jacobi y Gauss-Seidel. Relajación. Ejemplos con Python. [Clase](08-sistemas-lineales/08-sistemas_lineales.pdf), [problemas](08-sistemas-lineales/problemas-8.pdf), [_notebook_](08-sistemas-lineales/code/practica_08.ipynb).
 
 ### 9 - Ajustes por mínimos cuadrados
-Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](09-aproximacion_minimos_cuadrados/09-aproximacion.pdf), [problemas](https://github.com/manuxch/calculo_avanzado/blob/main/09-aproximacion_minimos_cuadrados/problemas-09.pdf).
+Ajuste discreto lineal. Ajuste polinómico. Ajustes potencial y exponencial. Ejemplos con Python. Ajuste discreto por mínimos cuadrados. Funciones ortogonales. Polinomios de Legendre y Chebishev. Ejemplos con Python. [Clase](09-aproximacion_minimos_cuadrados/09-aproximacion.pdf), [problemas](https://github.com/manuxch/calculo_avanzado/blob/main/09-aproximacion_minimos_cuadrados/problemas-09.pdf), [_notebook_](09-aproximacion-minimos-cuadrados/code/practica_09.ipynb).
+
 
 ### 10 - Resolución de problemas de valor inicial
 Condición de Lipschitz. Problema bien formulado. Métodos de Euler, Taylor y Runge-Kutta. Sistema de ecuaciones diferenciales ordinarias. Ejemplos con Python. [Clase](10-valores_iniciales/10-valores_iniciales.pdf), [problemas](10-valores_iniciales/problemas_10.pdf).
