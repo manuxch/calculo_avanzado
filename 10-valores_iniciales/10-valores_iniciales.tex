@@ -5,6 +5,7 @@
 
 \input{../utils/preamble}
 \addbibresource{../utils/refs.bib}
+\usetikzlibrary{patterns}
 
 \title{Resolución de problemas de valor inicial}
 \subtitle{}
@@ -18,24 +19,57 @@
 \begin{document}
 \maketitle
 
-\begin{frame}{Dos abordajes:}
-\begin{columns}[]
-    \column{0.4\textwidth}
-    \begin{center}
-      \includegraphics[width=0.6\textwidth]{figs/pendulo.pdf}
-    \end{center}
-    \column{0.5\textwidth}
-    \[ \boxed{\frac{d^2 \theta}{dt^2} + \frac{g}{L} \sen \theta = 0, \quad \theta(t_0) = \theta_0, \quad \theta'  (t_0) = \theta'_0} \]
-\pause
+\begin{frame}{Dos abordajes: el péndulo simple}
+\begin{columns}[T]
+  \cw{0.20}
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=0.58]
+      \def\L{4.2}  % longitud
+      \def\th{30}  % ángulo
+      \coordinate (O) at (0, 0);
+      \coordinate (B) at (-90+\th:\L);
+      % soporte
+      \fill[pattern=north east lines] (-1.2, 0) rectangle (1.2, 0.3);
+      \draw[thick] (-1.2, 0) -- (1.2, 0);
+      % vertical y trayectoria
+      \draw[dashed, gray] (O) -- (0, -\L-0.4);
+      \draw[dotted, thick, gray!70] (-90-\th:\L) arc (-90-\th:-90+\th:\L);
+      % ángulo
+      \draw[->, thick] (0, -1.6) arc (-90:-90+\th:1.6);
+      \node at (-90+\th/2:2.05) {$\theta$};
+      % varilla y masa
+      \draw[very thick] (O) -- (B) node[pos=0.5, above right=-1pt] {$L$};
+      \fill (O) circle (2pt);
+      % fuerzas
+      \draw[->, thick, gray] (B) -- ++(0, -2.4) node[below] {$m g$};
+      \draw[->, thick, red] (B) -- ++(-180+\th:{2.4*sin(\th)});
+      \node[red, font=\scriptsize] at (0.55, -3.25) {$-m g \sen \theta$};
+      \shade[ball color=red!60] (B) circle (0.24);
+      \node[right=4pt] at (B) {$m$};
+    \end{tikzpicture}
 
-    \begin{itemize}
-      \item \alert{Aproximación analítica:} $ \sen \theta \approx \theta $ cuando $ \theta_0 \ll 1 $
-    \[ \frac{d^2 \theta}{dt^2} + \frac{g}{L} \theta = 0, \quad \theta(t_0) = \theta_0, \quad \theta'  (t_0) = \theta'_0 \]
-    \[ \theta(t) = \theta_0 \cos \left(\sqrt{\frac{g}{L}}t\right) \]
-    \pause
-\item \alert{Aproximación numérica:} resultados precisos sobre un conjunto discreto de valores.
+  \cw{0.41}
+    \[ \boxed{\theta'' + \tfrac{g}{L} \sen \theta = 0, \;\; \theta(0) = \theta_0, \;\; \theta'(0) = 0} \]
 
-    \end{itemize}
+    \onslide<2->
+    \alert{Aproximación analítica:} si $\theta_0 \ll 1$, $\sen \theta \approx \theta$
+    \[ \theta'' + \omega_0^2 \theta = 0 \;\Rightarrow\; \theta(t) = \theta_0 \cos (\omega_0 t) \]
+    con $\omega_0 = \sqrt{g / L}$. Período independiente de la amplitud: $T_0 = 2 \pi / \omega_0$.
+    \vspace{0.5em}
+
+    \onslide<3->
+    \alert{Aproximación numérica:} resolvemos la ecuación \textbf{no lineal} sobre un conjunto discreto $t_0 < t_1 < \cdots < t_N$ (\texttt{solve\_ivp}).
+    \vspace{0.5em}
+
+    \onslide<4->
+    \alert{Período exacto:} $T = \frac{2}{\pi} K\!\left(\sen \frac{\theta_0}{2}\right) T_0 > T_0$, con $K$ la integral elíptica completa de primera especie.
+    El error de la aproximación lineal está en el \textbf{período}: el desfase se acumula con $t$.
+
+  \cw{0.37}
+    \onslide<1->
+    \centering
+    \only<3>{\includegraphics[width=\textwidth]{code/pendulo.pdf}}
+    \only<4>{\vspace{2.5em}\includegraphics[width=\textwidth]{code/pendulo-periodo.pdf}}
 \end{columns}
 \end{frame}
 
@@ -52,13 +86,13 @@
 \end{system} \] \pause 
 \vspace{1em}
 \begin{definition}[Condición de Lipschitz]
-    Una función $f(t, y)$ satisface una \textbf{condición de Lipschitz} en la variable $y$, y en un conjunto $D \in \R^2$ si existe una constante $L > 0$ tal que 
+    Una función $f(t, y)$ satisface una \textbf{condición de Lipschitz} en la variable $y$, y en un conjunto $D \subset \R^2$ si existe una constante $L > 0$ tal que 
     \[ \abs{f(t, y_1) - f(t, y_2)} \leq L \abs{y_1 - y_2} \]
     siempre que $(t, y_1)$ y $(t, y_2)$ estén en $D$. La constante $L$ se llama \textbf{constante de Lipschitz} para $f$.
 \end{definition} \pause
 
 \cw{0.45}
-\textbf{Ejemplo:} mostrar que $f(t, y) = t \abs{y}$ satisface una condición de Lipschitz en el intevalo $D = \{ (t, y) \, | \, 1 \leq t \leq2 \text{ y } -3 \leq y \leq 4\}$:
+\textbf{Ejemplo:} mostrar que $f(t, y) = t \abs{y}$ satisface una condición de Lipschitz en el rectángulo $D = \{ (t, y) \, | \, 1 \leq t \leq2 \text{ y } -3 \leq y \leq 4\}$:
 
 Para cada par de puntos $(t, y_1)$ y $(t, y_2)$ en $D$, tenemos:
 \begin{align*}
@@ -75,7 +109,7 @@ $f$ satisface una condición de Lipschitz sobre $D$ con $L = 2$ (menor valor pos
 \begin{columns}
 \cx 
 \begin{definition}[Conjunto convexo]
-    Un conjunto $D \in \R^2$ se dice que es \textbf{convexo} si, dados $(t_1, y_1)$ y $(t_2, y_2)$ pertenecientes a $D$, entonces
+    Un conjunto $D \subset \R^2$ se dice que es \textbf{convexo} si, dados $(t_1, y_1)$ y $(t_2, y_2)$ pertenecientes a $D$, entonces
     \[ [(1 - \lambda) t_1 + \lambda t_2, (1 - \lambda) y_1 + \lambda y_2] \in D \;  \forall \lambda \in [0, 1] \]
 \end{definition}
 \begin{center}
@@ -84,14 +118,14 @@ $f$ satisface una condición de Lipschitz sobre $D$ con $L = 2$ (menor valor pos
 
 \cx 
 \begin{theorem}[]
-Sea $f(t, y)$ definida en un conjunto convexo $D \in \R^2$. Si existe una constante $L > 0$ tal que
+Sea $f(t, y)$ definida en un conjunto convexo $D \subset \R^2$. Si existe una constante $L > 0$ tal que
 \[ \abs{ \frac{\partial f(t, y)}{\partial y} } \leq L, \; \forall (t, y) \in D \]
-entonce $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$ con constante de Lipschitz $L$.
+entonces $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$ con constante de Lipschitz $L$.
 \end{theorem} \pause
 
 \begin{theorem}[]
     Sea $D = \{(t, y) \,|\, t_0 \leq t \leq T \text{ y } -\infty < y < \infty \}$, y $f(t, y)$ continua en $D$. Si $f$ satisface una condición de Lipschitz sobre $D$ en la variable $y$, entonces el problema de valor inicial:
-    \[ \begin{system} y'(t) = f(t, y), \; t_0 \leq T \leq b \\  y(t_0) = y_0 \end{system} \]
+    \[ \begin{system} y'(t) = f(t, y), \; t_0 \leq t \leq T \\  y(t_0) = y_0 \end{system} \]
 
     tiene una solución única $y(t)$ para $t_0 \leq t \leq T$.
 \end{theorem}
@@ -122,7 +156,7 @@ El problema de valor inicial:
 está bien formulado si:
 \begin{itemize}
     \item Existe una solución única $y(t)$, y
-    \item Existen constantes $\varepsilon_0 > 0$ y $k > 0$ tales que para cada cualquier $\varepsilon \in(0, \varepsilon_0)$, siempre que $\delta(t)$ sea continua con $\abs{\delta(t)} < \varepsilon, \; \forall t \in [t_0, T]$, y cuando $\abs{\delta_0} < \varepsilon$, el problema de valor inicial:
+    \item Existen constantes $\varepsilon_0 > 0$ y $k > 0$ tales que para cualquier $\varepsilon \in(0, \varepsilon_0)$, siempre que $\delta(t)$ sea continua con $\abs{\delta(t)} < \varepsilon, \; \forall t \in [t_0, T]$, y cuando $\abs{\delta_0} < \varepsilon$, el problema de valor inicial:
 \end{itemize}
 
 \cx
